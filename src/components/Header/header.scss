@@ -1,0 +1,120 @@
+.root {
+    background: #1c1c1c;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+}
+
+.top {
+    display: grid;
+    grid-template-columns: 10% 75% 5% 5% 5%;
+    align-items: center;
+}
+
+.logo {
+    margin-left: 10px;
+}
+
+.search {
+    justify-self: center;
+    width: 100%;
+    max-width: 300px;
+}
+
+.searchMobile {
+    justify-self: center;
+    max-width: 100%;
+    
+}
+
+.searchMobile i {
+    font-size: 20px;
+}
+
+.signin {
+    justify-self: end;
+    margin-right: 16px;
+}
+
+.wishlist a {
+    color: yellow;
+}
+
+.wishlist {
+    
+    font-size: 18px;
+    white-space: nowrap;
+    cursor: pointer;
+    justify-self: end;
+}
+
+.cart {
+    justify-self: end;
+    margin-right: 10px;
+}
+
+.menu {
+    margin-left: 10px;
+}
+
+.bottom {
+    margin-top: 10px;
+}
+
+.signinLink {
+    color: #ffffff;
+    font-size: 18px;
+    white-space: nowrap;
+    margin-right: 5px;
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    margin-top: -20px;
+}
+
+.category {
+    margin-left: 10px;
+    color: #ffffff;
+}
+
+.category a {
+    color: #ffffff;
+}
+
+.searching {
+    max-width: 400px;
+    margin: 0 auto;
+    transition: all 1s ease-in-out;
+}
+
+@media (max-width: 1000px) {
+    .top {
+        grid-template-columns: 10% 60% 10% 10% 10%;
+    }
+}
+
+@media (max-width: 700px) {
+    .top {
+        grid-template-columns: 20% 20% 20% 20% 20%;
+    }
+   
+    .wishlist {
+        justify-self: center;
+        font-size: 20px;
+    }
+
+    .signin {
+        justify-self: center;
+        margin: 0;     
+    }
+
+    .signin a {
+        font-size: 20px;
+    }
+    
+}
+

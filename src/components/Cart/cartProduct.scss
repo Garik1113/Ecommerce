@@ -1,0 +1,117 @@
+.root {
+    width: 100%;
+    max-width: 880px;
+    background: #ffffff;
+    margin-bottom: 20px;
+    max-height: 160px;
+    padding: 7px 0;
+}
+
+@media (max-width: 600px) {
+    .root {
+       max-width: 400px;
+       max-height: 100%;
+       padding: 10px 0;
+       text-align: center;
+   }
+}
+
+
+.topActions {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: flex-start;
+    color: #666666;
+    font-weight: 600;
+}
+
+@media (max-width: 600px) {
+    .topActions {
+       display: block;
+       
+   }
+
+   .summaryPrice {
+       margin-top: 15px;
+   }
+}
+
+
+.title h3 {
+    color: #000000;
+    margin-left: 10px;
+}
+
+.image img {
+    width: 100%;
+    height: auto;
+    max-width: 200px;
+    min-width: 100px;
+
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.quantity {
+    justify-self: center;
+}
+
+@media (max-width: 600px) {
+    .quantity {
+        margin-top: 15px;
+    }
+}
+
+.quantityInput {
+    width: 50px !important;
+    height: 25px !important;
+    font-size: 18px !important;
+    line-height: 33px !important;
+    text-align: center !important;
+    -webkit-appearance: none !important;
+}
+
+.price {
+    justify-self: end;
+}
+
+.propertyName {
+    margin-bottom: 10px;
+    color: #000000;
+}
+
+@media (max-width: 600px) {
+    .propertyName {
+        margin-top: 15px;
+        margin-bottom: 0;
+    }
+}
+
+
+.bottomActions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.removeEdit {
+    margin-right: 10px;
+    display: flex;
+    width: 100%;
+    max-width: 60px;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+.remove i, .edit i {
+    cursor: pointer;
+} 

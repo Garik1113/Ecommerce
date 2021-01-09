@@ -1,0 +1,20 @@
+.root {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 10px;
+    background: #d6ecec;
+}
+
+.closeIcon {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.title {
+    justify-self: center;
+}
+
+.phone {
+    justify-self: end;
+    font-size: 20px;
+}

@@ -1,0 +1,47 @@
+.body {
+    display: grid;
+    grid-template-columns: 35% 65%;
+    margin: 15px auto;
+}
+
+.image img{
+    width: 100%;
+    height: auto;
+    max-width: 200px;
+}
+
+.title h4 {
+    color: #006bb4;
+}
+
+.rightActions {
+    margin-left: 10px;
+}
+
+.quantity {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 15px;
+}
+
+.qtyNumber {
+    display: flex;
+    align-items: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+    text-align: center;
+    border: none;
+    background: #ecece6;
+}

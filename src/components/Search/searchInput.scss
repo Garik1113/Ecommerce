@@ -1,0 +1,21 @@
+.root {
+    position: relative;
+}
+
+.icon {
+    position: absolute;
+    top: 11px;
+    left: 5px;
+}
+
+.input {
+    padding: 10px;
+    border-radius: 5px;
+    padding-left: 20px;
+    width: 100%;
+}
+
+.searchTrigger i {
+    font-size: 25px;
+    color: rgb(201, 174, 174);
+}

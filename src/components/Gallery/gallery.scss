@@ -1,0 +1,23 @@
+.root {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+@media (max-width: 1200px) {
+    .root {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+@media (max-width: 1000px) {
+    .root {
+        grid-template-columns: 1fr 1fr;
+       
+    }
+}
+
+
+@media (max-width: 800px) {
+    .root {
+        grid-template-columns: 1fr;
+    }
+}

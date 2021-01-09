@@ -1,0 +1,32 @@
+.footer {
+    z-index: 500;
+    background: #4e4b4b;
+    padding: 10px 0;
+    text-align: center;
+    margin-top: 50px;
+    width: 100vw;
+    position: sticky;
+    top: 100%;
+    color: #ffffff;
+}
+
+.sittings {
+  width: 100%;
+  display: grid;
+  align-items: center;
+  text-align: center;
+}
+
+.sitting ul {
+  margin: 0;
+  padding: 0;
+  margin-top: 15px;
+}
+
+.sitting ul li {
+  margin-bottom: 10px;
+}
+
+.sitting a {
+  color: #949697;
+}

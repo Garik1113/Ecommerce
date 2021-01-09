@@ -1,0 +1,23 @@
+.root {
+    display: block;
+    width: 100%;
+}
+
+.carousel {
+    margin: auto;
+}
+
+.thumbnails {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dot {
+    width: 70px;
+    height: 70px;
+}
+
+.thumbnailImg {
+    width: 50px;
+}

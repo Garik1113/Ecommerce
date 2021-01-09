@@ -1,0 +1,30 @@
+.root {
+    background: rgb(222, 224, 220);
+    padding: 10px;
+    max-height: 400px;
+    max-width: 400px;
+    
+}
+
+@media (max-width: 600px) {
+    .root {
+        margin: 10px auto;
+    }
+}
+
+
+.filterTitle {
+    width: 100%;
+    max-width: 200px;
+    padding: 5px;
+    background: rgb(143, 142, 153);
+    margin-top: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.filter ul {
+    margin: 0;
+    padding: 0;
+}

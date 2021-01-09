@@ -1,0 +1,29 @@
+.body {
+    width: 100%;
+    height: auto;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgba(255, 0, 0, 0.178);
+}
+
+.text {
+    font-size: 24px;
+    width: 50%;
+    color: #000000;
+}
+
+@media (max-width: 760px) {
+    .text {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 400px) {
+    .text {
+        font-size: 15px;
+    }
+}

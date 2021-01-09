@@ -1,0 +1,20 @@
+.root {
+    width: 100%;
+    max-width: 360px;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background: red;
+    
+    transform: translate3d(-100%, 0, 0);
+    transition-property: opacity, transform, visibility;
+    transition: 384ms;
+}
+
+.root_open {
+    box-shadow: 1px 0 rgb(var(--venia-border));
+    transform: translate3d(0, 0, 0);
+    z-index: 805;
+}

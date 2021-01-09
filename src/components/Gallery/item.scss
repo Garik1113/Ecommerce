@@ -1,0 +1,53 @@
+.root {
+    margin: 5px;
+    position: relative;
+    margin-bottom: 15px;
+    background: #ffffff;
+    padding: 15px 10px;
+} 
+
+@media (max-width: 800px) {
+    .root {
+        margin: 0;
+    }
+}
+
+
+.itemImage {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+
+}
+
+.heart {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.heart i {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.title span {
+    font-weight: 400;
+    color: #000000;
+    font-size: 18px;
+}
+
+.itemFooter {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.price {
+    margin-top: 15px;
+}
+
+.price span {
+    font-weight: 600;
+    color: grey;
+}

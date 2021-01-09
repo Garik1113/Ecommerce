@@ -1,0 +1,70 @@
+.root {
+    max-width: 1200px;
+    margin: auto;  
+}
+
+.title {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.body {
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+.galleryList {
+    display: block;
+}
+
+.options {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5px;
+    margin-bottom: 15px;
+}
+
+.sort {
+    position: relative;
+    margin-right: 15px;
+}
+
+.sortArrowIcon {
+    margin-left: 7px;
+}
+
+.sort span {
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: 20px;
+}
+
+.sortOptions {
+    height: auto;
+    padding: 10px;
+    background: #ffffff;
+    position: absolute;
+    top: 28px;
+    right: -47px;
+    z-index: 15;
+}
+
+.viewBtns i {
+    font-size: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+@media (max-width: 800px) {
+    .body {
+        grid-template-columns: 30% 70% ;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .body {
+        display: block;
+        grid-template-columns: 30% 70% ;
+    }
+}

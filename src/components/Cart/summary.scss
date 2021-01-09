@@ -1,0 +1,30 @@
+.root {
+    background: #ffffff;
+    padding: 7px 20px;
+    max-width: 400px;
+}
+
+@media (max-width: 600px) {
+    .root {
+        padding: 10px 10px;
+    }
+}
+
+.title h2 {
+    margin: 0;
+}
+
+.subTotal, .shipping, .orderTotal {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.summaryPrice {
+    font-weight: 800;
+}
+
+.button {
+    text-align: center;
+}

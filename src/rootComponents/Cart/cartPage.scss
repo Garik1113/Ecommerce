@@ -1,0 +1,22 @@
+.root {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.body {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-column-gap: 15px;
+}
+
+
+@media (max-width: 600px) {
+    .root {
+        max-width: 400px;
+    }
+
+    .body {
+        display: block;
+    }
+}

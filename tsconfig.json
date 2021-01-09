@@ -1,0 +1,73 @@
+// {
+//     "compilerOptions": {
+//     "sourceMap": true,
+//     "noImplicitAny": false,
+//     "module": "commonjs",
+//     "target": "es5",
+//     "outDir": "./build",
+//     "lib": ["ESNext", "dom", "dom.iterable"],
+//     "removeComments": true,
+//     "allowSyntheticDefaultImports": true,
+//     "forceConsistentCasingInFileNames": true,
+//     "jsx": "react",
+//     "allowJs": true,
+//     "baseUrl": "./",
+//     "esModuleInterop": true,
+//     "resolveJsonModule": true,
+//     "moduleResolution": "node",
+//     "downlevelIteration": true,
+//     "paths": {
+//         "components/*": ["src/components/*"]
+//         }
+//     },
+//     "include": ["./src"]
+// }
+
+{
+    "compilerOptions": {
+      "outDir": "build/dist",
+      "module": "commonjs",
+      "target": "es5",
+      "lib": [
+        "es6",
+        "dom"
+      ],
+      "baseUrl": "./",
+      "paths": {
+        "*": ["*", "src/*"]
+      },
+      "sourceMap": true,
+      "allowJs": true,
+      "jsx": "react",
+      "moduleResolution": "node",
+      "rootDir": "src",
+      "forceConsistentCasingInFileNames": true,
+      "noImplicitReturns": true,
+      "noImplicitThis": true,
+      "noImplicitAny": true,
+      "noUnusedParameters": true,
+      "importHelpers": true,
+      "strictNullChecks": true,
+      "suppressImplicitAnyIndexErrors": true,
+      "noUnusedLocals": true,
+      "skipLibCheck": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "strict": true,
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "noEmit": true,
+    },
+    "exclude": [
+      "node_modules",
+      "build",
+      "scripts",
+      "acceptance-tests",
+      "webpack",
+      "jest",
+      "src/setupTests.ts"
+    ],
+    "include": [
+      "src/**/*",
+    ]
+  }

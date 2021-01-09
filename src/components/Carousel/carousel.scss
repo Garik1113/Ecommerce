@@ -1,0 +1,36 @@
+.carousel {
+    position: relative;
+}
+
+.arrowLeft {
+    background: transparent;
+    border: none;
+    position: absolute;
+    top: 30%;
+    left: 0;
+    font-size: 60px;
+    opacity: 0.4;
+}
+
+.arrowRight {
+    background: transparent;
+    border: none;
+    position: absolute;
+    top: 30%;
+    right: 0;
+    font-size: 60px;
+    opacity: 0.4;
+}
+
+.slider {
+    img {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .slider {
+        height: 600px
+    }
+}
+

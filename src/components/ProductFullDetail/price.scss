@@ -1,0 +1,14 @@
+.root {
+    display: flex;
+    align-items: center;
+    max-width: 200px;
+}
+
+.value {
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+.value, .currency {
+    font-size: 30px;
+}

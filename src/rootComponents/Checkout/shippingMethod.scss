@@ -1,0 +1,29 @@
+.root {
+    margin-top: 30px;
+    background: #ffffff;
+    padding: 20px;
+}
+
+.title {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.method {
+    display: flex;
+    justify-content: space-between;
+}
+
+.radio {
+    border: 1px solid red;
+}
+
+input[type="radio"] {
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-block;
+    height: 15px;
+    margin-right: 15px;
+    position: relative;
+    width: 15px;
+}

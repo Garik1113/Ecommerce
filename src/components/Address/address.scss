@@ -1,0 +1,70 @@
+.form {
+    width: 100%;
+}
+
+.fieldWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 10px;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 900px) {
+   .fieldWrapper {
+       display: block;
+       margin-bottom: 0;
+   }
+}
+
+.city {
+    margin-bottom: 10px;
+}
+
+.input {
+    width: 100%;
+    padding: 10px;
+    padding-bottom: 0;
+    padding-top: 20px;
+    border: 1px solid #c2c2c2;
+    font-size: 18px;
+}
+
+@media (max-width: 900px) {
+    .input {
+        margin-bottom: 10px;
+    }
+ }
+
+.field {
+    position: relative;
+}
+
+.label {
+    position: absolute;
+    color: #9e9e9e;
+    top: 3px;
+    font-size: 13px;
+    left: 5px;
+    font-size: 13px;
+    transition: all 284ms ease-in-out;
+}
+
+.input[value=""] + .label {
+    top: 14px;
+    font-size: 16px;
+}
+
+.input:focus + .label {
+    top: 3px;
+    font-size: 13px;
+}
+
+.label::after {
+    content: "*";
+    color: red;
+}
+
+.input[name="company"] + .label::after,
+.input[name="secondAddress"] + .label::after {
+    content: "";
+}
