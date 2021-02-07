@@ -16,8 +16,7 @@ export interface State  {
 const rootReducer = combineReducers({ categories:  categoryReducer, app: appReducer, cart: cartReducer });
 const middleWare:Array<ThunkMiddleware> = [routerMiddleware(history), thunk];
 const store = createStore(rootReducer,
-    compose(applyMiddleware(...middleWare), 
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() 
+        compose(applyMiddleware(...middleWare)
     )
 );
 

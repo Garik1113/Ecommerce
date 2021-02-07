@@ -1,33 +1,35 @@
 import React from 'react';
-import { Product } from 'src/store/types/product';
+import { TProduct } from 'src/store/types/product';
 import Button from '../Button';
 import { Link } from 'react-router-dom';
 import classes from './item.scss';
 import { useItem } from '../../talons/Gallery/useItem';
+import { IMAGE_BASE_URL } from 'src/config/defaults';
+import { handleImageError } from 'src/util/handleImageError';
 
 interface Props {
-    item: Product
+    item: TProduct
 }
 
 
 const Item:React.FC<Props> = ({item}: Props) => {
-    const { main_image, title, price } = item;
+    const {price, images, name } = item;
     const { currency, value } = price;
     const { handleAddToWishlist } = useItem();
 
     return (
         <div className={classes.root}>
-            <Link to={`/product/${item.id}`}>
+            <Link to={`/product/${item._id}`}>
                 <div className={classes.image}>
-                    <img src={main_image} className={classes.itemImage}/>
+                    <img onError={handleImageError} src={`${IMAGE_BASE_URL}/${images[0]}`} className={classes.itemImage}/>
                 </div>        
             </Link>
-            <div className={classes.heart} onClick={() =>  handleAddToWishlist(item.id)}>
+            <div className={classes.heart} onClick={() =>  handleAddToWishlist(item._id || "")}>
                 <i className="fas fa-heart"></i>
             </div>
-            <Link to={`/product/${item.id}`}>
+            <Link to={`/product/${item._id}`}>
                 <div className={classes.title}>
-                    <span>{title}</span>
+                    <span>{name}</span>
                 </div>  
             </Link>
             <div className={classes.itemFooter}>

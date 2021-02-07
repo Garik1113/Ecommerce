@@ -1,40 +1,3 @@
-export interface Price {
-    currency: string,
-    value: number
-}
-
-export interface Image {
-    image_path: string,
-    small_image_path: string,
-    thumbnail_path: string
-}
-
-export interface Product {
-    __type: string,
-    id: string,
-    title: string,
-    description: string,
-    price: Price,
-    gallery: Image[],
-    category_id: string,
-    main_image: string
-}
-
-type OptionVariant = {
-    id: number,
-    title: string
-}
-
-interface Option {
-    option_id: number,
-    title: string,
-    variant: OptionVariant[]
-}
-
-export interface ConfigurableProduct extends Product {
-    options: Option[]
-}
-
 export interface FilterVariant {
     id: number,
     value: string
@@ -46,3 +9,37 @@ export interface ProductFilterOption {
     variants: FilterVariant[]
 }
 
+
+export type Price = {
+    currency: string,
+    value: number
+}
+
+export type Discount = {
+    type: string,
+    value: number
+}
+
+export type AttributeValue = {
+    valueId: string,
+    label: string
+}
+
+export type Attribute = {
+    attrbuteId: string,
+    label: string,
+    values: AttributeValue[]
+}
+
+export type TProduct = {
+    _id?: string,
+    name: string,
+    pageTitle: string,
+    metaDescription: string,
+    price: Price,
+    discount: Discount,
+    averageRating: number,
+    categories: string[],
+    attributes: Attribute[],
+    images: string[]
+};

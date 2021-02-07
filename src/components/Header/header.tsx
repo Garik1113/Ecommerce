@@ -57,10 +57,10 @@ const Header:React.FC = () => {
                 {!isMobile 
                 ?  <div className={classes.categories}>
                         {
-                            categories.map((cat) => (
-                                <div className={classes.category} key={cat.id}>
-                                    <Link to={`/category/${cat.id}`}>
-                                        <span>{cat.title}</span>
+                            categories.map((cat, index) => (
+                                <div className={classes.category} key={index}>
+                                    <Link to={`/category/${cat._id}`}>
+                                        <span>{cat.name}</span>
                                     </Link>
                                     
                                 </div>

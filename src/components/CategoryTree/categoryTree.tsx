@@ -7,7 +7,6 @@ type Props = {
 }
 
 const CategoryTree:React.FC<Props> = ({ categories }: Props) => {
-    console.log(categories);
     return (
         <div className={classes.root}>
             

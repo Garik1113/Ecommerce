@@ -9,8 +9,8 @@ const CategoryContent:React.FC = () => {
     const { products } =  useCategoryContent();
     const [showSortOptions, setShowSortOptions] = useState(false);
     const [view, setView] = useState('grid');
-    const [rootClass, setRootClass] = useState(undefined);
-
+    const [rootClass, setRootClass] = useState<string | undefined>(undefined);
+    
     useEffect(() => {
         if(view === 'list'){
             setRootClass(classes.galleryList);

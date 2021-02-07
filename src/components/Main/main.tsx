@@ -9,7 +9,6 @@ type Props = {
 
 const Main:React.FC<Props> = (props: Props) => {
     const { children } = props;
-    
     return (
         <main className={classes.main}>
             <Header/>

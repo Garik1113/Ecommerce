@@ -2,11 +2,10 @@ import React from 'react';
 import classes from './slider.scss';
 import { CarouselProvider, Slider as PureSlider, Slide } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
-import { useCategoryContent } from '../../talons/Category/useCategoryContent';
 import { Link } from 'react-router-dom';
 
 const Slider:React.FC = () => {
-    const { products } =  useCategoryContent();
+    const products: any = []
     return (
         <div className={classes.root}>
             <CarouselProvider 
@@ -19,7 +18,7 @@ const Slider:React.FC = () => {
             >
                 <PureSlider>
                     {
-                        products.map((e, i) => (
+                        products.map((e:any, i: any) => (
                             <Slide index={i} key={i} style={{textAlign: "center"}}>
                                 <div>
                                     <Link to={`/product/${e.id}`}>

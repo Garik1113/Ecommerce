@@ -1,9 +1,7 @@
-export interface ICategory {
-    id: number;
-    title: string;
-    children_count: number,
-    include_in_menu: boolean,
-    children: ICategory[] | []
+export type TCategory = {
+    _id?: String,
+    name: string,
+    include_in_menu: boolean
 }
 
 export const GET_CATEGORIES_REQUEST = "GET_CATEGORIES_REQUEST";
@@ -15,7 +13,7 @@ export interface GetCategoriesRequest {
 
 export interface GetCategoriesReceive {
     type: typeof GET_CATEGORIES_RECEIVE,
-    categories: ICategory[];
+    categories: TCategory[];
 }
 
 export type CategoryActions = 

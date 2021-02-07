@@ -1,15 +1,8 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import classes from './address.scss';
-import { useQuery, gql } from '@apollo/client';
 
-const LIST_COUNTRIES = gql`
-  {
-    countries {
-      name
-    }
-  }
-`;
+
 
 interface  Address {
     firstName: string,
@@ -46,7 +39,7 @@ const Address:React.FC = () => {
         phone: "",
         company: ""
     }
-    const { data } = useQuery<Countries>(LIST_COUNTRIES);
+    
     
     return (
         <div className={classes.root}>
@@ -99,11 +92,11 @@ const Address:React.FC = () => {
                                     {/* <Field type="text" name="country" className={classes.input}/> */}
                                     <select name="country" id=""
                                      className={classes.input}>
-                                        {
+                                        {/* {
                                             data && data.countries && data.countries.map((e,i) => (
                                                 <option value={e.name} key={i} className={classes.option}>{e.name}</option>
                                             ))
-                                        }
+                                        } */}
                                     </select>
                                     <label htmlFor="country" className={classes.label}>Country</label>
                                     <ErrorMessage name="country" component="div" className={classes.error}/>

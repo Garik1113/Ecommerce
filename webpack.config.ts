@@ -7,6 +7,9 @@ const webpackConfig = (): Configuration => ({
         extensions: ['.ts', '.tsx', '.js'],
         alias: {
             components: path.resolve(__dirname, 'src/components'),
+            src: path.resolve(__dirname, "./src"),
+            store: path.resolve(__dirname, "./src/store"),
+            config: path.resolve(__dirname, './src/config')
         },
     },
     output: {
@@ -17,10 +20,20 @@ const webpackConfig = (): Configuration => ({
     mode: 'development',
     devServer: {
         overlay: true,
-        open: true,
         port: 3000,
         writeToDisk: true,
+        publicPath: "/",
+        contentBase: "./public",
+        hot: true,
         historyApiFallback: true,
+        // proxy: {
+        //     "/api": {
+        //         target: "http://localhost:5000",
+        //         pathRewrite: {"^api/" : ""},
+        //         secure: false,
+        //         changeOrigin: true
+        //     }
+        // }
     },
     
     module: {
@@ -37,12 +50,7 @@ const webpackConfig = (): Configuration => ({
                 use: [
                     'style-loader',
                     {
-                        loader: 'css-loader',
-                        // options: {
-                        //     // localIdentName: '[name]-[local]-[hash:base64:3]',
-                        //     modules: true
-                        // },
-                        
+                        loader: 'css-loader'
                     }
                 ]
               },
@@ -75,8 +83,8 @@ const webpackConfig = (): Configuration => ({
                   test: /\.tsx?$/,
                   loader: 'ts-loader',
                   options: {
-                            transpileOnly: true,
-                          },
+                      transpileOnly: true,
+                  },
                   exclude: /dist/,
               },
             ],

@@ -2,10 +2,11 @@ import React from 'react'
 import { CarouselProvider, Slider, Slide, Dot } from 'pure-react-carousel';
 import classes from './productImageCarousel.scss';
 import 'pure-react-carousel/dist/react-carousel.es.css';
-import { Image } from 'src/store/types/product';
+import { IMAGE_BASE_URL } from 'src/config/defaults';
+import { handleImageError } from 'src/util/handleImageError';
 
 interface Props {
-    gallery: Image[]
+    gallery: string[]
 }
 
 
@@ -16,7 +17,7 @@ const ProductImageCarousel:React.FC<Props> = ({gallery}: Props) => {
            <CarouselProvider 
                 naturalSlideWidth={800}
                 naturalSlideHeight={600}
-                totalSlides={3}
+                totalSlides={gallery.length}
                 visibleSlides={1}
                 className={classes.carousel}
             >
@@ -25,14 +26,14 @@ const ProductImageCarousel:React.FC<Props> = ({gallery}: Props) => {
                         gallery.map((image, index) => {
                             return (
                                 <Slide index={index} key={index}>
-                                    <img src={image.image_path} style={{width: "100%"}}/>
+                                    <img onError={handleImageError} src={`${IMAGE_BASE_URL}/${image}`} style={{width: "100%"}}/>
                                 </Slide>
                             )
                         })
                     }
                 </Slider>
                 <div className={classes.thumbnails}>
-                    {
+                    {/* {
                         gallery.map((image, index) => {
                             return (
                                 <Dot slide={index} key={index} className={classes.dot}>
@@ -40,7 +41,7 @@ const ProductImageCarousel:React.FC<Props> = ({gallery}: Props) => {
                                 </Dot>
                             )
                         })
-                    }
+                    } */}
                 </div>
                     
             </CarouselProvider> 
