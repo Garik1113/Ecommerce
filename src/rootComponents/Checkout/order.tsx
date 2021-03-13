@@ -1,6 +1,7 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import { TCartItem } from 'src/store/types/cart';
 import { TPrice } from 'src/store/types/product';
+import { useOrder } from 'src/talons/Checkout/useOrder';
 import Button from '../../components/Button';
 import CartItem from '../../components/MiniCart/cartItem';
 import CheckoutTitle from './checkoutTitle';
@@ -13,11 +14,8 @@ type Props = {
 }
 
 const Order:React.FC<Props> = (props: Props) => {
-    const { items, totalPrice, setStep } = props;
-    const [showItems, setShowItems] = useState(false);
-    const handleClick = useCallback(():void => {
-            setShowItems(!showItems);
-    }, [showItems, setShowItems])
+    const { items, totalPrice } = props;
+    const { handleClick, showItems, handleSubmit } = useOrder()
 
     return (
         <div className={classes.root}>
@@ -33,15 +31,15 @@ const Order:React.FC<Props> = (props: Props) => {
             ?  <div className={classes.items}>
                 {
                     items.map((item: TCartItem) => (
-                        <CartItem showDescription={false} cartItem={item} key={item._id}/>
+                        <CartItem showDescription={false} cartItem={item} key={item._id} dontShowActions={true}/>
                     ))
                 }
                 </div>
             : null
             }
             <div className={classes.subTotal}>
-                <span>Cart Subtotal</span>
-                <span>$356</span>
+                <span>Cart Total</span>
+                <span>{totalPrice.value} {totalPrice.currency}</span>
             </div>
             <div className={classes.shipping}>
                 <span>Shipping</span>
@@ -50,12 +48,11 @@ const Order:React.FC<Props> = (props: Props) => {
             <hr/>
             <div className={classes.total}>
                 <span>Order Total</span>
-                <span>$356</span>
+                <span>{totalPrice.value} {totalPrice.currency}</span>
             </div>
             <div className={classes.button}>
-                <Button label="Place Order" priority="high"/>
+                <Button label="Place Order" priority="high" onClick={handleSubmit}/>
             </div>
-            <Button onClick={() => setStep("payment")}>Back</Button>
         </div>
     )
 }

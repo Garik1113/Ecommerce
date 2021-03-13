@@ -1,20 +1,4 @@
 .root {
-    display: grid;
-    width: 90%;
-    max-width: 1200px;
-    margin: 50px auto;
-    grid-template-columns: 60% 40%;
+    
 }
 
-@media (max-width: 900px) {
-    .root {
-        grid-template-columns: 50% 50%;
-    }
-}
-
-@media (max-width: 600px) {
-    .root {
-        display: block;
-        max-width: 500px;
-    }
-}

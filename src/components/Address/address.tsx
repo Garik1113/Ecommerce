@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import classes from './address.scss';
-import { Function } from 'lodash';
 import { TAddress } from 'src/store/types/cart';
 import { Button } from 'semantic-ui-react';
 import * as yup from 'yup'
@@ -30,12 +29,13 @@ interface Countries {
 }
 
 type Props = {
-    handleSubmit?: any
+    handleSubmit?: any,
+    address?: TAddress
 }
 
 const Address:React.FC<Props> = (props: Props) => {
-    const { handleSubmit } = props;
-    const address: TAddress = {
+    const { handleSubmit, address } = props;
+    const initialValues: TAddress = address ? address : {
         firstName: "",
         lastName: "",
         firstAddress: "",
@@ -47,22 +47,22 @@ const Address:React.FC<Props> = (props: Props) => {
         phone: "",
         company: ""
     }
-    let validationSchema = useMemo(() => yup.object().shape({
+    const validationSchema = useMemo(() => yup.object().shape({
             firstName: yup.string().required("Required"),
             lastName: yup.string().required("Required"),
             firstAddress: yup.string().required("Required"),
             city: yup.string().required("Required"),
             zip: yup.number().required("Required"),
             phone: yup.string().required("Required"),
-    }), []);
-    
+    }), [yup]);
     
     return (
         <div className={classes.root}>
             <Formik
-                initialValues={address}
+                initialValues={initialValues}
                 onSubmit={handleSubmit}
-                // validationSchema={validationSchema}
+                validationSchema={validationSchema}
+                enableReinitialize={true}
             >
                 {
                     ({handleSubmit}) => (

@@ -8,7 +8,7 @@ body {
     box-sizing: border-box;
     font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
-    background: #f0f2f5;
+    background: #f8f8f8;
     overflow-x: hidden;
     min-height: 100%;
 }
@@ -23,8 +23,10 @@ a, li {
     list-style: none;
 }
 
-h1, h2, h4, h5, h6, hr, form {
-    margin: 0;
+h1, h2, h3, h4, h5, h6, hr, form {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 0 !important;
 }
 
 input[type="text"], input[type="password"], textarea, select { 

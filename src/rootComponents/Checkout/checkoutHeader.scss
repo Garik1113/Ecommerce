@@ -1,0 +1,45 @@
+.root {
+    width: 100%;
+    max-width: 500px;
+    margin: 30px auto;
+}
+
+.body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item {
+    width: 35px;
+    height: 35px;
+    border: 1px solid grey;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
+}
+
+.active {
+    color: yellow;
+    cursor: pointer;
+}
+
+.disabled {
+    color: grey;
+    cursor: auto;
+}
+
+.disabled i {
+    cursor: auto !important;
+}
+
+.line {
+    height: 1px;
+    width: 110px;
+    background: rgb(197, 194, 194);
+}

@@ -1,11 +1,8 @@
 .root {
     background-color: #f8f8f8;
-    border: 1px solid #ffffff;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 120px;
-    margin-left: 15px;
     padding: 20px;
+    max-width: 500px;
+    margin: auto;
 }
 
 @media (max-width: 600px) {

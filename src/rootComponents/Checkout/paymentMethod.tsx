@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button } from 'semantic-ui-react';
 import { usePaymentMethod } from 'src/talons/Checkout/usePaymentMethod';
 import CheckoutTitle from './checkoutTitle';
@@ -6,6 +6,7 @@ import CreditCart from './creditCart';
 import classes from './paymentMethod.scss';
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js';
+import { STRIPE_PUBLIC_KEY } from 'src/config/defaults';
 
 type Props = {
     setStep: any
@@ -14,7 +15,7 @@ type Props = {
 const PaymentMethod:React.FC<Props> = (props: Props) => {
     const { setStep } = props;
     const { setMethod, method, handleSubmit } = usePaymentMethod({setStep});
-    const stripePromise = loadStripe('pk_test_51HPTvgB9AM6FXiSYeO5vxQ4Go4RV7n2xnhROmBB7T57A0QTvwR4w3LvtzgIIxciKQX9gBYvZr6rvxXOw5oC0G0eN00S5JxiNLa')
+    const stripePromise = loadStripe(STRIPE_PUBLIC_KEY);
     
     return (
         <div className={classes.root}>
@@ -30,19 +31,23 @@ const PaymentMethod:React.FC<Props> = (props: Props) => {
                             <Elements stripe={stripePromise}>
                                 <CreditCart/>
                             </Elements>
-                        : null }
+                        :   null
+                    }
                 </div>
                 <div>
                     <input type="radio" name="paymentMethod" value="paypal" onChange={() => setMethod("paypal")}/>
                     <span>Paypal</span>
                 </div>
                 <div>
-                    <input type="radio" name="paymentMethod" value="purchase_order" onChange={() => setMethod("purchase_order")}/>
+                    <input type="radio" name="paymentMethod" value="cash_on_delivery" onChange={() => setMethod("cash_on_delivery")}/>
                     <span>Cash on delivery</span>
                 </div>
             </div>
-            <Button onClick={() => setStep("billing")}>Back</Button>
-            <Button onClick={handleSubmit}>Submit</Button>
+            {method == "credit_cart" || method == "paypal"
+            ?   null
+            : <div className={classes.buttons}>
+                <Button onClick={handleSubmit}>Submit</Button>
+            </div>}
         </div>
     )
 }

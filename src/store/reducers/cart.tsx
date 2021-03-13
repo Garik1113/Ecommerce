@@ -25,6 +25,15 @@ const initialState: CartInitialState = {
             city: "",
             phone: "",
             zip: 0
+        },
+        billingAddress: {
+            firstAddress: "",
+            firstName: "",
+            lastName: "",
+            country: "",
+            city: "",
+            phone: "",
+            zip: 0
         }
     }
 }

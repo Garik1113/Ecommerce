@@ -9,12 +9,12 @@ type Props = {
 }
 const ShippingAddress:React.FC<Props> = (props: Props) => {
     const { setStep } = props;
-    const { handleSubmit } = useShippingAddress({setStep})
+    const { handleSubmit, shippingAddress } = useShippingAddress({ setStep })
 
     return (
         <div className={classes.root}>
             <CheckoutTitle title="SHIPPING ADDRESS" number={1}/>
-            <Address handleSubmit={handleSubmit}/>
+            <Address handleSubmit={handleSubmit} address={shippingAddress}/>
         </div>
     )
 }

@@ -13,23 +13,23 @@ type Props = {
 
 const BillingAddress:React.FC<Props> = (props: Props) => {
     const { setStep } = props;
-    const { billingAndShippingAreTheSame, handleChange, handleSubmit } = useBillingAddress({setStep})
+    const { billingAndShippingAreTheSame, handleChange, handleSubmit, billingAddress } = useBillingAddress({setStep});
+
     return (
-        <div className={classes.root}>
+        <div className={`${billingAndShippingAreTheSame ? classes.miniRoot : classes.root}`}>
             <CheckoutTitle title="BILLING ADDRESS" number={2}/>
             <div className={classes.checkboxField}>
                 <Checkbox onChange={handleChange} checked={billingAndShippingAreTheSame}/>
                 <span>Billing and shipping address are the same</span>
             </div>
-            {
-                billingAndShippingAreTheSame ? null : <Address handleSubmit={handleSubmit}/>
+            { billingAndShippingAreTheSame ? null : <Address handleSubmit={handleSubmit} address={billingAddress}/> }
+            { billingAndShippingAreTheSame
+                ?    <div className={classes.buttons}>
+                        <Button onClick={handleSubmit}>Submit</Button>
+                    </div>
+                :   null
             }
-            <Button onClick={() => setStep("shipping")}>
-                Back
-            </Button>
-            <Button onClick={handleSubmit}>
-                Submit
-            </Button>
+            
         </div>
     )
 }

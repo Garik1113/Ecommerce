@@ -15,7 +15,7 @@ export const useBillingAddress = (props: Props) => {
     const { axiosClient } = useAxiosClient();
     const [billingAndShippingAreTheSame, setBillingAndShippingAreTheSame] = useState<boolean>(true);
     const {cartId, cart } = useSelector((state: State) => state.cart);
-    const { shippingAddress } = cart;
+    const { shippingAddress, billingAddress } = cart;
     const dispatch = useDispatch();
 
     const handleChange = useCallback((e, data) => {
@@ -26,12 +26,13 @@ export const useBillingAddress = (props: Props) => {
         const response: AxiosResponse = await axiosClient("PUT", 'cart/add-billing-address', { address, cartId });
         console.log(response);
         await dispatch(getCartDetails());
-        setStep("payment");
-    }, [axiosClient, , cartId]);
+        setStep({value: "payment", index: 2});
+    }, [axiosClient, cartId, billingAndShippingAreTheSame]);
 
     return {
         handleSubmit,
         billingAndShippingAreTheSame,
-        handleChange
+        handleChange,
+        billingAddress
     }
 }

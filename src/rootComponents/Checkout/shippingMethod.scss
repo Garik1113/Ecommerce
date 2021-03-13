@@ -1,7 +1,7 @@
 .root {
-    margin-top: 30px;
     background: #ffffff;
-    padding: 20px;
+    max-width: 800px;
+    margin: auto;
 }
 
 .title {
@@ -26,4 +26,10 @@ input[type="radio"] {
     margin-right: 15px;
     position: relative;
     width: 15px;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

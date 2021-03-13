@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useCheckout } from 'src/talons/Checkout/useCheckout';
 import BillingAddress from './billingAddress';
 import classes from './checkout.scss';
@@ -6,7 +6,6 @@ import CheckoutHeader from './checkoutHeader';
 import Order from './order';
 import PaymentMethod from './paymentMethod';
 import ShippingAddress from './shippingAddress';
-import ShippingMethod from './shippingMethod';
 
 
 const Checkout:React.FC = () => {
@@ -22,17 +21,16 @@ const Checkout:React.FC = () => {
 
     return (
         <div className={classes.root}>
-            <div>
-                
+            <div className={classes.body}>
                 <div>
-                    <CheckoutHeader/>
+                    <CheckoutHeader setStep={setStep} step={step}/>
                 </div>
                 <div>
-                    {step == "shipping" ? <ShippingAddress setStep={setStep}/> : null}
+                    {step.value == "shipping" ? <ShippingAddress setStep={setStep}/> : null}
                 </div>
                 <div>
                     {
-                        step == "billing" ? 
+                        step.value == "billing" ? 
                         <BillingAddress
                             setStep={setStep}
                             billingAndShippingAreTheSame={billingAndShippingAreTheSame} 
@@ -41,19 +39,16 @@ const Checkout:React.FC = () => {
                         : null
                     }
                 </div>
+                {/* <div>
+                    {step.value == 'method' ? <ShippingMethod/> : null}
+                </div> */}
                 <div>
-                    {step == 'method' ? <ShippingMethod/> : null}
+                    {step.value == 'payment' ? <PaymentMethod setStep={setStep}/> : null}
                 </div>
                 <div>
-                    {step == 'payment' ? <PaymentMethod setStep={setStep}/> : null}
-                </div>
-                <div>
-                    { step == 'order' ? <Order items={items} totalPrice={totalPrice} setStep={setStep} /> : null }
+                    { step.value == 'order' ? <Order items={items} totalPrice={totalPrice} setStep={setStep} /> : null }
                 </div>
             </div>
-            {/* <div>
-                <Order items={items} totalPrice={totalPrice}/>
-            </div> */}
         </div>
     )
 }

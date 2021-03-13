@@ -7,11 +7,12 @@ import get from 'lodash/get';
 
 type Props = {
     showDescription: boolean,
-    cartItem: TCartItem
+    cartItem: TCartItem,
+    dontShowActions?: boolean
 }
 
 const CartItem:React.FC<Props> = (props: Props) => {
-    const { showDescription, cartItem } = props;
+    const { showDescription, cartItem, dontShowActions } = props;
     const { product } = cartItem;
     const { 
         handleDeleteCartItem,
@@ -40,18 +41,24 @@ const CartItem:React.FC<Props> = (props: Props) => {
                         <div className={classes.qty}>
                             Qty: {cartItem.quantity}
                         </div>
-                        <div className={classes.qtyNumber}>
-                            <i className="fas fa-chevron-left" onClick={() => handleChangeQuantity(false)}></i>
-                            <input type="number" min={1} value={1} readOnly={true}/>
-                            <i className="fas fa-chevron-right" onClick={() => handleChangeQuantity(true)}></i>
-                        </div>
+                        {dontShowActions 
+                        ?   null 
+                        :   <div className={classes.qtyNumber}>
+                                <i className="fas fa-chevron-left" onClick={() => handleChangeQuantity(false)}></i>
+                                <input type="number" min={1} value={1} readOnly={true}/>
+                                <i className="fas fa-chevron-right" onClick={() => handleChangeQuantity(true)}></i>
+                            </div>
+                        }
                         <div className={classes.price}>
-                            <span>{product.price.value}</span>
+                            <span>{product.price.value} {product.price.currency}</span>
                         </div>
                     </div>
-                    <div className={classes.close} onClick={handleDeleteCartItem}>
-                        <i className={`fas fa-trash ${classes.closeIcon}`}></i>
-                    </div>
+                    {dontShowActions 
+                    ?   null
+                    :   <div className={classes.close} onClick={handleDeleteCartItem}>
+                            <i className={`fas fa-trash ${classes.closeIcon}`}></i>
+                        </div>
+                    }
                 </div>
             </div>
             <hr/>

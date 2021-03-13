@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from "axios";
 import { Dispatch } from "react";
 import { BACKEND_URL } from "src/config/defaults";
 import { State } from "src/store";
-import { CartActions, GET_CART_DETAILS, SET_CART_ID, TAddItemToCartData } from "src/store/types/cart";
+import { CartActions, DELETE_CART, GET_CART_DETAILS, SET_CART_ID, TAddItemToCartData } from "src/store/types/cart";
 
 export const createCart = () => async (dispatch: Dispatch<CartActions>) => {
     const response: AxiosResponse = await axios.post(`${BACKEND_URL}/cart/create`);
@@ -12,7 +12,7 @@ export const createCart = () => async (dispatch: Dispatch<CartActions>) => {
             type: SET_CART_ID,
             cartId: data.cartId
         });
-    };
+    }
 };
 export const getCartDetails = () => async (dispatch: Dispatch<CartActions>, getState: () => State) => {
     const cartId = getState().cart.cartId;
@@ -23,7 +23,7 @@ export const getCartDetails = () => async (dispatch: Dispatch<CartActions>, getS
             type: GET_CART_DETAILS,
             cart: data.cart
         });
-    };
+    }
 };
 
 
@@ -40,4 +40,10 @@ export const addProductToCart =  (addItemToCartData: TAddItemToCartData, headers
             cartId: data.cartId
         });
     }
+}
+
+export const deleteCart = () => (dispatch: Dispatch<CartActions>) => {
+    dispatch({
+        type: DELETE_CART
+    })
 }

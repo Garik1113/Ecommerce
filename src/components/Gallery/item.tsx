@@ -21,7 +21,7 @@ const Item:React.FC<Props> = ({item}: Props) => {
         <div className={classes.root}>
             <Link to={`/product/${item._id}`}>
                 <div className={classes.image}>
-                    <img onError={handleImageError} src={`${IMAGE_BASE_URL}/${images[0]}`} className={classes.itemImage}/>
+                    <img onError={handleImageError} src={`${IMAGE_BASE_URL}/products/${images[0].small_image}`} className={classes.itemImage}/>
                 </div>        
             </Link>
             <div className={classes.heart} onClick={() =>  handleAddToWishlist(item._id || "")}>

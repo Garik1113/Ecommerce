@@ -39,7 +39,7 @@ export type TCart = {
     items: TCartItem[],
     paymentMethod: string,
     shippingAddress: TAddress,
-    billingAddress?: TAddress,
+    billingAddress: TAddress,
     totalQty: number,
     totalPrice: TPrice,
     userId?: string
