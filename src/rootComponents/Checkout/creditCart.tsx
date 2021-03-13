@@ -1,25 +1,36 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import classes from './creditCart.scss';
-import { Elements, CardNumberElement, CardCvcElement, CardExpiryElement } from '@stripe/react-stripe-js'
-import { loadStripe } from '@stripe/stripe-js'
+import { CardNumberElement, CardCvcElement, CardExpiryElement, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
-const stripePromise = loadStripe('pk_test_51HPTvgB9AM6FXiSYeO5vxQ4Go4RV7n2xnhROmBB7T57A0QTvwR4w3LvtzgIIxciKQX9gBYvZr6rvxXOw5oC0G0eN00S5JxiNLa')
 
 const CreditCart:React.FC = () => {
+    const elements = useElements();
+    const stripe = useStripe();
+    console.log(elements)
+    const handleSubmit = useCallback(async(event) => {
+        event.preventDefault();
+        console.log(elements)
+        const card = elements.getElement("cardNumber");
+        console.log(card)
+        const {error, paymentMethod} = await stripe?.createPaymentMethod({type: "card", card});
+        console.log(error, paymentMethod)
+    }, [elements, stripe])
     return (
-        <div className={classes.root}>
-            <Elements stripe={stripePromise}>
-                <div className={classes.cartElement}>
-                    <CardNumberElement className={classes.input}/>
-                </div>
-                <div className={classes.cartElement}>
-                    <CardCvcElement className={classes.input}/>
-                </div>
-                <div className={classes.cartElement}>
-                    <CardExpiryElement className={classes.input}/>
-                </div>
-            </Elements>
-        </div>
+            <div className={classes.root}>
+                
+                    <form onSubmit={handleSubmit}>
+                        <div className={classes.cartElement}>
+                            <CardNumberElement className={classes.input}/>
+                        </div>
+                        <div className={classes.cartElement}>
+                            <CardCvcElement className={classes.input}/>
+                        </div>
+                        <div className={classes.cartElement}>
+                            <CardExpiryElement className={classes.input}/>
+                        </div> 
+                    </form>
+                
+            </div>
     )
 }
 

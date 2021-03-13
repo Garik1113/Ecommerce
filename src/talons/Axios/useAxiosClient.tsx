@@ -1,27 +1,25 @@
 import axios, { AxiosRequestConfig, AxiosResponse, Method } from "axios";
 import { useCallback, useMemo } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import { BACKEND_URL } from "src/config/defaults";
 import { State } from "src/store";
 
 export const useAxiosClient = () => {
-    // const { token, user = {} } = useSelector((state: State) => state.app);
-    const dispatch = useDispatch();
+    const token = useSelector((state: State) => state.customer.token);
+
+    // const dispatch = useDispatch();
     const headers = useMemo(() => {
         return {
             'Content-Type': 'application/json',
-            // 'Authorization': `Bearer ${token}`,
-            // 'userId': `${user._id}`
+            'Authorization': `Bearer ${token}`
         }
     }, []);
 
-    const axiosClient = useCallback( async(method: Method, url: string, data?: any, contentType?: string) => {
+    const axiosClient = useCallback( async(method: Method, url: string, data?: any) => {
         const config: AxiosRequestConfig = {
-            headers: {
-                ...headers,
-                'Content-Type': contentType ? contentType : 'application/json',
-            },
+            headers,
             method,
-            url,
+            url: `${BACKEND_URL}/${url}`,
             data
         }
         const response: AxiosResponse = await axios(config);

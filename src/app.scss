@@ -23,13 +23,18 @@ a, li {
     list-style: none;
 }
 
-h1, h2, h3, h4, h5, h6, hr, form {
+h1, h2, h4, h5, h6, hr, form {
     margin: 0;
 }
 
 input[type="text"], input[type="password"], textarea, select { 
     outline: none;
 }
+
 input:focus {
     outline:none;
+}
+
+i {
+    cursor: pointer;
 }

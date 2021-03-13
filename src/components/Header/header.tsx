@@ -1,29 +1,23 @@
-import CartTrigger from 'components/Cart';
+import CartTrigger from 'src/components/MiniCart/cartTrigger';
 import Logo from 'components/Logo';
 import SearchInput from 'components/Search';
-import React, { useEffect, useState } from 'react';
-import { useWindowSize, WindowSize } from '../../util/useWindowSize';
+import React from 'react';
 import MenuTrigger from '../Menu';
 import classes from './header.scss';
 import SearchTrigger from 'components/Search/searchTrigger';
 import { Link } from 'react-router-dom';
 import { useHeader } from '../../talons/Header/useHeader';
+import AuthActions from '../AuthActions';
 
 const Header:React.FC = () => {
-    const windowSize:WindowSize = useWindowSize();
-    const { innerWidth} = windowSize;
-    const { categories } = useHeader();
-    const [isSearchOpen, setIsSearchOpen] = useState(false);
-    const [isMobile, setIsMobile] = useState(false);
+    const { 
+        categories, 
+        setIsSearchOpen, 
+        isMobile, 
+        isSearchOpen,
+        totalQty
+    } = useHeader();
 
-    useEffect(() => {
-        if(innerWidth < 700){
-            setIsMobile(true);
-        }else {
-            setIsMobile(false);
-        }
-    }, [innerWidth])
-    
     return (
         <div className={classes.root}>
             <div className={classes.top}>
@@ -34,9 +28,7 @@ const Header:React.FC = () => {
                     {isMobile ? <SearchTrigger onClick={() => setIsSearchOpen(!isSearchOpen)}/> : <SearchInput/>}
                 </div>
                 <div className={classes.signin}>
-                    <Link to="/signin" className={classes.signinLink}>
-                        {isMobile ? <i className="fas fa-user"></i> : <span>Sign In</span> }
-                    </Link>
+                    <AuthActions isMobile={isMobile}/>
                 </div>
                 <div className={classes.wishlist}>
                     <Link to="/wishlist">
@@ -47,7 +39,7 @@ const Header:React.FC = () => {
                     </Link> 
                 </div>
                 <div className={classes.cart}>
-                    <CartTrigger/>
+                    <CartTrigger totalQty={totalQty}/>
                 </div>
             </div>
             <div className={classes.bottom}>

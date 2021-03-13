@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import classes from './address.scss';
+import { Function } from 'lodash';
+import { TAddress } from 'src/store/types/cart';
+import { Button } from 'semantic-ui-react';
+import * as yup from 'yup'
 
 
-
-interface  Address {
+interface Address {
     firstName: string,
     lastName: string,
     firstAddress: string,
@@ -26,8 +29,13 @@ interface Countries {
     countries: Country[]
 }
 
-const Address:React.FC = () => {
-    const address: Address = {
+type Props = {
+    handleSubmit?: any
+}
+
+const Address:React.FC<Props> = (props: Props) => {
+    const { handleSubmit } = props;
+    const address: TAddress = {
         firstName: "",
         lastName: "",
         firstAddress: "",
@@ -35,22 +43,29 @@ const Address:React.FC = () => {
         city: "",
         country: "",
         state: "",
-        zip: "",
+        zip: 0,
         phone: "",
         company: ""
     }
+    let validationSchema = useMemo(() => yup.object().shape({
+            firstName: yup.string().required("Required"),
+            lastName: yup.string().required("Required"),
+            firstAddress: yup.string().required("Required"),
+            city: yup.string().required("Required"),
+            zip: yup.number().required("Required"),
+            phone: yup.string().required("Required"),
+    }), []);
     
     
     return (
         <div className={classes.root}>
             <Formik
                 initialValues={address}
-                onSubmit={(values: Address) => {
-                    console.log(values)
-                }}
+                onSubmit={handleSubmit}
+                // validationSchema={validationSchema}
             >
                 {
-                    ({values}) => (
+                    ({handleSubmit}) => (
                         <Form className={classes.form}>
                             <div className={classes.fieldWrapper}>
                                 <div className={classes.field}>
@@ -117,6 +132,9 @@ const Address:React.FC = () => {
                                     <Field type="text" name="company" className={classes.input}/>
                                     <label htmlFor="company" className={classes.label}>Company</label>
                                 </div>
+                            </div>
+                            <div className={classes.buttonField}>
+                                <Button type="submit" onClick={handleSubmit}>Submit</Button>
                             </div>
                         </Form>
                     )

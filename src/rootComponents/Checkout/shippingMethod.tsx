@@ -19,10 +19,10 @@ const ShippingMethod:React.FC = () => {
                         <input type="radio" name="method" value="Cost" className={classes.radio}/>
                         <span>Cost</span>
                     </div>
-                    
                     <span>$100</span>  
                 </div>
             </div>
+
         </div>
     )
 }

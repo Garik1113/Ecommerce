@@ -1,23 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Product } from 'src/store/types/product';
+import { TCartItem } from 'src/store/types/cart';
+import { TProduct } from 'src/store/types/product';
+import { useCartItem } from 'src/talons/MiniCart/useCartItem';
 import classes from './cartProduct.scss';
 
 interface Props {
-    product: Product
+    cartItem: TCartItem
 }
 
-const CartProduct:React.FC<Props> = ({product}: Props) => {
-    const { id, price, main_image, title } = product;
+const CartProduct:React.FC<Props> = (props: Props) => {
+    const { cartItem } = props;
+    const { 
+        handleDeleteCartItem,
+        handleChangeQuantity
+    } = useCartItem({cartItem})
+    const { product, quantity } = cartItem;
+    const { name, _id, price } = product;
+
     return (
         <div className={classes.root}>
             <div className={classes.topActions}>
                 <div className={classes.image}>
-                    <img src={main_image}/>
+                    {/* <img src={main_image}/> */}
                 </div>
                 <div className={classes.title}>
-                    <Link to={`/product/${id}`}>
-                        <h3>{title}</h3>
+                    <Link to={`/product/${_id}`}>
+                        <h3>{name}</h3>
                     </Link>
                     
                 </div>
@@ -31,19 +40,23 @@ const CartProduct:React.FC<Props> = ({product}: Props) => {
                     <div className={classes.propertyName}>
                         <b>Quantity</b>
                     </div>
-                    <input type="number" className={classes.quantityInput} min={1} defaultValue={1}/>
+                    <div className={classes.qtyNumber}>
+                        <i className="fas fa-chevron-left" onClick={() => handleChangeQuantity(false)}></i>
+                        <input type="number"  min={1} defaultValue={1} value={quantity}/>
+                        <i className="fas fa-chevron-right" onClick={() => handleChangeQuantity(true)}></i>
+                    </div>
                 </div>
                 <div className={classes.summaryPrice}>
                     <div className={classes.propertyName}>
                         <b>Summary price</b>
                     </div>
-                    <span>100000 USD</span>
+                    <span>{price.value * quantity}</span>
                 </div>
             </div>
             <div className={classes.bottomActions}>
                 <div className={classes.removeEdit}>
                     <div className={classes.edit}>
-                        <Link to={`/product/${id}`}>
+                        <Link to={`/product/${_id}`}>
                             <i className="far fa-edit"></i>
                         </Link>
                         

@@ -1,7 +1,9 @@
 import path from 'path';
 import { Configuration } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-const webpackConfig = (): Configuration => ({
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+
+const webpackConfig = ():Configuration => ({
     entry: './src/index.tsx',
     resolve: {
         extensions: ['.ts', '.tsx', '.js'],
@@ -14,7 +16,7 @@ const webpackConfig = (): Configuration => ({
     },
     output: {
         path: path.join(__dirname, '/build'),
-        filename: 'bundle.js',
+        filename: '[name].bundle.js',
         publicPath: '/',
     },
     mode: 'development',
@@ -62,7 +64,9 @@ const webpackConfig = (): Configuration => ({
                     {
                         loader: 'css-loader',
                         options: {
-                            modules: true
+                            modules: {
+                                localIdentName: '[name]-[local]-[hash:base64:3]'
+                            }
                         }
                     }
                 ]
@@ -85,12 +89,18 @@ const webpackConfig = (): Configuration => ({
                   options: {
                       transpileOnly: true,
                   },
-                  exclude: /dist/,
+                  exclude: [/node_modules/, /dist/],
               },
+              {
+                  test: /\.(jpg|jpeg|png|woff|woff2|eot|ttf|svg)$/,
+                  loader: 'url-loader'
+              }
             ],
           },
     devtool: 'inline-source-map',
     plugins: [ 
-        new HtmlWebpackPlugin({template: './public/index.html',})],
+        new HtmlWebpackPlugin({template: './public/index.html',}),
+        new CleanWebpackPlugin()
+    ]     
 });
 export default webpackConfig;

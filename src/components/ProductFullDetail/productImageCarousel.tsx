@@ -4,9 +4,10 @@ import classes from './productImageCarousel.scss';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import { IMAGE_BASE_URL } from 'src/config/defaults';
 import { handleImageError } from 'src/util/handleImageError';
+import { Image } from 'src/store/types/product';
 
 interface Props {
-    gallery: string[]
+    gallery: Image[]
 }
 
 
@@ -26,7 +27,7 @@ const ProductImageCarousel:React.FC<Props> = ({gallery}: Props) => {
                         gallery.map((image, index) => {
                             return (
                                 <Slide index={index} key={index}>
-                                    <img onError={handleImageError} src={`${IMAGE_BASE_URL}/${image}`} style={{width: "100%"}}/>
+                                    <img onError={handleImageError} src={`${IMAGE_BASE_URL}/products/${image.small_image}`} style={{width: "100%"}}/>
                                 </Slide>
                             )
                         })

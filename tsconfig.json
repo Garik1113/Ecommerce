@@ -25,6 +25,7 @@
 
 {
     "compilerOptions": {
+      "downlevelIteration": true,
       "outDir": "build/dist",
       "module": "commonjs",
       "target": "es5",

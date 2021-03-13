@@ -68,3 +68,7 @@
 .input[name="secondAddress"] + .label::after {
     content: "";
 }
+
+.error {
+    color: red;
+}

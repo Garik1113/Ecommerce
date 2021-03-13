@@ -1,0 +1,27 @@
+.body {
+    display: grid;
+    grid-template-columns: 40% 40% 20%;
+    margin-bottom: 15px;
+    align-items: center;
+    background: #fff;
+    padding: 5px 0;
+}
+
+.image {
+    max-width: 100px;
+}
+
+
+.imageField {
+    justify-self: center;
+}
+
+.label {
+    justify-self: center;
+    cursor: pointer;
+}
+
+.radioField {
+    justify-self: center;
+    cursor: pointer;
+}

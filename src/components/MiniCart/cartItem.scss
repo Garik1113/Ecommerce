@@ -16,6 +16,7 @@
 
 .rightActions {
     margin-left: 10px;
+    position: relative;
 }
 
 .quantity {
@@ -27,6 +28,10 @@
 .qtyNumber {
     display: flex;
     align-items: center;
+}
+
+.qtyNumber i {
+    cursor: pointer;
 }
 
 input::-webkit-outer-spin-button,
@@ -44,4 +49,16 @@ input[type=number] {
     text-align: center;
     border: none;
     background: #ecece6;
+}
+
+.close {
+    position: absolute;
+    bottom: -3px;
+    right: 10px;
+    cursor: pointer;
+    
+}
+
+.closeIcon:hover {
+    color: red;
 }

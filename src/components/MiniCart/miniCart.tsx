@@ -1,20 +1,13 @@
-import React, { Dispatch, useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { State } from 'src/store';
-import { CartActions } from 'src/store/types/cart';
+import React from 'react';
 import classes from './miniCart.scss';
-import { toggleCartDrawer } from '../../store/actions/cart/actions';
 import { Link } from 'react-router-dom';
 import CartItem from './cartItem';
+import { useMiniCart } from 'src/talons/MiniCart/useMiniCart';
+import { TCartItem } from 'src/store/types/cart';
 
 
 const MiniCart:React.FC = () => {
-    const isActive = useSelector((state:State) => state.cart.cartDrawer);
-    const dispatch:Dispatch<CartActions> = useDispatch();
-    
-    const handleClose = useCallback(():void => {
-        dispatch(toggleCartDrawer(""))
-    },[dispatch, toggleCartDrawer]);
+    const { isActive, handleClose, cartItems = [], totalPrice } = useMiniCart();
 
     return (
         <div className={`${classes.root} ${isActive ? classes.root_open : null}`}>
@@ -29,16 +22,20 @@ const MiniCart:React.FC = () => {
                 </div>
             </header>
             <section className={classes.body}>
-                <CartItem showDescription={true}/>
-                <CartItem showDescription={true}/>
-                <CartItem showDescription={true}/>
-                <CartItem showDescription={true}/>
-                <CartItem showDescription={true}/>
+                {
+                    cartItems.map((cartItem: TCartItem, index: number) => (
+                        <CartItem 
+                            showDescription={true} 
+                            key={index}
+                            cartItem={cartItem}
+                        />
+                    ))
+                }
             </section>
             <footer className={classes.footer}>
                 <div className={classes.subTotal}>
-                    <p>Cart Subtotal:</p>
-                    <span>$1540</span>
+                    <p>Cart Total:</p>
+                    <span>{totalPrice.currency} {totalPrice.value}</span>
                 </div>
                 <div className={classes.cartLink}>
                     <Link to="/cart" onClick={handleClose}>View and edit cart</Link>

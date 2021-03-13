@@ -1,9 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { TPrice } from 'src/store/types/product';
 import Button from '../Button';
 import classes from './summary.scss';
 
-const Summary:React.FC = () => {
+type Props = {
+    totalPrice: TPrice
+}
+
+const Summary:React.FC<Props> = (props: Props) => {
+    const {totalPrice} = props;
+
     return (
         <div className={classes.root}>
             <div className={classes.title}>
@@ -12,7 +19,7 @@ const Summary:React.FC = () => {
             <hr/>
             <div className={classes.subTotal}>
                 <p>Subtotal</p>
-                <span>$2450</span>
+                <span>{totalPrice.value} {totalPrice.currency}</span>
             </div>
             <div className={classes.shipping}>
                 <p>Shipping</p>
@@ -21,7 +28,7 @@ const Summary:React.FC = () => {
             <hr/>
             <div className={classes.orderTotal}>
                 <h3>Order Total</h3>
-                <b>$2450</b>
+                <b>{totalPrice.value} {totalPrice.currency}</b>
             </div>
             <div className={classes.button}>
                 <Link to="/checkout">

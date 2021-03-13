@@ -1,11 +1,19 @@
 import React, { useCallback, useState } from 'react';
+import { TCartItem } from 'src/store/types/cart';
+import { TPrice } from 'src/store/types/product';
 import Button from '../../components/Button';
 import CartItem from '../../components/MiniCart/cartItem';
 import CheckoutTitle from './checkoutTitle';
 import classes from './order.scss';
 
+type Props = {
+    items: TCartItem[],
+    totalPrice: TPrice,
+    setStep: any
+}
 
-const Order:React.FC = () => {
+const Order:React.FC<Props> = (props: Props) => {
+    const { items, totalPrice, setStep } = props;
     const [showItems, setShowItems] = useState(false);
     const handleClick = useCallback(():void => {
             setShowItems(!showItems);
@@ -15,7 +23,7 @@ const Order:React.FC = () => {
         <div className={classes.root}>
             <CheckoutTitle title="review order" number={4}/>
             <div className={classes.itemCount} onClick={handleClick}>
-                <span>3 Items in Cart</span>
+                <span>{items.length} items in cart</span>
                 {showItems 
                     ?   <i className="fas fa-chevron-up"></i>
                     :   <i className="fas fa-chevron-down"></i>
@@ -23,9 +31,11 @@ const Order:React.FC = () => {
             </div>
             {showItems 
             ?  <div className={classes.items}>
-                    <CartItem showDescription={false}/>
-                    <CartItem showDescription={false}/>
-                    <CartItem showDescription={false}/>
+                {
+                    items.map((item: TCartItem) => (
+                        <CartItem showDescription={false} cartItem={item} key={item._id}/>
+                    ))
+                }
                 </div>
             : null
             }
@@ -45,6 +55,7 @@ const Order:React.FC = () => {
             <div className={classes.button}>
                 <Button label="Place Order" priority="high"/>
             </div>
+            <Button onClick={() => setStep("payment")}>Back</Button>
         </div>
     )
 }

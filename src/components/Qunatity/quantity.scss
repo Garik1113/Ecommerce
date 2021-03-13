@@ -1,0 +1,16 @@
+.root {
+    display: flex;
+    margin-top: 15px;
+    align-items: center;
+    max-width: 140px;
+    background: cornflowerblue;
+    padding: 5px;
+    align-items: center;
+    border-radius: 3px;
+}
+
+.quantity {
+    text-align: center;
+    font-size: 18px;
+    margin: 5px auto;
+}

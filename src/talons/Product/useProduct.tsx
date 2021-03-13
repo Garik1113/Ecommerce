@@ -1,7 +1,5 @@
 import { AxiosResponse } from "axios";
-import { useCallback, useEffect, useState } from "react";
-import { useParams } from "react-router"
-import { BACK_END_URL } from "src/config/defaults";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { TProduct } from "src/store/types/product";
 import { useAxiosClient } from "../Axios/useAxiosClient";
 const initialProduct:TProduct = {
@@ -21,19 +19,21 @@ const initialProduct:TProduct = {
     averageRating: 0, 
     attributes: []
 }
+type Props = {
+    id: string
+}
 
-export const useProduct = () => {
-    const params:any = useParams();
-    const { id } = params;
+export const useProduct = ({id}: Props) => {
     const { axiosClient } = useAxiosClient()
-    const [product, setProduct] = useState<TProduct>(initialProduct);
+    const [product, setProduct] = useState(initialProduct);
 
     const fetchProduct = useCallback(async() => {
-        const response: AxiosResponse = await axiosClient("GET", `${BACK_END_URL}/products/get_product/${id}`);
+        const response: AxiosResponse = await axiosClient("GET", `products/get_product/${id}`);
         const { data } = response;
         
         if (data && data.product) {
-            setProduct(data.product)
+            setProduct(data.product);
+            return data.product;
         }
     }, [id]);
 
