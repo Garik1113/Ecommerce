@@ -1,14 +1,15 @@
 import React, { useMemo } from 'react';
 import { IMAGE_BASE_URL } from 'src/config/defaults';
+import { IAttributeValue } from 'src/interfaces/product';
 import { AttributeValue } from 'src/store/types/product';
 import { handleImageError } from 'src/util/handleImageError';
 import classes from './values.scss';
 
 interface ValueProps {
-    values: AttributeValue[],
-    attributeId: number,
-    attrubuteLabel: string,
-    optionSelections: Map<number, AttributeValue>,
+    values: IAttributeValue[],
+    attributeId: string,
+    attrubuteLabel: String,
+    optionSelections: Map<string, IAttributeValue>,
     handleChangeOptionSelections: Function
 }
 

@@ -8,4 +8,5 @@ export type TCustomer = {
     password: string,
     loggedIn?: boolean,
     addresses?: TAddress[]
+    cartId:string
 }

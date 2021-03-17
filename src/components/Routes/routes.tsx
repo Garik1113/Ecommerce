@@ -8,6 +8,8 @@ import Signin from '../Signin';
 import Signup from '../Signup';
 import Checkout from '../../rootComponents/Checkout';
 import WIshlist from '../../rootComponents/Wishlist';
+import Account from 'src/rootComponents/Account/account';
+import Orders from 'src/rootComponents/Account/Orders/orders';
 
 
 const Routes:React.FC = () => {
@@ -33,6 +35,12 @@ const Routes:React.FC = () => {
             </Route>
             <Route path="/checkout">
                 <Checkout/>
+            </Route>
+            <Route path="/account" exact>
+                <Account/>
+            </Route>
+            <Route path="/account/orders" exact>
+                <Orders/>
             </Route>
             <Route path="/wishlist">
                 <WIshlist/>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { TProduct } from 'src/store/types/product';
+import { IProduct } from 'src/interfaces/product';
 import { useProductFullDetail } from 'src/talons/ProductFullDetail/useProductFullDetail';
 import Attributes from '../Attributes';
 import Button from '../Button';
@@ -9,7 +9,7 @@ import classes from './productFullDetail.scss';
 import ProductImageCarousel from './productImageCarousel';
 
 export interface ProductProps {
-    product: TProduct 
+    product: IProduct 
 }
 
 

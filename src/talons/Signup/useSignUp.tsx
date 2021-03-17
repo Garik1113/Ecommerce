@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios"
-import { useCallback, useEffect } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router"
 import { State } from "src/store"
@@ -9,6 +9,7 @@ import { useAxiosClient } from "../Axios/useAxiosClient"
 
 export const useSignUp = () => {
     const { axiosClient } = useAxiosClient();
+    const [message, setMessage] = useState("")
     const dispatch = useDispatch();
     const history = useHistory();
     const isSignedIn = useSelector((state: State) => state.customer.isSignedIn);
@@ -20,16 +21,18 @@ export const useSignUp = () => {
                 email: values.email,
                 password: values.password
             };
-            const singinResponse: AxiosResponse = await axiosClient("POST", `customers/signin`, singinData);
-            const { data, status } = singinResponse;
             dispatch({
                 type: SET_CART_ID,
                 cartId: data.customer.cartId
             });
-            if (data.token && status == 200) {
-                dispatch(signin(data.token));
+            const singinResponse: AxiosResponse = await axiosClient("POST", `customers/signin`, singinData);
+            const { data: signInData, status: signInStatus } = singinResponse;
+            if ( signInData.token && signInStatus == 200) {
+                dispatch(signin(signInData.token));
                 history.push('/');
             }
+        } else if(status == 203 && data.status == "error") {
+            setMessage(data.message);
         }
     }, [dispatch]);
 
@@ -40,6 +43,7 @@ export const useSignUp = () => {
     }, [isSignedIn]);
     
     return {
-        handleSignup
+        handleSignup,
+        message
     }
 }

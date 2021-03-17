@@ -1,56 +1,17 @@
-import { TPrice, TProduct } from "./product";
+import { ICart, ICartItemAttribute } from 'src/interfaces/cart';
 
 export const TOGGLE_CART_DRAWER = 'TOGGLE_CART_DRAWER';
 export const GET_CART_DETAILS = "GET_CART_DETAILS";
 export const SET_CART_ID = "SET_CART_ID";
 export const DELETE_CART = "DELETE_CART";
-
-export type TAddress = {
-    firstName: string,
-    lastName: string,
-    country: string,
-    state?: string,
-    city: string,
-    street?: string,
-    phone: string,
-    zip: number,
-    firstAddress: string,
-    secondAddress?: string,
-    company?: string
-}
-
-export type TCartItemAttribute = {
-    _id?: string,
-    attributeId: string,
-    valueId: string
-}
-
-export type TCartItem = {
-    _id: string,
-    id: string,
-    quantity: number,
-    product: TProduct,
-    cartItemAttributes: TCartItemAttribute[]
-}
-
-
-export type TCart = {
-    _id?: string,
-    items: TCartItem[],
-    paymentMethod: string,
-    shippingAddress: TAddress,
-    billingAddress: TAddress,
-    totalQty: number,
-    totalPrice: TPrice,
-    userId?: string
-}
+export const NULLIFY_CART = "NULLIFY_CART"
 
 
 export type TAddItemToCartData = {
     productId: String,
     quantity: number,
-    cartItemAttributes: TCartItemAttribute[] | null,
-    cartId: string | null
+    cartItemAttributes: ICartItemAttribute[],
+    cartId: string
 }
 
 export interface ToggleCartDrawer {
@@ -65,17 +26,20 @@ export interface CreateCart {
 
 export interface GetCartDetails {
     type: typeof GET_CART_DETAILS,
-    cart: TCart
+    cart: ICart
 }
 
 export interface deleteCart {
     type: typeof DELETE_CART
 }
 
-
+export interface nullifyCart {
+    type: typeof NULLIFY_CART
+}
 
 export type CartActions = 
     | ToggleCartDrawer
     | CreateCart
     | deleteCart
     | GetCartDetails
+    | nullifyCart

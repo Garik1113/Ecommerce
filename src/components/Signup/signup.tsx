@@ -17,11 +17,18 @@ interface Values {
 
  
 const Signup:React.FC = () => {
-    const { handleSignup } = useSignUp();
+    const { handleSignup, message } = useSignUp();
     
     return(
         <div>
             <h1 className={classes.title}>Sign Up</h1>
+            {
+                message 
+                ?   <div className={classes.errorMessageField}>
+                        <span>{message}</span>
+                    </div>
+                :   null
+            }
             <Formik
                 initialValues={
                     { 
@@ -51,30 +58,34 @@ const Signup:React.FC = () => {
             >
                 {({ isSubmitting }) => (
                 <Form className={classes.form}>
-                    <label htmlFor="firstName" className={classes.label}>First Name <span>*</span></label>
-                    <Field type="firstName" name="firstName" className={classes.input}/>
-                    <ErrorMessage name="firstName" component="div"className={classes.error} />
-
-                    <label htmlFor="lastName" className={classes.label}>Last Name <span>*</span></label>
-                    <Field type="lastName" name="lastName" className={classes.input}/>
-                    <ErrorMessage name="lastName" component="div" className={classes.error}/>
-
-                    <label htmlFor="email" className={classes.label}>Email <span>*</span> </label>
-                    <Field type="email" name="email" className={classes.input}/>
-                    <ErrorMessage name="email" component="div" className={classes.error}/>
-
-                    <label htmlFor="password" className={classes.label}>Password <span>*</span></label>
-                    <Field type="password" name="password" className={classes.input}/>
-                    <ErrorMessage name="password" component="div" className={classes.error}/>
-
-                    <label htmlFor="confirmPassword" className={classes.label}>Confirm Password <span>*</span></label>
-                    <Field type="password" name="confirmPassword" className={classes.input}/>
-                    <ErrorMessage name="confirmPassword" component="div" className={classes.error}/>
-
+                    <div className={classes.field}>
+                        <Field type="text" name="firstName" className={classes.input} />
+                        <label htmlFor="firstName" className={classes.label}>First Name</label>
+                        <ErrorMessage name="firstName" component="div" className={classes.error}/> 
+                    </div>
+                    <div className={classes.field}>
+                        <Field type="lastName" name="lastName" className={classes.input}/>
+                        <label htmlFor="lastName" className={classes.label}>Last Name</label>
+                        <ErrorMessage name="lastName" component="div" className={classes.error}/>
+                    </div>
+                    <div className={classes.field}>
+                        <Field type="email" name="email" className={classes.input}/>
+                        <label htmlFor="email" className={classes.label}>Email</label>
+                        <ErrorMessage name="email" component="div" className={classes.error}/> 
+                    </div>
+                    <div className={classes.field}>
+                        <Field type="password" name="password" className={classes.input}/>
+                        <label htmlFor="password" className={classes.label}>Password</label>
+                        <ErrorMessage name="password" component="div" className={classes.error}/>
+                    </div>
+                    <div className={classes.field}>
+                        <Field type="password" name="confirmPassword" className={classes.input}/>
+                        <label htmlFor="confirmPassword" className={classes.label}>Confirm Password</label>
+                        <ErrorMessage name="confirmPassword" component="div" className={classes.error}/>
+                    </div>
                     <div className={classes.btnWrapper}>
                         <Button label="Sign Up" priority="high" onClick={() =>{}} disabled={isSubmitting} className={classes.button}/> 
                     </div>
-
                     <div className={classes.haveAccount}>
                         <span>Have an account ?</span>
                         <Link to="/signin" className={classes.loginLink}>Sign in now</Link>

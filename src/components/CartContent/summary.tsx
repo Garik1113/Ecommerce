@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { TPrice } from 'src/store/types/product';
+import { IPrice } from 'src/interfaces/product';
 import Button from '../Button';
 import classes from './summary.scss';
 
 type Props = {
-    totalPrice: TPrice
+    totalPrice: IPrice
 }
 
 const Summary:React.FC<Props> = (props: Props) => {
@@ -34,7 +34,6 @@ const Summary:React.FC<Props> = (props: Props) => {
                 <Link to="/checkout">
                     <Button label="Proceed to Checkout" priority="high"/>
                 </Link>
-                
             </div>
         </div>
     )

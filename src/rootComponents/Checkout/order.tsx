@@ -1,21 +1,31 @@
 import React from 'react';
-import { TCartItem } from 'src/store/types/cart';
-import { TPrice } from 'src/store/types/product';
+import { ICartItem } from 'src/interfaces/cart';
+import { IPrice } from 'src/interfaces/product';
 import { useOrder } from 'src/talons/Checkout/useOrder';
 import Button from '../../components/Button';
 import CartItem from '../../components/MiniCart/cartItem';
 import CheckoutTitle from './checkoutTitle';
 import classes from './order.scss';
+import OrderSuccess from './orderSuccess';
 
 type Props = {
-    items: TCartItem[],
-    totalPrice: TPrice,
+    items: ICartItem[],
+    totalPrice: IPrice,
     setStep: any
 }
 
 const Order:React.FC<Props> = (props: Props) => {
     const { items, totalPrice } = props;
-    const { handleClick, showItems, handleSubmit } = useOrder()
+    const { 
+        handleClick, 
+        showItems, 
+        handleSubmit,
+        message,
+        orderNumber
+    } = useOrder();
+    if(message == 'success' && orderNumber) {
+        return <OrderSuccess orderNumber={orderNumber}/>
+    }
 
     return (
         <div className={classes.root}>
@@ -30,7 +40,7 @@ const Order:React.FC<Props> = (props: Props) => {
             {showItems 
             ?  <div className={classes.items}>
                 {
-                    items.map((item: TCartItem) => (
+                    items.map((item: ICartItem) => (
                         <CartItem showDescription={false} cartItem={item} key={item._id} dontShowActions={true}/>
                     ))
                 }

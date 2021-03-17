@@ -12,6 +12,7 @@
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
     },
+    "__spreadArray": true,
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaFeatures": {

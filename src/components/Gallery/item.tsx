@@ -1,14 +1,14 @@
 import React from 'react';
-import { TProduct } from 'src/store/types/product';
 import Button from '../Button';
 import { Link } from 'react-router-dom';
 import classes from './item.scss';
 import { useItem } from '../../talons/Gallery/useItem';
 import { IMAGE_BASE_URL } from 'src/config/defaults';
 import { handleImageError } from 'src/util/handleImageError';
+import { IProduct } from 'src/interfaces/product';
 
 interface Props {
-    item: TProduct
+    item: IProduct
 }
 
 

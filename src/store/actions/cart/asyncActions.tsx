@@ -15,14 +15,16 @@ export const createCart = () => async (dispatch: Dispatch<CartActions>) => {
     }
 };
 export const getCartDetails = () => async (dispatch: Dispatch<CartActions>, getState: () => State) => {
-    const cartId = getState().cart.cartId;
-    const response: AxiosResponse = await axios.get(`${BACKEND_URL}/cart/${cartId}`);
-    const { data, status } = response;
-    if (data.cart && status == 200) {
-        dispatch({
-            type: GET_CART_DETAILS,
-            cart: data.cart
-        });
+    const cartId = getState().cart.cartId || getState().customer.customer.cartId;
+    if (cartId) {
+        const response: AxiosResponse = await axios.get(`${BACKEND_URL}/cart/${cartId}`);
+        const { data, status } = response;
+        if (data.cart && status == 200) {
+            dispatch({
+                type: GET_CART_DETAILS,
+                cart: data.cart
+            });
+        }
     }
 };
 

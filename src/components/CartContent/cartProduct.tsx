@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { IMAGE_BASE_URL } from 'src/config/defaults';
 import { TCartItem } from 'src/store/types/cart';
-import { TProduct } from 'src/store/types/product';
 import { useCartItem } from 'src/talons/MiniCart/useCartItem';
+import { handleImageError } from 'src/util/handleImageError';
+import get from 'lodash/get';
 import classes from './cartProduct.scss';
 
 interface Props {
@@ -22,7 +24,7 @@ const CartProduct:React.FC<Props> = (props: Props) => {
         <div className={classes.root}>
             <div className={classes.topActions}>
                 <div className={classes.image}>
-                    {/* <img src={main_image}/> */}
+                    <img onError={handleImageError} src={`${IMAGE_BASE_URL}/products/${get(product, "images[0].main_image", "")}`} className={classes.itemImage}/>
                 </div>
                 <div className={classes.title}>
                     <Link to={`/product/${_id}`}>
@@ -61,7 +63,7 @@ const CartProduct:React.FC<Props> = (props: Props) => {
                         </Link>
                         
                     </div> 
-                    <div className={classes.remove}>
+                    <div className={classes.remove} onClick={handleDeleteCartItem}>
                         <i className="fas fa-trash-alt"></i>
                     </div>
                 </div>

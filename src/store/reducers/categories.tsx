@@ -1,4 +1,5 @@
-import { CategoryActions, GET_CATEGORIES_RECEIVE, GET_CATEGORIES_REQUEST, ICategory } from '../types/category';
+import { ICategory } from 'src/interfaces/category';
+import { CategoryActions, GET_CATEGORIES_RECEIVE, GET_CATEGORIES_REQUEST } from '../types/category';
 
 
 export interface CategoryInitialState {

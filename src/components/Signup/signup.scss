@@ -1,5 +1,5 @@
 .form {
-    width: 90%;
+    width: 100%;
     max-width: 400px;
     margin: auto;
 }
@@ -20,16 +20,56 @@
 }
 
 .input {
-    padding: 10px 5px;
     width: 100%;
-    max-width: 400px;
-    display: block;
+    padding: 10px;
+    padding-bottom: 0;
+    padding-top: 20px;
+    border: 1px solid #c2c2c2;
+    font-size: 18px;
+}
 
+.field {
+    position: relative;
+    margin-top: 10px;
+}
+
+.label {
+    position: absolute;
+    color: #9e9e9e;
+    top: 8px;
+    font-size: 9px;
+    left: 5px;
+    transition: all 284ms ease-in-out;
+}
+
+.input[value=""] + .label {
+    font-size: 16px;
+}
+
+.input:not(:empty) + .label {
+    display: none;
+}
+
+
+.input:focus + .label {
+    top: -7px;
+    font-size: 9px;
+}
+
+.label::after {
+    content: "*";
+    color: red;
+}
+
+.input[name="company"] + .label::after,
+.input[name="secondAddress"] + .label::after {
+    content: "";
 }
 
 .error {
     color: red;
-    font-size: 16px;
+    font-size: 11px;
+    margin-top: 9px;
 }
 
 .btnWrapper {
@@ -61,4 +101,14 @@
 .loginLink {
     font-size: 15px;
     color: rgb(0, 124, 173);
+}
+
+.errorMessageField {
+    max-width: 400px;
+    margin: auto;
+    border-radius: 5px;
+    background: red;
+    text-align: center;
+    padding: 15px;
+    color: #ffffff;
 }

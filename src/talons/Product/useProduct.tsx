@@ -1,8 +1,9 @@
 import { AxiosResponse } from "axios";
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { TProduct } from "src/store/types/product";
+import { useCallback, useEffect,useState } from "react";
+import { IProduct } from 'src/interfaces/product';
 import { useAxiosClient } from "../Axios/useAxiosClient";
-const initialProduct:TProduct = {
+const initialProduct:IProduct = {
+    _id: "",
     name: "",
     images: [],
     price: {
@@ -17,7 +18,9 @@ const initialProduct:TProduct = {
         value: 0
     },
     averageRating: 0, 
-    attributes: []
+    attributes: [],
+    description: "",
+    quantity: 0
 }
 type Props = {
     id: string

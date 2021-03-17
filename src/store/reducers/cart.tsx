@@ -1,15 +1,18 @@
-import { CartActions, DELETE_CART, GET_CART_DETAILS, SET_CART_ID, TCart, TOGGLE_CART_DRAWER } from '../types/cart';
+import { ICart } from 'src/interfaces/cart';
+import { CartActions, DELETE_CART, GET_CART_DETAILS, NULLIFY_CART, SET_CART_ID,  TOGGLE_CART_DRAWER } from '../types/cart';
 
 export interface CartInitialState {
     cartDrawer: string,
-    cart: TCart,
-    cartId: string | null
+    cart: ICart,
+    cartId: string
 }
 
 const initialState: CartInitialState = {
     cartDrawer: "",
-    cartId: localStorage.getItem("cartId"),
+    cartId: localStorage.getItem("cartId") || "",
     cart: {
+        _id: "",
+        customerId: "",
         items: [],
         totalPrice: {
             currency: "",
@@ -24,7 +27,12 @@ const initialState: CartInitialState = {
             country: "",
             city: "",
             phone: "",
-            zip: 0
+            zip: "",
+            email: "",
+            state: "",
+            street: "",
+            secondAddress: "",
+            company: ""
         },
         billingAddress: {
             firstAddress: "",
@@ -33,7 +41,12 @@ const initialState: CartInitialState = {
             country: "",
             city: "",
             phone: "",
-            zip: 0
+            zip: "",
+            email: "",
+            state: "",
+            street: "",
+            secondAddress: "",
+            company: ""
         }
     }
 }
@@ -50,6 +63,8 @@ export const cartReducer = (state: CartInitialState = initialState, action:CartA
         case DELETE_CART:
             localStorage.removeItem('cartId');
             return initialState;
+        case NULLIFY_CART:
+            return initialState
         default: return state;
     }
 };
