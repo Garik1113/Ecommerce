@@ -1,39 +1,56 @@
 import React from 'react';
-import { CarouselProvider, Slider, Slide,ButtonBack, ButtonNext } from 'pure-react-carousel';
+import classes from './carousel.scss';
+import { CarouselProvider, Slider as PureSlider, Slide } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
-import classes from './carousel.scss'
-import { img2 } from '../../talons/Product/useProduct';
+import { Link } from 'react-router-dom';
+import { IProduct } from 'src/interfaces/product';
+import { handleImageError } from 'src/util/handleImageError';
+import { IMAGE_BASE_URL } from 'src/config/defaults';
 
-const CarouselSlider:React.FC = () => {
+type Props = {
+    products: IProduct[]
+}
+
+const Carousel:React.FC<Props> = (props: Props) => {
+    const { products } = props;
 
     return (
-        <CarouselProvider 
-            naturalSlideWidth={800}
-            naturalSlideHeight={500}
-            totalSlides={3}
-            visibleSlides={1}
-            className={classes.carousel}
-            infinite={true}
-        >
-            <Slider>
-                <Slide index={1}>
-                    <img src={img2} style={{width:"100%"}}/>
-                </Slide>
-                <Slide index={2}>
-                    <img src={img2} style={{width:"100%"}}/>
-                </Slide>
-                <Slide index={3}>
-                    <img src={img2} style={{width:"100%"}}/>
-                </Slide>
-            </Slider>
-            <ButtonBack className={classes.arrowLeft}>
-                <i className="fas fa-chevron-left"></i>
-            </ButtonBack>
-            <ButtonNext className={classes.arrowRight}>
-                <i className="fas fa-chevron-right"></i>
-            </ButtonNext>
-        </CarouselProvider> 
+        <div className={classes.root}>
+            <CarouselProvider 
+                naturalSlideWidth={500}
+                naturalSlideHeight={400}
+                totalSlides={products.length}
+                visibleSlides={4}
+                className={classes.carousel}
+                infinite={true}
+            >
+                <PureSlider>
+                    {
+                        products.map((e:IProduct, i: any) => (
+                            <Slide index={i} key={i} style={{textAlign: "center"}}>
+                                <div className={classes.slide}>
+                                    <div>
+                                        <Link to={`/product/${e._id}`}>
+                                            <img 
+                                                onError={handleImageError} 
+                                                src={`${IMAGE_BASE_URL}/products/${e.images[0].small_image}`}
+                                                style={{width: "100%", maxWidth: "400px", height: "auto"}}
+                                                className={classes.image}
+                                            />
+                                        </Link> 
+                                    </div>
+                                    <div className={classes.title}>
+                                    <Link to={`/product/${e._id}`}><span>{e.name}</span></Link> 
+                                    </div>
+                                </div>
+                            </Slide>
+                        ))
+                    }
+                    
+                </PureSlider>
+            </CarouselProvider> 
+        </div>
     )
 }
 
-export default CarouselSlider;
+export default Carousel

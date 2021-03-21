@@ -3,26 +3,26 @@ import { useCategoryContent } from '../../talons/Category/useCategoryContent';
 import Filter from '../../components/Filter';
 import Gallery from '../../components/Gallery';
 import classes from './categoryContent.scss';
+import { Button } from 'semantic-ui-react';
 
 
 const CategoryContent:React.FC = () => {
-    const { products } =  useCategoryContent();
-    const [showSortOptions, setShowSortOptions] = useState(false);
-    const [view, setView] = useState('grid');
-    const [rootClass, setRootClass] = useState<string | undefined>(undefined);
-    
-    useEffect(() => {
-        if(view === 'list'){
-            setRootClass(classes.galleryList);
-        } else {
-            setRootClass(undefined)
-        }
-    }, [view, setView])
+    const { 
+        products, 
+        showSortOptions, 
+        setShowSortOptions,
+        setView,
+        rootClass,
+        handleApplyFilters,
+        filters,
+        handleApplySorting
+    } = useCategoryContent({classes});
 
     return (
         <div className={classes.root}>
             <div className={classes.title}>
-                <h1>Category Title</h1>
+                <h1>{filters.name}</h1>
+                <Button onClick={handleApplyFilters}>Apply Filters</Button>
             </div>
             <div className={classes.options}>
                 <div className={classes.sort}>
@@ -37,11 +37,11 @@ const CategoryContent:React.FC = () => {
                     </span>
                     {showSortOptions 
                     ?   <div className={classes.sortOptions}>
-                            <div>
-                                <span>Price: Low to High</span>
+                            <div className={classes.sortItem} onClick={() => handleApplySorting("low")}>
+                                <span className={classes.sortText}>Price: Low to High</span>
                             </div> 
-                            <div>
-                                <span>Price: High to Low</span>
+                            <div className={classes.sortItem} onClick={() => handleApplySorting("high")}>
+                                <span className={classes.sortText}>Price: High to Low</span>
                             </div>
                         </div>
                     :null

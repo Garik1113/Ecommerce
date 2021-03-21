@@ -1,36 +1,18 @@
 .carousel {
-    position: relative;
+    margin-top: 50px;
 }
 
-.arrowLeft {
-    background: transparent;
-    border: none;
-    position: absolute;
-    top: 30%;
-    left: 0;
-    font-size: 60px;
-    opacity: 0.4;
+.title {
+    margin-top: 15px;
 }
 
-.arrowRight {
-    background: transparent;
-    border: none;
-    position: absolute;
-    top: 30%;
-    right: 0;
-    font-size: 60px;
-    opacity: 0.4;
+.slide {
+    padding: 10px;
+    width: 100%;
+    height: auto;
 }
 
-.slider {
-    img {
-        width: 50%;
-    }
+.image {
+    width: 100%; 
+    height: auto;
 }
-
-@media screen and (max-width: 1200px) {
-    .slider {
-        height: 600px
-    }
-}
-

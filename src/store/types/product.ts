@@ -1,11 +1,13 @@
 export interface FilterVariant {
     id: number,
+    label: string,
     value: string
 }
 
 export interface ProductFilterOption {
     id: number,
     title: string,
+    value: string,
     variants: FilterVariant[]
 }
 

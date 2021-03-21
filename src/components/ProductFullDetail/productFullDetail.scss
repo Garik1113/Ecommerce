@@ -1,11 +1,14 @@
 .root {
-    width: 90%;
+    margin-top: 50px;
+}
+
+.body {
     display: grid;
     grid-template-columns: 70% 30%;
-    padding-top: 50px;
     max-width: 1600px;
     margin: auto;
 }
+
 
 .carousel {
     width: 100%;
@@ -56,6 +59,7 @@ input[type=number] {
         grid-template-columns: 1fr;
         width: 90%;
         margin: auto;
+        margin-top: 32px;
     }
 
     .rightActions {
@@ -73,4 +77,31 @@ input[type=number] {
     background: rgb(236, 227, 227);
     padding: 10px;
     margin-bottom: 10px;
+}
+
+.footerActions {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    margin-top: 32px;
+    max-width: 1600px;
+    margin: auto;
+}
+
+.footerActions :global .descriptionContent {
+    padding: 15px;
+    border: 1px solid #878787;
+    margin-top: 52px;
+}
+
+.reviews {
+
+}
+@media (max-width: 790px) {
+    .body {
+        grid-template-columns: 1fr;
+    }
+
+    .footerActions {
+        grid-template-columns: 1fr;
+    }
 }

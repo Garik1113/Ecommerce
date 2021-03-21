@@ -1,23 +1,28 @@
 import React from 'react';
-import { img2 } from '../../talons/Product/useProduct';
+import { IMAGE_BASE_URL } from 'src/config/defaults';
+import { useBanner } from 'src/talons/Banner/useBanner';
 import classes from './banner.scss';
 
-const Banner:React.FC = () => {
+type Props = {
+    bannerId: string
+}
+
+const Banner:React.FC<Props> = (props:Props) => {
+    const {bannerId} = props;
+    const { banner } = useBanner({bannerId});
+    if(!banner) {
+        return null
+    }
+    console.log("Banner", banner)
     return (
         <div className={classes.root}>
-            <div className={classes.body} style={{backgroundImage: 'url('+ img2 + ')' }}>
-                <p className={classes.text}>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing 
-                    elit. Consequuntur accusantium odit, totam corporis 
-                    vitae magni placeat minima vel nemo officiis consectetur 
-                    quas tempora vero voluptates non harum, qui a! 
-                    Nesciunt.
-                    Lorem ipsum dolor, sit amet consectetur adipisicing 
-                    elit. Consequuntur accusantium odit, totam corporis 
-                    vitae magni placeat minima vel nemo officiis consectetur 
-                    quas tempora vero voluptates non harum, qui a! 
-                    Nesciunt.
-                </p>
+            <div className={classes.body}>
+                <div className={classes.imageFiled}>
+                    <img src={`${IMAGE_BASE_URL}/banners/${banner.image}`}/>
+                </div>
+                <div className={classes.contentField}>
+                    <div dangerouslySetInnerHTML={{__html: banner.content}}/>
+                </div>
             </div>
         </div>
     )

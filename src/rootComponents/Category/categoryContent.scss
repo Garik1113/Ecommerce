@@ -33,12 +33,6 @@
     margin-left: 7px;
 }
 
-.sort span {
-    cursor: pointer;
-    white-space: nowrap;
-    font-size: 20px;
-}
-
 .sortOptions {
     height: auto;
     padding: 10px;
@@ -67,4 +61,17 @@
         display: block;
         grid-template-columns: 30% 70% ;
     }
+}
+
+
+.sortItem {
+    font-size: 14px;
+    padding: 5px;
+
+}
+
+.sortText {
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: 14px;
 }

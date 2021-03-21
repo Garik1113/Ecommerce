@@ -1,0 +1,12 @@
+.banners {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 25px;
+    margin-top: 50px;
+}
+
+.salesTitle {
+    text-align: center;
+    margin-top: 32px !important;
+    margin-bottom: 32px;
+}

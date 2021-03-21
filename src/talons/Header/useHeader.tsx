@@ -28,7 +28,7 @@ export const useHeader = () => {
     }, [innerWidth]);
 
     const fetchCategories = useCallback(async() => {
-        const response: AxiosResponse = await axiosClient("GET", `categories`);
+        const response: AxiosResponse = await axiosClient("GET", `categories/?include_in_menu=true`);
         const { data } = response;
         if (data && data.categories) {
             setCategories(data.categories)

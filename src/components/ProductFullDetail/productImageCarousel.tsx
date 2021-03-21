@@ -17,7 +17,7 @@ const ProductImageCarousel:React.FC<Props> = ({gallery}: Props) => {
         <div className={classes.root}>
            <CarouselProvider 
                 naturalSlideWidth={800}
-                naturalSlideHeight={600}
+                naturalSlideHeight={500}
                 totalSlides={gallery.length}
                 visibleSlides={1}
                 className={classes.carousel}

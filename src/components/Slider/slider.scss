@@ -1,7 +1,35 @@
 .carousel {
-    margin-top: 50px;
+    position: relative;
 }
 
-.title {
-    margin-top: 15px;
+.arrowLeft {
+    background: transparent;
+    border: none;
+    position: absolute;
+    top: 40%;
+    left: 0;
+    font-size: 60px;
+    opacity: 0.4;
 }
+
+.arrowRight {
+    background: transparent;
+    border: none;
+    position: absolute;
+    top: 40%;
+    right: 0;
+    font-size: 60px;
+    opacity: 0.4;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+}
+
+@media screen and (max-width: 1200px) {
+    .slider {
+        height: 600px
+    }
+}
+

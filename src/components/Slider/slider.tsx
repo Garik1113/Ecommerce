@@ -1,41 +1,46 @@
 import React from 'react';
-import classes from './slider.scss';
-import { CarouselProvider, Slider as PureSlider, Slide } from 'pure-react-carousel';
+import { CarouselProvider, Slider as PureSlider, Slide,ButtonBack, ButtonNext } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
-import { Link } from 'react-router-dom';
+import classes from './slider.scss'
+import { useSlider } from 'src/talons/Slider/useSlider';
+import { IMAGE_BASE_URL } from 'src/config/defaults';
 
 const Slider:React.FC = () => {
-    const products: any = []
-    return (
-        <div className={classes.root}>
+    const { slider } = useSlider();
+    if(!slider) {
+        return null
+    } else {
+        return (
             <CarouselProvider 
-                naturalSlideWidth={400}
-                naturalSlideHeight={300}
-                totalSlides={products.length}
-                visibleSlides={4}
+                naturalSlideWidth={800}
+                naturalSlideHeight={500}
+                totalSlides={3}
+                visibleSlides={1}
                 className={classes.carousel}
                 infinite={true}
             >
                 <PureSlider>
                     {
-                        products.map((e:any, i: any) => (
-                            <Slide index={i} key={i} style={{textAlign: "center"}}>
-                                <div>
-                                    <Link to={`/product/${e.id}`}>
-                                        <img src={e.main_image} style={{width: "100%", maxWidth: "400px", height: "auto"}}/>
-                                    </Link> 
-                                </div>
-                                <div className={classes.title}>
-                                   <Link to={`/product/${e.id}`}><span>{e.title}</span></Link> 
-                                </div>
-                            </Slide>
-                        ))
+                        slider.slides.map((slide) => {
+                            return (
+                                <Slide index={slide._id} key={slide._id}>
+                                    <img src={`${IMAGE_BASE_URL}/sliders/${slide.image}`} className={classes.image}/>
+                                </Slide>
+                                
+                            )
+                        })
                     }
-                    
                 </PureSlider>
+                <ButtonBack className={classes.arrowLeft}>
+                    <i className="fas fa-chevron-left"></i>
+                </ButtonBack>
+                <ButtonNext className={classes.arrowRight}>
+                    <i className="fas fa-chevron-right"></i>
+                </ButtonNext>
             </CarouselProvider> 
-        </div>
-    )
+        )
+    }
+    
 }
 
-export default Slider
+export default Slider;

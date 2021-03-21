@@ -51,7 +51,7 @@ const Header:React.FC = () => {
                         {
                             categories.map((cat, index) => (
                                 <div className={classes.category} key={index}>
-                                    <Link to={`/category/${cat._id}`}>
+                                    <Link to={`/category/${cat._id}?name=${cat.name}`}>
                                         <span>{cat.name}</span>
                                     </Link>
                                     

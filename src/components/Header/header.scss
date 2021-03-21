@@ -70,12 +70,14 @@
 }
 
 .category {
-    margin-left: 10px;
+    margin-left: 50px;
     color: #ffffff;
 }
 
 .category a {
-    color: #ffffff;
+    color: #c9138c;
+    font-size: 17px;
+    text-transform: uppercase;
 }
 
 .searching {
@@ -87,6 +89,12 @@
 @media (max-width: 1000px) {
     .top {
         grid-template-columns: 10% 60% 10% 10% 10%;
+    }
+}
+
+@media (max-width: 800px) {
+    .search {
+        justify-self: auto;
     }
 }
 

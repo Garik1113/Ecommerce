@@ -6,54 +6,43 @@ const filters: ProductFilterOption[] = [
     {
         id: 1,
         title: "Price Range",
+        value: "price-range",
         variants: [
             {
                 id: 1,
-                value: "0 - 10000"
+                label: "0 - 10000",
+                value: "0-10000"
             },
             {
                 id: 2,
-                value: "10000 - 100000"
+                label: "10000 - 100000",
+                value: "10000-100000"
             },
             {
                 id: 3,
-                value: "100000 - 1000000"
+                label: "100000 - 1000000",
+                value: "100000-1000000"
             }
         ]
     },
     {
         id: 2,
         title: "Availability",
+        value: 'availability',
         variants: [
             {
                 id: 1,
-                value: "In stock"
+                label: "In stock",
+                value: "in-stock"
             },
             {
                 id: 2,
-                value: "Out of stock"
+                label: "Out of stock",
+                value: "out-of-stock"
             },
             
         ]
-    },
-    {
-        id: 3,
-        title: "Brand",
-        variants: [
-            {
-                id: 1,
-                value: "Adidas"
-            },
-            {
-                id: 2,
-                value: "Nike"
-            },
-            {
-                id: 3,
-                value: "New Look"
-            }
-        ]
-    },
+    }
 ]
 
 
