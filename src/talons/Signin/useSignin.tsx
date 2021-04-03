@@ -21,7 +21,7 @@ export const useSignin = () => {
         if (data.token && status == 200) {
             dispatch(signin(data.token));
             await dispatch(getCustomerDetails());
-            dispatch(getCartDetails())
+            await dispatch(getCartDetails());
             history.push('/')
         } else if(status == 203 && data.status == "error") {
             setMessage(data.message);

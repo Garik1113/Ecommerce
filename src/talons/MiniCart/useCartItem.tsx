@@ -12,7 +12,7 @@ interface Props {
 
 export const useCartItem = (props:Props) => {
     const { cartItem } = props;
-    const cartId: string | null = useSelector((state: State) => state.cart.cartId);
+    const cartId: string | null = useSelector((state: State) => state.cart.cartId || state.cart.cart._id);
     const { axiosClient } = useAxiosClient();
     const dispatch = useDispatch();
     const handleDeleteCartItem = useCallback(async() => {

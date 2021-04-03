@@ -15,8 +15,9 @@ const Item:React.FC<Props> = ({item}: Props) => {
         handleAddToWishlist, 
         name, 
         imageSrc,
-        currency,
-        value
+        price,
+        discountedPrice,
+        inWishList
     } = useItem({item});
 
     return (
@@ -26,7 +27,7 @@ const Item:React.FC<Props> = ({item}: Props) => {
                     <img onError={handleImageError} src={imageSrc} className={classes.itemImage}/>
                 </div>        
             </Link>
-            <div className={classes.heart} onClick={() =>  handleAddToWishlist(item._id || "")}>
+            <div className={`${classes.heart} ${inWishList ? classes.red : null}`} onClick={() =>  handleAddToWishlist(item._id || "")}>
                 <i className="fas fa-heart"></i>
             </div>
             <Link to={`/product/${item._id}`}>
@@ -35,11 +36,17 @@ const Item:React.FC<Props> = ({item}: Props) => {
                 </div>  
             </Link>
             <div className={classes.itemFooter}>
-                <div className={classes.price}>
-                    <span>
-                        {value}
-                        {currency}
-                    </span>
+                <div className={classes.priceField}>
+                    {
+                        discountedPrice
+                        ?   <div className={classes.discountedPriceField}>
+                                <span className={classes.newPrice}>{discountedPrice}</span>
+                                <span className={classes.oldPrice}>{price}</span>
+                            </div>
+                        :   <div className={classes.price}>
+                                <span className={classes.newPrice}>{price}</span>
+                            </div>
+                    }
                 </div>
             </div>    
         </div>

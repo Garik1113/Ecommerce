@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
+import { ICart } from 'src/interfaces/cart';
 import { State } from "src/store";
-import { TCart } from "src/store/types/cart";
 
 export const useCartPage = () => {
-    const cart:TCart = useSelector((state: State) => state.cart.cart);
+    const cart:ICart = useSelector((state: State) => state.cart.cart);
     
     return {
         cart

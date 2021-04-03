@@ -10,6 +10,7 @@ import Checkout from '../../rootComponents/Checkout';
 import WIshlist from '../../rootComponents/Wishlist';
 import Account from 'src/rootComponents/Account/account';
 import Orders from 'src/rootComponents/Account/Orders/orders';
+import Addresses from 'src/rootComponents/Account/Addresses';
 
 
 const Routes:React.FC = () => {
@@ -41,6 +42,9 @@ const Routes:React.FC = () => {
             </Route>
             <Route path="/account/orders" exact>
                 <Orders/>
+            </Route>
+            <Route path="/account/addresses" exact>
+                <Addresses/>
             </Route>
             <Route path="/wishlist">
                 <WIshlist/>

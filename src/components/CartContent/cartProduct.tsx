@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { IMAGE_BASE_URL } from 'src/config/defaults';
-import { TCartItem } from 'src/store/types/cart';
 import { useCartItem } from 'src/talons/MiniCart/useCartItem';
 import { handleImageError } from 'src/util/handleImageError';
 import get from 'lodash/get';
 import classes from './cartProduct.scss';
+import { ICartItem } from 'src/interfaces/cart';
 
 interface Props {
-    cartItem: TCartItem
+    cartItem: ICartItem
 }
 
 const CartProduct:React.FC<Props> = (props: Props) => {
@@ -36,7 +36,7 @@ const CartProduct:React.FC<Props> = (props: Props) => {
                     <div className={classes.propertyName}>
                         <b>Price</b>
                     </div>
-                    <span>{price.value} {price.currency}</span>
+                    <span>{price}</span>
                 </div>
                 <div className={classes.quantity}>
                     <div className={classes.propertyName}>
@@ -52,7 +52,7 @@ const CartProduct:React.FC<Props> = (props: Props) => {
                     <div className={classes.propertyName}>
                         <b>Summary price</b>
                     </div>
-                    <span>{price.value * quantity}</span>
+                    <span>{price  * quantity}</span>
                 </div>
             </div>
             <div className={classes.bottomActions}>

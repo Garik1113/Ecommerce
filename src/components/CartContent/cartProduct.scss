@@ -4,7 +4,7 @@
     background: #ffffff;
     margin-bottom: 20px;
     max-height: 160px;
-    padding: 7px 0;
+    padding: 10px;
 }
 
 @media (max-width: 600px) {
@@ -109,7 +109,6 @@ input[type=number] {
     width: 100%;
     max-width: 60px;
     justify-content: space-around;
-    margin-top: 15px;
 }
 
 .remove i, .edit i {

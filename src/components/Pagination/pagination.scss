@@ -1,0 +1,33 @@
+.body {
+    display: flex;
+    align-items: center;
+}
+
+.item {
+    width: 46px;
+    height: 46px;
+    border: 1px solid #878787;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.circle {
+    width: 40px;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    background: rgb(250, 248, 248);
+    color: #000000;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.active {
+    background: red;
+}

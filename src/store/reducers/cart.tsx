@@ -14,10 +14,7 @@ const initialState: CartInitialState = {
         _id: "",
         customerId: "",
         items: [],
-        totalPrice: {
-            currency: "",
-            value: 0
-        },
+        totalPrice: 0,
         totalQty: 0,
         paymentMethod: "",
         shippingAddress: {
@@ -32,7 +29,9 @@ const initialState: CartInitialState = {
             state: "",
             street: "",
             secondAddress: "",
-            company: ""
+            company: "",
+            isBillingAddress: false,
+            isShippingAddress: false
         },
         billingAddress: {
             firstAddress: "",
@@ -46,7 +45,9 @@ const initialState: CartInitialState = {
             state: "",
             street: "",
             secondAddress: "",
-            company: ""
+            company: "",
+            isBillingAddress: false,
+            isShippingAddress: false
         }
     }
 }

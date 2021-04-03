@@ -3,9 +3,10 @@ import classes from './cartContent.scss';
 import CartProduct from './cartProduct';
 import Summary from './summary';
 import { TCart } from 'src/store/types/cart';
+import { ICart } from 'src/interfaces/cart';
 
 type Props = {
-    cart: TCart
+    cart: ICart
 }
 const CartContent:React.FC<Props> = (props: Props) => {
    const { cart } = props;

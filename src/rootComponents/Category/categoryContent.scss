@@ -63,10 +63,14 @@
     }
 }
 
+.sortBy {
+    cursor: pointer;
+}
 
 .sortItem {
     font-size: 14px;
     padding: 5px;
+    cursor: pointer;
 
 }
 
@@ -74,4 +78,10 @@
     cursor: pointer;
     white-space: nowrap;
     font-size: 14px;
+}
+
+.pagination {
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
 }

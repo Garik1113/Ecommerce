@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useCategoryContent } from '../../talons/Category/useCategoryContent';
-import Filter from '../../components/Filter';
+import Filters from '../../components/Filters';
 import Gallery from '../../components/Gallery';
 import classes from './categoryContent.scss';
 import { Button } from 'semantic-ui-react';
+import Pagination from 'src/components/Pagination';
 
 
 const CategoryContent:React.FC = () => {
@@ -13,21 +14,21 @@ const CategoryContent:React.FC = () => {
         setShowSortOptions,
         setView,
         rootClass,
-        handleApplyFilters,
-        filters,
-        handleApplySorting
+        handleApplyPriceRange,
+        priceRange,
+        setPriceRange,
+        addQueryString,
+        pageControl,
+        totalPages
     } = useCategoryContent({classes});
 
     return (
         <div className={classes.root}>
-            <div className={classes.title}>
-                <h1>{filters.name}</h1>
-                <Button onClick={handleApplyFilters}>Apply Filters</Button>
-            </div>
             <div className={classes.options}>
                 <div className={classes.sort}>
                     <span 
                         onClick={() => setShowSortOptions(!showSortOptions)}
+                        className={classes.sortBy}
                     >Sort By
                         {
                             showSortOptions  
@@ -37,11 +38,11 @@ const CategoryContent:React.FC = () => {
                     </span>
                     {showSortOptions 
                     ?   <div className={classes.sortOptions}>
-                            <div className={classes.sortItem} onClick={() => handleApplySorting("low")}>
-                                <span className={classes.sortText}>Price: Low to High</span>
+                            <div className={classes.sortItem} onClick={() => {setShowSortOptions(false); addQueryString("date", "newest")}}>
+                                <span className={classes.sortText}>Newest</span>
                             </div> 
-                            <div className={classes.sortItem} onClick={() => handleApplySorting("high")}>
-                                <span className={classes.sortText}>Price: High to Low</span>
+                            <div className={classes.sortItem} onClick={() => {setShowSortOptions(false); addQueryString("date", "latest")}}>
+                                <span className={classes.sortText}>Latest</span>
                             </div>
                         </div>
                     :null
@@ -53,10 +54,12 @@ const CategoryContent:React.FC = () => {
                 </div>
             </div>
             <div className={classes.body}>
-                <Filter/>
-                <Gallery products={products} rootClass={rootClass}/> 
+                <Filters priceRange={priceRange} setPriceRange={setPriceRange} handleApplyPriceRange={handleApplyPriceRange}/>
+                <Gallery products={products} rootClass={rootClass}/>
             </div>
-            
+            <div className={classes.pagination}>
+                <Pagination addQueryString={addQueryString} pageControl={pageControl} totalPages={totalPages}/>
+            </div>
         </div>
     )
 };

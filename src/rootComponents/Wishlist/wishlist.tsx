@@ -1,15 +1,23 @@
 import React from 'react';
 import classes from './wishlist.scss';
-import Gallery from '../../components/Gallery';
+import Item from '../../components/Gallery/item';
+import { useWishlist } from 'src/talons/Wishlist/useWishlist';
+import { IProduct } from 'src/interfaces/product';
 
 const WIshlist:React.FC = () => {
-    
+    const { items } = useWishlist();
     return (
         <div className={classes.root}>
             <div className={classes.title}>
                 <h1>Favorites</h1>
             </div>
-            <Gallery products={[]} rootClass={classes.gallery}/>
+            <div className={classes.list}>
+                {
+                    items.map((item: IProduct) => (
+                        <Item key={item._id} item={item}/> 
+                    ))
+                }
+            </div>
         </div>
         
     )

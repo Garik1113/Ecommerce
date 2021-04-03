@@ -1,9 +1,7 @@
 .root {
-    margin: 5px;
     position: relative;
-    margin-bottom: 15px;
     background: #ffffff;
-    padding: 15px 10px;
+    padding: 20px 20px;
 } 
 
 @media (max-width: 800px) {
@@ -22,8 +20,8 @@
 
 .heart {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 5px;
+    right: 5px;
 }
 
 .heart i {
@@ -54,4 +52,27 @@
 .price span {
     font-weight: 600;
     color: grey;
+}
+
+.red i {
+    color: red;
+}
+
+.discountedPriceField {
+    display: flex;
+    align-items: center;
+}
+
+.newPrice {
+    color: #000000;
+    font-size: 16px
+
+}
+
+.oldPrice {
+    color: red;
+    text-decoration: line-through;
+    font-size: 12px;
+    display: block;
+    margin-left: 10px;
 }

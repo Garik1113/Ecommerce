@@ -38,7 +38,7 @@ const getAttributeDataFromOptionSelections = (optionSelections:Map<string, IAttr
 export const useProductFullDetail = (props: ProductProps) => {
     const { product } = props;
     const { name, price, images, attributes, metaDescription } = product;
-    const cartId: string | null = useSelector((state: State) => state.cart.cartId);
+    const cartId: string | null = useSelector((state: State) => state.cart.cartId || state.customer.customer.cartId);
     const [isSubmittingReview, setIsSubmittingReview] = useState(false)
     const token = useSelector((state: State) => state.customer.token);
     const isSignedIn = useSelector((state: State) => state.customer.isSignedIn);

@@ -8,15 +8,24 @@ import SearchTrigger from 'components/Search/searchTrigger';
 import { Link } from 'react-router-dom';
 import { useHeader } from '../../talons/Header/useHeader';
 import AuthActions from '../AuthActions';
+import { ICategory } from 'src/interfaces/category';
 
-const Header:React.FC = () => {
+type Props = {
+    categories: ICategory[], 
+    isMobile: boolean,
+    totalQty: number
+}
+
+const Header:React.FC<Props> = (props: Props) => {
     const { 
-        categories, 
         setIsSearchOpen, 
-        isMobile, 
         isSearchOpen,
-        totalQty
     } = useHeader();
+    const { 
+        categories,
+        isMobile, 
+        totalQty
+    } = props
 
     return (
         <div className={classes.root}>

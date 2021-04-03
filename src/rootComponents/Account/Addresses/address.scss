@@ -1,0 +1,46 @@
+.root {
+    width: 100%;
+    max-width: 270px;  
+}
+
+.body {
+    width: 100%;
+    max-width: 270px;
+    border: 2px solid #c4c4c4;
+    border-radius: 4px;
+    padding-bottom: 16px;
+    min-width: 240px
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 240px;
+    margin: auto;
+    margin-top: 15px;
+}
+
+.columnTitle {
+    color: #878787;
+    font-size: 16px;
+}
+
+.columnValueField {
+    margin-left: 15px;
+}
+
+.columnValue {
+    color: #000000;
+    font-size: 16px;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 240px;
+    margin: auto;
+    margin-top: 30px;
+}

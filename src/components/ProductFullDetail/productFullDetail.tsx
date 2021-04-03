@@ -46,7 +46,7 @@ const ProductFullDetail:React.FC<ProductProps> = ({ product }: ProductProps) => 
                     </div>
                     <hr/>
                     <div className={classes.price}>
-                        <Price value={price.value} currency={price.currency}/>
+                        <Price price={product.price}/>
                     </div>
                     <div className={classes.description}>
                         <p>{metaDescription}</p>

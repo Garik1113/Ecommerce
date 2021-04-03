@@ -35,7 +35,7 @@ const MiniCart:React.FC = () => {
             <footer className={classes.footer}>
                 <div className={classes.subTotal}>
                     <p>Cart Total:</p>
-                    <span>{totalPrice.currency} {totalPrice.value}</span>
+                    <span>{totalPrice}</span>
                 </div>
                 <div className={classes.cartLink}>
                     <Link to="/cart" onClick={handleClose}>View and edit cart</Link>

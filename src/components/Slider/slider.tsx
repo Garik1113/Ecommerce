@@ -13,7 +13,7 @@ const Slider:React.FC = () => {
         return (
             <CarouselProvider 
                 naturalSlideWidth={800}
-                naturalSlideHeight={500}
+                naturalSlideHeight={400}
                 totalSlides={3}
                 visibleSlides={1}
                 className={classes.carousel}

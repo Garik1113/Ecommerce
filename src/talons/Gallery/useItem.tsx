@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { IProduct } from 'src/interfaces/product';
 import get from 'lodash/get';
 import { IMAGE_BASE_URL } from 'src/config/defaults';
@@ -12,31 +12,34 @@ interface Props {
 }
 export const useItem = (props: Props) => {
     const { item } = props;
-    const {price, name } = item;
-    const { currency, value } = price;
+    const {price, name, discountedPrice } = item;
+    const tepmWishlist: string | null = localStorage.getItem('wishlist');
+    const wishlist:string[] = tepmWishlist ? JSON.parse(tepmWishlist) : [];
+    const [inWishList, setInWishList] = useState(wishlist.includes(item._id));
     const imageSrc = useMemo(() => {
         const image = get(item, "images[0].main_image", "");
         return `${IMAGE_BASE_URL}/products/${image}`
     }, [item]);
 
     const handleAddToWishlist = useCallback((id: string):void => {
-        const wishlist: String | Array<String> = localStorage.getItem('wishlist') || [];
-
-        if(wishlist instanceof Array) {
-            wishlist.push(id);
-            localStorage.setItem('wishlist', String(wishlist)) ;
+        const tepmWishlist: string | null = localStorage.getItem('wishlist');
+        const wishlist:string[] = tepmWishlist ? JSON.parse(tepmWishlist) : [];
+        if(wishlist.includes(id)) {
+            const filtered: string[] = wishlist.filter(e => e !== id);
+            localStorage.setItem("wishlist", JSON.stringify(filtered));
+            setInWishList(false);
         } else {
-           const arr = arrayFromString(wishlist);
-           arr.push(id);
-           localStorage.setItem('wishlist', String(arr));
+            localStorage.setItem("wishlist", JSON.stringify([...wishlist, id]));
+            setInWishList(true);
         }
-    }, []);
+    }, [inWishList, setInWishList]);
 
     return {
         handleAddToWishlist,
         imageSrc,
         name,
-        currency,
-        value
+        price,
+        inWishList,
+        discountedPrice
     }
 }

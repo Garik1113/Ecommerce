@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { TCartItem } from 'src/store/types/cart';
 import { useCartItem } from 'src/talons/MiniCart/useCartItem';
 import classes from './cartItem.scss';
 import get from 'lodash/get';
 import { handleImageError } from 'src/util/handleImageError';
 import { IMAGE_BASE_URL } from 'src/config/defaults';
+import { ICartItem } from 'src/interfaces/cart';
 
 type Props = {
     showDescription: boolean,
-    cartItem: TCartItem,
+    cartItem: ICartItem,
     dontShowActions?: boolean
 }
 
@@ -52,7 +52,7 @@ const CartItem:React.FC<Props> = (props: Props) => {
                             </div>
                         }
                         <div className={classes.price}>
-                            <span>{product.price.value} {product.price.currency}</span>
+                            <span>{product.price}</span>
                         </div>
                     </div>
                     {dontShowActions 

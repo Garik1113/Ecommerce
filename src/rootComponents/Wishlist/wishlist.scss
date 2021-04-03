@@ -11,7 +11,8 @@
 
 .title {
     margin: 30px 0;
-    color: rgb(238, 238, 85);
+    color: red;
+    text-align: center;
 }
 
 @media (max-width: 900px) {
@@ -26,3 +27,9 @@
     }
 }
 
+.list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 32px;
+    row-gap: 32px;
+}

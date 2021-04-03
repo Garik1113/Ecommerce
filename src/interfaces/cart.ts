@@ -1,5 +1,5 @@
 import { IAddress } from "./address";
-import { IPrice, IProduct } from "./product";
+import { IProduct } from "./product";
 
 export interface ICartItemAttribute {
     attributeId: string,
@@ -21,5 +21,5 @@ export interface ICart {
     shippingAddress: IAddress,
     billingAddress: IAddress,
     totalQty: number,
-    totalPrice: IPrice
+    totalPrice: number
 }
