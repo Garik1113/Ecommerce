@@ -15,30 +15,35 @@ export interface IImage {
     main_image: string
 }
 
-export interface IAttributeValue {
+export interface IValue {
     _id: string,
-    label: String,
-    images: IImage[]
+    name: String
 }
 
 export interface IAttribute {
     _id: string,
-    label: String,
-    values: IAttributeValue[]
+    name: String,
+    values: IValue[]
 }
+
+export type ConfigurableAttribute = {
+    attribute: IAttribute,
+    selectedValue: IValue
+}
+
 
 export interface IProduct {
     _id: string,
     name: string,
+    categories: string[],
     pageTitle: string,
     description: string,
     metaDescription: string,
+    quantity: number,
     price: number,
     discount: number,
     discountedPrice: number,
     averageRating: number,
-    categories: string[],
-    attributes: IAttribute[],
-    images: IImage[],
-    quantity: number
+    configurableAttributes: ConfigurableAttribute[],
+    images: IImage[]
 }

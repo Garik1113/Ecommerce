@@ -1,4 +1,4 @@
-import { ICart, ICartItemAttribute } from 'src/interfaces/cart';
+import { ICart } from 'src/interfaces/cart';
 
 export const TOGGLE_CART_DRAWER = 'TOGGLE_CART_DRAWER';
 export const GET_CART_DETAILS = "GET_CART_DETAILS";
@@ -10,7 +10,6 @@ export const NULLIFY_CART = "NULLIFY_CART"
 export type TAddItemToCartData = {
     productId: String,
     quantity: number,
-    cartItemAttributes: ICartItemAttribute[],
     cartId: string
 }
 

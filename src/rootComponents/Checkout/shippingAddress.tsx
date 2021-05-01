@@ -1,20 +1,56 @@
 import React from 'react';
 import { useShippingAddress } from 'src/talons/Checkout/useShippingAddress';
-import Address from '../../components/Address';
+import Address from '../Account/Addresses/address';
+import AddressForm from 'components/Address'
 import CheckoutTitle from './checkoutTitle';
 import classes from './shippingAddress.scss';
+import { IAddress } from 'src/interfaces/address';
+import { Button } from 'semantic-ui-react';
 
 type Props = {
     setStep: any
 }
 const ShippingAddress:React.FC<Props> = (props: Props) => {
     const { setStep } = props;
-    const { handleSubmit, shippingAddress } = useShippingAddress({ setStep })
+    const { 
+        handleSubmit, 
+        shippingAddress,
+        addresses,
+        isSignedIn,
+        selectedAddress, 
+        setSelectedAddress
+    } = useShippingAddress({ setStep })
 
     return (
         <div className={classes.root}>
             <CheckoutTitle title="SHIPPING ADDRESS" number={1}/>
-            <Address handleSubmit={handleSubmit} address={shippingAddress}/>
+            {
+                isSignedIn && addresses.length
+                ?   
+                    <div>
+                        <div className={classes.list}>
+                            {addresses.map((a: IAddress, i) => (
+                                <div 
+                                    className={`${classes.address} ${selectedAddress && selectedAddress._id == a._id ? classes.selected: null}`} 
+                                    onClick={() => setSelectedAddress(a)}
+                                >
+                                    <Address 
+                                        address={a} 
+                                        key={i} 
+                                        inCheckout={true}
+                                        handleDeleteAddress={() => {}}
+                                        handleEditAddress={() => {}}
+                                    />
+                                </div>
+                                
+                            ))}
+                        </div>
+                        <div className={classes.button}>
+                            <Button onClick={() => handleSubmit(selectedAddress)} primary disabled={!selectedAddress}>Submit</Button>
+                        </div>
+                    </div>
+                :   <AddressForm handleSubmit={handleSubmit} address={shippingAddress}/>
+            }
         </div>
     )
 }

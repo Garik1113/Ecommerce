@@ -12,3 +12,22 @@
 .value, .currency {
     font-size: 30px;
 }
+
+.discountedField {
+    display: flex;
+    align-items: center;
+}
+
+.discounted {
+    color: red;
+}
+
+.oldPrice {
+    margin-left: 10px;
+    text-decoration: line-through;
+}
+
+.price {
+    font-size: 16px;
+    color: #000;
+}

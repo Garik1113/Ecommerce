@@ -1,38 +1,30 @@
 import React from 'react';
-import { IAttribute, IAttributeValue } from 'src/interfaces/product';
+import { ConfigurableAttribute, IAttribute, IValue } from 'src/interfaces/product';
 import classes from './attributes.scss';
 import Values from './values';
 
 interface AttributeProps {
-    attributes: IAttribute[],
-    optionSelections: Map<string, IAttributeValue>,
-    handleChangeOptionSelections: Function
+    attributes: ConfigurableAttribute[],
 }
 
 const Attributes:React.FC<AttributeProps> = (props: AttributeProps) => {
     const { 
-        attributes, 
-        optionSelections, 
-        handleChangeOptionSelections 
+        attributes
     } = props;
-    
+    console.log("attributes", attributes)
     return (
         <div className={classes.root}>
             {
-                attributes.map((attr: IAttribute, index: number) => {
+                attributes.map((attr: ConfigurableAttribute, index: number) => {
                     return (
-                        <div key={index}>
-                            <div className={classes.label}>
-                                <span>{attr.label}</span>
+                        <div key={index} className={classes.attribute}>
+                            <div className={classes.attributeNameField}>
+                                <span className={classes.attributeName}>{attr.attribute.name}:</span>
                             </div>
-                            <div className={classes.value}>
-                                <Values 
-                                    attrubuteLabel={attr.label} 
-                                    attributeId={attr._id} 
-                                    values={attr.values}
-                                    optionSelections={optionSelections}
-                                    handleChangeOptionSelections={handleChangeOptionSelections}
-                                />
+                            <div className={classes.attributeValueField}>
+                                <span className={classes.attributeValue}>
+                                    {attr.selectedValue.name}
+                                </span>
                             </div>
                         </div>
                     )

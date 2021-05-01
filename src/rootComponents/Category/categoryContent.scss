@@ -1,6 +1,6 @@
 .root {
     max-width: 1200px;
-    margin: auto;  
+    margin: 50px auto;  
 }
 
 .title {
@@ -11,6 +11,7 @@
 .body {
     display: grid;
     grid-template-columns: 20% 80%;
+    column-gap: 30px;
 }
 
 .galleryList {

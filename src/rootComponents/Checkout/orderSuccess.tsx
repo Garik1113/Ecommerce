@@ -18,7 +18,7 @@ const OrderSuccess:React.FC<Props> = (props: Props) => {
                 <div className={classes.textField}>
                     <span className={classes.text}>
                         Your Order Number is 
-                        <Link to='account/orders'>
+                        <Link to='account/orders' className={classes.orderNumber}>
                             <b>{orderNumber}</b>
                         </Link>
                     </span>

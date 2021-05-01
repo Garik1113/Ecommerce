@@ -11,7 +11,8 @@ const webpackConfig = ():Configuration => ({
             components: path.resolve(__dirname, 'src/components'),
             src: path.resolve(__dirname, "./src"),
             store: path.resolve(__dirname, "./src/store"),
-            config: path.resolve(__dirname, './src/config')
+            config: path.resolve(__dirname, './src/config'),
+            images: path.resolve(__dirname, './public/images')
         },
     },
     output: {

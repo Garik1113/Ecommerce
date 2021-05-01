@@ -38,7 +38,8 @@ export const usePageControl = () => {
             date: queryParams.date,
             categoryId: id,
             price_min: queryParams.price_min,
-            price_max: queryParams.price_max
+            price_max: queryParams.price_max,
+            product_name: queryParams.product_name
         } 
     }, [queryParams, addQueryString, params]);
 

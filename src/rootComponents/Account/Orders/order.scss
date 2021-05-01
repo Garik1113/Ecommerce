@@ -1,4 +1,82 @@
+.root {
+    margin-bottom: 20px;
+}
+
 .body {
     width: 100%;
     background: #ffffff;
+}
+
+.header {
+    background-color: hsl(206deg 30% 95%);
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 10px;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.headerField {
+    text-align: center;
+}
+
+.headerTitle {
+    font-size: 18px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.billing {
+    margin-top: 50px;
+}
+
+.addressField {
+    margin-top: 50px;
+}
+
+.addressTitle {
+    text-align: left;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    width: 100%;
+    background-color: hsl(206deg 30% 95%);
+}
+
+.payment {
+    margin-top: 30px;
+    text-align: left;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    width: 100%;
+    background-color: hsl(206deg 30% 95%);
+    display: flex;
+    align-items: center;
+}
+
+.paymentHeader {
+    color: #878;
+    font-size: 16px;
+}
+
+.paymentValue {
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+.status {
+    display: block;
+    color: #000000;
+    margin-left: 5px;
+}
+
+.items {
+    margin-top: 15px;
+}
+
+.content {
+    padding: 0 15px;
 }

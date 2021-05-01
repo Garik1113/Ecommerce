@@ -16,3 +16,22 @@
         max-width: 500px;
     }
 }
+
+.list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 30px;
+}
+
+.address {
+    cursor: pointer;
+}
+
+.selected {
+    border: 2px solid #000000;
+}
+
+.button {
+    text-align: center;
+    margin: 15px auto;
+}

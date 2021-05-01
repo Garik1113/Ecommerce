@@ -17,7 +17,7 @@ export const useCategoryContent = (props: Props) => {
     const history = useHistory()
     const { id } = params;
     const { addQueryString, pageControl  } = usePageControl();
-    const [priceRange, setPriceRange] = useState<Range>({min: Number(pageControl.price_min) || 0, max: Number(pageControl.price_max) || 0});
+    const [priceRange, setPriceRange] = useState<Range>({min: Number(pageControl.price_min) || 0, max: Number(pageControl.price_max) || 100000});
     const [products, setProducts] = useState<IProduct[]>([]);
     const [totalPages, setTotalPages] = useState(0);
     const [showSortOptions, setShowSortOptions] = useState(false);
@@ -39,7 +39,7 @@ export const useCategoryContent = (props: Props) => {
             const { totalProducts } = data;
             if(totalProducts) {
                 if(Number(totalProducts) < Number(pageControl.perPage)) {
-                    setTotalPages(1)
+                    setTotalPages(0)
                 } else {
                     const newTotalpages = getTotalPages(Number(totalProducts), Number(pageControl.perPage));
                     setTotalPages(newTotalpages); 

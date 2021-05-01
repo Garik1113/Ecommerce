@@ -1,5 +1,5 @@
 import React from 'react';
-import { IMAGE_BASE_URL } from 'src/config/defaults';
+import { BACKEND_URL } from 'src/config/defaults';
 import { useBanner } from 'src/talons/Banner/useBanner';
 import classes from './banner.scss';
 
@@ -10,15 +10,15 @@ type Props = {
 const Banner:React.FC<Props> = (props:Props) => {
     const {bannerId} = props;
     const { banner } = useBanner({bannerId});
-    if(!banner) {
+    if (!banner) {
         return null
     }
-    console.log("Banner", banner)
+    
     return (
         <div className={classes.root}>
             <div className={classes.body}>
                 <div className={classes.imageFiled}>
-                    <img src={`${IMAGE_BASE_URL}/banners/${banner.image}`}/>
+                    <img src={`${BACKEND_URL}/images/banner/${banner.image}`}/>
                 </div>
                 <div className={classes.contentField}>
                     <div dangerouslySetInnerHTML={{__html: banner.content}}/>

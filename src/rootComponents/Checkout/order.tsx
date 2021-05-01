@@ -10,7 +10,7 @@ import OrderSuccess from './orderSuccess';
 
 type Props = {
     items: ICartItem[],
-    totalPrice: IPrice,
+    totalPrice: number,
     setStep: any
 }
 
@@ -49,7 +49,7 @@ const Order:React.FC<Props> = (props: Props) => {
             }
             <div className={classes.subTotal}>
                 <span>Cart Total</span>
-                <span>{totalPrice.value} {totalPrice.currency}</span>
+                <span>{totalPrice}</span>
             </div>
             <div className={classes.shipping}>
                 <span>Shipping</span>
@@ -58,7 +58,7 @@ const Order:React.FC<Props> = (props: Props) => {
             <hr/>
             <div className={classes.total}>
                 <span>Order Total</span>
-                <span>{totalPrice.value} {totalPrice.currency}</span>
+                <span>{totalPrice}</span>
             </div>
             <div className={classes.button}>
                 <Button label="Place Order" priority="high" onClick={handleSubmit}/>

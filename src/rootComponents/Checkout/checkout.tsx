@@ -15,7 +15,10 @@ const Checkout:React.FC = () => {
         billingAndShippingAreTheSame, 
         handleChange,
         step,
-        setStep
+        setStep,
+        shippingAddress, 
+        billingAddress, 
+        paymentMethod 
     } = useCheckout();
     
 
@@ -23,7 +26,13 @@ const Checkout:React.FC = () => {
         <div className={classes.root}>
             <div className={classes.body}>
                 <div>
-                    <CheckoutHeader setStep={setStep} step={step}/>
+                    <CheckoutHeader 
+                        setStep={setStep} 
+                        step={step}
+                        shippingAddress={shippingAddress}
+                        billingAddress={billingAddress}
+                        paymentMethod={paymentMethod}
+                    />
                 </div>
                 <div>
                     {step.value == "shipping" ? <ShippingAddress setStep={setStep}/> : null}
@@ -39,9 +48,6 @@ const Checkout:React.FC = () => {
                         : null
                     }
                 </div>
-                {/* <div>
-                    {step.value == 'method' ? <ShippingMethod/> : null}
-                </div> */}
                 <div>
                     {step.value == 'payment' ? <PaymentMethod setStep={setStep}/> : null}
                 </div>

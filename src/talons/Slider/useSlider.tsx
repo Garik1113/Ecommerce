@@ -4,7 +4,7 @@ import { useAxiosClient } from '../Axios/useAxiosClient'
 
 export const useSlider = () => {
     const { axiosClient } = useAxiosClient();
-    const [slider, setSlider] = useState(null);
+    const [slider, setSlider] = useState<any>({});
     const fetchHomeSlider = useCallback(async() => {
         const response: AxiosResponse = await axiosClient("GET", 'sliders/get_home_slider');
         const { status, data } = response;
@@ -16,7 +16,7 @@ export const useSlider = () => {
     useEffect(() => {
         fetchHomeSlider()
     }, [fetchHomeSlider]);
-    
+    console.log(slider)
     return {
         slider
     }

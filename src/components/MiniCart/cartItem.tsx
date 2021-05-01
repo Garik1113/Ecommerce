@@ -4,7 +4,7 @@ import { useCartItem } from 'src/talons/MiniCart/useCartItem';
 import classes from './cartItem.scss';
 import get from 'lodash/get';
 import { handleImageError } from 'src/util/handleImageError';
-import { IMAGE_BASE_URL } from 'src/config/defaults';
+import { BACKEND_URL, IMAGE_BASE_URL } from 'src/config/defaults';
 import { ICartItem } from 'src/interfaces/cart';
 
 type Props = {
@@ -25,7 +25,7 @@ const CartItem:React.FC<Props> = (props: Props) => {
         <div className={classes.root}>
             <div className={classes.body}>
                 <div className={classes.image}>
-                    <img onError={handleImageError} src={`${IMAGE_BASE_URL}/products/${get(product, "images[0].main_image", "")}`} className={classes.itemImage}/>
+                    <img onError={handleImageError} src={`${BACKEND_URL}/images/product/${get(product, "images[0].main_image", "")}`} className={classes.itemImage}/>
                 </div>
                 <div className={classes.rightActions}>
                     <div className={classes.title}>

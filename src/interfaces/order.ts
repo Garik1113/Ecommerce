@@ -24,4 +24,5 @@ export interface IOrder {
     totalQty: number,
     totalPrice: IPrice,
     status: string
+    createdAt: string
 }

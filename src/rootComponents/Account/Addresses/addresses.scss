@@ -1,5 +1,10 @@
+.tabs {
+    width: 100%;
+}
+
 .body {
     width: 80%;
+    max-width: 1200px;
     margin: auto;
     display: grid;
     grid-template-columns: 1fr 4fr;
@@ -16,20 +21,23 @@
 .list {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     column-gap: 15px;
+    grid-template-rows: 240px;
+    margin-left: 15px;
 }
 
 .addAddressField {
     width: 100%;
     max-width: 270px;
-    min-height: 190px;
+    height: 205px;
     border: 2px solid #c4c4c4;
     border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 240px
+    min-width: 240px;
+    max-height: 240px;
 }
 
 .plusIconField {
@@ -47,3 +55,4 @@
     margin-bottom: -26px !important;
     margin-right: -1px !important;
 }
+

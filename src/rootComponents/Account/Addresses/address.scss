@@ -8,8 +8,8 @@
     max-width: 270px;
     border: 2px solid #c4c4c4;
     border-radius: 4px;
-    padding-bottom: 16px;
-    min-width: 240px
+    min-width: 240px;
+    padding: 15px;
 }
 
 .row {
@@ -18,7 +18,7 @@
     width: 100%;
     max-width: 240px;
     margin: auto;
-    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .columnTitle {
@@ -43,4 +43,8 @@
     max-width: 240px;
     margin: auto;
     margin-top: 30px;
+}
+
+.buttons {
+    cursor: pointer;
 }

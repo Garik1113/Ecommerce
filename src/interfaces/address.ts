@@ -1,4 +1,5 @@
 export interface IAddress {
+    _id?: string,
     firstName: string,
     lastName: string,
     email: string,
@@ -7,7 +8,7 @@ export interface IAddress {
     city: string,
     street: string,
     phone: string,
-    zip: string,
+    zip: number,
     firstAddress: string,
     secondAddress: string,
     company: string,

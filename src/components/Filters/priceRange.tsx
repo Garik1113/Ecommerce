@@ -15,7 +15,7 @@ const PricRange:React.FC<Props> = (props: Props) => {
     const { min, max, setPriceRange, value, handleApplyPriceRange } = props;
     return (
         <div className={classes.slider}>
-             <label>Price</label>
+             <label className={classes.label}>Price</label>
             <InputRange
                 onChange={(data: Range) => setPriceRange(data)}
                 minValue={min}

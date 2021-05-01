@@ -1,8 +1,9 @@
-import { useCallback } from "react";
+import { AxiosResponse } from "axios";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { IAddress } from "src/interfaces/address";
 import { State } from "src/store";
 import { getCartDetails } from "src/store/actions/cart/asyncActions";
-import { TAddress } from "src/store/types/cart";
 import { useAxiosClient } from "../Axios/useAxiosClient"
 
 type Props = {
@@ -12,17 +13,34 @@ type Props = {
 export const useShippingAddress = (props: Props) => {
     const { setStep } = props;
     const { axiosClient } = useAxiosClient();
-    const shippingAddress: TAddress = useSelector((state: State) => state.cart.cart.shippingAddress)
+    const [addresses, setAddresses] = useState([]);
+    const shippingAddress: IAddress = useSelector((state: State) => state.cart.cart.shippingAddress);
+    const isSignedIn = useSelector((state:State) => state.customer.isSignedIn);
     const cartId = useSelector((state: State) => state.cart.cartId);
+    const [selectedAddress, setSelectedAddress] = useState(null);
+    const fetchAddresses = useCallback(async() => {
+        const { data, status }:AxiosResponse = await axiosClient("GET", 'customers/');
+        if (status == 200 && data.customer) {
+            setAddresses(data.customer.addresses);
+        }
+    }, [addresses]);
     const dispatch = useDispatch();
-    const handleSubmit = useCallback(async(values: TAddress) => {
-        await axiosClient("PUT", 'cart/add-shipping-address', { address: values, cartId });
+    
+    const handleSubmit = useCallback(async(values: IAddress) => {
+        await axiosClient("PUT", 'cart/add-shipping-address', { address: selectedAddress ? selectedAddress : values, cartId });
         await dispatch(getCartDetails());
         setStep({value: "billing", index: 1});
     }, [axiosClient, cartId]);
 
+    useEffect(() => {
+        fetchAddresses()
+    }, [])
     return {
         handleSubmit,
-        shippingAddress
+        shippingAddress,
+        isSignedIn,
+        addresses,
+        selectedAddress, 
+        setSelectedAddress
     }
 }

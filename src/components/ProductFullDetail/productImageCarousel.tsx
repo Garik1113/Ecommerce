@@ -1,15 +1,15 @@
 import React from 'react'
-import { CarouselProvider, Slider, Slide, Dot } from 'pure-react-carousel';
+import { CarouselProvider, Slider, Slide, Dot, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import classes from './productImageCarousel.scss';
 import 'pure-react-carousel/dist/react-carousel.es.css';
-import { IMAGE_BASE_URL } from 'src/config/defaults';
+import { BACKEND_URL } from 'src/config/defaults';
 import { handleImageError } from 'src/util/handleImageError';
 import { Image } from 'src/store/types/product';
+import { Icon } from 'semantic-ui-react';
 
 interface Props {
     gallery: Image[]
 }
-
 
 const ProductImageCarousel:React.FC<Props> = ({gallery}: Props) => {
 
@@ -27,34 +27,33 @@ const ProductImageCarousel:React.FC<Props> = ({gallery}: Props) => {
                         gallery.map((image, index) => {
                             return (
                                 <Slide index={index} key={index}>
-                                    <img onError={handleImageError} src={`${IMAGE_BASE_URL}/products/${image.small_image}`} style={{width: "100%"}}/>
+                                    <img onError={handleImageError} src={`${BACKEND_URL}/images/product/${image.small_image}`} style={{width: "100%"}}/>
                                 </Slide>
                             )
                         })
                     }
                 </Slider>
                 <div className={classes.thumbnails}>
-                    {/* {
+                    <ButtonBack className={classes.arrows}>
+                        <Icon name="arrow left"/>
+                    </ButtonBack>
+                    {
                         gallery.map((image, index) => {
                             return (
                                 <Dot slide={index} key={index} className={classes.dot}>
-                                    <img src={image.thumbnail_path} className={classes.thumbnailImg}/>
+                                    <img src={`${BACKEND_URL}/images/product/${image.small_image}`} className={classes.thumbnailImg}/>
                                 </Dot>
                             )
                         })
-                    } */}
+                    }
+                    <ButtonNext className={classes.arrows}>
+                        <Icon name="arrow right"/>
+                    </ButtonNext>
                 </div>
-                    
             </CarouselProvider> 
         </div>
         
     )
 }
 
-export default ProductImageCarousel
-
-{/* <Carousel showThumbs={false} infiniteLoop={true}>
-        <div style={{ height: "200px", color: "#fff" }}>this is slide 1</div>
-        <div style={{ height: "200px", color: "#fff" }}>this is slide 2</div>
-        <div style={{ height: "200px", color: "#fff" }}>this is slide 3</div>
-      </Carousel> */}
+export default ProductImageCarousel;

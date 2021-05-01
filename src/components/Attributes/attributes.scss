@@ -1,14 +1,26 @@
 .root {
     background: #e2d8d8;
     padding: 10px;
+    padding-left: 0;
 }
 
-.label {
-    text-align: center;
-    margin: 15px auto;
+.attribute {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
 }
 
-.label span {
+.attributeName {
+    color: #878787;
     font-size: 18px;
 }
 
+.attributeValueField {
+    margin-left: 15px;
+}
+
+.attributeValue {
+    color: #000;
+    font-weight: 500;
+    font-size: 18px;
+}

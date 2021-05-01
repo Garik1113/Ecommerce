@@ -22,28 +22,27 @@ const PaymentMethod:React.FC<Props> = (props: Props) => {
             <CheckoutTitle title="payment method" number={3}/>
             <div className={classes.methods}>
                 <div>
-                    <div className={classes.radio}>
-                        <input type="radio" name="paymentMethod" value="credit_cart" checked={method === 'credit_cart'} onChange={() => setMethod("credit_cart")}/>
-                        <span>Credit Cart</span> 
+                    <div className={classes.list}>
+                        <div className={classes.radio}>
+                            <input type="radio" name="paymentMethod" value="credit_cart" checked={method === 'credit_cart'} onChange={() => setMethod("credit_cart")}/>
+                            <span>Credit Cart</span> 
+                        </div>
+                        <div className={classes.cash}>
+                            <input type="radio" name="paymentMethod" value="cash_on_delivery" onChange={() => setMethod("cash_on_delivery")}/>
+                            <span>Cash on delivery</span>
+                        </div>
                     </div>
                     {method === "credit_cart" 
                         ? 
                             <Elements stripe={stripePromise}>
-                                <CreditCart/>
+                                <CreditCart setStep={setStep}/>
                             </Elements>
                         :   null
                     }
                 </div>
-                <div>
-                    <input type="radio" name="paymentMethod" value="paypal" onChange={() => setMethod("paypal")}/>
-                    <span>Paypal</span>
-                </div>
-                <div>
-                    <input type="radio" name="paymentMethod" value="cash_on_delivery" onChange={() => setMethod("cash_on_delivery")}/>
-                    <span>Cash on delivery</span>
-                </div>
+                
             </div>
-            {method == "credit_cart" || method == "paypal"
+            {method == "credit_cart"
             ?   null
             : <div className={classes.buttons}>
                 <Button onClick={handleSubmit}>Submit</Button>

@@ -3,11 +3,19 @@ import { IAddress } from 'src/interfaces/address';
 import classes from './address.scss';
 
 type Props = {
-    address: IAddress
+    address: IAddress,
+    handleEditAddress: any,
+    handleDeleteAddress: any,
+    inCheckout?: boolean
 }
 
 const Address:React.FC<Props> = (props: Props) => {
-    const { address } = props;
+    const { 
+        address, 
+        handleEditAddress, 
+        handleDeleteAddress,
+        inCheckout
+    } = props;
 
     return (
         <div className={classes.root}>
@@ -44,14 +52,19 @@ const Address:React.FC<Props> = (props: Props) => {
                         <span className={classes.columnValue}>{address.firstAddress}</span>
                     </div>
                 </div>
-                <div className={classes.actions}>
-                    <div>
-                        <span>Edit</span>
-                    </div>
-                    <div>
-                        <span>Delete</span>
-                    </div>
-                </div>
+                {
+                    !inCheckout
+                    ?   <div className={classes.actions}>
+                            <div>
+                                <span className={classes.buttons} onClick={() => handleEditAddress(address._id)}>Edit</span>
+                            </div>
+                            <div>
+                                <span className={classes.buttons} onClick={() => handleDeleteAddress(address._id)}>Delete</span>
+                            </div>
+                        </div>
+                    :   null
+                }
+                
             </div>
         </div>
     )

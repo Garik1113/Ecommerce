@@ -9,6 +9,10 @@ type Props = {
 
 const Pagination:React.FC<Props> = (props: Props) => {
     const { addQueryString, pageControl, totalPages } = props;
+    console.log(totalPages)
+    if (totalPages < 1) {
+        return null
+    }
     const items = useMemo(() => {
         const arr = []
         for (let index = 0; index < totalPages; index++) {
@@ -20,7 +24,6 @@ const Pagination:React.FC<Props> = (props: Props) => {
     return (
         <div className={classes.root}>
             <div className={classes.body}>
-                {/* {items} */}
                 {
                     items.map((e) => {
                         return (
@@ -32,26 +35,6 @@ const Pagination:React.FC<Props> = (props: Props) => {
                         )
                     })
                 }
-                {/* <div className={classes.item}>
-                    <button className={`${classes.circle} ${pageControl.page == 0 && classes.active}`} onClick={() => addQueryString("page", "0")}>
-                        1
-                    </button>
-                </div>
-                <div className={classes.item}>
-                    <button className={`${classes.circle} ${pageControl.page == 1 && classes.active}`} onClick={() => addQueryString("page", "1")}>
-                        2
-                    </button>
-                </div>
-                <div className={classes.item}>
-                    <button className={`${classes.circle} ${pageControl.page == 2 && classes.active}`} onClick={() => addQueryString("page", "2")}>
-                        3
-                    </button>
-                </div>
-                <div className={classes.item}>
-                    <button className={`${classes.circle} ${pageControl.page == 3 && classes.active}`} onClick={() => addQueryString("page", "3")}>
-                        4
-                    </button>
-                </div> */}
             </div>
         </div>
     )

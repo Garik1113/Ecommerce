@@ -4,9 +4,13 @@ import { CardNumberElement, CardCvcElement, CardExpiryElement } from '@stripe/re
 import { useCreditCard } from 'src/talons/Checkout/useCreditCard';
 import { Button } from 'semantic-ui-react';
 
+type Props = {
+    setStep: any
+}
 
-const CreditCart:React.FC = () => {
-    const { handleSubmit } = useCreditCard();
+const CreditCart:React.FC<Props> = (props: Props) => {
+    const { setStep } = props;
+    const { handleSubmit } = useCreditCard({setStep});
 
     return (
         <div className={classes.root}>

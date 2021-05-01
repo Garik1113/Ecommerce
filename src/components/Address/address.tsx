@@ -1,9 +1,11 @@
 import React, { useMemo } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import classes from './address.scss';
-import { TAddress } from 'src/store/types/cart';
-import { Button } from 'semantic-ui-react';
+import {  } from 'src/store/types/cart';
+import { Button, Dropdown } from 'semantic-ui-react';
 import * as yup from 'yup'
+import { IAddress } from 'src/interfaces/address';
+import { useAddress } from 'src/talons/Address/useAddress';
 
 
 interface Address {
@@ -14,7 +16,7 @@ interface Address {
     city: string,
     country: string,
     state?: string,
-    zip: string,
+    zip: number,
     phone: string,
     company?:string
 }
@@ -30,12 +32,15 @@ interface Countries {
 
 type Props = {
     handleSubmit?: any,
-    address?: TAddress
+    address?: IAddress
 }
 
 const Address:React.FC<Props> = (props: Props) => {
     const { handleSubmit, address } = props;
-    const initialValues: TAddress = address ? address : {
+    const { countryOptions, stateOptions, cityOptions } = useAddress()
+    const initialValues: IAddress = address ? address : {
+        email: "",
+        street: "",
         firstName: "",
         lastName: "",
         firstAddress: "",
@@ -43,9 +48,11 @@ const Address:React.FC<Props> = (props: Props) => {
         city: "",
         country: "",
         state: "",
-        zip: 0,
+        zip: "",
         phone: "",
-        company: ""
+        company: "",
+        isBillingAddress: true,
+        isShippingAddress: true
     }
     const validationSchema = useMemo(() => yup.object().shape({
             firstName: yup.string().required("Required"),
@@ -65,7 +72,7 @@ const Address:React.FC<Props> = (props: Props) => {
                 enableReinitialize={true}
             >
                 {
-                    ({handleSubmit}) => (
+                    ({handleSubmit, values, setFieldValue}) => (
                         <Form className={classes.form}>
                             <div className={classes.fieldWrapper}>
                                 <div className={classes.field}>
@@ -92,7 +99,21 @@ const Address:React.FC<Props> = (props: Props) => {
                             </div>
                             <div className={classes.fieldWrapper}>
                                 <div className={classes.field}>
-                                    <Field type="text" name="city" className={classes.input}/>
+                                    {/* <Field type="text" name="city" className={classes.input}/> */}
+                                    {/* <Dropdown
+                                        options={cityOptions}
+                                        value={values.city}
+                                        onChange={(e, data) => setFieldValue("city", data.value)}
+                                    /> */}
+                                    <Dropdown
+                                        onChange={(e, data) => setFieldValue('city', data.value)}
+                                        value={values.city}
+                                        name="city"
+                                        selection
+                                        fluid
+                                        id="city"
+                                        options={cityOptions}
+                                    />
                                     <label htmlFor="city" className={classes.label}>City</label>
                                     <ErrorMessage name="city" component="div" className={classes.error}/>
                                 </div>
@@ -104,20 +125,28 @@ const Address:React.FC<Props> = (props: Props) => {
                             </div>
                             <div className={classes.fieldWrapper}>
                                 <div className={classes.field}>
-                                    {/* <Field type="text" name="country" className={classes.input}/> */}
-                                    <select name="country" id=""
-                                     className={classes.input}>
-                                        {/* {
-                                            data && data.countries && data.countries.map((e,i) => (
-                                                <option value={e.name} key={i} className={classes.option}>{e.name}</option>
-                                            ))
-                                        } */}
-                                    </select>
+                                    <Dropdown
+                                        onChange={(e, data) => setFieldValue('country', data.value)}
+                                        value={values.country}
+                                        name="country"
+                                        selection
+                                        fluid
+                                        id="country"
+                                        options={countryOptions}
+                                    />
                                     <label htmlFor="country" className={classes.label}>Country</label>
                                     <ErrorMessage name="country" component="div" className={classes.error}/>
                                 </div>
                                 <div className={classes.field}>
-                                    <Field type="text" name="state" className={classes.input}/>
+                                    <Dropdown
+                                        onChange={(e, data) => setFieldValue('state', data.value)}
+                                        value={values.state}
+                                        name="state"
+                                        selection
+                                        fluid
+                                        id="state"
+                                        options={stateOptions}
+                                    />
                                     <label htmlFor="state" className={classes.label}>State</label>
                                     <ErrorMessage name="state" component="div" className={classes.error}/>
                                 </div>

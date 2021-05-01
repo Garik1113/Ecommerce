@@ -9,7 +9,7 @@ type Props = {
 export const useBanner = (props: Props) => {
     const { bannerId } = props;
     const { axiosClient } = useAxiosClient();
-    const [banner, setBanner] = useState(null);
+    const [banner, setBanner] = useState();
     const fetchBanner = useCallback(async() => {
         const response: AxiosResponse = await axiosClient("GET", `banners/${bannerId}`);
         const { status, data } = response;

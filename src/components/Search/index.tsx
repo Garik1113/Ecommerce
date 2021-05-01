@@ -1,1 +1,1 @@
-export {default} from './searchInput'
+export {default} from './search'

@@ -16,7 +16,7 @@ export const useOrder = () => {
             setShowItems(!showItems);
     }, [showItems, setShowItems]);
     const handleSubmit = useCallback(async() => {
-        const response: AxiosResponse = await axiosClient("POST", "orders/place_order", { cartId });
+        const response: AxiosResponse = await axiosClient("POST", "orders/", { cartId });
         const { status, data } = response;
         if (status == 200) {
             setMessage("success");

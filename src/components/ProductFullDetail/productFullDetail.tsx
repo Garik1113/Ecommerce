@@ -20,11 +20,9 @@ const ProductFullDetail:React.FC<ProductProps> = ({ product }: ProductProps) => 
     const {
         name,
         images,
-        attributes,
+        configurableAttributes,
         price,
         metaDescription,
-        optionSelections,
-        handleChangeOptionSelections,
         quantity,
         handleIncrementQuantity,
         handleDecrementQuantity,
@@ -46,15 +44,10 @@ const ProductFullDetail:React.FC<ProductProps> = ({ product }: ProductProps) => 
                     </div>
                     <hr/>
                     <div className={classes.price}>
-                        <Price price={product.price}/>
-                    </div>
-                    <div className={classes.description}>
-                        <p>{metaDescription}</p>
+                        <Price product={product}/>
                     </div>
                     <Attributes 
-                        attributes={attributes}
-                        optionSelections={optionSelections}
-                        handleChangeOptionSelections={handleChangeOptionSelections}
+                        attributes={configurableAttributes}
                     />
                     <Quantity 
                         quantity={quantity}

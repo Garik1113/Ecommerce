@@ -1,9 +1,9 @@
 import { AxiosResponse } from "axios";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { IAddress } from "src/interfaces/address";
 import { State } from "src/store";
 import { getCartDetails } from "src/store/actions/cart/asyncActions";
-import { TAddress } from "src/store/types/cart";
 import { useAxiosClient } from "../Axios/useAxiosClient"
 
 type Props = {
@@ -15,24 +15,55 @@ export const useBillingAddress = (props: Props) => {
     const { axiosClient } = useAxiosClient();
     const [billingAndShippingAreTheSame, setBillingAndShippingAreTheSame] = useState<boolean>(true);
     const {cartId, cart } = useSelector((state: State) => state.cart);
+    const isSignedIn = useSelector((state:State) => state.customer.isSignedIn);
+    const [selectedAddress, setSelectedAddress] = useState<IAddress | null>(null);
+    const [addresses, setAddresses] = useState([]);
     const { shippingAddress, billingAddress } = cart;
     const dispatch = useDispatch();
 
     const handleChange = useCallback((e, data) => {
         setBillingAndShippingAreTheSame(data.checked)
     }, []);
-    const handleSubmit = useCallback(async(values: TAddress) => {
-        const address: TAddress = billingAndShippingAreTheSame ? shippingAddress : values
-        const response: AxiosResponse = await axiosClient("PUT", 'cart/add-billing-address', { address, cartId });
-        console.log(response);
+    const fetchAddresses = useCallback(async() => {
+        const { data, status }:AxiosResponse = await axiosClient("GET", 'customers/');
+        if (status == 200 && data.customer) {
+            setAddresses(data.customer.addresses);
+        }
+    }, [addresses]);
+    const handleSubmit = useCallback(async(values: IAddress | null) => {
+        let address: IAddress | null = null;
+        if(billingAndShippingAreTheSame) {
+            address = shippingAddress
+        }
+        if (values) {
+            address = values
+        }
+        if(selectedAddress) {
+            address = selectedAddress
+        }
+        await axiosClient("PUT", 'cart/add-billing-address', { address, cartId });
         await dispatch(getCartDetails());
         setStep({value: "payment", index: 2});
-    }, [axiosClient, cartId, billingAndShippingAreTheSame]);
+    }, [
+        axiosClient, 
+        cartId, 
+        billingAndShippingAreTheSame, 
+        shippingAddress, 
+        selectedAddress
+    ]);
 
+    useEffect(() => {
+        fetchAddresses()
+    }, [])
     return {
         handleSubmit,
         billingAndShippingAreTheSame,
         handleChange,
-        billingAddress
+        billingAddress,
+        shippingAddress,
+        isSignedIn,
+        addresses,
+        selectedAddress, 
+        setSelectedAddress
     }
 }

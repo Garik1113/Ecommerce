@@ -3,14 +3,15 @@ import { CarouselProvider, Slider as PureSlider, Slide,ButtonBack, ButtonNext } 
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import classes from './slider.scss'
 import { useSlider } from 'src/talons/Slider/useSlider';
-import { IMAGE_BASE_URL } from 'src/config/defaults';
+import { BACKEND_URL, IMAGE_BASE_URL } from 'src/config/defaults';
 
 const Slider:React.FC = () => {
     const { slider } = useSlider();
-    if(!slider) {
+    if (!slider.slides) {
         return null
-    } else {
-        return (
+    } 
+
+    return (
             <CarouselProvider 
                 naturalSlideWidth={800}
                 naturalSlideHeight={400}
@@ -21,10 +22,10 @@ const Slider:React.FC = () => {
             >
                 <PureSlider>
                     {
-                        slider.slides.map((slide) => {
+                        slider.slides.map((slide: any) => {
                             return (
                                 <Slide index={slide._id} key={slide._id}>
-                                    <img src={`${IMAGE_BASE_URL}/sliders/${slide.image}`} className={classes.image}/>
+                                    <img src={`${BACKEND_URL}/images/slider/${slide.image}`} className={classes.image}/>
                                 </Slide>
                                 
                             )
@@ -39,8 +40,6 @@ const Slider:React.FC = () => {
                 </ButtonNext>
             </CarouselProvider> 
         )
-    }
-    
 }
 
 export default Slider;

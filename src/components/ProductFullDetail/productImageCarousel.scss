@@ -14,10 +14,16 @@
 }
 
 .dot {
-    width: 70px;
-    height: 70px;
 }
 
 .thumbnailImg {
-    width: 50px;
+    width: 100%;
+    max-width: 150px;
+    height: auto
+}
+
+.arrows {
+    background: none;
+    font-size: 35px;
+    border: none;
 }
