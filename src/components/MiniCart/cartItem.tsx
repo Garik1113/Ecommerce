@@ -4,8 +4,9 @@ import { useCartItem } from 'src/talons/MiniCart/useCartItem';
 import classes from './cartItem.scss';
 import get from 'lodash/get';
 import { handleImageError } from 'src/util/handleImageError';
-import { BACKEND_URL, IMAGE_BASE_URL } from 'src/config/defaults';
+import { BACKEND_URL } from 'src/config/defaults';
 import { ICartItem } from 'src/interfaces/cart';
+import Attributes from '../Attributes';
 
 type Props = {
     showDescription: boolean,
@@ -18,7 +19,8 @@ const CartItem:React.FC<Props> = (props: Props) => {
     const { product } = cartItem;
     const { 
         handleDeleteCartItem,
-        handleChangeQuantity
+        handleChangeQuantity,
+        currency
     } = useCartItem({cartItem});
     
     return (
@@ -33,6 +35,14 @@ const CartItem:React.FC<Props> = (props: Props) => {
                             <h4>{product.name}</h4>
                         </Link>
                     </div>
+                    <Attributes 
+                        attributes={product.configurableAttributes}
+                        classes={{
+                            root: classes.attributeRoot,
+                            attributeName: classes.attributeName,
+                            attributeValue: classes.attributeValue
+                        }}
+                    />
                     {showDescription 
                     ?   <div className={classes.description}>
                             <p>{product.description}</p>
@@ -52,7 +62,7 @@ const CartItem:React.FC<Props> = (props: Props) => {
                             </div>
                         }
                         <div className={classes.price}>
-                            <span>{product.price}</span>
+                            <span>{product.discountedPrice || product.price} {currency.name}</span>
                         </div>
                     </div>
                     {dontShowActions 

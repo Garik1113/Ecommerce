@@ -12,7 +12,8 @@ const Account:React.FC = () => {
         lastName,
         email, 
         handleSubmit,
-        isSubmitting
+        isSubmitting,
+        message
     } = useAccount();
 
     return (
@@ -33,6 +34,13 @@ const Account:React.FC = () => {
                     >
                         {({values}) => (
                             <Form className={classes.form}>
+                                {
+                                    message.type && message.value
+                                    ?   <div className={message.type == "success" ? classes.successMessage : classes.errorMessage}>
+                                            {message.value}
+                                        </div>
+                                    :   null
+                                }
                                 <div className={classes.field}>
                                     <Field type="text" name="email" className={classes.input}/>
                                     {values.email 

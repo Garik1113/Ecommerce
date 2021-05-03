@@ -1,4 +1,7 @@
 export const getTotalPages = (totalProducts: number, perPage: number) => {
+    if(!totalProducts || !perPage) {
+        return 0
+    }
     console.log(totalProducts, perPage)
     if(totalProducts < perPage) {
         return 0

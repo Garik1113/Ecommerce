@@ -3,10 +3,11 @@ import { IProduct } from 'src/interfaces/product';
 import classes from './price.scss';
 
 type Props = {
-    product: IProduct
+    product: IProduct,
+    currency: any
 }
 const Price:React.FC<Props> = (props: Props) => {
-    const { product } = props;
+    const { product, currency } = props;
     const { discountedPrice, price } = product;
 
     const content = useMemo(() => {
@@ -14,10 +15,10 @@ const Price:React.FC<Props> = (props: Props) => {
             return (
                 <div className={classes.discountedField}>
                     <span className={classes.discounted}>
-                        {discountedPrice}
+                        {discountedPrice} {currency.name}
                     </span>
                     <span className={classes.oldPrice}>
-                        {price}
+                        {price} {currency.name}
                     </span>
                 </div>
             )
@@ -25,12 +26,12 @@ const Price:React.FC<Props> = (props: Props) => {
             return (
                 <div className={classes.priceField}>
                     <span className={classes.price}>
-                        {price}
+                        {price} {currency.name}
                     </span>
                 </div>
             )
         }
-    }, [discountedPrice, price])
+    }, [discountedPrice, price, currency])
 
     return (
         <div className={classes.root}>

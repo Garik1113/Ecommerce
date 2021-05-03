@@ -1,11 +1,13 @@
 import { useCallback, useMemo } from 'react';
 import { useHistory, useParams } from 'react-router';
 import queryString from 'query-string';
+import { useConfig } from '../Config/useConfig';
 
 export const usePageControl = () => {
     const history = useHistory();
     const queryParams = queryString.parse(history.location.search);
     const params:any = useParams();
+    const { getConfigValue } = useConfig()
     const { id } = params;
     const updateQueryStringParameter = useCallback((uri:string, key:string, value:string):string => {
         var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
@@ -29,12 +31,13 @@ export const usePageControl = () => {
         
     }, [history]);
 
+
+
     const pageControl = useMemo(() => {
         return {
             categoryName: queryParams.name || "",
             category: queryParams.category || "",
             page: queryParams.page || 0,
-            perPage: queryParams.perPage || 9,
             date: queryParams.date,
             categoryId: id,
             price_min: queryParams.price_min,

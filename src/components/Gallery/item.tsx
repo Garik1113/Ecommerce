@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '../Button';
 import { Link } from 'react-router-dom';
 import classes from './item.scss';
 import { useItem } from '../../talons/Gallery/useItem';
@@ -7,7 +6,8 @@ import { handleImageError } from 'src/util/handleImageError';
 import { IProduct } from 'src/interfaces/product';
 
 interface Props {
-    item: IProduct
+    item: IProduct,
+    rootClass?: any
 }
 
 const Item:React.FC<Props> = ({item}: Props) => {
@@ -17,7 +17,8 @@ const Item:React.FC<Props> = ({item}: Props) => {
         imageSrc,
         price,
         discountedPrice,
-        inWishList
+        inWishList,
+        currency
     } = useItem({item});
 
     return (
@@ -40,11 +41,11 @@ const Item:React.FC<Props> = ({item}: Props) => {
                     {
                         discountedPrice
                         ?   <div className={classes.discountedPriceField}>
-                                <span className={classes.newPrice}>{discountedPrice}</span>
-                                <span className={classes.oldPrice}>{price}</span>
+                                <span className={classes.newPrice}>{discountedPrice} {currency.name}</span>
+                                <span className={classes.oldPrice}>{price} {currency.name}</span>
                             </div>
                         :   <div className={classes.price}>
-                                <span className={classes.newPrice}>{price}</span>
+                                <span className={classes.newPrice}>{price} {currency.name}</span>
                             </div>
                     }
                 </div>

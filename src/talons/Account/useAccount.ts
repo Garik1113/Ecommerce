@@ -8,14 +8,21 @@ import { GET_CUSTOMER_DETAILS } from 'src/store/actions/customer/actions';
 import { getCustomerDetails } from 'src/store/actions/customer/asyncActions';
 import { useAxiosClient } from '../Axios/useAxiosClient';
 
+type Message = {
+    type: string,
+    value: string
+}
+
 export const useAccount = () => {
     const isSignedIn = useSelector((state:State) => state.customer.isSignedIn);
     const { firstName, lastName, email } = useSelector((state: State) => state.customer.customer);
     const dispatch = useDispatch();
     const { axiosClient } = useAxiosClient();
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [message, setMessage] = useState<Message>({type: "", value: ""})
     
     const handleSubmit = useCallback(async (values) => {
+        setMessage({type: "", value: ""})
         setIsSubmitting(true)
         const {status, data}: AxiosResponse =  await axiosClient("PUT", 'customers/', { data: values })
         if (status == 200 && data.customer) {
@@ -23,9 +30,12 @@ export const useAccount = () => {
                 type: GET_CUSTOMER_DETAILS,
                 customer: data.customer
             })
+            setMessage({type: "success", value: "Succesfuly updated"})
+        } else {
+            setMessage({type: "error", value: "Something wents wrong"})
         }
         setIsSubmitting(false)
-    }, [axiosClient, getCustomerDetails]);
+    }, [axiosClient, getCustomerDetails, setMessage]);
 
     useEffect(() => {
         dispatch(getCustomerDetails())
@@ -55,6 +65,7 @@ export const useAccount = () => {
         email,
         formik,
         handleSubmit,
-        isSubmitting
+        isSubmitting,
+        message
     }
 }

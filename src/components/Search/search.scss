@@ -9,6 +9,7 @@
     background: #fff;
     border-radius: 5px;
     margin-top: 5px;
+    z-index: 100;
 }
 
 .result {
@@ -18,4 +19,14 @@
     height: 30px;
     line-height: 30px;
     color: rgb(24, 24, 34);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.034);
+    z-index: 2;
 }

@@ -1,0 +1,35 @@
+.list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 20px;
+}
+
+.slider {
+    position: relative;
+}
+
+.buttonBack {
+    width: 50px;
+    height: 50px;
+    font-size: 45px;
+    position: absolute;
+    left: 0;
+    color: #000;
+    background: transparent;
+    border: none;
+    z-index: 1000;
+    top: 25%;
+}
+
+.buttonNext {
+    width: 50px;
+    height: 50px;
+    font-size: 45px;
+    position: absolute;
+    right: 0;
+    color: #000;
+    background: transparent;
+    border: none;
+    z-index: 1000;
+    top: 25%;
+}

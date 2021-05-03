@@ -1,11 +1,8 @@
 import { useCallback, useMemo, useState } from 'react';
 import { IProduct } from 'src/interfaces/product';
 import get from 'lodash/get';
-import { BACKEND_URL, IMAGE_BASE_URL } from 'src/config/defaults';
-
-const arrayFromString = (str: String):Array<string> => {
-    return str.split(",")
-}
+import { BACKEND_URL } from 'src/config/defaults';
+import { useConfig } from '../Config/useConfig';
 
 interface Props {
     item: IProduct
@@ -16,6 +13,11 @@ export const useItem = (props: Props) => {
     const tepmWishlist: string | null = localStorage.getItem('wishlist') || "";
     const wishlist:string[] = tepmWishlist ? JSON.parse(tepmWishlist) : [];
     const [inWishList, setInWishList] = useState(wishlist.includes(item._id));
+    const { getConfigValue } = useConfig()
+    const currency = useMemo(
+        () => getConfigValue("baseCurrency"),
+        [getConfigValue]
+    )
     const imageSrc = useMemo(() => {
         const image = get(item, "images[0].main_image", "");
         return `${BACKEND_URL}/product/${image}`
@@ -40,6 +42,7 @@ export const useItem = (props: Props) => {
         name,
         price,
         inWishList,
-        discountedPrice
+        discountedPrice,
+        currency
     }
 }

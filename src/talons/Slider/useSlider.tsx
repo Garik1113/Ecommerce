@@ -16,7 +16,7 @@ export const useSlider = () => {
     useEffect(() => {
         fetchHomeSlider()
     }, [fetchHomeSlider]);
-    console.log(slider)
+    
     return {
         slider
     }

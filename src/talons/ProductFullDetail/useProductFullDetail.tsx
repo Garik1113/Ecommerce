@@ -4,15 +4,21 @@ import { State } from 'src/store';
 import { addProductToCart, getCartDetails } from 'src/store/actions/cart/asyncActions';
 import { TAddItemToCartData } from 'src/store/types/cart';
 import { ProductProps } from '../../components/ProductFullDetail/productFullDetail';
+import { useConfig } from '../Config/useConfig';
     
 
 export const useProductFullDetail = (props: ProductProps) => {
     const { product } = props;
     const { name, price, images, configurableAttributes, metaDescription } = product;
-    const cartId: string | null = useSelector((state: State) => state.cart.cartId || state.customer.customer.cartId);
+    const cartId: string | null = useSelector((state: State) => state.cart.cartId || state.customer.customer.cartId || state.cart.cart._id);
     const [isSubmittingReview, setIsSubmittingReview] = useState(false)
     const token = useSelector((state: State) => state.customer.token);
     const isSignedIn = useSelector((state: State) => state.customer.isSignedIn);
+    const { getConfigValue } = useConfig()
+    const currency = useMemo(
+        () => getConfigValue("baseCurrency"),
+        [getConfigValue]
+    )
     const dispatch = useDispatch();
     const headers = useMemo(() => {
         return {
@@ -62,6 +68,7 @@ export const useProductFullDetail = (props: ProductProps) => {
         metaDescription,
         isSignedIn,
         isSubmittingReview, 
-        setIsSubmittingReview
+        setIsSubmittingReview,
+        currency
     }
 }

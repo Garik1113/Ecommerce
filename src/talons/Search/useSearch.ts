@@ -12,8 +12,7 @@ export const useSearch = () => {
     
     const handleChange = useCallback(async(value:string) => {
         timeOutRef.current = setTimeout(async() => {
-            clearTimeout(timeOutRef.current)
-            addQueryString("product_name", value);
+            clearTimeout(timeOutRef.current);
             const {status, data}: AxiosResponse = await axiosClient("GET", `products/search?search_query=${value}`);
             if (status == 200 && data.products) {
                 setResults(data.products)
@@ -28,6 +27,7 @@ export const useSearch = () => {
 
     return {
         handleChange,
-        results
+        results,
+        setResults
     }
 }

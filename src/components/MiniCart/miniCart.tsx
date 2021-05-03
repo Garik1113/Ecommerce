@@ -3,7 +3,7 @@ import classes from './miniCart.scss';
 import { Link } from 'react-router-dom';
 import CartItem from './cartItem';
 import { useMiniCart } from 'src/talons/MiniCart/useMiniCart';
-import { TCartItem } from 'src/store/types/cart';
+import { ICartItem } from 'src/interfaces/cart';
 
 
 const MiniCart:React.FC = () => {
@@ -23,9 +23,9 @@ const MiniCart:React.FC = () => {
             </header>
             <section className={classes.body}>
                 {
-                    cartItems.map((cartItem: TCartItem, index: number) => (
+                    cartItems.map((cartItem: ICartItem, index: number) => (
                         <CartItem 
-                            showDescription={true} 
+                            showDescription={false} 
                             key={index}
                             cartItem={cartItem}
                         />

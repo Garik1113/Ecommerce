@@ -1,17 +1,21 @@
 import React from 'react';
-import { ConfigurableAttribute, IAttribute, IValue } from 'src/interfaces/product';
-import classes from './attributes.scss';
-import Values from './values';
+import { ConfigurableAttribute } from 'src/interfaces/product';
+import mergeClasses from 'src/util/classify';
+import defaultClasses from './attributes.scss';
 
 interface AttributeProps {
     attributes: ConfigurableAttribute[],
+    classes?: any
 }
 
 const Attributes:React.FC<AttributeProps> = (props: AttributeProps) => {
     const { 
         attributes
     } = props;
-    console.log("attributes", attributes)
+    const classes = mergeClasses(defaultClasses, props.classes);
+    if (!attributes || !attributes.length) {
+        return null
+    }
     return (
         <div className={classes.root}>
             {

@@ -1,5 +1,6 @@
 export const TOGGLE_DRAWER = "TOGGLE_DRAWER";
 export const FETCH_LOCATIONS = "FETCH_LOCATIONS";
+export const FETCH_CONFIGS = 'FETCH_CONFIGS'
 
 type Location = {
     id: string,
@@ -22,6 +23,12 @@ export interface FetchLocations {
     locations: Locations
 }
 
+export interface FetchConfigs {
+    type: typeof FETCH_CONFIGS,
+    configs: any
+}
+
 export type AppActions = 
     | ToggleDrawer
     | FetchLocations
+    | FetchConfigs

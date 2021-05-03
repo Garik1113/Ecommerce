@@ -5,6 +5,7 @@ export const GET_CART_DETAILS = "GET_CART_DETAILS";
 export const SET_CART_ID = "SET_CART_ID";
 export const DELETE_CART = "DELETE_CART";
 export const NULLIFY_CART = "NULLIFY_CART"
+export const CHANGE_ITEM_QUANTITY = "CHANGE_ITEM_QUANTITY";
 
 
 export type TAddItemToCartData = {
@@ -36,9 +37,15 @@ export interface nullifyCart {
     type: typeof NULLIFY_CART
 }
 
+export interface ChangeItemQuantity {
+    type: typeof CHANGE_ITEM_QUANTITY
+    cart: ICart
+}
+
 export type CartActions = 
     | ToggleCartDrawer
     | CreateCart
     | deleteCart
     | GetCartDetails
     | nullifyCart
+    | ChangeItemQuantity 

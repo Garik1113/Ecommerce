@@ -1,10 +1,10 @@
 import React from 'react';
-import { Product } from 'src/store/types/product';
+import { IProduct } from 'src/interfaces/product';
 import classes from './gallery.scss';
 import Item from './item';
 
 type Props = {
-    products: Product[],
+    products: IProduct[],
     rootClass?: string
 }
 
@@ -14,7 +14,7 @@ const Gallery:React.FC<Props> = (props: Props) => {
     return (
         <div className={`${rootClass ? rootClass : classes.root}`}>
             {
-                products.map((product, index) => <Item key={index} item = {product}/>)
+                products.map((product, index) => <Item rootClass={rootClass} key={index} item = {product}/>)
             }
         </div>
     )

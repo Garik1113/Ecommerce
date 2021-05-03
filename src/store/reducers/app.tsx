@@ -1,4 +1,4 @@
-import { AppActions, FETCH_LOCATIONS, TOGGLE_DRAWER } from '../types/app';
+import { AppActions, FETCH_CONFIGS, FETCH_LOCATIONS, TOGGLE_DRAWER } from '../types/app';
 type Location = {
     id: string,
     name: string
@@ -10,7 +10,8 @@ type Locations = {
 }
 export interface AppInitialState {
     drawer: string,
-    locations: Locations
+    locations: Locations,
+    configs: any
 }
 
 const initialState:AppInitialState = {
@@ -19,7 +20,8 @@ const initialState:AppInitialState = {
         countries: [],
         cities: [],
         states: []
-    }
+    },
+    configs: {}
 };
 
 export const appReducer = (state: AppInitialState = initialState, action: AppActions) => {
@@ -28,6 +30,8 @@ export const appReducer = (state: AppInitialState = initialState, action: AppAct
             return {...state, drawer: action.drawer};
         case FETCH_LOCATIONS:
             return {...state, locations: action.locations};
+        case FETCH_CONFIGS:
+            return { ...state, configs: action.configs }
         default: return state;
     }
 }

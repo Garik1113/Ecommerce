@@ -2,6 +2,7 @@
     position: relative;
     background: #ffffff;
     padding: 20px 20px;
+    max-height: 400px;
 } 
 
 @media (max-width: 800px) {
@@ -46,7 +47,6 @@
 }
 
 .price {
-    margin-top: 15px;
 }
 
 .price span {

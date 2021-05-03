@@ -43,7 +43,7 @@ export const addProductToCart =  (addItemToCartData: TAddItemToCartData, headers
         });
     }
 }
-
+//84Cuqa
 export const deleteCart = () => (dispatch: Dispatch<CartActions>) => {
     dispatch({
         type: DELETE_CART

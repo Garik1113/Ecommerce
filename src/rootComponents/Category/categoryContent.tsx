@@ -5,6 +5,7 @@ import Gallery from '../../components/Gallery';
 import classes from './categoryContent.scss';
 import { Button } from 'semantic-ui-react';
 import Pagination from 'src/components/Pagination';
+import Banner from 'src/components/Banner';
 
 
 const CategoryContent:React.FC = () => {
@@ -19,7 +20,8 @@ const CategoryContent:React.FC = () => {
         setPriceRange,
         addQueryString,
         pageControl,
-        totalPages
+        totalPages,
+        attributes
     } = useCategoryContent({classes});
 
     return (
@@ -54,7 +56,17 @@ const CategoryContent:React.FC = () => {
                 </div>
             </div>
             <div className={classes.body}>
-                <Filters priceRange={priceRange} setPriceRange={setPriceRange} handleApplyPriceRange={handleApplyPriceRange}/>
+                <div className={classes.filterAndBanner}>
+                    <Filters 
+                        priceRange={priceRange} 
+                        setPriceRange={setPriceRange} 
+                        handleApplyPriceRange={handleApplyPriceRange}
+                        addQueryString={addQueryString}
+                        attributes={attributes}
+                    />
+                    <Banner bannerId="607fa92a68565d154970ade7"/>
+                </div>
+                
                 <Gallery products={products} rootClass={rootClass}/>
             </div>
             <div className={classes.pagination}>

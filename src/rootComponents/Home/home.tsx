@@ -19,7 +19,7 @@ const Home:React.FC = () => {
                 <div className={classes.newCollection}>
                     <div className={classes.newTitleField}>
                         <span className={classes.newTitle}>
-                            New Collection
+                            Last Products
                         </span>
                     </div>
                     <div className={classes.newBody}>

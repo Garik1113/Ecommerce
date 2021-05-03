@@ -19,6 +19,7 @@ const ReviewForm: React.FC<Props> = (props: Props) => {
 
     return (
         <div className={classes.root}>
+            <div className={classes.title}>Add Review</div>
             <form onSubmit={formik.handleSubmit}>
                 <div className={classes.ratingField}>
                     <Rating 

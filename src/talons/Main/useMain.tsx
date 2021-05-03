@@ -3,8 +3,8 @@ import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ICategory } from 'src/interfaces/category';
 import { State } from 'src/store';
+import { fetchConfigs } from 'src/store/actions/app/asyncActions';
 import { getCartDetails } from 'src/store/actions/cart/asyncActions';
-import { TCategory } from 'src/store/types/category'
 import { useWindowSize, WindowSize } from 'src/util/useWindowSize';
 import { useAxiosClient } from '../Axios/useAxiosClient'
 
@@ -32,9 +32,19 @@ export const useMain = () => {
             setCategories(data.categories)
         }
     }, [axiosClient]);
+    const [config, setConfig] = useState<any>({});
+
+    // const fetchConfigs = useCallback(async() => {
+    //     const response: AxiosResponse = await axiosClient('GET', 'configs/');
+    //     const { data, status } = response;
+    //     if ( status == 200 && data.config) {
+    //         setConfig(data.config)
+    //     }
+    // }, [axiosClient, setConfig]);
 
     useEffect(() => {
         fetchCategories();
+        dispatch(fetchConfigs())
         if (cartId) {
             dispatch(getCartDetails())
         }

@@ -3,6 +3,7 @@ import { IProduct } from 'src/interfaces/product';
 import { useProductFullDetail } from 'src/talons/ProductFullDetail/useProductFullDetail';
 import Attributes from '../Attributes';
 import Button from '../Button';
+import ProductSlider from '../ProductSlider';
 import Quantity from '../Qunatity';
 import ReviewForm from '../ReviewForm';
 import Reviews from '../Reviews';
@@ -21,15 +22,14 @@ const ProductFullDetail:React.FC<ProductProps> = ({ product }: ProductProps) => 
         name,
         images,
         configurableAttributes,
-        price,
-        metaDescription,
         quantity,
         handleIncrementQuantity,
         handleDecrementQuantity,
         handleAddProductToCart,
         isSignedIn,
         isSubmittingReview, 
-        setIsSubmittingReview
+        setIsSubmittingReview,
+        currency
     } = talonProps;
 
     return (
@@ -44,7 +44,7 @@ const ProductFullDetail:React.FC<ProductProps> = ({ product }: ProductProps) => 
                     </div>
                     <hr/>
                     <div className={classes.price}>
-                        <Price product={product}/>
+                        <Price product={product} currency={currency}/>
                     </div>
                     <Attributes 
                         attributes={configurableAttributes}
@@ -81,7 +81,7 @@ const ProductFullDetail:React.FC<ProductProps> = ({ product }: ProductProps) => 
                 </section>
             </div>
             <div className={classes.footerActions}>
-                <div dangerouslySetInnerHTML={{__html: product.description}}/>
+                <div dangerouslySetInnerHTML={{__html: product.description}} className={classes.description}/>
                 {
                     isSignedIn
                     ?   <div className={classes.reviews}>
@@ -93,6 +93,10 @@ const ProductFullDetail:React.FC<ProductProps> = ({ product }: ProductProps) => 
                         </div>
                     :   null
                 }
+            </div>
+            <div className={classes.relatedProducts}>
+                <div className={classes.relatedTitle}>Related Products</div>
+                <ProductSlider categoryId={product.categories[0]}/>
             </div>
         </div>
     )

@@ -1,7 +1,9 @@
 import path from 'path';
-import { Configuration } from 'webpack';
+import  webpack, { Configuration } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import BundleanalyzerModule from 'webpack-bundle-analyzer'
+const BundleAnalyzerPlugin = BundleanalyzerModule.BundleAnalyzerPlugin
 
 const webpackConfig = ():Configuration => ({
     entry: './src/index.tsx',
@@ -38,7 +40,17 @@ const webpackConfig = ():Configuration => ({
         //     }
         // }
     },
-    
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          commons: {
+            test: /[\\/]node_modules[\\/]/,
+            name: "vendors",
+            chunks: "all"
+          }
+        }
+      }
+    },
     module: {
       rules: [
               {
@@ -101,7 +113,9 @@ const webpackConfig = ():Configuration => ({
     devtool: 'inline-source-map',
     plugins: [ 
         new HtmlWebpackPlugin({template: './public/index.html',}),
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
+        new webpack.optimize.ModuleConcatenationPlugin(),
+        new BundleAnalyzerPlugin()
     ]     
 });
 export default webpackConfig;

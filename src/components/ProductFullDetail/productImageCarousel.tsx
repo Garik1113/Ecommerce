@@ -35,7 +35,7 @@ const ProductImageCarousel:React.FC<Props> = ({gallery}: Props) => {
                 </Slider>
                 <div className={classes.thumbnails}>
                     <ButtonBack className={classes.arrows}>
-                        <Icon name="arrow left"/>
+                        <i className="fas fa-chevron-left"></i>
                     </ButtonBack>
                     {
                         gallery.map((image, index) => {
@@ -47,7 +47,7 @@ const ProductImageCarousel:React.FC<Props> = ({gallery}: Props) => {
                         })
                     }
                     <ButtonNext className={classes.arrows}>
-                        <Icon name="arrow right"/>
+                        <i className="fas fa-chevron-right"></i>
                     </ButtonNext>
                 </div>
             </CarouselProvider> 

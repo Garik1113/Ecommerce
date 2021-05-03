@@ -1,18 +1,31 @@
 .root {
     width: 100%;
     margin-top: 32px;
+    border: 1px solid #878787;
+    padding: 10px;
 }
 
 .ratingField {
     width: 100%;
     text-align: center;
+    margin-bottom: 10px;
 }
 
 .commentField {
     width: 100%;
-    
 }
 
 .comment {
     width: 100%;
+}
+
+.buttons {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.title {
+    text-align: center;
+    margin: 10px auto;
+    font-size: 25px;
 }
