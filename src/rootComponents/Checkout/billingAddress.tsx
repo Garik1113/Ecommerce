@@ -63,7 +63,8 @@ const BillingAddress:React.FC<Props> = (props: Props) => {
             <div className={classes.checkboxField}>
                 <Checkbox 
                     onChange={handleChange} 
-                    checked={billingAddress._id && billingAddress._id !== shippingAddress._id ? false : billingAndShippingAreTheSame}/>
+                    checked={billingAddress && billingAddress._id && billingAddress._id !== shippingAddress._id ? false : billingAndShippingAreTheSame}
+                />
                 <span>Billing and shipping address are the same</span>
             </div>
             { 
@@ -73,7 +74,7 @@ const BillingAddress:React.FC<Props> = (props: Props) => {
             }
             { billingAndShippingAreTheSame
                 ?    <div className={classes.buttons}>
-                        <Button onClick={handleSubmit}>Submit</Button>
+                        <Button onClick={() => handleSubmit(null)}>Submit</Button>
                     </div>
                 :   null
             }

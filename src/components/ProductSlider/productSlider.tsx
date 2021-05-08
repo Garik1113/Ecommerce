@@ -1,10 +1,11 @@
 import { fromPairs } from 'lodash';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useProductSlider } from 'src/talons/ProductSlider/useProductSlider';
 import classes from './productSlider.scss';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel'
 import { IProduct } from 'src/interfaces/product';
 import Item from '../Gallery/item';
+import { useWindowSize } from 'src/util/useWindowSize';
 
 type Props = {
     categoryId: string
@@ -12,6 +13,23 @@ type Props = {
 
 const ProductSlider:React.FC<Props> = (props: Props) => {
     const { categoryId } = props;
+    const { innerWidth } = useWindowSize();
+    const [visibleItems, setVisibleItems] = useState(4);
+    useEffect(() => {
+        if (innerWidth > 1200) {
+            setVisibleItems(4)
+        }
+        if(innerWidth < 1100) {
+            setVisibleItems(3)
+        }
+        if(innerWidth < 800) {
+            setVisibleItems(2)
+        }
+        if(innerWidth < 500) {
+            setVisibleItems(1)
+        }
+    }, [innerWidth]);
+    
     const { products } = useProductSlider({categoryId});
     if (!products.length) {
         return null
@@ -27,15 +45,15 @@ const ProductSlider:React.FC<Props> = (props: Props) => {
                 }
             </div>
         )
-    } 
-
+    }
+    
     return (
         <CarouselProvider
             totalSlides={products.length}
             naturalSlideWidth={300}
             naturalSlideHeight={400}
             infinite={true}
-            visibleSlides={5}
+            visibleSlides={visibleItems}
             className={classes.slider}
         >
             <ButtonBack className={classes.buttonBack}>

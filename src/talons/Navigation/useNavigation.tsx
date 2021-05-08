@@ -9,6 +9,7 @@ import { useAxiosClient } from '../Axios/useAxiosClient';
 
 export const useNavigation = () => {
     const isActive:string = useSelector((state:State) => state.app.drawer);
+    const isSignidIn = useSelector((state: State) => state.customer.isSignedIn);
     const [categories, setCategories] = useState<ICategory[]>([]);
     const dispatch:Dispatch<AppActions> = useDispatch()
     const { axiosClient } = useAxiosClient();
@@ -30,6 +31,7 @@ export const useNavigation = () => {
     return {
         isActive,
         categories,
-        handleCloseDrawer
+        handleCloseDrawer,
+        isSignidIn
     }
 }

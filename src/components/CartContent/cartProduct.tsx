@@ -6,20 +6,22 @@ import { handleImageError } from 'src/util/handleImageError';
 import get from 'lodash/get';
 import classes from './cartProduct.scss';
 import { ICartItem } from 'src/interfaces/cart';
+import Attributes from '../Attributes';
 
 interface Props {
     cartItem: ICartItem,
-    inOrder?: boolean
+    inOrder?: boolean,
+    currency: any
 }
 
 const CartProduct:React.FC<Props> = (props: Props) => {
-    const { cartItem, inOrder } = props;
+    const { cartItem, inOrder, currency } = props;
     const { 
         handleDeleteCartItem,
         handleChangeQuantity
     } = useCartItem({cartItem})
     const { product, quantity } = cartItem;
-    const { name, _id, price } = product;
+    const { name, _id, price, discountedPrice } = product;
 
     return (
         <div className={classes.root}>
@@ -32,11 +34,23 @@ const CartProduct:React.FC<Props> = (props: Props) => {
                         <h3>{name}</h3>
                     </Link>
                 </div>
+                <div className={classes.attributeField}>
+                    <b>Attributes</b>
+                    <Attributes 
+                        attributes={product.configurableAttributes}
+                        classes={{
+                            attribute: classes.attribute,
+                            root: classes.attributeRoot,
+                            attributeName: classes.attributeName,
+                            attributeValue: classes.attributeValue
+                        }}
+                    />
+                </div>
                 <div className={classes.price}>
                     <div className={classes.propertyName}>
                         <b>Price</b>
                     </div>
-                    <span>{price}</span>
+                    <span className={classes.itemPrice}>{discountedPrice || price} {currency.name}</span>
                 </div>
                 <div className={classes.quantity}>
                     <div className={classes.propertyName}>
@@ -44,7 +58,7 @@ const CartProduct:React.FC<Props> = (props: Props) => {
                     </div>
                     <div className={classes.qtyNumber}>
                         {!inOrder ? <i className="fas fa-chevron-left" onClick={() => handleChangeQuantity(false)}></i> : null}
-                        <input type="number"  min={1} defaultValue={1} value={quantity}/>
+                        <input type="number"  min={1} value={quantity}/>
                         {!inOrder ? <i className="fas fa-chevron-right" onClick={() => handleChangeQuantity(true)}></i> : null}
                     </div>
                 </div>
@@ -52,7 +66,7 @@ const CartProduct:React.FC<Props> = (props: Props) => {
                     <div className={classes.propertyName}>
                         <b>Summary price</b>
                     </div>
-                    <span>{price  * quantity}</span>
+                    <span className={classes.summary}>{(discountedPrice || price)  * quantity} {currency.name}</span>
                 </div>
             </div>
             {

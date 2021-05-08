@@ -18,7 +18,7 @@ const Orders:React.FC = () => {
                     {
                         orders.length 
                         ?   orders.map((e: IOrder) => (
-                                <Order order={e} key={e._id}/>
+                                <Order order={e} key={e._id} />
                             ))
                         :   <div className={classes.empty}>Empty</div>
 

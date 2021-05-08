@@ -1,17 +1,25 @@
 import { AxiosResponse } from 'axios';
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { State } from 'src/store';
 import { NULLIFY_CART } from 'src/store/types/cart';
 import { useAxiosClient } from '../Axios/useAxiosClient';
+import { useConfig } from '../Config/useConfig';
 
 export const useOrder = () => {
     const [showItems, setShowItems] = useState<boolean>(false);
     const [message, setMessage] = useState("");
+    const cart = useSelector((state: State) => state.cart);
     const dispatch = useDispatch();
     const [orderNumber, setOrderNumber] = useState('');
     const { axiosClient } = useAxiosClient();
-    const cartId = useSelector((state:State) => state.cart.cartId)
+    const { cartId, cart: cartDetails } = cart;
+    const { items, shippingMethod, totalPrice, subTotal } = cartDetails;
+    const { getConfigValue } = useConfig()
+    const currency = useMemo(
+        () => getConfigValue("baseCurrency"),
+        [getConfigValue]
+    )
     const handleClick = useCallback(():void => {
             setShowItems(!showItems);
     }, [showItems, setShowItems]);
@@ -25,13 +33,19 @@ export const useOrder = () => {
                 type: NULLIFY_CART
             })
         }
-    }, [axiosClient])
+    }, [axiosClient]);
+
 
     return {
         showItems,
         handleClick,
         handleSubmit,
         message,
-        orderNumber
+        orderNumber,
+        currency,
+        items,
+        totalPrice,
+        shippingMethod,
+        subTotal
     }
 }

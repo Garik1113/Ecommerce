@@ -12,3 +12,14 @@
     text-align: center;
     margin: 15px auto;
 }
+
+@media (max-width: 800px) {
+    .body {
+        display: block;
+    }
+
+    .tabs {
+        margin-bottom: 15px;
+    }
+    
+}

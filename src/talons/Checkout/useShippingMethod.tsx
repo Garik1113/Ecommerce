@@ -1,30 +1,32 @@
 import { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { PaymentMethod } from "src/interfaces/cart";
+import { ShippingMethod } from "src/interfaces/cart";
 import { State } from "src/store";
-import { submitCartPaymentMethod } from "src/store/actions/cart/asyncActions";
+import { submitCartPaymentMethod, submitCartShippingMethod } from "src/store/actions/cart/asyncActions";
 import { useAxiosClient } from "../Axios/useAxiosClient"
 import { useConfig } from "../Config/useConfig";
 
 type Props = {
     setStep: any
 }
-const getDefaultpaymentMethod = (methods: PaymentMethod[]):PaymentMethod | null => {
+const getDefaultShippingMethod = (methods: ShippingMethod[]):ShippingMethod | null => {
     return methods && methods.length ? methods.find(e => e.enabled) || null : null
 }
 
-export const usePaymentMethod = (props: Props) => {
+export const useShippingMethod = (props: Props) => {
     const { setStep } = props;
     const { getConfigValue } = useConfig();
-    const paymentMethods: PaymentMethod[] = getConfigValue("paymentMethods");
-    const [method, setMethod] = useState<PaymentMethod | null>(getDefaultpaymentMethod(paymentMethods));
+    const { cartId, cart:cartDetails } = useSelector((state: State) => state.cart);
+    const shippingMethods: ShippingMethod[] = getConfigValue("shippingMethods");
+    const [method, setMethod] = useState<ShippingMethod | null>(cartDetails.shippingMethod || getDefaultShippingMethod(shippingMethods));
     const { axiosClient } = useAxiosClient();
-    const {cartId } = useSelector((state: State) => state.cart);
     const dispatch = useDispatch();
+
+
     const handleSubmit = useCallback(async() => {
         if (method) {
-            await dispatch(submitCartPaymentMethod(method))
-            setStep({ value: "order", index: 5 });
+            await dispatch(submitCartShippingMethod(method))
+            setStep({ value: "payment", index: 4 });
         }
     }, [axiosClient, cartId, method, setMethod, submitCartPaymentMethod]);
 
@@ -32,6 +34,6 @@ export const usePaymentMethod = (props: Props) => {
         handleSubmit,
         method,
         setMethod,
-        paymentMethods
+        shippingMethods
     }
 }

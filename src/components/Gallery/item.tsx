@@ -10,7 +10,7 @@ interface Props {
     rootClass?: any
 }
 
-const Item:React.FC<Props> = ({item}: Props) => {
+const Item:React.FC<Props> = ({item, rootClass}: Props) => {
     const { 
         handleAddToWishlist, 
         name, 
@@ -20,36 +20,46 @@ const Item:React.FC<Props> = ({item}: Props) => {
         inWishList,
         currency
     } = useItem({item});
-
+    
     return (
-        <div className={classes.root}>
+        <div className={`${classes.root} ${rootClass && classes.flexRoot}`}>
             <Link to={`/product/${item._id}`}>
                 <div className={classes.image}>
                     <img onError={handleImageError} src={imageSrc} className={classes.itemImage}/>
                 </div>        
             </Link>
-            <div className={`${classes.heart} ${inWishList ? classes.red : null}`} onClick={() =>  handleAddToWishlist(item._id || "")}>
+            <div title={`${inWishList ? "Remove from Wishlist" : "Add to Wishlist"}`} className={`${classes.heart} ${inWishList ? classes.red : null}`} onClick={() =>  handleAddToWishlist(item._id || "")}>
                 <i className="fas fa-heart"></i>
             </div>
-            <Link to={`/product/${item._id}`}>
-                <div className={classes.title}>
-                    <span>{name}</span>
-                </div>  
-            </Link>
-            <div className={classes.itemFooter}>
-                <div className={classes.priceField}>
-                    {
-                        discountedPrice
-                        ?   <div className={classes.discountedPriceField}>
-                                <span className={classes.newPrice}>{discountedPrice} {currency.name}</span>
-                                <span className={classes.oldPrice}>{price} {currency.name}</span>
-                            </div>
-                        :   <div className={classes.price}>
-                                <span className={classes.newPrice}>{price} {currency.name}</span>
-                            </div>
-                    }
+            <div className={classes.actions}>
+                <div className={`${rootClass && classes.actionFlex}`}>
+                    <Link to={`/product/${item._id}`}>
+                        <div className={`${classes.title} ${rootClass && classes.flexTitle}`}>
+                            <span>{name}</span>
+                        </div>  
+                    </Link>
+                    <div className={`${classes.itemFooter} ${rootClass && classes.flexFooter}`}>
+                        <div className={classes.priceField}>
+                            {
+                                discountedPrice
+                                ?   <div className={classes.discountedPriceField}>
+                                        <span className={classes.newPrice}>{discountedPrice} {currency.name}</span>
+                                        <span className={classes.oldPrice}>{price} {currency.name}</span>
+                                    </div>
+                                :   <div className={classes.price}>
+                                        <span className={classes.newPrice}>{price} {currency.name}</span>
+                                    </div>
+                            }
+                        </div>
+                    </div>  
                 </div>
-            </div>    
+                {
+                    rootClass 
+                    ?   <div className={classes.description}>{item.description}</div>
+                    :   null
+                }
+            </div>
+              
         </div>
     )
 } 

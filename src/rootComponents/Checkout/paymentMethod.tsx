@@ -7,6 +7,7 @@ import classes from './paymentMethod.scss';
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js';
 import { STRIPE_PUBLIC_KEY } from 'src/config/defaults';
+import { PaymentMethod } from 'src/interfaces/cart';
 
 type Props = {
     setStep: any
@@ -14,7 +15,7 @@ type Props = {
 
 const PaymentMethod:React.FC<Props> = (props: Props) => {
     const { setStep } = props;
-    const { setMethod, method, handleSubmit } = usePaymentMethod({setStep});
+    const { setMethod, method, handleSubmit, paymentMethods } = usePaymentMethod({setStep});
     const stripePromise = loadStripe(STRIPE_PUBLIC_KEY);
     
     return (
@@ -23,26 +24,37 @@ const PaymentMethod:React.FC<Props> = (props: Props) => {
             <div className={classes.methods}>
                 <div>
                     <div className={classes.list}>
-                        <div className={classes.radio}>
-                            <input type="radio" name="paymentMethod" value="credit_cart" checked={method === 'credit_cart'} onChange={() => setMethod("credit_cart")}/>
-                            <span>Credit Cart</span> 
-                        </div>
-                        <div className={classes.cash}>
-                            <input type="radio" name="paymentMethod" value="cash_on_delivery" onChange={() => setMethod("cash_on_delivery")}/>
-                            <span>Cash on delivery</span>
-                        </div>
+                        {
+                            paymentMethods && paymentMethods.length
+                            ?   paymentMethods.map((e: PaymentMethod, i: number) => (
+                                    e.enabled
+                                    ?   <div className={classes.radio}>
+                                            <input
+                                                key={i}
+                                                type="radio" 
+                                                name="paymentMethod" 
+                                                value={e.methodCode}
+                                                checked={method?.methodCode == e.methodCode} 
+                                                onChange={() => setMethod(e)}
+                                            />
+                                            <span>{e.methodName}</span> 
+                                        </div>
+                                    :   null
+                            ))
+                            :   null
+                        }
                     </div>
-                    {method === "credit_cart" 
+                    {method?.methodCode == "cart" 
                         ? 
                             <Elements stripe={stripePromise}>
-                                <CreditCart setStep={setStep}/>
+                                <CreditCart setStep={setStep} method={method}/>
                             </Elements>
                         :   null
                     }
                 </div>
                 
             </div>
-            {method == "credit_cart"
+            {method?.methodCode == "cart"
             ?   null
             : <div className={classes.buttons}>
                 <Button onClick={handleSubmit}>Submit</Button>

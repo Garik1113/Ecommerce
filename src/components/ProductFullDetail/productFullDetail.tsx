@@ -37,6 +37,9 @@ const ProductFullDetail:React.FC<ProductProps> = ({ product }: ProductProps) => 
             <div className={classes.body}>
                 <section className={classes.carousel}>
                     <ProductImageCarousel gallery={images}/>
+                    <div className={classes.footerActions}>
+                        <div dangerouslySetInnerHTML={{__html: product.description}} className={classes.description}/>
+                    </div>
                 </section>
                 <section className={classes.rightActions}>
                     <div className={classes.title}>
@@ -78,21 +81,18 @@ const ProductFullDetail:React.FC<ProductProps> = ({ product }: ProductProps) => 
                                 </div>
                         }  
                     </div>
+                    {
+                        isSignedIn
+                        ?   <div className={classes.reviews}>
+                                <ReviewForm 
+                                    product={product}
+                                    isSubmittingReview={isSubmittingReview}
+                                    setIsSubmittingReview={setIsSubmittingReview}
+                                />
+                            </div>
+                        :   null
+                    }
                 </section>
-            </div>
-            <div className={classes.footerActions}>
-                <div dangerouslySetInnerHTML={{__html: product.description}} className={classes.description}/>
-                {
-                    isSignedIn
-                    ?   <div className={classes.reviews}>
-                            <ReviewForm 
-                                product={product}
-                                isSubmittingReview={isSubmittingReview}
-                                setIsSubmittingReview={setIsSubmittingReview}
-                            />
-                        </div>
-                    :   null
-                }
             </div>
             <div className={classes.relatedProducts}>
                 <div className={classes.relatedTitle}>Related Products</div>

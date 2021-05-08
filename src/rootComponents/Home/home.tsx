@@ -13,8 +13,8 @@ const Home:React.FC = () => {
             <Slider/>
             <div className={classes.body}>
                 <div className={classes.banners}>
-                    <Banner bannerId="607fa92a68565d154970ade7"/>
-                    <Banner bannerId="607fa93668565d154970ade8"/>
+                    <Banner bannerId="6092de73197629334653838e"/>
+                    <Banner bannerId="6092def1ee214c33c32ab15d"/>
                 </div>
                 <div className={classes.newCollection}>
                     <div className={classes.newTitleField}>
@@ -27,7 +27,7 @@ const Home:React.FC = () => {
                             <Gallery products={products}/>
                         </div>
                         <div className={classes.banner}>
-                            <Banner bannerId="607fa92a68565d154970ade7"/>
+                            <Banner bannerId="6092def1ee214c33c32ab15d"/>
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@ const Home:React.FC = () => {
                             <Gallery products={discountedProducs}/>
                         </div>
                         <div className={classes.banner}>
-                            <Banner bannerId="607fa93668565d154970ade8"/>
+                            <Banner bannerId="6092de73197629334653838e"/>
                         </div>
                     </div>
                 </div>

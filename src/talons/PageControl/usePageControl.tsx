@@ -39,6 +39,8 @@ export const usePageControl = () => {
             category: queryParams.category || "",
             page: queryParams.page || 0,
             date: queryParams.date,
+            sort: queryParams.sort,
+            sort_dir: queryParams.sort_dir,
             categoryId: id,
             price_min: queryParams.price_min,
             price_max: queryParams.price_max,

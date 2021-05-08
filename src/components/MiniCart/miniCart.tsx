@@ -7,7 +7,13 @@ import { ICartItem } from 'src/interfaces/cart';
 
 
 const MiniCart:React.FC = () => {
-    const { isActive, handleClose, cartItems = [], totalPrice } = useMiniCart();
+    const { 
+        isActive, 
+        handleClose, 
+        cartItems = [], 
+        totalPrice,
+        currency
+    } = useMiniCart();
 
     return (
         <div className={`${classes.root} ${isActive ? classes.root_open : null}`}>
@@ -21,29 +27,41 @@ const MiniCart:React.FC = () => {
                     ></i>
                 </div>
             </header>
-            <section className={classes.body}>
-                {
-                    cartItems.map((cartItem: ICartItem, index: number) => (
-                        <CartItem 
-                            showDescription={false} 
-                            key={index}
-                            cartItem={cartItem}
-                        />
-                    ))
-                }
-            </section>
-            <footer className={classes.footer}>
-                <div className={classes.subTotal}>
-                    <p>Cart Total:</p>
-                    <span>{totalPrice}</span>
-                </div>
-                <div className={classes.cartLink}>
-                    <Link to="/cart" onClick={handleClose}>View and edit cart</Link>
-                </div>
-                <div className={classes.checkoutLink}>
-                    <Link to="/checkout" onClick={handleClose}>Go to Checkout</Link>
-                </div>
-            </footer>
+            {
+                !cartItems.length
+                ?   <div className={classes.emptyCart}>
+                        Your Cart is Empty
+                    </div>
+                :   <section className={classes.body}>
+                    {
+                        cartItems.map((cartItem: ICartItem, index: number) => (
+                            <CartItem 
+                                showDescription={false} 
+                                key={index}
+                                cartItem={cartItem}
+                                currency={currency}
+                            />
+                        ))
+                    }
+                </section>
+            }
+            {
+                cartItems.length
+                ?   <footer className={classes.footer}>
+                        <div className={classes.subTotal}>
+                            <p>Cart Total:</p>
+                            <span className={classes.price}>{totalPrice} {currency.name}</span>
+                        </div>
+                        <div className={classes.cartLink}>
+                            <Link to="/cart" onClick={handleClose}>View and edit cart</Link>
+                        </div>
+                        <div className={classes.checkoutLink}>
+                            <Link to="/checkout" onClick={handleClose}>Go to Checkout</Link>
+                        </div>
+                    </footer>
+                :   null
+            }
+            
         </div>
     )
 }

@@ -32,21 +32,12 @@ export const useMain = () => {
             setCategories(data.categories)
         }
     }, [axiosClient]);
-    const [config, setConfig] = useState<any>({});
-
-    // const fetchConfigs = useCallback(async() => {
-    //     const response: AxiosResponse = await axiosClient('GET', 'configs/');
-    //     const { data, status } = response;
-    //     if ( status == 200 && data.config) {
-    //         setConfig(data.config)
-    //     }
-    // }, [axiosClient, setConfig]);
 
     useEffect(() => {
         fetchCategories();
         dispatch(fetchConfigs())
         if (cartId) {
-            dispatch(getCartDetails())
+            dispatch(getCartDetails());
         }
     }, [cartId]);
     

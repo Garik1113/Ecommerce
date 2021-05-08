@@ -6,6 +6,7 @@ import CheckoutHeader from './checkoutHeader';
 import Order from './order';
 import PaymentMethod from './paymentMethod';
 import ShippingAddress from './shippingAddress';
+import ShippingMethod from './shippingMethod';
 
 
 const Checkout:React.FC = () => {
@@ -18,7 +19,8 @@ const Checkout:React.FC = () => {
         setStep,
         shippingAddress, 
         billingAddress, 
-        paymentMethod 
+        paymentMethod,
+        shippingMethod
     } = useCheckout();
     
 
@@ -32,6 +34,7 @@ const Checkout:React.FC = () => {
                         shippingAddress={shippingAddress}
                         billingAddress={billingAddress}
                         paymentMethod={paymentMethod}
+                        shippingMethod={shippingMethod}
                     />
                 </div>
                 <div>
@@ -49,10 +52,17 @@ const Checkout:React.FC = () => {
                     }
                 </div>
                 <div>
+                    {
+                        step.value == 'shipping_method'
+                        ?   <ShippingMethod setStep={setStep}/>
+                        :   null
+                    }
+                </div>
+                <div>
                     {step.value == 'payment' ? <PaymentMethod setStep={setStep}/> : null}
                 </div>
                 <div>
-                    { step.value == 'order' ? <Order items={items} totalPrice={totalPrice} setStep={setStep} /> : null }
+                    { step.value == 'order' ? <Order items={items} totalPrice={totalPrice} shippingMethod={shippingMethod} setStep={setStep} /> : null }
                 </div>
             </div>
         </div>

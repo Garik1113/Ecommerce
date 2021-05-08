@@ -1,15 +1,19 @@
 .title {
     text-align: center;
+    margin-top: 50px;
+    margin-bottom: 30px;
 }
 
 .body {
     display: grid;
+    max-width: 1300px;
     grid-template-columns: 70% 30%;
     grid-column-gap: 15px;
+    margin: auto;
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
     .body {
         display: block;
     }

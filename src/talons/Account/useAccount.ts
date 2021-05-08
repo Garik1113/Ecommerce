@@ -20,7 +20,7 @@ export const useAccount = () => {
     const { axiosClient } = useAxiosClient();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [message, setMessage] = useState<Message>({type: "", value: ""})
-    
+    const history = useHistory();
     const handleSubmit = useCallback(async (values) => {
         setMessage({type: "", value: ""})
         setIsSubmitting(true)
@@ -49,7 +49,6 @@ export const useAccount = () => {
         },
         onSubmit: handleSubmit
     });
-    const history = useHistory();
 
     useEffect(() => {
         if(!isSignedIn) {

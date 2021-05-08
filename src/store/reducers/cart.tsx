@@ -14,41 +14,13 @@ const initialState: CartInitialState = {
         _id: "",
         customerId: "",
         items: [],
+        subTotal: 0,
         totalPrice: 0,
         totalQty: 0,
-        paymentMethod: "",
-        shippingAddress: {
-            firstAddress: "",
-            firstName: "",
-            lastName: "",
-            country: "",
-            city: "",
-            phone: "",
-            zip: "",
-            email: "",
-            state: "",
-            street: "",
-            secondAddress: "",
-            company: "",
-            isBillingAddress: false,
-            isShippingAddress: false
-        },
-        billingAddress: {
-            firstAddress: "",
-            firstName: "",
-            lastName: "",
-            country: "",
-            city: "",
-            phone: "",
-            zip: "",
-            email: "",
-            state: "",
-            street: "",
-            secondAddress: "",
-            company: "",
-            isBillingAddress: false,
-            isShippingAddress: false
-        }
+        paymentMethod: null,
+        shippingMethod: null,
+        shippingAddress: null,
+        billingAddress: null
     }
 }
 
@@ -57,7 +29,8 @@ export const cartReducer = (state: CartInitialState = initialState, action:CartA
         case TOGGLE_CART_DRAWER:
             return {...state, cartDrawer: action.drawer};
         case GET_CART_DETAILS:
-            return {...state, cart: action.cart};
+            localStorage.setItem("cartId", action.cart._id);
+            return { ...state, cart: action.cart, cartId: action.cart._id };
         case SET_CART_ID:
             localStorage.setItem("cartId", action.cartId);
             return {...state, cartId: action.cartId};

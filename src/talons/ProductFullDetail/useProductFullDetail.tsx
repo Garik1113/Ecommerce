@@ -20,12 +20,6 @@ export const useProductFullDetail = (props: ProductProps) => {
         [getConfigValue]
     )
     const dispatch = useDispatch();
-    const headers = useMemo(() => {
-        return {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        }
-    }, [token]);
     const [quantity, setQuantity] = useState<number>(1);
     const handleIncrementQuantity = useCallback(() => {
         setQuantity(quantity+1)
@@ -40,13 +34,7 @@ export const useProductFullDetail = (props: ProductProps) => {
     
     const handleAddProductToCart = useCallback(async() => {
         if (product._id) {
-            const productData = {
-                productId: product._id,
-                quantity,
-            };
-            const addItemToCartData: TAddItemToCartData = { ...productData, cartId};
-            await dispatch(addProductToCart(addItemToCartData, headers));
-            dispatch(getCartDetails());
+            await dispatch(addProductToCart(product._id, quantity));
         }
     },[
         product, 

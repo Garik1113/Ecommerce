@@ -15,6 +15,7 @@ const Addresses:React.FC = () => {
         handleAddNewAddress,
         handleEditAddress,
         editingAddress,
+        addNewAddress,
         handleDeleteAddress
     } = useAddresses();
     
@@ -37,7 +38,7 @@ const Addresses:React.FC = () => {
                         }
                         
                         <div className={classes.addAddressField}>
-                            <div className={classes.plusIconField} onClick={handleOpenModal}>
+                            <div className={classes.plusIconField} onClick={addNewAddress}>
                                 <Icon name="add" className={classes.plusIcon}/>
                             </div>
                         </div>

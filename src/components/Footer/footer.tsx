@@ -1,70 +1,91 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useConfig } from 'src/talons/Config/useConfig';
 import classes from './footer.scss';
 
-const sittings = [
-    {
-        title: "Account",
-        subSittings: [
-            {
-                title: "Sign in",
-                url: "/signin"
-            },
-            {
-                title: "Register",
-                url: "/signup"
-            },
-        ]
-    },
-    {
-        title: "About Us",
-        subSittings: [
-            {
-                title: "Our Story",
-                url: "/story"
-            }
-        ]
-    },
-    {
-        title: "Help",
-        subSittings: [
-            {
-                title: "Live Chat",
-                url: "/chat"
-            },
-            {
-                title: "Contact Us",
-                url: "/contact"
-            },
-        ]
-    },
-]
-
 const Footer:React.FC = () => {
+    const { getConfigValue } = useConfig();
+    const storeEmail = getConfigValue("storeEmail");
+    const storePhone = getConfigValue("storePhone");
+    const socialSites = getConfigValue("socialSites");
+
     return (
         <footer className={classes.footer}>
-           <div className={classes.sittings} 
-                style={{    
-                    display:"grid", 
-                    gridTemplateColumns: 'repeat(' + sittings.length + ", " + '1fr)',
-                    alignItems: "baseline"
-                }}
-            >
-                {
-                    sittings.map((sitting, index) => (
-                        <div className={classes.sitting} key={index}>
-                            <b>{sitting.title}</b>
-                            <ul>
-                                {    
-                                    sitting.subSittings.map((sub, index) => (
-                                        <Link to={sub.url} key={index}><li>{sub.title}</li></Link> 
-                                    )) 
-                                }
-                            </ul>
-                        </div>
-                        
-                    ))
-                }
+           <div className={classes.sittings}>
+                <div className={classes.field}>
+                    <div className={classes.fielTitle}>
+                        ՏԵՂԵԿԱՏՎՈՒԹՅՈՒՆ
+                    </div>
+                    <div className={classes.fieldValue}>
+                        Հաճախ տրվող հարցեր
+                    </div>
+                    <div className={classes.fieldValue}>
+                        Առաքում
+                    </div>
+                    <div className={classes.fieldValue}>
+                        Նվեր քարտ
+                    </div>
+                    <div className={classes.fieldValue}>
+                        Դրույթներ և Պայմաններ
+                    </div>
+                </div>
+                <div className={classes.field}>
+                    <div className={classes.fielTitle}>
+                        ԻՄ ԷՋԸ
+                    </div>
+                    <Link to="/signup" className={classes.linkFieldValue}>
+                        Գրանցվել
+                    </Link>
+                    <Link to="/signin" className={classes.linkFieldValue}>
+                        Մուտք Գործել
+                    </Link>
+                    <Link to="/account/orders" className={classes.linkFieldValue}>
+                        Իմ Պատվերները
+                    </Link>
+                </div>
+                <div className={classes.field}>
+                    <div className={classes.fielTitle}>
+                        ԿԱՊ ՄԵԶ ՀԵՏ
+                    </div>
+                    <div className={classes.fieldValue}>
+                        {storeEmail}
+                    </div>
+                    <div className={classes.fieldValue}>
+                        {storePhone}
+                    </div>
+                    <div className={classes.socialList}>
+                        {
+                            socialSites && socialSites.length 
+                            ?     socialSites.map((e:any, i: number) => {
+                                    if (e.name.includes("facebook")) {
+                                        return (
+                                            <a href={e.url} target="_blank" key={i}>
+                                                <img src="/fb.png" key={i} className={classes.image}/>
+                                            </a>
+                                        )
+                                    } else if (e.name.includes("insta")) {
+                                        return (
+                                            <a href={e.url} key={i} target="_blank">
+                                                <img src="/insta.png" key={i} className={classes.image}/>
+                                            </a>
+                                        )
+                                    } else if (e.name.includes("telegram")) {
+                                        return (
+                                            <a href={e.url} key={i} target="_blank">
+                                                <img src="/telegram.png" key={i} className={classes.image}/>
+                                            </a>
+                                        )
+                                    } else {
+                                        return null
+                                    }
+                                })
+                            :   null
+                        }
+                    </div>
+                </div>
+           </div>
+           <div className={classes.bottom}>
+                ©2021 Բոլոր Իրավունքները Պաշտպանված են
            </div>
         </footer>
     )

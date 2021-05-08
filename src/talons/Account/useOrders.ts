@@ -5,7 +5,7 @@ import { IOrder } from 'src/interfaces/order';
 
 export const useOrders = () => {
     const { axiosClient } = useAxiosClient();
-    const [orders, setOrders] = useState<IOrder[]>([])
+    const [orders, setOrders] = useState<IOrder[]>([]);
     const fetchOrders = useCallback(async() => {
         const {data, status}:AxiosResponse = await axiosClient("GET", 'orders/');
         if (status == 200 && data.orders) {

@@ -19,7 +19,7 @@
 
 .topActions {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     align-items: flex-start;
     color: #666666;
     font-weight: 600;
@@ -30,12 +30,14 @@
        display: block;
        
    }
-
    .summaryPrice {
        margin-top: 15px;
    }
 }
 
+.summary {
+    white-space: nowrap;
+}
 
 .title h3 {
     color: #000000;
@@ -85,6 +87,10 @@ input[type=number] {
     justify-self: end;
 }
 
+.itemPrice {
+    white-space: nowrap;
+}
+
 .propertyName {
     margin-bottom: 10px;
     color: #000000;
@@ -113,4 +119,22 @@ input[type=number] {
 
 .remove i, .edit i {
     cursor: pointer;
-} 
+}
+
+.attribute {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.attributeField b {
+    font-size: 16px;
+    color: #000000;
+    font-weight: 700;
+}
+
+@media (max-width: 600px) {
+    .attribute {
+        justify-content: center;
+    }
+}

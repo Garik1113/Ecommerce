@@ -9,12 +9,13 @@ type Props = {
 const AddressCard = (props: Props) => {
     const { address } = props;
     const { 
-        firstAddress, 
+        address: addessInfo, 
         email, 
         phone, 
-        secondAddress, 
+        additionalInformation, 
         firstName, 
-        lastName, 
+        lastName,
+        state,
         country, 
         city 
     } = address;
@@ -31,6 +32,14 @@ const AddressCard = (props: Props) => {
             </div>
             <div className={classes.addresField}>
                 <span className={classes.addressText}>
+                    State :
+                </span>
+                <span className={classes.addressValue}>
+                    {state}
+                </span>
+            </div>
+            <div className={classes.addresField}>
+                <span className={classes.addressText}>
                     City :
                 </span>
                 <span className={classes.addressValue}>
@@ -39,18 +48,42 @@ const AddressCard = (props: Props) => {
             </div>
             <div className={classes.addresField}>
                 <span className={classes.addressText}>
-                    First Address :
+                    Address :
                 </span>
                 <span className={classes.addressValue}>
-                    {firstAddress}
+                    {addessInfo}
                 </span>
             </div>
             <div className={classes.addresField}>
                 <span className={classes.addressText}>
-                    Second addres :
+                    First Name :
                 </span>
                 <span className={classes.addressValue}>
-                    {secondAddress}
+                    {firstName}
+                </span>
+            </div>
+            <div className={classes.addresField}>
+                <span className={classes.addressText}>
+                    Last Name :
+                </span>
+                <span className={classes.addressValue}>
+                    {lastName}
+                </span>
+            </div>
+            <div className={classes.addresField}>
+                <span className={classes.addressText}>
+                    Email :
+                </span>
+                <span className={classes.addressValue}>
+                    {email}
+                </span>
+            </div>
+            <div className={classes.addresField}>
+                <span className={classes.addressText}>
+                    Additional information :
+                </span>
+                <span className={classes.addressValue}>
+                    {additionalInformation}
                 </span>
             </div>
         </div> 

@@ -4,32 +4,28 @@
     margin: auto;
 }
 
-.gallery {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-}
-
 .title {
     margin: 30px 0;
-    color: red;
+    color: yellow;
     text-align: center;
 }
 
+
+.list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 32px;
+    row-gap: 32px;
+}
+
 @media (max-width: 900px) {
-    .gallery {
+    .list {
         grid-template-columns: 1fr 1fr;
     }
 }
 
 @media (max-width: 475px) {
-    .gallery {
+    .list {
         grid-template-columns: 1fr;
     }
-}
-
-.list {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    column-gap: 32px;
-    row-gap: 32px;
 }

@@ -2,15 +2,16 @@ import React from 'react';
 import classes from './cartContent.scss';
 import CartProduct from './cartProduct';
 import Summary from './summary';
-import { TCart } from 'src/store/types/cart';
 import { ICart } from 'src/interfaces/cart';
 
 type Props = {
-    cart: ICart
+    cart: ICart,
+    currency: any
 }
 const CartContent:React.FC<Props> = (props: Props) => {
-   const { cart } = props;
-   const { items=[], totalPrice } = cart;
+   const { cart, currency } = props;
+   const { items=[], totalPrice, shippingMethod, subTotal } = cart;
+
     return (
         <div className={classes.root}>
             <div className={classes.title}>
@@ -20,12 +21,17 @@ const CartContent:React.FC<Props> = (props: Props) => {
                 <div className={classes.products}>
                     {
                         items.map((e, i) => {
-                            return <CartProduct cartItem={e} key={i}/> 
+                            return <CartProduct cartItem={e} key={i} currency={currency}/> 
                         })
                     }
                 </div>
                 <div className={classes.summary}>
-                    <Summary totalPrice={totalPrice}/>
+                    <Summary 
+                        totalPrice={totalPrice} 
+                        currency={currency} 
+                        shippingMethod={shippingMethod} 
+                        subTotal={subTotal}
+                    />
                 </div>
             </div>
         </div>

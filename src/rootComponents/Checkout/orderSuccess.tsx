@@ -8,7 +8,7 @@ type Props = {
 
 const OrderSuccess:React.FC<Props> = (props: Props) => {
     const { orderNumber } = props;
-
+    
     return (
         <div className={classes.root}>
             <div className={classes.body}>

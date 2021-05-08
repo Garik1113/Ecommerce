@@ -41,5 +41,12 @@
 
 .newTitle {
     font-size: 32px;
-    color: red;
+    color: #18564d;
+}
+
+@media screen and (max-width: 800px) {
+    .newBody {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
 }

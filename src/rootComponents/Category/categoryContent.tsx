@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useCategoryContent } from '../../talons/Category/useCategoryContent';
 import Filters from '../../components/Filters';
 import Gallery from '../../components/Gallery';
 import classes from './categoryContent.scss';
-import { Button } from 'semantic-ui-react';
 import Pagination from 'src/components/Pagination';
 import Banner from 'src/components/Banner';
 
@@ -23,6 +22,7 @@ const CategoryContent:React.FC = () => {
         totalPages,
         attributes
     } = useCategoryContent({classes});
+    const { sort, sort_dir } = pageControl;
 
     return (
         <div className={classes.root}>
@@ -40,12 +40,56 @@ const CategoryContent:React.FC = () => {
                     </span>
                     {showSortOptions 
                     ?   <div className={classes.sortOptions}>
-                            <div className={classes.sortItem} onClick={() => {setShowSortOptions(false); addQueryString("date", "newest")}}>
-                                <span className={classes.sortText}>Newest</span>
+                            <div 
+                                className={`${classes.sortItem} ${sort=="date" && sort_dir=="asc" && classes.active}`} 
+                                onClick={() => {
+                                    setShowSortOptions(false); 
+                                    addQueryString("sort", "date");
+                                    addQueryString("sort_dir", "asc");
+                                }}
+                            >
+                                <span className={classes.sortText}>New Collection</span>
                             </div> 
-                            <div className={classes.sortItem} onClick={() => {setShowSortOptions(false); addQueryString("date", "latest")}}>
-                                <span className={classes.sortText}>Latest</span>
+                            <div 
+                                className={`${classes.sortItem} ${sort=="name" && sort_dir=="desc" && classes.active}`}
+                                onClick={() => {
+                                    setShowSortOptions(false); 
+                                    addQueryString("sort", "name");
+                                    addQueryString("sort_dir", "desc");
+                                }}
+                            >
+                                <span className={classes.sortText}>Name from A-Z</span>
+                            </div> 
+                            <div 
+                                className={`${classes.sortItem} ${sort=="name" && sort_dir=="asc" && classes.active}`}
+                                onClick={() => {
+                                    setShowSortOptions(false); 
+                                    addQueryString("sort", "name");
+                                    addQueryString("sort_dir", "asc");
+                                }}
+                            >
+                                <span className={classes.sortText}>Name from Z-A</span>
                             </div>
+                            <div 
+                                className={`${classes.sortItem} ${sort=="price" && sort_dir=="desc" && classes.active}`} 
+                                onClick={() => {
+                                    setShowSortOptions(false); 
+                                    addQueryString("sort", "price");
+                                    addQueryString("sort_dir", "desc");
+                                }}
+                            >
+                                <span className={classes.sortText}>Price low to high</span>
+                            </div>
+                            <div 
+                                className={`${classes.sortItem} ${sort=="price" && sort_dir=="asc" && classes.active}`}  
+                                onClick={() => {
+                                    setShowSortOptions(false); 
+                                    addQueryString("sort", "price");
+                                    addQueryString("sort_dir", "asc");
+                                }}
+                            >
+                                <span className={classes.sortText}>Price high to low</span>
+                            </div> 
                         </div>
                     :null
                     }

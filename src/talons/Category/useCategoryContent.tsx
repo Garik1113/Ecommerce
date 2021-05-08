@@ -2,7 +2,7 @@ import { AxiosResponse } from 'axios';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Range } from 'react-input-range';
 import { useHistory, useParams } from 'react-router';
-import { IProduct } from 'src/interfaces/product';
+import { IAttribute, IProduct } from 'src/interfaces/product';
 import { getTotalPages } from 'src/util/getTotalPages';
 import { useAxiosClient } from '../Axios/useAxiosClient';
 import { useConfig } from '../Config/useConfig';
@@ -20,6 +20,7 @@ export const useCategoryContent = (props: Props) => {
     const { addQueryString, pageControl  } = usePageControl();
     const [priceRange, setPriceRange] = useState<Range>({min: Number(pageControl.price_min) || 0, max: Number(pageControl.price_max) || 100000});
     const [products, setProducts] = useState<IProduct[]>([]);
+    const [attributes, setAttributes] = useState<IAttribute[]>([]);
     const [totalPages, setTotalPages] = useState(0);
     const [showSortOptions, setShowSortOptions] = useState(false);
     const [view, setView] = useState('grid');
@@ -38,11 +39,13 @@ export const useCategoryContent = (props: Props) => {
     }, [view, setView]);
 
     const fetchProducts = useCallback(async() => {
-        const response: AxiosResponse = await axiosClient("GET", `products/get_products/${id}?page=${pageControl.page}&date=${pageControl.date}&price_min=${pageControl.price_min}&price_max=${pageControl.price_max}`);
+        const response: AxiosResponse = await axiosClient("GET", `products/get_products/${id}?page=${pageControl.page}&sort=${pageControl.sort}&sort_dir=${pageControl.sort_dir}&price_min=${pageControl.price_min}&price_max=${pageControl.price_max}`);
         const { data } = response;
         if (data && data.products) {
-            
             setProducts(data.products);
+            if(data.attributes) {
+                setAttributes(data.attributes)
+            }
             const { totalProducts } = data;
             if(totalProducts) {
                 if(Number(totalProducts) < Number(perPage)) {
@@ -80,6 +83,7 @@ export const useCategoryContent = (props: Props) => {
         totalPages,
         setPriceRange,
         priceRange,
-        handleApplyPriceRange
+        handleApplyPriceRange,
+        attributes
     }
 }

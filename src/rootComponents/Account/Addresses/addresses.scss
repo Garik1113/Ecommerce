@@ -56,3 +56,35 @@
     margin-right: -1px !important;
 }
 
+@media (max-width: 1200px) {
+    .list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 850px) {
+    .list {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .body {
+        display: block;
+    }
+
+    .tabs {
+        margin-bottom: 15px;
+    }
+
+    .list {
+        display: block;
+        margin-left: 0;
+    }
+
+    .addAddressField {
+        max-width: unset;
+    }
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './reviews.scss';
-import { Button, TextArea, Rating } from 'semantic-ui-react';
+import { Rating } from 'semantic-ui-react';
 import { IProduct } from 'src/interfaces/product';
 import { useReviews } from 'src/talons/Reviews/useReviews';
 type Props = {
@@ -17,7 +17,7 @@ const Reviews: React.FC<Props> = (props: Props) => {
             {
                 reviews.map((review) => {
                     return (
-                        <div className={classes.reviewField}>
+                        <div className={classes.reviewField} key={review._id}>
                             <div className={classes.rating}>
                                 <Rating
                                     maxRating={6} 

@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IAddress } from "src/interfaces/address";
 import { State } from "src/store";
-import { getCartDetails } from "src/store/actions/cart/asyncActions";
+import { getCartDetails, submitCartBillingAddress } from "src/store/actions/cart/asyncActions";
 import { useAxiosClient } from "../Axios/useAxiosClient"
 
 type Props = {
@@ -32,24 +32,26 @@ export const useBillingAddress = (props: Props) => {
     }, [addresses]);
     const handleSubmit = useCallback(async(values: IAddress | null) => {
         let address: IAddress | null = null;
-        if(billingAndShippingAreTheSame) {
+        if (billingAndShippingAreTheSame) {
             address = shippingAddress
         }
         if (values) {
             address = values
         }
-        if(selectedAddress) {
+        if (selectedAddress) {
             address = selectedAddress
         }
-        await axiosClient("PUT", 'cart/add-billing-address', { address, cartId });
-        await dispatch(getCartDetails());
-        setStep({value: "payment", index: 2});
+        if (address) {
+            await dispatch(submitCartBillingAddress(address))
+            setStep({value: "shipping_method", index: 2});
+        }
     }, [
         axiosClient, 
         cartId, 
         billingAndShippingAreTheSame, 
         shippingAddress, 
-        selectedAddress
+        selectedAddress,
+        submitCartBillingAddress
     ]);
 
     useEffect(() => {

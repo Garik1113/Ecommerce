@@ -5,8 +5,8 @@
   }
   
   .slider label {
-    color: #888;
     font-size: 18px;
+    color: #000;
     margin-bottom: 20px;
     display: block;
     text-transform: capitalize;
@@ -27,8 +27,8 @@
   
   .input-range__label--value .input-range__label-container {
     background: #e27a3f;
-    color: white;
-    font-size: 0.65rem;
+    font-size: 16px !important;
+    color: #000 !important;
     padding: 2px 5px;
     border-radius: 2px;
   }
@@ -36,8 +36,8 @@
   .input-range__label--min .input-range__label-container,
   .input-range__label--max .input-range__label-container
    {
-    font-size: 0.65rem;
-    color: #888;
+    font-size: 16px !important;
+    color: #000 !important;
     left: 0;
   }
   
@@ -45,3 +45,8 @@
     left: 25%;
   }
   
+
+  :global .input-range__label-container {
+    font-size: 16px !important;
+    color: #878787 !important;
+  }

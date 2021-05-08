@@ -10,7 +10,7 @@ export type TStep = {
 export const useCheckout = () => {
     const cart = useSelector((state: State) => state.cart.cart);
     const [step, setStep] = useState<TStep>({value: "shipping", index: 0});
-    const { items,  totalPrice, shippingAddress, billingAddress, paymentMethod } = cart;
+    const { items,  totalPrice, shippingAddress, billingAddress, paymentMethod, shippingMethod } = cart;
     const [billingAndShippingAreTheSame, setBillingAndShippingAreTheSame] = useState<boolean>(true);
     const handleChange = useCallback((e, data) => {
         setBillingAndShippingAreTheSame(data.checked)
@@ -25,6 +25,7 @@ export const useCheckout = () => {
         setStep,
         shippingAddress, 
         billingAddress, 
-        paymentMethod 
+        paymentMethod,
+        shippingMethod
     }
 }

@@ -96,3 +96,17 @@
     text-align: center;
     margin: 15px auto;
 }
+
+@media (max-width: 700px) {
+    .body {
+        display: block;
+    }
+
+    .tabs {
+        margin-bottom: 15px;
+    }
+
+    .account {
+        background: none;
+    }
+}

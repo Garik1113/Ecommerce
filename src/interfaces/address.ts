@@ -8,9 +8,9 @@ export interface IAddress {
     city: string,
     street: string,
     phone: string,
-    zip: number,
-    firstAddress: string,
-    secondAddress: string,
+    zip: string,
+    address: string,
+    additionalInformation: string,
     company: string,
     isBillingAddress: boolean,
     isShippingAddress: boolean

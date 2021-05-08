@@ -7,20 +7,6 @@ import * as yup from 'yup'
 import { IAddress } from 'src/interfaces/address';
 import { useAddress } from 'src/talons/Address/useAddress';
 
-
-interface Address {
-    firstName: string,
-    lastName: string,
-    firstAddress: string,
-    secondAddress? : string,
-    city: string,
-    country: string,
-    state?: string,
-    zip: number,
-    phone: string,
-    company?:string
-}
-
 interface Country {
     __typename: string,
     name: string
@@ -43,8 +29,8 @@ const Address:React.FC<Props> = (props: Props) => {
         street: "",
         firstName: "",
         lastName: "",
-        firstAddress: "",
-        secondAddress: "",
+        address: "",
+        additionalInformation: "",
         city: "",
         country: "",
         state: "",
@@ -57,9 +43,9 @@ const Address:React.FC<Props> = (props: Props) => {
     const validationSchema = useMemo(() => yup.object().shape({
             firstName: yup.string().required("Required"),
             lastName: yup.string().required("Required"),
-            firstAddress: yup.string().required("Required"),
+            address: yup.string().required("Required"),
             city: yup.string().required("Required"),
-            zip: yup.number().required("Required"),
+            email: yup.string().required("Required"),
             phone: yup.string().required("Required"),
     }), [yup]);
     
@@ -74,55 +60,6 @@ const Address:React.FC<Props> = (props: Props) => {
                 {
                     ({handleSubmit, values, setFieldValue}) => (
                         <Form className={classes.form}>
-                            <div className={classes.fieldWrapper}>
-                                <div className={classes.field}>
-                                    <Field type="text" name="firstName" className={classes.input} />
-                                    <label htmlFor="firstName" className={classes.label}>First Name</label>
-                                    <ErrorMessage name="firstName" component="div" className={classes.error}/> 
-                                </div>
-                                <div className={classes.field}>
-                                    <Field type="text" name="lastName" className={classes.input}/>
-                                    <label htmlFor="lastName" className={classes.label}>Last Name</label>
-                                    <ErrorMessage name="lastName" component="div" className={classes.error}/>  
-                                </div>                            
-                            </div>
-                            <div className={classes.fieldWrapper}>
-                                <div className={classes.field}>
-                                    <Field type="text" name="firstAddress" className={classes.input}/>
-                                    <label htmlFor="firstAddress" className={classes.label}>Address Line</label>
-                                    <ErrorMessage name="firstAddress" component="div" className={classes.error}/>
-                                </div>
-                                <div className={classes.field}>
-                                    <Field type="text" name="secondAddress" className={classes.input}/>
-                                    <label htmlFor="secondAddress" className={classes.label}>Address Line 2</label>
-                                </div>
-                            </div>
-                            <div className={classes.fieldWrapper}>
-                                <div className={classes.field}>
-                                    {/* <Field type="text" name="city" className={classes.input}/> */}
-                                    {/* <Dropdown
-                                        options={cityOptions}
-                                        value={values.city}
-                                        onChange={(e, data) => setFieldValue("city", data.value)}
-                                    /> */}
-                                    <Dropdown
-                                        onChange={(e, data) => setFieldValue('city', data.value)}
-                                        value={values.city}
-                                        name="city"
-                                        selection
-                                        fluid
-                                        id="city"
-                                        options={cityOptions}
-                                    />
-                                    <label htmlFor="city" className={classes.label}>City</label>
-                                    <ErrorMessage name="city" component="div" className={classes.error}/>
-                                </div>
-                                <div className={classes.field}>
-                                    <Field type="text" name="zip" className={classes.input}/>
-                                    <label htmlFor="zip" className={classes.label}>ZIP</label>
-                                    <ErrorMessage name="zip" component="div" className={classes.error}/>
-                                </div>
-                            </div>
                             <div className={classes.fieldWrapper}>
                                 <div className={classes.field}>
                                     <Dropdown
@@ -149,6 +86,49 @@ const Address:React.FC<Props> = (props: Props) => {
                                     />
                                     <label htmlFor="state" className={classes.label}>State</label>
                                     <ErrorMessage name="state" component="div" className={classes.error}/>
+                                </div>
+                            </div>
+                            <div className={classes.fieldWrapper}>
+                                <div className={classes.field}>
+                                    <Dropdown
+                                        onChange={(e, data) => setFieldValue('city', data.value)}
+                                        value={values.city}
+                                        name="city"
+                                        selection
+                                        fluid
+                                        id="city"
+                                        options={cityOptions}
+                                    />
+                                    <label htmlFor="city" className={classes.label}>City</label>
+                                    <ErrorMessage name="city" component="div" className={classes.error}/>
+                                </div>
+                                <div className={classes.field}>
+                                    <Field type="text" name="email" className={classes.input}/>
+                                    <label htmlFor="email" className={classes.label}>Email</label>
+                                    <ErrorMessage name="email" component="div" className={classes.error}/>
+                                </div>
+                            </div>
+                            <div className={classes.fieldWrapper}>
+                                <div className={classes.field}>
+                                    <Field type="text" name="firstName" className={classes.input} />
+                                    <label htmlFor="firstName" className={classes.label}>First Name</label>
+                                    <ErrorMessage name="firstName" component="div" className={classes.error}/> 
+                                </div>
+                                <div className={classes.field}>
+                                    <Field type="text" name="lastName" className={classes.input}/>
+                                    <label htmlFor="lastName" className={classes.label}>Last Name</label>
+                                    <ErrorMessage name="lastName" component="div" className={classes.error}/>  
+                                </div>                            
+                            </div>
+                            <div className={classes.fieldWrapper}>
+                                <div className={classes.field}>
+                                    <Field type="text" name="address" className={classes.input}/>
+                                    <label htmlFor="address" className={classes.label}>Address</label>
+                                    <ErrorMessage name="address" component="div" className={classes.error}/>
+                                </div>
+                                <div className={classes.field}>
+                                    <Field type="text" name="additionalInformation" className={classes.input}/>
+                                    <label htmlFor="additionalInformation" className={classes.label}>Additinal Information</label>
                                 </div>
                             </div>
                             <div className={classes.fieldWrapper}>

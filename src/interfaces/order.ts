@@ -1,4 +1,5 @@
 import { IAddress } from './address';
+import { PaymentMethod, ShippingMethod } from './cart';
 import { IPrice, IProduct } from './product';
 
 export interface ICartItemAttribute  {
@@ -18,7 +19,9 @@ export interface IOrder {
     cartId: string,
     customerId: string,
     items: ICartItem[],
-    paymentMethod: string,
+    paymentMethod: PaymentMethod,
+    shippingMethod: ShippingMethod,
+    currency: any,
     shippingAddress: IAddress,
     billingAddress: IAddress,
     totalQty: number,

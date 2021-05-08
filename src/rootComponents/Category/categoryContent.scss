@@ -35,6 +35,7 @@
 }
 
 .sortOptions {
+    width: 200px;
     height: auto;
     padding: 10px;
     background: #ffffff;
@@ -72,7 +73,14 @@
     font-size: 14px;
     padding: 5px;
     cursor: pointer;
+}
 
+.sortItem:hover {
+    background: #07c092;
+}
+
+.active {
+    background: #07c092;  
 }
 
 .sortText {
@@ -85,4 +93,10 @@
     margin-top: 30px;
     display: flex;
     justify-content: flex-end;
+}
+
+.emptyField {
+    text-align: center;
+    margin: 50px auto;
+    font-size: 25px;
 }

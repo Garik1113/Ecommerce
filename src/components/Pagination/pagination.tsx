@@ -9,7 +9,6 @@ type Props = {
 
 const Pagination:React.FC<Props> = (props: Props) => {
     const { addQueryString, pageControl, totalPages } = props;
-    console.log(totalPages)
     if (totalPages < 1) {
         return null
     }

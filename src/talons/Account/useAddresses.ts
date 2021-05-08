@@ -49,6 +49,11 @@ export const useAddresses = () => {
         handleCloseModal()
     }, [addresses, handleOpenModal]);
 
+    const addNewAddress = useCallback(() => {
+        setEditingAddress(undefined);
+        handleOpenModal()
+    }, [isOpenModal, setIsOpenModal, editingAddress, setEditingAddress])
+
     return {
         addresses,
         handleCloseModal,
@@ -57,6 +62,7 @@ export const useAddresses = () => {
         handleAddNewAddress,
         editingAddress,
         handleEditAddress,
-        handleDeleteAddress
+        handleDeleteAddress,
+        addNewAddress
     }
 }

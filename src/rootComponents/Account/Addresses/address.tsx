@@ -16,7 +16,7 @@ const Address:React.FC<Props> = (props: Props) => {
         handleDeleteAddress,
         inCheckout
     } = props;
-
+    
     return (
         <div className={classes.root}>
             <div className={classes.body}>
@@ -49,7 +49,7 @@ const Address:React.FC<Props> = (props: Props) => {
                         <span className={classes.columnTitle}>Address</span>
                     </div>
                     <div className={classes.columnValueField}>
-                        <span className={classes.columnValue}>{address.firstAddress}</span>
+                        <span className={classes.columnValue}>{address.address}</span>
                     </div>
                 </div>
                 {

@@ -12,16 +12,20 @@ type Props = {
 const getDate = (createdAt: string) => {
     if(!createdAt) return null;
     const tempDate = new Date(createdAt);
-    const month = tempDate.getMonth() > 0 ? tempDate.getMonth() : `0${tempDate.getMonth()}`;
-    const day = tempDate.getDate() > 0 ? tempDate.getDate() : `0${tempDate.getDate()}`
+    const month = tempDate.getMonth() > 9 ? tempDate.getMonth() : `0${tempDate.getMonth()}`;
+    const day = tempDate.getDate() > 9 ? tempDate.getDate() : `0${tempDate.getDate()}`
     const year = tempDate.getFullYear();
     return `${day}/${month}/${year}`
+}
+
+const getTotalPrice = (price: any): number => {
+    return typeof price == 'object' ? Object.values(price)[0] : price
 }
 
 const Order:React.FC<Props> = (props: Props) => {
     const { order } = props;
     const [isOpen, setIsOpen] = useState(false);
-  
+    
     return (
         <div className={classes.root}>
             <div className={classes.body}>
@@ -39,7 +43,7 @@ const Order:React.FC<Props> = (props: Props) => {
                             Grand total
                         </div>
                         <span>
-                            {order.totalPrice}
+                            {getTotalPrice(order.totalPrice)} {order.currency.name}
                         </span>
                     </div>
                     <div className={classes.headerField}>
@@ -73,7 +77,18 @@ const Order:React.FC<Props> = (props: Props) => {
                                     Payment Method
                                 </div>
                                 <span className={classes.paymentValue}>
-                                    {order.paymentMethod}
+                                    {order.paymentMethod.methodName}
+                                </span>
+                            </div>
+                            <div className={classes.payment}>
+                                <div className={classes.paymentHeader}>
+                                    Shipping Method
+                                </div>
+                                <span className={classes.paymentValue}>
+                                    {order.shippingMethod.price} {order.currency.name}
+                                </span>
+                                <span className={classes.paymentValue}>
+                                    {order.shippingMethod.methodName}
                                 </span>
                             </div>
                             <div className={classes.payment}>
@@ -90,7 +105,7 @@ const Order:React.FC<Props> = (props: Props) => {
                                 </div>
                                 {
                                     order.items.map((e:ICartItem, i: number) => {
-                                        return <CartProduct inOrder={true} cartItem={e} key={i}/>
+                                        return <CartProduct currency={order.currency} inOrder={true} cartItem={e} key={i}/>
                                     })
                                 }
                             </div>

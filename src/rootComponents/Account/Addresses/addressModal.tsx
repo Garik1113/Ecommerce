@@ -1,8 +1,7 @@
 import React from 'react';
-import { Button, Modal } from 'semantic-ui-react';
+import { Modal } from 'semantic-ui-react';
 import Address from 'src/components/Address';
 import { IAddress } from 'src/interfaces/address';
-import classes from './addressModal.scss';
 
 type Props = {
     handleCloseModal: any,
@@ -13,13 +12,19 @@ type Props = {
 
 const AddressModal = (props: Props) => {
     const { handleCloseModal, handleSubmit, isOpenModal, editingAddress } = props;
-
+console.log("editingAddress", editingAddress)
     return (
         <Modal onClose={handleCloseModal} open={isOpenModal}>
             <Modal.Header>
-                <div>
-                    Add New Address
-                </div>
+                {
+                    editingAddress
+                    ?   <div>
+                            Edit Address
+                        </div>
+                    :   <div>
+                            Add New Address
+                        </div>
+                }
             </Modal.Header>
             <Modal.Content>
                 <Address address={editingAddress} handleSubmit={handleSubmit}/>

@@ -4,6 +4,10 @@
     margin: auto;
 }
 
+.body {
+    padding: 15px;
+}
+
 .title {
     margin-top: 15px;
     margin-bottom: 15px;
@@ -12,6 +16,14 @@
 .method {
     display: flex;
     justify-content: space-between;
+    padding: 0 15px;
+    height: 45px;
+    line-height: 45px;
+    border: 1px solid #878;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    align-items: center;
+    cursor: pointer;
 }
 
 .radio {

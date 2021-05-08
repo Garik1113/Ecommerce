@@ -55,7 +55,7 @@
 }
 
 .red i {
-    color: red;
+    color: #18564d;
 }
 
 .discountedPriceField {
@@ -75,4 +75,31 @@
     font-size: 12px;
     display: block;
     margin-left: 10px;
+}
+
+.flexRoot {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.flexTitle {
+    margin-top: 0;
+    margin-left: 10px;
+}
+
+.flexFooter {
+    margin-top: 0;
+    margin-left: 10px;
+}
+
+.actionFlex {
+    display: flex;
+}
+
+.description {
+    margin-left: 10px;
+    max-width: 300px;
+    margin-top: 15px;
+    max-height: 180px;
+    overflow-y: hidden;
 }

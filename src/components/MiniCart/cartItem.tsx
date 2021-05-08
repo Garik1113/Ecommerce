@@ -11,16 +11,16 @@ import Attributes from '../Attributes';
 type Props = {
     showDescription: boolean,
     cartItem: ICartItem,
-    dontShowActions?: boolean
+    dontShowActions?: boolean,
+    currency: any
 }
 
 const CartItem:React.FC<Props> = (props: Props) => {
-    const { showDescription, cartItem, dontShowActions } = props;
+    const { showDescription, cartItem, dontShowActions, currency } = props;
     const { product } = cartItem;
     const { 
         handleDeleteCartItem,
-        handleChangeQuantity,
-        currency
+        handleChangeQuantity
     } = useCartItem({cartItem});
     
     return (
@@ -61,8 +61,8 @@ const CartItem:React.FC<Props> = (props: Props) => {
                                 <i className="fas fa-chevron-right" onClick={() => handleChangeQuantity(true)}></i>
                             </div>
                         }
-                        <div className={classes.price}>
-                            <span>{product.discountedPrice || product.price} {currency.name}</span>
+                        <div>
+                            <span className={classes.price}>{product.discountedPrice || product.price} {currency.name}</span>
                         </div>
                     </div>
                     {dontShowActions 

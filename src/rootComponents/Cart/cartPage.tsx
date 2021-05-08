@@ -4,10 +4,10 @@ import { useCartPage } from '../../talons/Cart/useCartPage';
 import classes from './cartPage.scss';
 
 const CartPage:React.FC = () => {
-    const { cart } =  useCartPage();
+    const { cart, currency } =  useCartPage();
     return (
         <div className={classes.root}>
-            { cart ? <CartContent cart={cart}/> : null }
+            { cart ? <CartContent cart={cart} currency={currency}/> : null }
         </div>
     )
 }
