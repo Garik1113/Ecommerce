@@ -1,6 +1,8 @@
 import React from 'react';
 import { Range } from 'react-input-range';
-import { IAttribute, IValue } from 'src/interfaces/product';
+import { IAttribute } from 'src/interfaces/product';
+import ColorSwatch from './colorSwatch';
+import Swatch from './swatch';
 import classes from './filters.scss';
 import PricRange from './priceRange';
 
@@ -9,7 +11,8 @@ type Props = {
     setPriceRange: any,
     handleApplyPriceRange: any,
     addQueryString: any,
-    attributes: IAttribute[]
+    attributes: IAttribute[],
+    queryParams: any
 }
 
 const Filters:React.FC<Props> = (props: Props) => {
@@ -17,38 +20,47 @@ const Filters:React.FC<Props> = (props: Props) => {
         priceRange, 
         setPriceRange,
         handleApplyPriceRange,
-        attributes
+        attributes,
+        addQueryString,
+        queryParams
     } = props;
 
     return (
         <div className={classes.root}>
-            {
-                attributes && attributes.length
-                ?   attributes.map((e: IAttribute, i: number) => (
-                        <div key={i}>
-                            <div>
-                                {e.name}
-                            </div>
-                            {
-                                e.values.map((v:IValue, a:number) => {
-                                    return (
-                                        <div key={a}>
-                                            {v.name}
-                                        </div>
-                                    )
-                                })
-                            }
-                        </div>
-                    ))
-                :   null
-            }
-            <PricRange 
-                min={0} 
-                max={100000} 
-                value={priceRange}
-                setPriceRange={setPriceRange}
-                handleApplyPriceRange={handleApplyPriceRange}
-            />
+            <div>
+                {
+                    attributes && attributes.length
+                    ?   attributes.map((e: IAttribute, i: number) => (
+                            e.type == "colorSwatch"
+                            ?  <div className={classes.filter}>
+                                    <ColorSwatch 
+                                        attribute={e} key={i} 
+                                        addQueryString={addQueryString}
+                                        queryParams={queryParams}
+                                    />
+                                </div> 
+                            :   e.type == "swatch"
+                            ?   <div className={classes.filter}>
+                                    <Swatch 
+                                        attribute={e} 
+                                        key={i} 
+                                        addQueryString={addQueryString}
+                                        queryParams={queryParams}
+                                    />
+                                </div> 
+                            :   null
+                        ))
+                    :   null
+                }
+                <PricRange 
+                    min={0} 
+                    max={100000} 
+                    value={priceRange}
+                    setPriceRange={setPriceRange}
+                    handleApplyPriceRange={handleApplyPriceRange}
+                />  
+            </div>
+            
         </div>
     )
 };

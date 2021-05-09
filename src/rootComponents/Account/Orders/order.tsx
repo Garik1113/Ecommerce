@@ -58,6 +58,16 @@ const Order:React.FC<Props> = (props: Props) => {
                 {
                     isOpen
                     ?   <div className={classes.content}>
+                            <div className={classes.items}>
+                                <div className={classes.paymentHeader}>
+                                    Products
+                                </div>
+                                {
+                                    order.items.map((e:ICartItem, i: number) => {
+                                        return <CartProduct currency={order.currency} inOrder={true} cartItem={e} key={i}/>
+                                    })
+                                }
+                            </div>
                             <div className={classes.addressField}>
                                 <div className={classes.shipping}>
                                     <div className={classes.addressTitle}>
@@ -99,16 +109,7 @@ const Order:React.FC<Props> = (props: Props) => {
                                     {order.status}
                                 </span>
                             </div>
-                            <div className={classes.items}>
-                                <div className={classes.paymentHeader}>
-                                    Products
-                                </div>
-                                {
-                                    order.items.map((e:ICartItem, i: number) => {
-                                        return <CartProduct currency={order.currency} inOrder={true} cartItem={e} key={i}/>
-                                    })
-                                }
-                            </div>
+                            
                         </div>
                     :   null
                 }

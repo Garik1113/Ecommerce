@@ -2,6 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 import { Dispatch } from "react";
 import { BACKEND_URL } from 'src/config/defaults';
 import { State } from 'src/store';
+import { CartActions, SET_CART_ID } from 'src/store/types/cart';
 import { CustomerActionTypes, GET_CUSTOMER_DETAILS, SIGN_IN, SIGN_OUT } from "./actions";
 
 export const signin = (token: string) => (dispatch:Dispatch<CustomerActionTypes>) => {
@@ -17,7 +18,7 @@ export const signOut = () => (dispatch:Dispatch<CustomerActionTypes>) => {
     })
 }
 
-export const getCustomerDetails = () => async(dispatch: Dispatch<CustomerActionTypes>, getState: () => State) => {
+export const getCustomerDetails = () => async(dispatch: Dispatch<CustomerActionTypes | CartActions>, getState: () => State) => {
     const token = getState().customer.token;
     const response: AxiosResponse = await axios.get(
         `${BACKEND_URL}/customers`,
@@ -33,5 +34,9 @@ export const getCustomerDetails = () => async(dispatch: Dispatch<CustomerActionT
             type: GET_CUSTOMER_DETAILS,
             customer: data.customer
         })
+        dispatch({
+            type: SET_CART_ID,
+            cartId: data.customer.cartId
+        });
     }
 }

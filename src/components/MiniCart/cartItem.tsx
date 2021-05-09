@@ -40,7 +40,8 @@ const CartItem:React.FC<Props> = (props: Props) => {
                         classes={{
                             root: classes.attributeRoot,
                             attributeName: classes.attributeName,
-                            attributeValue: classes.attributeValue
+                            attributeValue: classes.attributeValue,
+                            
                         }}
                     />
                     {showDescription 

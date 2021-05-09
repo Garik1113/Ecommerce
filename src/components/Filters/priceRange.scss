@@ -2,7 +2,17 @@
 
 .slider {
     margin-bottom: 40px;
+    max-width: 200px;
   }
+
+@media (max-width: 600px) {
+    .slider {
+        max-width: 350px;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+}
+
   
   .slider label {
     font-size: 18px;

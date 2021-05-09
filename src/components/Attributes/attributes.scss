@@ -24,3 +24,31 @@
     font-weight: 500;
     font-size: 18px;
 }
+
+.swatchRoot {
+    display: flex;
+    align-items: center;
+    max-width: 120px;
+}
+
+.circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.swatch {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #09d4db;
+    text-align: center;
+    line-height: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #fff;
+}

@@ -32,8 +32,12 @@ export const customerReducer = (state: ICustomerInterface = initialState, action
             };
         case SIGN_OUT:
             localStorage.removeItem('token');
+            localStorage.removeItem("cartId");
             return {...initialState, token: "", isSignedIn: false};
         case GET_CUSTOMER_DETAILS:
+            if (action.customer && action.customer.cartId) {
+                localStorage.setItem("cartId", action.customer.cartId)
+            }
             return {
                 ...state,
                 customer: action.customer

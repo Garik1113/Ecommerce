@@ -1,0 +1,40 @@
+.list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 10px;
+    width: 100%;
+    max-width: 200px;
+}
+
+
+@media (max-width: 600px) {
+    .list {
+        max-width: unset;
+    }
+}
+
+.circle {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.selected {
+    border: 1px solid #878787;
+}
+
+.swatch {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.title {
+    margin: 7px auto;
+    font-size: 18px;
+    color: #000;
+}

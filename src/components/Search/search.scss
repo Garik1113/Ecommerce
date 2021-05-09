@@ -10,6 +10,8 @@
     border-radius: 5px;
     margin-top: 5px;
     z-index: 100;
+    max-height: 200px;
+    overflow-y: scroll;
 }
 
 .result {
@@ -19,6 +21,11 @@
     height: 30px;
     line-height: 30px;
     color: rgb(24, 24, 34);
+}
+
+.result:hover {
+    background: #036eb6;
+    color: #fff;
 }
 
 .overlay {

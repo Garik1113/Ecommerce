@@ -23,6 +23,7 @@ export interface IValue {
 export interface IAttribute {
     _id: string,
     name: String,
+    type: string,
     values: IValue[]
 }
 
