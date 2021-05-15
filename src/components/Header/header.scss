@@ -39,7 +39,7 @@
 }
 
 .wishlist a {
-    color: yellow;
+    color: #00ff50;
 }
 
 .wishlist {
@@ -76,7 +76,7 @@
 
 .category a {
     color: #ffffff;
-    font-size: 17px;
+    font-size: 15px;
     text-transform: uppercase;
 }
 
@@ -90,12 +90,18 @@
     .top {
         grid-template-columns: 10% 60% 10% 10% 10%;
     }
+    
+    .category {
+        margin-left: 25px;
+    }
 }
 
 @media (max-width: 800px) {
     .search {
         justify-self: auto;
     }
+
+    
 }
 
 @media (max-width: 700px) {

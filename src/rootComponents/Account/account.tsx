@@ -13,7 +13,9 @@ const Account:React.FC = () => {
         email, 
         handleSubmit,
         isSubmitting,
-        message
+        message,
+        isChangingPassword,
+        setIsChangingPassword
     } = useAccount();
 
     return (
@@ -27,7 +29,10 @@ const Account:React.FC = () => {
                         initialValues={{ 
                             firstName, 
                             lastName, 
-                            email 
+                            email,
+                            currentPassword: "",
+                            newPassword: "",
+                            confirmNewPassword: "" 
                         }}
                         onSubmit={handleSubmit}
                         enableReinitialize={true}
@@ -66,6 +71,42 @@ const Account:React.FC = () => {
                                     }
                                     <ErrorMessage name="lastName" component="div" className={classes.error}/>
                                 </div>
+                                <div className={classes.field}>
+                                    <span className={classes.changePassword} onClick={() => setIsChangingPassword(!isChangingPassword)}>Change Passwor</span>
+                                </div>
+                                {
+                                    isChangingPassword
+                                    ?   <div>
+                                            <div className={classes.field}>
+                                                <Field type="password" name="currentPassword" value={values.currentPassword} className={classes.input}/>
+                                                {values.currentPassword 
+                                                ?   null
+                                                :   <label htmlFor="currentPassword" className={classes.label}>Current Password</label>
+                                                }
+                                                
+                                                <ErrorMessage name="currentPassword" component="div" className={classes.error}/>
+                                            </div>
+                                            <div className={classes.field}>
+                                                <Field type="password" name="newPassword" value={values.newPassword} className={classes.input}/>
+                                                {values.newPassword 
+                                                ?   null
+                                                :   <label htmlFor="newPassword" className={classes.label}>New Password</label>
+                                                }
+                                                
+                                                <ErrorMessage name="newPassword" component="div" className={classes.error}/>
+                                            </div>
+                                            <div className={classes.field}>
+                                                <Field type="password" name="confirmNewPassword" value={values.confirmNewPassword} className={classes.input}/>
+                                                {values.confirmNewPassword 
+                                                ?   null
+                                                :   <label htmlFor="confirmNewPassword" className={classes.label}>Confirm New Password</label>
+                                                }
+                                                <ErrorMessage name="confirmNewPassword" component="div" className={classes.error}/>
+                                            </div>
+                                        </div> 
+                                    :   null 
+                                        
+                                }
                                 <div className={classes.btnWrapper}>
                                     <Button 
                                         priority="normal" 

@@ -3,7 +3,7 @@ import { CarouselProvider, Slider as PureSlider, Slide,ButtonBack, ButtonNext } 
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import classes from './slider.scss'
 import { useSlider } from 'src/talons/Slider/useSlider';
-import { BACKEND_URL, IMAGE_BASE_URL } from 'src/config/defaults';
+import { BACKEND_URL } from 'src/config/defaults';
 
 const Slider:React.FC = () => {
     const { slider } = useSlider();
@@ -15,7 +15,7 @@ const Slider:React.FC = () => {
             <CarouselProvider 
                 naturalSlideWidth={800}
                 naturalSlideHeight={400}
-                totalSlides={3}
+                totalSlides={slider.slides.length}
                 visibleSlides={1}
                 className={classes.carousel}
                 infinite={true}

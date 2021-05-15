@@ -120,3 +120,26 @@ input[type=number] {
     max-width: 1600px;
     margin: auto;
 }
+
+.actions {
+    margin-top: 20px;
+}
+
+.actionHeader {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.discriptionTitle {
+    font-size: 24px;
+    color: #000;
+    border-radius: 7px;
+    background: #fff;
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    margin-right: 10px;
+}

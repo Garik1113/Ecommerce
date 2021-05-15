@@ -43,6 +43,11 @@ export const useProduct = ({id}: Props) => {
     useEffect(() => {
         fetchProduct()
     }, [id]);
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [fetchProduct])
+
     
     return {
         product

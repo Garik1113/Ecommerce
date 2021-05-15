@@ -10,9 +10,9 @@ type Props = {
 }
 
 export const useReviews = (props: Props) => {
-    const { product, isSubmittingReview } = props;
+    const { product } = props;
     const { axiosClient } = useAxiosClient();
-    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [isSubmitting] = useState(false)
     const [reviews, setReviews] = useState<IReview[]>([]);
 
     const fetchReviews = useCallback(async() => {
@@ -25,7 +25,7 @@ export const useReviews = (props: Props) => {
 
     useEffect(() => {
         fetchReviews()
-    }, [product, isSubmittingReview])
+    }, [product])
 
     return {
         isSubmitting,

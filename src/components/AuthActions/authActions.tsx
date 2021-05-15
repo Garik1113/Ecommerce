@@ -17,7 +17,6 @@ const AuthActions = (props: Props) => {
     const isSignedIn = useSelector((state: State) => state.customer.isSignedIn);
     const dispatch = useDispatch();
     const { axiosClient } = useAxiosClient();
-    const history = useHistory();
     const handleSignOut = useCallback(async() => {
         await axiosClient("PUT", `customers/signout`);
         dispatch(signOut());
@@ -33,12 +32,12 @@ const AuthActions = (props: Props) => {
                 ?   <div className={classes.flex}>
                         { 
                             isMobile 
-                            ?   <Button priority="normal" onClick={() => history.push("/account")} label="account"/>
-                            :  <Link to="/account" className={classes.signinLink}>Account</Link> 
+                            ?  <div className={classes.icon}><i className="fas fa-user"></i></div> 
+                            :  <Link to="/account" className={classes.signinLinkAccount}>Account</Link> 
                         }
                         { 
-                            isMobile 
-                            ?   <Button priority="normal" label="sign out" onClick={handleSignOut}/>
+                            isMobile
+                            ?   <div className={classes.icon}><i className="fas fa-sign-out-alt"></i></div>
                             :   <span onClick={handleSignOut} className={classes.signinLink}>Sign out</span> 
                         }
                     </div> 

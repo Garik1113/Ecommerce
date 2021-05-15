@@ -29,6 +29,8 @@ const ProductFullDetail:React.FC<ProductProps> = ({ product }: ProductProps) => 
         isSignedIn,
         isSubmittingReview, 
         setIsSubmittingReview,
+        activeAction, 
+        setActiveAction,
         currency
     } = talonProps;
 
@@ -37,8 +39,32 @@ const ProductFullDetail:React.FC<ProductProps> = ({ product }: ProductProps) => 
             <div className={classes.body}>
                 <section className={classes.carousel}>
                     <ProductImageCarousel gallery={images}/>
-                    <div className={classes.footerActions}>
-                        <div dangerouslySetInnerHTML={{__html: product.description}} className={classes.description}/>
+                    <div className={classes.actions}>
+                        <div className={classes.actionHeader}>
+                            <div 
+                                className={classes.discriptionTitle}
+                                onClick={() => setActiveAction("description")}
+                            >
+                                Description
+                            </div>
+                            <div
+                                className={classes.discriptionTitle}
+                                onClick={() => setActiveAction("review")}>
+                                Reviews
+                            </div>
+                        </div>
+                        {
+                            activeAction == "description"
+                            ?   <div className={classes.footerActions}>
+                                    <div dangerouslySetInnerHTML={{__html: product.description}} className={classes.description}/>
+                                </div>
+                            :   isSignedIn 
+                                ?   <Reviews 
+                                        product={product}
+                                        isSubmittingReview={isSubmittingReview}
+                                    />
+                                :   <span>Only logged in customers can see reviews for this product</span>
+                        }
                     </div>
                 </section>
                 <section className={classes.rightActions}>
@@ -66,21 +92,7 @@ const ProductFullDetail:React.FC<ProductProps> = ({ product }: ProductProps) => 
                             disabled={false}
                         />
                     </div>
-                    <div className={classes.reviews}>
-                        <div>
-                            <h3>Reviews</h3>
-                        </div>
-                        {
-                            isSignedIn
-                            ?   <Reviews 
-                                    product={product}
-                                    isSubmittingReview={isSubmittingReview}
-                                />
-                            :   <div>
-                                    <span>Only logged in customers can see reviews for this product</span>
-                                </div>
-                        }  
-                    </div>
+                
                     {
                         isSignedIn
                         ?   <div className={classes.reviews}>

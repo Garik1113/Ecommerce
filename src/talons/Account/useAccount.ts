@@ -21,6 +21,7 @@ export const useAccount = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [message, setMessage] = useState<Message>({type: "", value: ""})
     const history = useHistory();
+    const [isChangingPassword, setIsChangingPassword] = useState(false)
     const handleSubmit = useCallback(async (values) => {
         setMessage({type: "", value: ""})
         setIsSubmitting(true)
@@ -45,7 +46,10 @@ export const useAccount = () => {
         initialValues: {
             firstName, 
             lastName,
-            email
+            email,
+            currentPassword: "",
+            newPassword: "",
+            confirmNewPassword: ""
         },
         onSubmit: handleSubmit
     });
@@ -65,6 +69,8 @@ export const useAccount = () => {
         formik,
         handleSubmit,
         isSubmitting,
-        message
+        message,
+        isChangingPassword, 
+        setIsChangingPassword
     }
 }
