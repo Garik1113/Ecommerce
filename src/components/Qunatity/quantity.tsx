@@ -1,6 +1,6 @@
 import React from 'react';
+import Button from '../Button';
 import classes from './quantity.scss';
-import { Button } from 'semantic-ui-react';
 
 type Props = {
     quantity: number,
@@ -16,9 +16,9 @@ const Quantity: React.FC<Props> = (props: Props) => {
     } = props;
     return (
         <div className={classes.root}>
-            <Button icon="minus square" onClick={handleDecrementQuantity}/>
+            <Button priority="normal" label="-" onClick={handleDecrementQuantity}/>
             <div className={classes.quantity}>{quantity}</div>
-            <Button icon="plus square" onClick={handleIncrementQuantity}/>
+            <Button priority="normal" label="+" onClick={handleIncrementQuantity}/>
         </div>
     )
 }

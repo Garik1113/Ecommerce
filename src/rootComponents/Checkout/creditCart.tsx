@@ -2,8 +2,8 @@ import React from 'react';
 import classes from './creditCart.scss';
 import { CardNumberElement, CardCvcElement, CardExpiryElement } from '@stripe/react-stripe-js';
 import { useCreditCard } from 'src/talons/Checkout/useCreditCard';
-import { Button } from 'semantic-ui-react';
 import { PaymentMethod } from 'src/interfaces/cart';
+import Button from 'src/components/Button';
 
 type Props = {
     setStep: any,
@@ -27,7 +27,11 @@ const CreditCart:React.FC<Props> = (props: Props) => {
                     <CardExpiryElement className={classes.input}/>
                 </div>
                 <div className={classes.buttons}>
-                    <Button onClick={handleSubmit}>Submit</Button>
+                    <Button 
+                        priority="normal"
+                        label="Submit"
+                        onClick={handleSubmit}>
+                    </Button>
                 </div>
             </form>
         </div>

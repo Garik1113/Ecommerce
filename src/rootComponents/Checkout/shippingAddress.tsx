@@ -5,7 +5,7 @@ import AddressForm from 'components/Address'
 import CheckoutTitle from './checkoutTitle';
 import classes from './shippingAddress.scss';
 import { IAddress } from 'src/interfaces/address';
-import { Button } from 'semantic-ui-react';
+import Button from 'src/components/Button';
 
 type Props = {
     setStep: any
@@ -46,7 +46,12 @@ const ShippingAddress:React.FC<Props> = (props: Props) => {
                             ))}
                         </div>
                         <div className={classes.button}>
-                            <Button onClick={() => handleSubmit(selectedAddress)} primary disabled={!selectedAddress}>Submit</Button>
+                            <Button 
+                                onClick={() => handleSubmit(selectedAddress)} 
+                                priority="normal" 
+                                label="Submit" 
+                                disabled={!selectedAddress}>
+                            </Button>
                         </div>
                     </div>
                 :   <AddressForm handleSubmit={handleSubmit} address={shippingAddress}/>

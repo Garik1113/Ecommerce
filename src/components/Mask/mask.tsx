@@ -11,7 +11,7 @@ const Mask:React.FC= () => {
                 ${toggleCart ? classes.root_hidden : toggleDrawer 
                 ? classes.root_active : ""}`
             } 
-            onClick={handleClick}
+            // onClick={handleClick}
         ></div>
     )
 }

@@ -31,7 +31,7 @@ export const useCategoryContent = (props: Props) => {
     const history = useHistory()
     const { id } = params;
     const { addQueryString, pageControl, queryParams } = usePageControl();
-    const [priceRange, setPriceRange] = useState<Range>({min: Number(pageControl.price_min) || 0, max: Number(pageControl.price_max) || 100000});
+    const [priceRange, setPriceRange] = useState<Range>({min: Number(pageControl.price_min) || 0, max: Number(pageControl.price_max) || 200000});
     const [products, setProducts] = useState<IProduct[]>([]);
     const [attributes, setAttributes] = useState<IAttribute[]>([]);
     const [totalPages, setTotalPages] = useState(0);

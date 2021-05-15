@@ -5,7 +5,6 @@ import 'pure-react-carousel/dist/react-carousel.es.css';
 import { BACKEND_URL } from 'src/config/defaults';
 import { handleImageError } from 'src/util/handleImageError';
 import { Image } from 'src/store/types/product';
-import { Icon } from 'semantic-ui-react';
 
 interface Props {
     gallery: Image[]

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from 'semantic-ui-react';
 import { usePaymentMethod } from 'src/talons/Checkout/usePaymentMethod';
 import CheckoutTitle from './checkoutTitle';
 import CreditCart from './creditCart';
@@ -8,6 +7,7 @@ import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js';
 import { STRIPE_PUBLIC_KEY } from 'src/config/defaults';
 import { PaymentMethod } from 'src/interfaces/cart';
+import Button from 'src/components/Button';
 
 type Props = {
     setStep: any
@@ -57,7 +57,7 @@ const PaymentMethod:React.FC<Props> = (props: Props) => {
             {method?.methodCode == "cart"
             ?   null
             : <div className={classes.buttons}>
-                <Button onClick={handleSubmit}>Submit</Button>
+                <Button onClick={handleSubmit} label="Submit" priority="normal"></Button>
             </div>}
         </div>
     )

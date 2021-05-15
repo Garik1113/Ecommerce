@@ -1,4 +1,3 @@
-import { fromPairs } from 'lodash';
 import React, { useEffect, useState } from 'react';
 import { useProductSlider } from 'src/talons/ProductSlider/useProductSlider';
 import classes from './productSlider.scss';

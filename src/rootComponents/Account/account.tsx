@@ -1,6 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import React from 'react'
-import { Button } from 'semantic-ui-react';
+import Button from 'src/components/Button';
 import { useAccount } from 'src/talons/Account/useAccount';
 import classes from './account.scss';
 import Tabs from './tabs';
@@ -68,11 +68,10 @@ const Account:React.FC = () => {
                                 </div>
                                 <div className={classes.btnWrapper}>
                                     <Button 
-                                        primary 
+                                        priority="normal" 
                                         onClick={handleSubmit}
-                                        loading={isSubmitting}
+                                        label="Change"
                                     >
-                                        Change
                                     </Button>
                                 </div>
                             </Form>

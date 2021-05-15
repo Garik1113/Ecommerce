@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'semantic-ui-react';
+import Button from 'src/components/Button';
 import { ShippingMethod } from 'src/interfaces/cart';
 import { useShippingMethod } from 'src/talons/Checkout/useShippingMethod';
 import CheckoutTitle from './checkoutTitle';
@@ -42,7 +42,11 @@ const ShippingMethod:React.FC<Props> = (props: Props) => {
                     :   null
                 }
                 <div className={classes.button}>
-                    <Button onClick={handleSubmit} primary>Submit</Button>
+                    <Button 
+                        priority="normal" 
+                        onClick={handleSubmit}
+                        label="Submit"
+                    ></Button>
                 </div>
             </div>
         </div>

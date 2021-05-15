@@ -12,7 +12,7 @@ type Props = {
 
 const AddressModal = (props: Props) => {
     const { handleCloseModal, handleSubmit, isOpenModal, editingAddress } = props;
-console.log("editingAddress", editingAddress)
+    
     return (
         <Modal onClose={handleCloseModal} open={isOpenModal}>
             <Modal.Header>

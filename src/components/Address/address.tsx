@@ -2,19 +2,11 @@ import React, { useMemo } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import classes from './address.scss';
 import {  } from 'src/store/types/cart';
-import { Button, Dropdown } from 'semantic-ui-react';
+import { Dropdown } from 'semantic-ui-react';
 import * as yup from 'yup'
 import { IAddress } from 'src/interfaces/address';
 import { useAddress } from 'src/talons/Address/useAddress';
-
-interface Country {
-    __typename: string,
-    name: string
-}
-
-interface Countries {
-    countries: Country[]
-}
+import Button from '../Button';
 
 type Props = {
     handleSubmit?: any,
@@ -143,7 +135,12 @@ const Address:React.FC<Props> = (props: Props) => {
                                 </div>
                             </div>
                             <div className={classes.buttonField}>
-                                <Button type="submit" onClick={handleSubmit}>Submit</Button>
+                                <Button 
+                                    priority="normal" 
+                                    onClick={handleSubmit}
+                                    label={"submit"}
+                                ></Button>
+                                {/* <Button type="submit" onClick={handleSubmit}>Submit</Button> */}
                             </div>
                         </Form>
                     )
