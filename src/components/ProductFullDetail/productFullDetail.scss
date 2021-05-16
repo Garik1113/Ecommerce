@@ -173,5 +173,15 @@ input[type=number] {
 
 .subscribe span {
     font-size: 14px;
-    color: green;
+    color: #07190c;
+}
+
+.subMessage {
+    margin: 10px auto;
+    font-size: 16px;
+    color: #000 !important;
+}
+
+.subMessage a {
+    color: #f50670;
 }

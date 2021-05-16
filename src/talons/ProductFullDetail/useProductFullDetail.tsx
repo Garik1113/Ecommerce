@@ -14,6 +14,7 @@ export const useProductFullDetail = (props: ProductProps) => {
     const [activeAction, setActiveAction] = useState("description")
     const isSignedIn = useSelector((state: State) => state.customer.isSignedIn);
     const { productSubscriptions } = useSelector((state: State) => state.customer.customer);
+    const [message, setMessag] = useState("");
 
     const { getConfigValue } = useConfig();
     const currency = useMemo(
@@ -34,9 +35,14 @@ export const useProductFullDetail = (props: ProductProps) => {
     },[quantity, setQuantity]);
     
     const handleAddProductToCart = useCallback(async() => {
-        if (product._id) {
-            await dispatch(addProductToCart(product._id, quantity));
+        try {
+           if (product._id) {
+                await dispatch(addProductToCart(product._id, quantity));
+            } 
+        } catch (error) {
+            console.log(error)
         }
+        
     },[
         product, 
         addProductToCart, 

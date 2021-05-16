@@ -37,11 +37,11 @@ const CheckoutHeader:React.FC<Props> = (props: Props) => {
                     <i className="fas fa-location-arrow"></i>
                 </div>
                 <div className={classes.line}></div>
-                <div className={`${classes.item} ${isDisabled(2) && !paymentMethod ? classes.disabled : classes.active}`} onClick={() => isDisabled(2) && !paymentMethod ? null : setStep({value: "payment", index: 2})}>
+                <div className={`${classes.item} ${isDisabled(2) && !shippingMethod ? classes.disabled : classes.active}`} onClick={() => isDisabled(3) && !shippingMethod ? null : setStep({value: "shipping_method", index: 3})}>
                     <i className="far fa-money-bill-alt"></i>
                 </div>
                 <div className={classes.line}></div>
-                <div className={`${classes.item} ${isDisabled(2) && !shippingMethod ? classes.disabled : classes.active}`} onClick={() => isDisabled(3) && !shippingMethod ? null : setStep({value: "shipping_method", index: 3})}>
+                <div className={`${classes.item} ${isDisabled(2) && !paymentMethod ? classes.disabled : classes.active}`} onClick={() => isDisabled(2) && !paymentMethod ? null : setStep({value: "payment", index: 2})}>
                     <i className="far fa-money-bill-alt"></i>
                 </div>
                 <div className={classes.line}></div>

@@ -12,6 +12,7 @@ import classes from './productFullDetail.scss';
 import ProductImageCarousel from './productImageCarousel';
 import Rating from 'react-star-ratings';
 import Subscribe from '../Subscribe';
+import { Link } from 'react-router-dom';
 
 export interface ProductProps {
     product: IProduct 
@@ -98,21 +99,23 @@ const ProductFullDetail:React.FC<ProductProps> = ({ product }: ProductProps) => 
                     {
                         product.quantity < 1 && isSignedIn && productSubscriptions
                         ?   <div className={classes.subscribe}>
-                                <span>Product is out of stock now.. you can subscribe and receive email about this product</span>
+                                <span>Product is out of stock now.. you can subscribe and receive email about this product availibility</span>
                                 <Subscribe productId={product._id}/>
                             </div> 
-                        :   <div className={classes.button}>
-                                <Button 
-                                    className={classes.button} 
-                                    label="ADD TO CART" 
-                                    priority="high" 
-                                    onClick={handleAddProductToCart} 
-                                    disabled={false}
-                                />
-                            </div>
+                        :   isSignedIn 
+                            ?   <div className={classes.button}>
+                                    <Button 
+                                        className={classes.button} 
+                                        label="ADD TO CART" 
+                                        priority="high" 
+                                        onClick={handleAddProductToCart} 
+                                        disabled={false}
+                                    />
+                                </div>
+                            :   null
                     }
                     {
-                        !isSignedIn
+                        !isSignedIn && product.quantity > 1
                         ?   <div className={classes.button}>
                                 <Button 
                                     className={classes.button} 
@@ -122,7 +125,11 @@ const ProductFullDetail:React.FC<ProductProps> = ({ product }: ProductProps) => 
                                     disabled={false}
                                 />
                             </div>
-                        :   null
+                        :   !isSignedIn && product.quantity < 1
+                            ?   <div className={classes.subMessage}>
+                                    <Link to="/signup">Sign up</Link>  and get email about product availibility
+                                </div>
+                            :   null
                     }
                     {
                         isSignedIn

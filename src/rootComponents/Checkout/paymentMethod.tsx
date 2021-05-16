@@ -20,7 +20,7 @@ const PaymentMethod:React.FC<Props> = (props: Props) => {
     
     return (
         <div className={classes.root}>
-            <CheckoutTitle title="payment method" number={3}/>
+            <CheckoutTitle title="payment method" number={4}/>
             <div className={classes.methods}>
                 <div>
                     <div className={classes.list}>

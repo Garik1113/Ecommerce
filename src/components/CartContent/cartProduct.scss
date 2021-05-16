@@ -26,7 +26,6 @@
 
 .summaryPrice {
     margin-left: 15px;
-    margin-top: 15px;
 }
 
 .summary {
@@ -144,6 +143,7 @@ input[type=number] {
         max-width: 300px;
         align-items: center;
         grid-template-columns: 1fr 1fr;
+        margin-top: 15px;
     }
 
 }

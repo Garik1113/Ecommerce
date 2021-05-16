@@ -19,7 +19,7 @@ const Home:React.FC = () => {
                 <div className={classes.newCollection}>
                     <div className={classes.newTitleField}>
                         <span className={classes.newTitle}>
-                            Last Products
+                            Նոր Տեսականի
                         </span>
                     </div>
                     <div className={classes.newBody}>
@@ -34,7 +34,7 @@ const Home:React.FC = () => {
                 <div className={classes.sales}>
                     <div className={classes.newTitleField}>
                         <span className={classes.newTitle}>
-                            Sales
+                            Զեղջված Ապրանքներ
                         </span>
                     </div>
                     <div className={classes.newBody}>

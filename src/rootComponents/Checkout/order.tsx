@@ -26,7 +26,7 @@ const Order:React.FC = () => {
 
     return (
         <div className={classes.root}>
-            <CheckoutTitle title="review order" number={4}/>
+            <CheckoutTitle title="review order" number={5}/>
             <div className={classes.itemCount} onClick={handleClick}>
                 <span>{items.length} items in cart</span>
                 {showItems 
@@ -38,7 +38,8 @@ const Order:React.FC = () => {
             ?  <div className={classes.items}>
                 {
                     items.map((item: ICartItem) => (
-                        <CartItem 
+                        <CartItem
+                            handleClose={() => {}} 
                             showDescription={false} 
                             cartItem={item} 
                             key={item._id} 
