@@ -48,10 +48,10 @@ const Footer:React.FC = () => {
                         ԿԱՊ ՄԵԶ ՀԵՏ
                     </div>
                     <div className={classes.fieldValue}>
-                        {storeEmail}
+                        <i className="fas fa-envelope"></i>{storeEmail}
                     </div>
                     <div className={classes.fieldValue}>
-                        {storePhone}
+                        <i className="fas fa-phone"></i>{storePhone}
                     </div>
                     <div className={classes.socialList}>
                         {

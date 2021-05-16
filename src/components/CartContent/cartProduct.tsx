@@ -29,44 +29,45 @@ const CartProduct:React.FC<Props> = (props: Props) => {
                 <div className={classes.image}>
                     <img onError={handleImageError} src={`${BACKEND_URL}/images/product/${get(product, "images[0].main_image", "")}`} className={classes.itemImage}/>
                 </div>
-                <div className={classes.title}>
-                    <Link to={`/product/${_id}`}>
-                        <h3>{name}</h3>
-                    </Link>
-                </div>
-                <div className={classes.attributeField}>
-                    <b>Attributes</b>
-                    <Attributes 
-                        attributes={product.configurableAttributes}
-                        classes={{
-                            attribute: classes.attribute,
-                            root: classes.attributeRoot,
-                            attributeName: classes.attributeName,
-                            attributeValue: classes.attributeValue
-                        }}
-                    />
-                </div>
-                <div className={classes.price}>
-                    <div className={classes.propertyName}>
-                        <b>Price</b>
+                <div className={classes.rightActions}>
+                    <div className={classes.nameField}>
+                        <Link to={`/product/${_id}`}>
+                            {name}
+                        </Link>
+                        <div className={classes.attributeField}>
+                            <Attributes 
+                                attributes={product.configurableAttributes}
+                                classes={{
+                                    attribute: classes.attribute,
+                                    root: classes.attributeRoot,
+                                    attributeName: classes.attributeName,
+                                    attributeValue: classes.attributeValue
+                                }}
+                            />
+                        </div>
                     </div>
-                    <span className={classes.itemPrice}>{discountedPrice || price} {currency.name}</span>
-                </div>
-                <div className={classes.quantity}>
-                    <div className={classes.propertyName}>
-                        <b>Quantity</b>
+                    <div className={classes.price}>
+                        <div className={classes.propertyName}>
+                            Price
+                        </div>
+                        <span className={classes.itemPrice}>{discountedPrice || price} {currency.name}</span>
                     </div>
-                    <div className={classes.qtyNumber}>
-                        {!inOrder ? <i className="fas fa-chevron-left" onClick={() => handleChangeQuantity(false)}></i> : null}
-                        <input type="number"  min={1} value={quantity}/>
-                        {!inOrder ? <i className="fas fa-chevron-right" onClick={() => handleChangeQuantity(true)}></i> : null}
+                    <div className={classes.quantity}>
+                        <div className={classes.propertyName}>
+                            Qty
+                        </div>
+                        <div className={classes.qtyNumber}>
+                            {!inOrder ? <i className="fas fa-chevron-left" onClick={() => handleChangeQuantity(false)}></i> : null}
+                            <div className={classes.qty}>{quantity}</div>
+                            {!inOrder ? <i className="fas fa-chevron-right" onClick={() => handleChangeQuantity(true)}></i> : null}
+                        </div>
                     </div>
-                </div>
-                <div className={classes.summaryPrice}>
-                    <div className={classes.propertyName}>
-                        <b>Summary price</b>
+                    <div className={classes.summaryPrice}>
+                        <div className={classes.propertyName}>
+                            Summary
+                        </div>
+                        <span className={classes.summary}>{(discountedPrice || price)  * quantity} {currency.name}</span>
                     </div>
-                    <span className={classes.summary}>{(discountedPrice || price)  * quantity} {currency.name}</span>
                 </div>
             </div>
             {

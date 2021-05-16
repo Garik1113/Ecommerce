@@ -1,5 +1,4 @@
 import React from 'react';
-import { Icon } from 'semantic-ui-react';
 import { useAddresses } from 'src/talons/Account/useAddresses';
 import Tabs from '../tabs';
 import Address from './address';
@@ -20,14 +19,13 @@ const Addresses:React.FC = () => {
     } = useAddresses();
     
     return (
-        <div className={classes.root}>
             <div className={classes.body}>
                 <div className={classes.tabs}>
                     <Tabs/>
                 </div>
                 <div className={classes.list}>
                         {
-                            addresses.map((a, i) => (
+                           addresses && addresses.map((a, i) => (
                                 <Address 
                                     address={a} 
                                     key={i} 
@@ -39,7 +37,7 @@ const Addresses:React.FC = () => {
                         
                         <div className={classes.addAddressField}>
                             <div className={classes.plusIconField} onClick={addNewAddress}>
-                                <Icon name="add" className={classes.plusIcon}/>
+                                <i className="fas fa-plus"></i>
                             </div>
                         </div>
                 </div>
@@ -54,7 +52,6 @@ const Addresses:React.FC = () => {
                     :   null
                 }
             </div>
-        </div>
     )
 }
 

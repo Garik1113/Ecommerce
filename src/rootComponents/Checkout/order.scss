@@ -26,3 +26,11 @@
     align-items: center;
     cursor: pointer;
 }
+
+.itemCount span {
+    white-space: nowrap;
+}
+
+.itemCount i {
+    margin-left: 5px;
+}

@@ -10,6 +10,8 @@ import Reviews from '../Reviews';
 import Price from './price';
 import classes from './productFullDetail.scss';
 import ProductImageCarousel from './productImageCarousel';
+import Rating from 'react-star-ratings';
+import Subscribe from '../Subscribe';
 
 export interface ProductProps {
     product: IProduct 
@@ -27,11 +29,10 @@ const ProductFullDetail:React.FC<ProductProps> = ({ product }: ProductProps) => 
         handleDecrementQuantity,
         handleAddProductToCart,
         isSignedIn,
-        isSubmittingReview, 
-        setIsSubmittingReview,
         activeAction, 
         setActiveAction,
-        currency
+        currency,
+        productSubscriptions
     } = talonProps;
 
     return (
@@ -61,7 +62,6 @@ const ProductFullDetail:React.FC<ProductProps> = ({ product }: ProductProps) => 
                             :   isSignedIn 
                                 ?   <Reviews 
                                         product={product}
-                                        isSubmittingReview={isSubmittingReview}
                                     />
                                 :   <span>Only logged in customers can see reviews for this product</span>
                         }
@@ -71,7 +71,19 @@ const ProductFullDetail:React.FC<ProductProps> = ({ product }: ProductProps) => 
                     <div className={classes.title}>
                         <h2>{name}</h2>
                     </div>
-                    <hr/>
+                    <hr className={classes.line}/>
+                    <div className={classes.rating}>
+                        <Rating 
+                            maxRating={6} 
+                            rating={product.averageRating} 
+                            starDimension="28px"
+                            starSpacing="0px"
+                            starRatedColor="#00ff50"
+                            starHoverColor="#00ff50"
+                            isSelectable={false}
+                        />
+                        <span>{product.averageRating} (5)</span>
+                    </div>
                     <div className={classes.price}>
                         <Price product={product} currency={currency}/>
                     </div>
@@ -83,23 +95,40 @@ const ProductFullDetail:React.FC<ProductProps> = ({ product }: ProductProps) => 
                         handleIncrementQuantity={handleIncrementQuantity}
                         handleDecrementQuantity={handleDecrementQuantity}
                     />
-                    <div className={classes.button}>
-                        <Button 
-                            className={classes.button} 
-                            label="ADD TO CART" 
-                            priority="high" 
-                            onClick={handleAddProductToCart} 
-                            disabled={false}
-                        />
-                    </div>
-                
+                    {
+                        product.quantity < 1 && isSignedIn && productSubscriptions
+                        ?   <div className={classes.subscribe}>
+                                <span>Product is out of stock now.. you can subscribe and receive email about this product</span>
+                                <Subscribe productId={product._id}/>
+                            </div> 
+                        :   <div className={classes.button}>
+                                <Button 
+                                    className={classes.button} 
+                                    label="ADD TO CART" 
+                                    priority="high" 
+                                    onClick={handleAddProductToCart} 
+                                    disabled={false}
+                                />
+                            </div>
+                    }
+                    {
+                        !isSignedIn
+                        ?   <div className={classes.button}>
+                                <Button 
+                                    className={classes.button} 
+                                    label="ADD TO CART" 
+                                    priority="high" 
+                                    onClick={handleAddProductToCart} 
+                                    disabled={false}
+                                />
+                            </div>
+                        :   null
+                    }
                     {
                         isSignedIn
                         ?   <div className={classes.reviews}>
                                 <ReviewForm 
                                     product={product}
-                                    isSubmittingReview={isSubmittingReview}
-                                    setIsSubmittingReview={setIsSubmittingReview}
                                 />
                             </div>
                         :   null

@@ -21,8 +21,8 @@ export const useBillingAddress = (props: Props) => {
     const { shippingAddress, billingAddress } = cart;
     const dispatch = useDispatch();
 
-    const handleChange = useCallback((e, data) => {
-        setBillingAndShippingAreTheSame(data.checked)
+    const handleChange = useCallback((data) => {
+        setBillingAndShippingAreTheSame(data)
     }, []);
     const fetchAddresses = useCallback(async() => {
         const { data, status }:AxiosResponse = await axiosClient("GET", 'customers/');

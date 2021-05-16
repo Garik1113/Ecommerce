@@ -2,7 +2,7 @@
     width: 100%;
     padding: 7px;
     min-width: 120px;
-    border: 1px solid grey;
+    border: none;
     color: #ffffff;
     font-weight: 800;
     cursor: pointer;
@@ -15,11 +15,11 @@
 }
 
 .normal {
-    background: rgb(12, 32, 212);
+    background: #178b3c
 }
 
 .high {
-    background: rgb(223, 12, 117);
+    background: #178b3c
 }
 
 .disabled {

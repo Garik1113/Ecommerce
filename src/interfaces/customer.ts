@@ -7,7 +7,8 @@ export interface ICustomerInput {
     password: string,
     confirmPassword: string,
     addresses: IAddress[],
-    cartId: string
+    cartId: string,
+    productSubscriptions: boolean
 }
 
 export interface ICustomer {
@@ -17,5 +18,6 @@ export interface ICustomer {
     email: string,
     password: string,
     addresses: IAddress[],
-    cartId: string
+    cartId: string,
+    productSubscriptions: boolean
 }

@@ -1,3 +1,7 @@
+.root {
+    margin-top: 50px;
+}
+
 .form {
     width: 100%;
     max-width: 400px;
@@ -6,6 +10,7 @@
 
 .title {
     text-align: center;
+    margin-bottom: 25px;
 }
 
 .label {
@@ -105,5 +110,5 @@
     background: red;
     text-align: center;
     color: #ffffff;
-    padding: 15px;
+    padding: 15px 0;
 }

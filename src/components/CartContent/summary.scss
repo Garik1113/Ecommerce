@@ -1,6 +1,6 @@
 .root {
     background: #ffffff;
-    padding: 7px 20px;
+    padding: 20px;
     max-width: 400px;
 }
 
@@ -19,10 +19,12 @@
 
 .title h2 {
     margin: 0;
+    text-align: center;
 }
 
 .subTotal, .shipping, .orderTotal {
     display: flex;
+    align-items: center;
     width: 100%;
     justify-content: space-between;
 }
@@ -33,4 +35,13 @@
 
 .button {
     text-align: center;
+    margin-top: 15px;
+}
+
+.line {
+    margin-top: 20px;
+}
+
+.orderTotal {
+    margin-top: 10px;
 }

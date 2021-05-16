@@ -1,8 +1,7 @@
 import React, { useMemo } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import classes from './address.scss';
-import {  } from 'src/store/types/cart';
-import { Dropdown } from 'semantic-ui-react';
+import DropDown from 'src/components/Dropdown'
 import * as yup from 'yup'
 import { IAddress } from 'src/interfaces/address';
 import { useAddress } from 'src/talons/Address/useAddress';
@@ -54,27 +53,19 @@ const Address:React.FC<Props> = (props: Props) => {
                         <Form className={classes.form}>
                             <div className={classes.fieldWrapper}>
                                 <div className={classes.field}>
-                                    <Dropdown
-                                        onChange={(e, data) => setFieldValue('country', data.value)}
-                                        value={values.country}
-                                        name="country"
-                                        selection
-                                        fluid
-                                        id="country"
+                                    <DropDown
                                         options={countryOptions}
+                                        activeValue={values.country}
+                                        onChange={(v: any) => setFieldValue("country", v)}
                                     />
                                     <label htmlFor="country" className={classes.label}>Country</label>
                                     <ErrorMessage name="country" component="div" className={classes.error}/>
                                 </div>
                                 <div className={classes.field}>
-                                    <Dropdown
-                                        onChange={(e, data) => setFieldValue('state', data.value)}
-                                        value={values.state}
-                                        name="state"
-                                        selection
-                                        fluid
-                                        id="state"
+                                    <DropDown
                                         options={stateOptions}
+                                        activeValue={values.state}
+                                        onChange={(v: any) => setFieldValue("state", v)}
                                     />
                                     <label htmlFor="state" className={classes.label}>State</label>
                                     <ErrorMessage name="state" component="div" className={classes.error}/>
@@ -82,14 +73,10 @@ const Address:React.FC<Props> = (props: Props) => {
                             </div>
                             <div className={classes.fieldWrapper}>
                                 <div className={classes.field}>
-                                    <Dropdown
-                                        onChange={(e, data) => setFieldValue('city', data.value)}
-                                        value={values.city}
-                                        name="city"
-                                        selection
-                                        fluid
-                                        id="city"
+                                    <DropDown
                                         options={cityOptions}
+                                        activeValue={values.city}
+                                        onChange={(v: any) => setFieldValue("city", v)}
                                     />
                                     <label htmlFor="city" className={classes.label}>City</label>
                                     <ErrorMessage name="city" component="div" className={classes.error}/>

@@ -25,7 +25,7 @@ export const useAccount = () => {
     const handleSubmit = useCallback(async (values) => {
         setMessage({type: "", value: ""})
         setIsSubmitting(true)
-        const {status, data}: AxiosResponse =  await axiosClient("PUT", 'customers/', { data: values })
+        const {status, data}: AxiosResponse =  await axiosClient("PUT", 'customers/', { data: {...values, hasChangedPassword: isChangingPassword} })
         if (status == 200 && data.customer) {
             dispatch({
                 type: GET_CUSTOMER_DETAILS,
@@ -35,8 +35,9 @@ export const useAccount = () => {
         } else {
             setMessage({type: "error", value: "Something wents wrong"})
         }
-        setIsSubmitting(false)
-    }, [axiosClient, getCustomerDetails, setMessage]);
+        setIsSubmitting(false);
+        setIsChangingPassword(false);
+    }, [axiosClient, getCustomerDetails, setMessage, isChangingPassword, setIsChangingPassword]);
 
     useEffect(() => {
         dispatch(getCustomerDetails())
@@ -46,7 +47,6 @@ export const useAccount = () => {
         initialValues: {
             firstName, 
             lastName,
-            email,
             currentPassword: "",
             newPassword: "",
             confirmNewPassword: ""

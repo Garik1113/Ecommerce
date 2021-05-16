@@ -19,7 +19,6 @@ const Address:React.FC<Props> = (props: Props) => {
     
     return (
         <div className={classes.root}>
-            <div className={classes.body}>
                 <div className={classes.row}>
                     <div className={classes.columnTitleField}>
                         <span className={classes.columnTitle}>Country</span>
@@ -64,8 +63,6 @@ const Address:React.FC<Props> = (props: Props) => {
                         </div>
                     :   null
                 }
-                
-            </div>
         </div>
     )
 }

@@ -6,17 +6,15 @@ import * as yup from 'yup'
 
 type Props = {
     product: IProduct,
-    isSubmittingReview: any,
-    setIsSubmittingReview: any
 }
 
 export const useReviewForm = (props: Props) => {
     const { 
         product,
-        setIsSubmittingReview,
     } = props;
     const { axiosClient } = useAxiosClient();
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [message, setMessage] = useState("");
     const validationSchema = useMemo(() => yup.object().shape({
         comment: yup.string().required("Required"),
         rating: yup.string().required("Required"),
@@ -28,18 +26,21 @@ export const useReviewForm = (props: Props) => {
             comment: ""
         },
         onSubmit: async(values) => {
-            setIsSubmittingReview(true)
             setIsSubmitting(true)
+            setMessage('');
             await axiosClient("POST", 'reviews/', values);
             setIsSubmitting(false);
-            setIsSubmittingReview(false)
+            formik.setFieldValue("comment", "");
+            formik.setFieldValue("rating", 3);
+            setMessage("Review has been added")
         },
         validationSchema
     })
 
     return {
         formik,
-        isSubmitting
+        isSubmitting,
+        message
     }
 
 }

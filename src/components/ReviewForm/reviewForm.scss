@@ -1,6 +1,6 @@
 .root {
-    margin-top: 32px;
-    padding: 10px;
+    max-width: 500px;
+    margin: 32px auto;
 }
 
 .ratingField {
@@ -26,4 +26,11 @@
     text-align: center;
     margin: 10px auto;
     font-size: 25px;
+}
+
+.message {
+    color: green;
+    margin: 10px auto;
+    text-align: center;
+    font-size: 14px;
 }

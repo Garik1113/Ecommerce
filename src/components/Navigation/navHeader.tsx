@@ -15,9 +15,6 @@ const NavHeader:React.FC = () => {
             <div className={classes.close}>
                 <i className={`fas fa-window-close ${classes.closeIcon}`} onClick={() => dispatch(toggleDrawer(""))}></i>
             </div>
-            <div className={classes.title}>
-                <span>Title</span>
-            </div>
             <div className={classes.phone}>
                 <a href={`tel: ${storePhone}`}>
                     <i className="fas fa-phone"></i>

@@ -3,36 +3,30 @@
     max-width: 880px;
     background: #ffffff;
     margin-bottom: 20px;
-    max-height: 160px;
     padding: 10px;
 }
 
-@media (max-width: 600px) {
-    .root {
-       max-width: 400px;
-       max-height: 100%;
-       padding: 10px 0;
-       text-align: center;
-   }
-}
-
-
 .topActions {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    display: flex;
     align-items: flex-start;
-    color: #666666;
-    font-weight: 600;
 }
 
-@media (max-width: 600px) {
-    .topActions {
-       display: block;
-       
-   }
-   .summaryPrice {
-       margin-top: 15px;
-   }
+.rightActions {
+    display: flex;
+    align-items: flex-start;
+}
+
+.nameField {
+    margin-left: 15px;
+}
+
+.nameField a, .nameField a:hover {
+    color: #000000;
+}
+
+.summaryPrice {
+    margin-left: 15px;
+    margin-top: 15px;
 }
 
 .summary {
@@ -49,7 +43,6 @@
     height: auto;
     max-width: 200px;
     min-width: 100px;
-
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -65,13 +58,7 @@ input[type=number] {
 }
 
 .quantity {
-    justify-self: center;
-}
-
-@media (max-width: 600px) {
-    .quantity {
-        margin-top: 15px;
-    }
+    margin-left: 15px;
 }
 
 .quantityInput {
@@ -83,26 +70,13 @@ input[type=number] {
     -webkit-appearance: none !important;
 }
 
-.price {
-    justify-self: end;
-}
-
 .itemPrice {
     white-space: nowrap;
 }
 
 .propertyName {
     margin-bottom: 10px;
-    color: #000000;
 }
-
-@media (max-width: 600px) {
-    .propertyName {
-        margin-top: 15px;
-        margin-bottom: 0;
-    }
-}
-
 
 .bottomActions {
     display: flex;
@@ -127,14 +101,89 @@ input[type=number] {
     justify-content: flex-start;
 }
 
-.attributeField b {
-    font-size: 16px;
-    color: #000000;
-    font-weight: 700;
+.qtyNumber {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    margin-top: 15px;
+}
+
+.qty {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+@media (max-width: 1000px) {
+    .rightActions {
+        display: block;
+    }
+
+    .price {
+        margin-left: 15px;
+    }
+
+    .propertyName {
+        margin-bottom: 0;
+    }
+
+    .price {
+        display: grid;
+        max-width: 300px;
+        align-items: center;
+        grid-template-columns: 1fr 1fr;
+    }
+    .quantity {
+        display: grid;
+        max-width: 300px;
+        align-items: center;
+        grid-template-columns: 1fr 1fr;
+    }
+    .summaryPrice {
+        display: grid;
+        max-width: 300px;
+        align-items: center;
+        grid-template-columns: 1fr 1fr;
+    }
+
 }
 
 @media (max-width: 600px) {
+    .root {
+       max-width: 400px;
+       max-height: 100%;
+       padding: 10px 0;
+       text-align: center;
+    }
+   
     .attribute {
         justify-content: center;
     }
+
+    .image {
+        padding: 15px;
+    }
+
+    .image img {
+        width: 100%;
+        height: auto;
+        max-width: 400px;
+    }
+
+    .quantity {
+        margin-top: 15px;
+    }
+
+    .topActions {
+        display: block;
+    }
+
+    .summaryPrice {
+        margin-top: 15px;
+    }
+
+    .attributeField {
+        display: flex;
+        justify-content: center;
+    }    
 }

@@ -19,21 +19,22 @@ const Summary:React.FC<Props> = (props: Props) => {
             <div className={classes.title}>
                 <h2>Summary</h2>
             </div>
-            <hr/>
+            <hr className={classes.line}/>
             <div className={classes.subTotal}>
                 <p>Subtotal</p>
                 <span>{subTotal} {currency.name}</span>
             </div>
-            <hr/>
             {
                 shippingMethod
-                ?   <div className={classes.subTotal}> 
-                        <p>Shipping: {shippingMethod.methodName}</p>
-                        <span>{shippingMethod.price} {currency.name}</span>
-                    </div>
+                ?   <div>
+                        <div className={classes.subTotal}> 
+                            <p>Shipping: {shippingMethod.methodName}</p>
+                            <span>{shippingMethod.price} {currency.name}</span>
+                        </div>
+                        <hr className={classes.line}/>
+                    </div> 
                 :   null
             }
-            <hr/>
             <div className={classes.orderTotal}>
                 <h3>Order Total</h3>
                 <b>{totalPrice} {currency.name}</b>

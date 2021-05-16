@@ -35,10 +35,9 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-slick": "^0.27.13",
+    "react-star-ratings": "^2.3.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^2.0.3",
     "yup": "^0.32.9"
   },
   "devDependencies": {

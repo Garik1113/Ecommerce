@@ -7,7 +7,7 @@ const Product:React.FC = () => {
     const params:any = useParams();
     const { id } = params;
     const { product } = useProduct({id});
-    if (!product._id) {
+    if (!product || !product._id) {
         return null
     } else {
         return (

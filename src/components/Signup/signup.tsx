@@ -20,7 +20,7 @@ const Signup:React.FC = () => {
     const { handleSignup, message } = useSignUp();
     
     return(
-        <div>
+        <div className={classes.root}>
             <h1 className={classes.title}>Sign Up</h1>
             {
                 message 
@@ -36,10 +36,12 @@ const Signup:React.FC = () => {
                         lastName: '', 
                         email: '', 
                         password: '', 
-                        confirmPassword: '' 
+                        confirmPassword: '',
+                        productSubscriptions: false
                     }
                 }
                 validate={(values:Values) => {
+                    
                     const errors = {};
                     if(values["email"] && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values["email"])){
                         errors["email"] = "Invalid email address";
@@ -48,15 +50,16 @@ const Signup:React.FC = () => {
                         errors["confirmPassword"] = "Passwords are not the same"
                     }
                     for (const value in values) {
-                        if(!values[value]) {
+                        if(!values[value] && value !== "productSubscriptions") {
                             errors[value] = 'Required';
                         }
                     }
+                    console.log(errors)
                     return errors;
                 }}
                 onSubmit={handleSignup}
             >
-                {({ isSubmitting }) => (
+                {({ isSubmitting, handleChange, values }) => (
                 <Form className={classes.form}>
                     <div className={classes.field}>
                         <Field type="text" name="firstName" className={classes.input} />
@@ -82,6 +85,19 @@ const Signup:React.FC = () => {
                         <Field type="password" name="confirmPassword" className={classes.input}/>
                         <label htmlFor="confirmPassword" className={classes.label}>Confirm Password</label>
                         <ErrorMessage name="confirmPassword" component="div" className={classes.error}/>
+                    </div>
+                    <div className={classes.checkboxField}>
+                        <div className={classes.flex}>
+                            <input 
+                                type="checkbox" 
+                                id="productSubscriptions"
+                                onChange={handleChange} 
+                                checked={values.productSubscriptions}
+                                name="productSubscriptions"
+                            />
+                            <label htmlFor="productSubscriptions" className={classes.checkboxLabel}>Wanna see newslatters about products?</label>
+                        </div>
+                        <span>you must verify your email for this</span>
                     </div>
                     <div className={classes.btnWrapper}>
                         <Button label="Sign Up" priority="high" onClick={() =>{}} disabled={isSubmitting} className={classes.button}/> 

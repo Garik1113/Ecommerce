@@ -10,21 +10,19 @@ const Orders:React.FC = () => {
     
     return (
         <div className={classes.root}>
-            <div className={classes.body}>
-                <div className={classes.tabs}>
-                    <Tabs/>
-                </div>
-                <div className={classes.orders}>
-                    {
-                        orders.length 
-                        ?   orders.map((e: IOrder) => (
-                                <Order order={e} key={e._id} />
-                            ))
-                        :   <div className={classes.empty}>Empty</div>
-
-                    }
-                </div>
+            <div className={classes.tabs}>
+                <Tabs/>
             </div>
+            <div className={classes.orders}>
+                {
+                    orders.length 
+                    ?   orders.map((e: IOrder) => (
+                            <Order order={e} key={e._id} />
+                            ))
+                    :   <div className={classes.empty}>Empty</div>
+
+                }         
+            </div>            
         </div>
     )
 }

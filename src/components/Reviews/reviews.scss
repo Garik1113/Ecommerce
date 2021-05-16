@@ -25,3 +25,14 @@
 .customer {
     font-size: 14px;
 }
+
+.empty {
+    margin: 25px auto; 
+    text-align: center;
+}
+
+@media (max-width: 500px) {
+    .empty {
+        font-size: 12px;
+    }
+}

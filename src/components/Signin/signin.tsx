@@ -16,7 +16,7 @@ const Signin:React.FC = () => {
     const { handleSignin, message } = useSignin();
 
     return (
-        <div>
+        <div className={classes.root}>
             <h1 className={classes.title}>Sign In</h1>
             {
                 message 

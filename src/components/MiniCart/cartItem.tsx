@@ -12,11 +12,12 @@ type Props = {
     showDescription: boolean,
     cartItem: ICartItem,
     dontShowActions?: boolean,
-    currency: any
+    currency: any,
+    handleClose: any
 }
 
 const CartItem:React.FC<Props> = (props: Props) => {
-    const { showDescription, cartItem, dontShowActions, currency } = props;
+    const { showDescription, cartItem, dontShowActions, currency, handleClose } = props;
     const { product } = cartItem;
     const { 
         handleDeleteCartItem,
@@ -31,8 +32,8 @@ const CartItem:React.FC<Props> = (props: Props) => {
                 </div>
                 <div className={classes.rightActions}>
                     <div className={classes.title}>
-                        <Link to={`/product/${product._id}`}>
-                            <h4>{product.name}</h4>
+                        <Link to={`/product/${product._id}`} onClick={handleClose}>
+                            {product.name}
                         </Link>
                     </div>
                     <Attributes 

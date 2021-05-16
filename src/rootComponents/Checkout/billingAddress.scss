@@ -23,6 +23,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    max-width: 300px;
+    margin: 15px auto;
 }
 
 @media (max-width: 900px) {
@@ -38,9 +40,12 @@
 .list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 30px;
+    grid-template-rows: 166px;
 }
 
 .button {
+    max-width: 300px;
     margin: 15px auto;
     text-align: center;
 }

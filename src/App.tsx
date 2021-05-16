@@ -5,7 +5,6 @@ import classes from './app.scss';
 import Mask from 'components/Mask/mask';
 import Navigation from './components/Navigation/navigation';
 import MiniCart from './components/MiniCart';
-import 'semantic-ui-css/semantic.min.css';
 import './app.scss'
 
 

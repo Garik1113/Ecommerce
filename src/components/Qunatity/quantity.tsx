@@ -16,9 +16,9 @@ const Quantity: React.FC<Props> = (props: Props) => {
     } = props;
     return (
         <div className={classes.root}>
-            <Button priority="normal" label="-" onClick={handleDecrementQuantity}/>
+            <div onClick={handleDecrementQuantity} className={classes.icons}>-</div>
             <div className={classes.quantity}>{quantity}</div>
-            <Button priority="normal" label="+" onClick={handleIncrementQuantity}/>
+            <div onClick={handleIncrementQuantity} className={classes.icons}>+</div>
         </div>
     )
 }

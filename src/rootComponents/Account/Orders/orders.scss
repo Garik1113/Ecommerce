@@ -1,9 +1,10 @@
-.body {
-    width: 80%;
+.root {
+    width: 100%;
+    max-width: 1200px;
     margin: auto;
     display: grid;
-    grid-template-columns: 1fr 4fr;
-    margin-top: 30px;
+    grid-template-columns: 1fr 3fr;
+    padding: 30px;
 }
 
 .empty {
@@ -14,12 +15,15 @@
 }
 
 @media (max-width: 800px) {
-    .body {
-        display: block;
+    .root {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
     }
+}
 
-    .tabs {
-        margin-bottom: 15px;
+@media (max-width: 700px) {
+    .root {
+        display: grid;
+        grid-template-columns: 1fr;
     }
-    
 }

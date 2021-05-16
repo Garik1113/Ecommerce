@@ -6,7 +6,6 @@ import { useAxiosClient } from '../Axios/useAxiosClient';
 
 type Props = {
     product: IProduct | null,
-    isSubmittingReview: any
 }
 
 export const useReviews = (props: Props) => {

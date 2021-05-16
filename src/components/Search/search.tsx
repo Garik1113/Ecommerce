@@ -12,21 +12,22 @@ const Search: React.FC = () => {
         <div className={classes.root}>
             <SearchInput handleChange={handleChange}/>
             {
-                
-                <div className={classes.results}>
-                    {
-                        results.map((e: IProduct, i: number) => (
-                            <Link 
-                                key={i} 
-                                to={`/product/${e._id}`} 
-                                className={classes.result}
-                                onClick={() => setResults([])}
-                            >
-                                {e.name} 
-                            </Link>
-                        ))
-                    }
-                </div>
+                results.length
+                ?   <div className={classes.results}>
+                        {
+                            results.map((e: IProduct, i: number) => (
+                                <Link 
+                                    key={i} 
+                                    to={`/product/${e._id}`} 
+                                    className={classes.result}
+                                    onClick={() => setResults([])}
+                                >
+                                    {e.name} 
+                                </Link>
+                            ))
+                        }
+                    </div>
+                :   null
             }
             {results.length ? <div className={classes.overlay} onClick={() => setResults([])}></div> : null}
         </div>

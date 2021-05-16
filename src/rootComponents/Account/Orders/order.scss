@@ -22,7 +22,7 @@
 }
 
 .headerTitle {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     color: #000000;
 }
@@ -37,41 +37,43 @@
 
 .addressTitle {
     text-align: left;
-    padding: 10px;
+    height: 42px;
+    padding: 15px;
     font-size: 18px;
     font-weight: 500;
     width: 100%;
-    background-color: hsl(206deg 30% 95%);
+    background-color: hsl(206deg 90% 45%);
+    color: #ffffff;
 }
 
 .payment {
     margin-top: 30px;
     text-align: left;
     height: 45px;
-    padding: 0 10px;
     font-size: 18px;
     font-weight: 500;
     width: 100%;
-    background-color: hsl(206deg 30% 95%);
+    background: hsl(115deg 85% 28%);
     display: flex;
     align-items: center;
-    justify-content: space-between
+    justify-content: space-between;
+    padding: 0 15px;
 }
 
 .paymentHeader {
-    color: #878;
+    color: rgb(255, 255, 255);
     font-size: 16px;
 }
 
 .paymentValue {
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     font-size: 16px;
     margin-left: 5px;
 }
 
 .status {
     display: block;
-    color: #000000;
+    color: #ffffff;
     margin-left: 5px;
 }
 
@@ -80,5 +82,15 @@
 }
 
 .content {
-    padding: 0 15px;
+    padding: 10px 15px;
+}
+
+@media (max-width: 700px) {
+    .root {
+        max-width: 500px;
+        margin: 15px auto;
+    }
+    .headerField {
+        font-size: 14px !important;
+    }
 }

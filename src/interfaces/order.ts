@@ -2,6 +2,11 @@ import { IAddress } from './address';
 import { PaymentMethod, ShippingMethod } from './cart';
 import { IPrice, IProduct } from './product';
 
+export type TStatus = {
+    name: string,
+    value: string
+}
+
 export interface ICartItemAttribute  {
     attributeId: string,
     valueId: string
@@ -26,6 +31,6 @@ export interface IOrder {
     billingAddress: IAddress,
     totalQty: number,
     totalPrice: IPrice,
-    status: string
+    status: TStatus
     createdAt: string
 }

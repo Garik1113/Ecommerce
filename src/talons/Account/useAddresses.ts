@@ -19,6 +19,7 @@ export const useAddresses = () => {
 
     const fetchAddresses = useCallback(async() => {
         const { data, status }:AxiosResponse = await axiosClient("GET", 'customers/');
+        console.log(data)
         if (status == 200 && data.customer) {
             setAddresses(data.customer.addresses);
         }

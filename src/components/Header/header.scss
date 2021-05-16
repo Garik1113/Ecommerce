@@ -84,6 +84,7 @@
     max-width: 400px;
     margin: 0 auto;
     transition: all 1s ease-in-out;
+    padding: 0 15px;
 }
 
 @media (max-width: 1000px) {
@@ -101,6 +102,9 @@
         justify-self: auto;
     }
 
+    .category a {
+        font-size: 13px;
+    }
     
 }
 

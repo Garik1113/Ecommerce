@@ -1,34 +1,36 @@
 import React from 'react';
 import classes from './reviewForm.scss';
-import { Button, TextArea, Rating } from 'semantic-ui-react';
 import { IProduct } from 'src/interfaces/product';
 import { useReviewForm } from 'src/talons/ReviewForm/useReviewForm';
+import TextArea from '../Textarea';
+import Button from '../Button';
+import Rating from 'react-star-ratings';
+
 type Props = {
-    product: IProduct,
-    isSubmittingReview: any
-    setIsSubmittingReview: any
+    product: IProduct
 }
 
 const ReviewForm: React.FC<Props> = (props: Props) => {
     const { 
         product,
-        isSubmittingReview,
-        setIsSubmittingReview
     } = props;
-    const { formik } = useReviewForm({ product, isSubmittingReview, setIsSubmittingReview });
+    const { formik, message } = useReviewForm({ product });
 
     return (
         <div className={classes.root}>
             <div className={classes.title}>Add Review</div>
+            {message ? <div className={classes.message}>{message}</div> : null}
             <form onSubmit={formik.handleSubmit}>
                 <div className={classes.ratingField}>
                     <Rating 
                         maxRating={6} 
                         rating={formik.values.rating} 
-                        onRate={(e, data) => formik.setFieldValue("rating", data.rating)} 
-                        size="huge"
-                        icon='star'
+                        changeRating={(rate: number) =>formik.setFieldValue("rating", rate)}
+                        starDimension="30px"
+                        starSpacing="5px"
+                        starRatedColor="#00ff50"
                         className={classes.rating}
+                        starHoverColor="#00ff50"
                     />
                 </div>
                 <div className={classes.commentField}>
@@ -38,11 +40,15 @@ const ReviewForm: React.FC<Props> = (props: Props) => {
                         value={formik.values.comment}
                         className={classes.comment}
                         rows={6}
-                        columns={8}
+                        cols={8}
                     />
                 </div>
                 <div className={classes.buttons}>
-                    <Button type="submit" primary>Add Review</Button>
+                    <Button
+                        label="submit"
+                        priority="normal"
+                        onClick={formik.handleSubmit}
+                    />
                 </div>
             </form>
         </div>

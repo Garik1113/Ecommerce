@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react';
-import { Button, Checkbox } from 'semantic-ui-react';
 import Address from '../Account/Addresses/address';
 import AddressForm from 'components/Address';
 import CheckoutTitle from './checkoutTitle';
 import classes from './billingAddress.scss';
 import { useBillingAddress } from 'src/talons/Checkout/useBillingAddress';
 import { IAddress } from 'src/interfaces/address';
+import Button from 'src/components/Button';
 
 type Props = {
     billingAndShippingAreTheSame: boolean,
@@ -48,7 +48,11 @@ const BillingAddress:React.FC<Props> = (props: Props) => {
                         ))}
                     </div>
                     <div className={classes.button}>
-                        <Button onClick={() => handleSubmit(null)} primary disabled={!selectedAddress}>Submit</Button>
+                        <Button
+                            label="submit"
+                            onClick={() => handleSubmit(null)}
+                            priority="normal"
+                        />
                     </div>
                 </div>
             )
@@ -61,9 +65,10 @@ const BillingAddress:React.FC<Props> = (props: Props) => {
         <div className={`${billingAndShippingAreTheSame ? classes.miniRoot : classes.root}`}>
             <CheckoutTitle title="BILLING ADDRESS" number={2}/>
             <div className={classes.checkboxField}>
-                <Checkbox 
-                    onChange={handleChange} 
-                    checked={billingAddress && billingAddress._id && billingAddress._id !== shippingAddress._id ? false : billingAndShippingAreTheSame}
+                <input 
+                    type="checkbox"
+                    checked={billingAndShippingAreTheSame}
+                    onChange={(e:any, data:any)=> handleChange(!billingAndShippingAreTheSame)}
                 />
                 <span>Billing and shipping address are the same</span>
             </div>
@@ -74,7 +79,11 @@ const BillingAddress:React.FC<Props> = (props: Props) => {
             }
             { billingAndShippingAreTheSame
                 ?    <div className={classes.buttons}>
-                        <Button onClick={() => handleSubmit(null)}>Submit</Button>
+                        <Button 
+                            label="Submit" 
+                            priority="normal" 
+                            onClick={() => handleSubmit(null)}
+                        />
                     </div>
                 :   null
             }

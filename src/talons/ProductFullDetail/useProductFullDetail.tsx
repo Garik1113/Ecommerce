@@ -1,7 +1,8 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { State } from 'src/store';
 import { addProductToCart } from 'src/store/actions/cart/asyncActions';
+import { getCustomerDetails } from 'src/store/actions/customer/asyncActions';
 import { ProductProps } from '../../components/ProductFullDetail/productFullDetail';
 import { useConfig } from '../Config/useConfig';
     
@@ -10,9 +11,10 @@ export const useProductFullDetail = (props: ProductProps) => {
     const { product } = props;
     const { name, price, images, configurableAttributes, metaDescription } = product;
     const cartId: string | null = useSelector((state: State) => state.cart.cartId || state.customer.customer.cartId || state.cart.cart._id);
-    const [isSubmittingReview, setIsSubmittingReview] = useState(false)
     const [activeAction, setActiveAction] = useState("description")
     const isSignedIn = useSelector((state: State) => state.customer.isSignedIn);
+    const { productSubscriptions } = useSelector((state: State) => state.customer.customer);
+
     const { getConfigValue } = useConfig();
     const currency = useMemo(
         () => getConfigValue("baseCurrency"),
@@ -43,6 +45,12 @@ export const useProductFullDetail = (props: ProductProps) => {
         quantity
     ]);
 
+    useEffect(() => {
+        if (isSignedIn) {
+            dispatch(getCustomerDetails())
+        }
+    }, [isSignedIn])
+
     return {
         handleIncrementQuantity,
         handleDecrementQuantity,
@@ -54,10 +62,9 @@ export const useProductFullDetail = (props: ProductProps) => {
         configurableAttributes, 
         metaDescription,
         isSignedIn,
-        isSubmittingReview, 
-        setIsSubmittingReview,
         currency,
         activeAction, 
-        setActiveAction
+        setActiveAction,
+        productSubscriptions
     }
 }

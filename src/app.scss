@@ -2,6 +2,10 @@ html {
     height: 100%;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -11,6 +15,7 @@ body {
     background: #f8f8f8;
     overflow-x: hidden;
     min-height: 100%;
+    font-family: 'Newsreader', serif;
 }
 
 

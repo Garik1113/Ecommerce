@@ -54,7 +54,7 @@ const Filters:React.FC<Props> = (props: Props) => {
                 }
                 <PricRange 
                     min={0} 
-                    max={100000} 
+                    max={200000} 
                     value={priceRange}
                     setPriceRange={setPriceRange}
                     handleApplyPriceRange={handleApplyPriceRange}

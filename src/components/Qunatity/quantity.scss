@@ -1,16 +1,29 @@
 .root {
     display: flex;
     margin-top: 15px;
+    height: 42px;
     align-items: center;
-    max-width: 140px;
-    background: cornflowerblue;
-    padding: 5px;
+    max-width: 100px;
+    border-radius: 30px;
+    justify-content: space-between;
+    padding: 5px 10px;
     align-items: center;
-    border-radius: 3px;
+    border: 1px solid #878787;
 }
 
 .quantity {
     text-align: center;
     font-size: 18px;
-    margin: 5px auto;
+    color: #000;
+}
+
+.icons {
+    text-align: center;
+    font-size: 24px;
+    color: #000;
+    cursor: pointer;
+}
+
+.icons:hover {
+    color: green;
 }

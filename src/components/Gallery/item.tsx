@@ -55,7 +55,7 @@ const Item:React.FC<Props> = ({item, rootClass}: Props) => {
                 </div>
                 {
                     rootClass 
-                    ?   <div className={classes.description}>{item.description}</div>
+                    ?   <div className={classes.description} dangerouslySetInnerHTML={{__html: item.description}}></div>
                     :   null
                 }
             </div>

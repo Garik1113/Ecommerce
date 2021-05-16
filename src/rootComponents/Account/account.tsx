@@ -1,10 +1,19 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import React from 'react'
+import React, { useMemo } from 'react'
 import Button from 'src/components/Button';
 import { useAccount } from 'src/talons/Account/useAccount';
 import classes from './account.scss';
 import Tabs from './tabs';
+import * as yup from 'yup'
 
+
+const isRequired = (value:any) => {
+    if (!value) {
+        return "required"
+    } else {
+        return false
+    }
+} 
 
 const Account:React.FC = () => {
     const { 
@@ -12,14 +21,21 @@ const Account:React.FC = () => {
         lastName,
         email, 
         handleSubmit,
-        isSubmitting,
         message,
         isChangingPassword,
         setIsChangingPassword
     } = useAccount();
 
+    const validationSchema = useMemo(() => yup.object().shape({
+        firstName: yup.string().required("Required"),
+        lastName: yup.string().required("Required"),
+        email: yup.string().required("Required"),
+        currentPassword: isChangingPassword ? yup.string().required("Required") : null,
+        newPassword: isChangingPassword ? yup.string().required("Required") : null,
+        confirmNewPassword: isChangingPassword ? yup.string().required("Required") : null,
+    }), [yup, isChangingPassword]);
+
     return (
-        <div className={classes.root}>
             <div className={classes.body}>
                 <div className={classes.tabs}>
                     <Tabs/>
@@ -36,6 +52,14 @@ const Account:React.FC = () => {
                         }}
                         onSubmit={handleSubmit}
                         enableReinitialize={true}
+                        validationSchema={validationSchema}
+                        validate={(values) => {
+                            const errors = {};
+                            if (values["newPassword"] !== values["confirmNewPassword"] && isChangingPassword) {
+                                errors["confirmNewPassword"] = "Passwords are not the same"
+                            }
+                            return errors;
+                        }}
                     >
                         {({values}) => (
                             <Form className={classes.form}>
@@ -47,10 +71,10 @@ const Account:React.FC = () => {
                                     :   null
                                 }
                                 <div className={classes.field}>
-                                    <Field type="text" name="email" className={classes.input}/>
+                                    <input value={values.email} onChange={() => {}} type="text" autoComplete={"none"} name="email" className={classes.input}/>
                                     {values.email 
                                     ?   null
-                                    :   <label htmlFor="email" className={classes.label}>Last Name</label>
+                                    :   <label htmlFor="email" className={classes.label}>Email</label>
                                     }
                                     <ErrorMessage name="email" component="div" className={classes.error}/>
                                 </div>
@@ -60,11 +84,10 @@ const Account:React.FC = () => {
                                     ?   null
                                     :   <label htmlFor="firstName" className={classes.label}>First Name</label>
                                     }
-                                    
                                     <ErrorMessage name="firstName" component="div" className={classes.error}/>
                                 </div>
                                 <div className={classes.field}>
-                                    <Field type="text" name="lastName" className={classes.input}/>
+                                    <Field type="text" name="lastName" className={classes.input} validate={isRequired} />
                                     {values.lastName 
                                     ?   null
                                     :   <label htmlFor="lastName" className={classes.label}>Last Name</label>
@@ -92,7 +115,6 @@ const Account:React.FC = () => {
                                                 ?   null
                                                 :   <label htmlFor="newPassword" className={classes.label}>New Password</label>
                                                 }
-                                                
                                                 <ErrorMessage name="newPassword" component="div" className={classes.error}/>
                                             </div>
                                             <div className={classes.field}>
@@ -120,7 +142,6 @@ const Account:React.FC = () => {
                     </Formik>
                 </div>
             </div>
-        </div>
     )
 }
 

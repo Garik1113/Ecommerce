@@ -10,7 +10,6 @@ const Tabs:React.FC = () => {
 
     return (
         <div className={classes.root}>
-            <div className={classes.body}>
                 <div className={`${classes.item} ${pathname == '/account' && classes.active}`}>
                     <Link to='/account' className={`${classes.link} ${pathname == '/account' && classes.activeLink}`}>
                         Account
@@ -31,7 +30,6 @@ const Tabs:React.FC = () => {
                         Sign Out
                     </Link>
                 </div>
-            </div>
         </div>
     )
 }

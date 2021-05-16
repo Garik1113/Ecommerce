@@ -22,9 +22,7 @@ const MiniCart:React.FC = () => {
                     <h3>My Cart</h3>
                 </div>
                 <div className={classes.close}>
-                    <i className={`fas fa-window-close ${classes.closeIcon}`}
-                        onClick={handleClose}
-                    ></i>
+                    <i className={`fas fa-window-close ${classes.closeIcon}`} onClick={handleClose}></i>
                 </div>
             </header>
             {
@@ -40,16 +38,17 @@ const MiniCart:React.FC = () => {
                                 key={index}
                                 cartItem={cartItem}
                                 currency={currency}
+                                handleClose={handleClose}
                             />
                         ))
                     }
-                </section>
+                    </section>
             }
             {
                 cartItems.length
                 ?   <footer className={classes.footer}>
                         <div className={classes.subTotal}>
-                            <p>Cart Total:</p>
+                            <span>Cart Total:</span>
                             <span className={classes.price}>{totalPrice} {currency.name}</span>
                         </div>
                         <div className={classes.cartLink}>
@@ -61,7 +60,6 @@ const MiniCart:React.FC = () => {
                     </footer>
                 :   null
             }
-            
         </div>
     )
 }
