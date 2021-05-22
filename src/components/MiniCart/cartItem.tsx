@@ -53,7 +53,7 @@ const CartItem:React.FC<Props> = (props: Props) => {
                     }
                     <div className={classes.quantity}>
                         <div className={classes.qty}>
-                            Qty: {cartItem.quantity}
+                            Քանակ: {cartItem.quantity}
                         </div>
                         {dontShowActions 
                         ?   null 

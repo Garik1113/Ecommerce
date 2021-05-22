@@ -31,7 +31,7 @@ const CategoryContent:React.FC = () => {
     
     return (
         <div className={classes.root}>
-            <Title title={category?.name}/>
+            <Title title={category?.name || ""}/>
             {
                 category && category.image 
                 ?   <div className={classes.categoryImageField}>
@@ -52,7 +52,7 @@ const CategoryContent:React.FC = () => {
                         <span 
                             onClick={() => setShowSortOptions(!showSortOptions)}
                             className={classes.sortBy}
-                        >Sort By
+                        >Տեսակավորել ըստ
                             {
                                 showSortOptions  
                                 ? <i className={`fas fa-chevron-up ${classes.sortArrowIcon}`}></i>  
@@ -69,7 +69,7 @@ const CategoryContent:React.FC = () => {
                                         addQueryString("sort_dir", "asc");
                                     }}
                                 >
-                                    <span className={classes.sortText}>New Collection</span>
+                                    <span className={classes.sortText}>Նոր Տեսականի</span>
                                 </div> 
                                 <div 
                                     className={`${classes.sortItem} ${sort=="name" && sort_dir=="desc" && classes.active}`}
@@ -79,7 +79,7 @@ const CategoryContent:React.FC = () => {
                                         addQueryString("sort_dir", "desc");
                                     }}
                                 >
-                                    <span className={classes.sortText}>Name from A-Z</span>
+                                    <span className={classes.sortText}>Անուն Ա-Ֆ</span>
                                 </div> 
                                 <div 
                                     className={`${classes.sortItem} ${sort=="name" && sort_dir=="asc" && classes.active}`}
@@ -89,7 +89,7 @@ const CategoryContent:React.FC = () => {
                                         addQueryString("sort_dir", "asc");
                                     }}
                                 >
-                                    <span className={classes.sortText}>Name from Z-A</span>
+                                    <span className={classes.sortText}>Անուն Ֆ-Ա</span>
                                 </div>
                                 <div 
                                     className={`${classes.sortItem} ${sort=="price" && sort_dir=="desc" && classes.active}`} 
@@ -99,7 +99,7 @@ const CategoryContent:React.FC = () => {
                                         addQueryString("sort_dir", "desc");
                                     }}
                                 >
-                                    <span className={classes.sortText}>Price low to high</span>
+                                    <span className={classes.sortText}>Գին ցածրից բարձր</span>
                                 </div>
                                 <div 
                                     className={`${classes.sortItem} ${sort=="price" && sort_dir=="asc" && classes.active}`}  
@@ -109,7 +109,7 @@ const CategoryContent:React.FC = () => {
                                         addQueryString("sort_dir", "asc");
                                     }}
                                 >
-                                    <span className={classes.sortText}>Price high to low</span>
+                                    <span className={classes.sortText}>Գին բարձրից ցածր</span>
                                 </div> 
                             </div>
                         :null
@@ -136,7 +136,7 @@ const CategoryContent:React.FC = () => {
                     {
                         products && products.length
                         ?  <Gallery products={products} rootClass={rootClass}/>
-                        :   <div className={classes.emptyField}>There Are no items</div>
+                        :   <div className={classes.emptyField}>Ապրանքներ չկան</div>
                     }
                 </div>
                 <div className={classes.pagination}>

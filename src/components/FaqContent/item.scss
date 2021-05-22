@@ -1,0 +1,26 @@
+.faq {
+    width: 100%;
+    padding: 15px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    margin-bottom: 15px;
+}
+
+.questionField {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.answerField {
+    padding: 5px;
+}
+
+.question {
+    color: rgb(5 59 81);
+}
+
+.answer {
+    color: #083f05;
+}

@@ -7,7 +7,7 @@ export const useSubscribe = () => {
     const subscribe = useCallback(async(productId:string) => {
         setMessage("")
         const response = await axiosClient("POST", 'productSubscriptions/', { productId });
-        setMessage("You have Subscribed")
+        setMessage("Հաջողությամբ գրանցվեցիք")
         console.log(response)
     }, [axiosClient]);
 

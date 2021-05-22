@@ -61,5 +61,10 @@
     .newBody {
         display: grid;
         grid-template-columns: 1fr;
+        padding:  0 10px;
+    }
+
+    .newTitle {
+        font-size: 24px;
     }
 }

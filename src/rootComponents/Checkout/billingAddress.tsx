@@ -49,7 +49,7 @@ const BillingAddress:React.FC<Props> = (props: Props) => {
                     </div>
                     <div className={classes.button}>
                         <Button
-                            label="submit"
+                            label="Հաստատել"
                             onClick={() => handleSubmit(null)}
                             priority="normal"
                         />
@@ -70,7 +70,7 @@ const BillingAddress:React.FC<Props> = (props: Props) => {
                     checked={billingAndShippingAreTheSame}
                     onChange={(e:any, data:any)=> handleChange(!billingAndShippingAreTheSame)}
                 />
-                <span>Billing and shipping address are the same</span>
+                <span>Առաքման և վճարման հասցեները նույնն են</span>
             </div>
             { 
                 billingAndShippingAreTheSame 
@@ -80,7 +80,7 @@ const BillingAddress:React.FC<Props> = (props: Props) => {
             { billingAndShippingAreTheSame
                 ?    <div className={classes.buttons}>
                         <Button 
-                            label="Submit" 
+                            label="Հաստատել" 
                             priority="normal" 
                             onClick={() => handleSubmit(null)}
                         />

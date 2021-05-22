@@ -58,7 +58,7 @@ const Address:React.FC<Props> = (props: Props) => {
                                         activeValue={values.country}
                                         onChange={(v: any) => setFieldValue("country", v)}
                                     />
-                                    <label htmlFor="country" className={classes.label}>Country</label>
+                                    <label htmlFor="country" className={classes.label}>Երկիր</label>
                                     <ErrorMessage name="country" component="div" className={classes.error}/>
                                 </div>
                                 <div className={classes.field}>
@@ -67,7 +67,7 @@ const Address:React.FC<Props> = (props: Props) => {
                                         activeValue={values.state}
                                         onChange={(v: any) => setFieldValue("state", v)}
                                     />
-                                    <label htmlFor="state" className={classes.label}>State</label>
+                                    <label htmlFor="state" className={classes.label}>Մարզ</label>
                                     <ErrorMessage name="state" component="div" className={classes.error}/>
                                 </div>
                             </div>
@@ -78,56 +78,55 @@ const Address:React.FC<Props> = (props: Props) => {
                                         activeValue={values.city}
                                         onChange={(v: any) => setFieldValue("city", v)}
                                     />
-                                    <label htmlFor="city" className={classes.label}>City</label>
+                                    <label htmlFor="city" className={classes.label}>Քաղաք</label>
                                     <ErrorMessage name="city" component="div" className={classes.error}/>
                                 </div>
                                 <div className={classes.field}>
                                     <Field type="text" name="email" className={classes.input}/>
-                                    <label htmlFor="email" className={classes.label}>Email</label>
+                                    <label htmlFor="email" className={classes.label}>Էլ հասցե</label>
                                     <ErrorMessage name="email" component="div" className={classes.error}/>
                                 </div>
                             </div>
                             <div className={classes.fieldWrapper}>
                                 <div className={classes.field}>
                                     <Field type="text" name="firstName" className={classes.input} />
-                                    <label htmlFor="firstName" className={classes.label}>First Name</label>
+                                    <label htmlFor="firstName" className={classes.label}>Անուն</label>
                                     <ErrorMessage name="firstName" component="div" className={classes.error}/> 
                                 </div>
                                 <div className={classes.field}>
                                     <Field type="text" name="lastName" className={classes.input}/>
-                                    <label htmlFor="lastName" className={classes.label}>Last Name</label>
+                                    <label htmlFor="lastName" className={classes.label}>Ազգանուն</label>
                                     <ErrorMessage name="lastName" component="div" className={classes.error}/>  
                                 </div>                            
                             </div>
                             <div className={classes.fieldWrapper}>
                                 <div className={classes.field}>
                                     <Field type="text" name="address" className={classes.input}/>
-                                    <label htmlFor="address" className={classes.label}>Address</label>
+                                    <label htmlFor="address" className={classes.label}>Հասցե</label>
                                     <ErrorMessage name="address" component="div" className={classes.error}/>
                                 </div>
                                 <div className={classes.field}>
                                     <Field type="text" name="additionalInformation" className={classes.input}/>
-                                    <label htmlFor="additionalInformation" className={classes.label}>Additinal Information</label>
+                                    <label htmlFor="additionalInformation" className={classes.label}>Լրացուցիչ ինֆորմացիա</label>
                                 </div>
                             </div>
                             <div className={classes.fieldWrapper}>
                                 <div className={classes.field}>
                                     <Field type="text" name="phone" className={classes.input}/>
-                                    <label htmlFor="phone" className={classes.label}>Phone</label>
+                                    <label htmlFor="phone" className={classes.label}>Հեռախոսահամար</label>
                                     <ErrorMessage name="phone" component="div" className={classes.error}/>
                                 </div>
                                 <div className={classes.field}>
                                     <Field type="text" name="company" className={classes.input}/>
-                                    <label htmlFor="company" className={classes.label}>Company</label>
+                                    <label htmlFor="company" className={classes.label}>Ընկերություն</label>
                                 </div>
                             </div>
                             <div className={classes.buttonField}>
                                 <Button 
                                     priority="normal" 
                                     onClick={handleSubmit}
-                                    label={"submit"}
+                                    label={"Հաստատել"}
                                 ></Button>
-                                {/* <Button type="submit" onClick={handleSubmit}>Submit</Button> */}
                             </div>
                         </Form>
                     )

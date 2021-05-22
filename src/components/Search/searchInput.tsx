@@ -15,7 +15,7 @@ const SearchInput:React.FC<Props> = (props: Props) => {
             </span>
             <input 
                 type="text" 
-                placeholder="Search" 
+                placeholder="Որոնել" 
                 className={classes.input} 
                 onChange={(e:any) => handleChange(e.target.value)}
             />

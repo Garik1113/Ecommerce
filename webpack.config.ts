@@ -30,15 +30,7 @@ const webpackConfig = ():Configuration => ({
         publicPath: "/",
         contentBase: "./public",
         hot: true,
-        historyApiFallback: true,
-        // proxy: {
-        //     "/api": {
-        //         target: "http://localhost:5000",
-        //         pathRewrite: {"^api/" : ""},
-        //         secure: false,
-        //         changeOrigin: true
-        //     }
-        // }
+        historyApiFallback: true
     },
     optimization: {
       splitChunks: {

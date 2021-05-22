@@ -45,7 +45,7 @@ const ShippingMethod:React.FC<Props> = (props: Props) => {
                     <Button 
                         priority="normal" 
                         onClick={handleSubmit}
-                        label="Submit"
+                        label="Հաստատել"
                     ></Button>
                 </div>
             </div>

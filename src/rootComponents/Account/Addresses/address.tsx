@@ -21,7 +21,7 @@ const Address:React.FC<Props> = (props: Props) => {
         <div className={classes.root}>
                 <div className={classes.row}>
                     <div className={classes.columnTitleField}>
-                        <span className={classes.columnTitle}>Country</span>
+                        <span className={classes.columnTitle}>Երկիր</span>
                     </div>
                     <div className={classes.columnValueField}>
                         <span className={classes.columnValue}>{address.country}</span>
@@ -29,7 +29,7 @@ const Address:React.FC<Props> = (props: Props) => {
                 </div>
                 <div className={classes.row}>
                     <div className={classes.columnTitleField}>
-                        <span className={classes.columnTitle}>State</span>
+                        <span className={classes.columnTitle}>Մարզ</span>
                     </div>
                     <div className={classes.columnValueField}>
                         <span className={classes.columnValue}>{address.state}</span>
@@ -37,7 +37,7 @@ const Address:React.FC<Props> = (props: Props) => {
                 </div>
                 <div className={classes.row}>
                     <div className={classes.columnTitleField}>
-                        <span className={classes.columnTitle}>City</span>
+                        <span className={classes.columnTitle}>Քաղաք</span>
                     </div>
                     <div className={classes.columnValueField}>
                         <span className={classes.columnValue}>{address.city}</span>
@@ -45,7 +45,7 @@ const Address:React.FC<Props> = (props: Props) => {
                 </div>
                 <div className={classes.row}>
                     <div className={classes.columnTitleField}>
-                        <span className={classes.columnTitle}>Address</span>
+                        <span className={classes.columnTitle}>Հասցե</span>
                     </div>
                     <div className={classes.columnValueField}>
                         <span className={classes.columnValue}>{address.address}</span>
@@ -55,10 +55,10 @@ const Address:React.FC<Props> = (props: Props) => {
                     !inCheckout
                     ?   <div className={classes.actions}>
                             <div>
-                                <span className={classes.buttons} onClick={() => handleEditAddress(address._id)}>Edit</span>
+                                <span className={classes.buttons} onClick={() => handleEditAddress(address._id)}>Փոփոխել</span>
                             </div>
                             <div>
-                                <span className={classes.buttons} onClick={() => handleDeleteAddress(address._id)}>Delete</span>
+                                <span className={classes.buttons} onClick={() => handleDeleteAddress(address._id)}>Ջնջել</span>
                             </div>
                         </div>
                     :   null

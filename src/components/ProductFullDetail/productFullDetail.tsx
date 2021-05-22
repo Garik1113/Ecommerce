@@ -47,12 +47,12 @@ const ProductFullDetail:React.FC<ProductProps> = ({ product }: ProductProps) => 
                                 className={classes.discriptionTitle}
                                 onClick={() => setActiveAction("description")}
                             >
-                                Description
+                                Նկարագրություն
                             </div>
                             <div
                                 className={classes.discriptionTitle}
                                 onClick={() => setActiveAction("review")}>
-                                Reviews
+                                Մեկնաբանություններ
                             </div>
                         </div>
                         {
@@ -64,7 +64,7 @@ const ProductFullDetail:React.FC<ProductProps> = ({ product }: ProductProps) => 
                                 ?   <Reviews 
                                         product={product}
                                     />
-                                :   <span className={classes.guestReviewMsg}>Only logged in customers can see reviews for this product</span>
+                                :   <span className={classes.guestReviewMsg}>Միայն գրանցված հաճախորդները կարող են տեսնել մեկնաբանությունները այս ապրաքի համար</span>
                         }
                     </div>
                 </section>
@@ -99,27 +99,27 @@ const ProductFullDetail:React.FC<ProductProps> = ({ product }: ProductProps) => 
                     {
                         product.quantity < 1 && isSignedIn && productSubscriptions
                         ?   <div className={classes.subscribe}>
-                                <span>Product is out of stock now.. you can subscribe and receive email about this product availibility</span>
+                                <span>Ապրանքն այս պահին առկա չէ.. Դուք կարող եք բաժանորդագրվել և հասանելիության դեպքում կստանաք նամակ</span>
                                 <Subscribe productId={product._id}/>
                             </div> 
-                        :   isSignedIn 
+                        :   isSignedIn && product.quantity > 1
                             ?   <div className={classes.button}>
                                     <Button 
                                         className={classes.button} 
-                                        label="ADD TO CART" 
+                                        label="Ավելացնել զամբյուղում" 
                                         priority="high" 
                                         onClick={handleAddProductToCart} 
                                         disabled={false}
                                     />
                                 </div>
-                            :   null
+                            :   <div className={classes.outOfStock}>առկա չէ</div>
                     }
                     {
                         !isSignedIn && product.quantity > 1
                         ?   <div className={classes.button}>
                                 <Button 
                                     className={classes.button} 
-                                    label="ADD TO CART" 
+                                    label="Ավելացնել զամբյուղում" 
                                     priority="high" 
                                     onClick={handleAddProductToCart} 
                                     disabled={false}
@@ -127,7 +127,7 @@ const ProductFullDetail:React.FC<ProductProps> = ({ product }: ProductProps) => 
                             </div>
                         :   !isSignedIn && product.quantity < 1
                             ?   <div className={classes.subMessage}>
-                                    <Link to="/signup">Sign up</Link>  and get email about product availibility
+                                    <Link to="/signup">Գրանցվիր</Link> և ստացիր նամակ ապրաքի հասանելիության դեպքում
                                 </div>
                             :   null
                     }

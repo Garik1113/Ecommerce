@@ -24,7 +24,7 @@ const AddressCard = (props: Props) => {
         <div className={classes.root}>
             <div className={classes.addresField}>
                 <span className={classes.addressText}>
-                    Country :
+                    Երկիր:
                 </span>
                 <span className={classes.addressValue}>
                     {country}
@@ -32,7 +32,7 @@ const AddressCard = (props: Props) => {
             </div>
             <div className={classes.addresField}>
                 <span className={classes.addressText}>
-                    State :
+                    Մարզ :
                 </span>
                 <span className={classes.addressValue}>
                     {state}
@@ -40,7 +40,7 @@ const AddressCard = (props: Props) => {
             </div>
             <div className={classes.addresField}>
                 <span className={classes.addressText}>
-                    City :
+                    Քաղաք :
                 </span>
                 <span className={classes.addressValue}>
                     {city}
@@ -48,7 +48,7 @@ const AddressCard = (props: Props) => {
             </div>
             <div className={classes.addresField}>
                 <span className={classes.addressText}>
-                    Address :
+                    Հասցե :
                 </span>
                 <span className={classes.addressValue}>
                     {addessInfo}
@@ -56,7 +56,7 @@ const AddressCard = (props: Props) => {
             </div>
             <div className={classes.addresField}>
                 <span className={classes.addressText}>
-                    First Name :
+                    Անուն :
                 </span>
                 <span className={classes.addressValue}>
                     {firstName}
@@ -64,7 +64,7 @@ const AddressCard = (props: Props) => {
             </div>
             <div className={classes.addresField}>
                 <span className={classes.addressText}>
-                    Last Name :
+                    Ազգանուն :
                 </span>
                 <span className={classes.addressValue}>
                     {lastName}
@@ -72,7 +72,7 @@ const AddressCard = (props: Props) => {
             </div>
             <div className={classes.addresField}>
                 <span className={classes.addressText}>
-                    Email :
+                    Էլ հասցե :
                 </span>
                 <span className={classes.addressValue}>
                     {email}
@@ -80,7 +80,7 @@ const AddressCard = (props: Props) => {
             </div>
             <div className={classes.addresField}>
                 <span className={classes.addressText}>
-                    Additional information :
+                    Լրացուցիչ ինֆորմացիա :
                 </span>
                 <span className={classes.addressValue}>
                     {additionalInformation}

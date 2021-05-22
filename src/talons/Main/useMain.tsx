@@ -18,7 +18,7 @@ export const useMain = () => {
     const { cartId } = useSelector((state: State) => state.cart);
     const dispatch = useDispatch();
     useEffect(() => {
-        if (innerWidth < 700){
+        if (innerWidth < 760){
             setIsMobile(true);
         } else {
             setIsMobile(false);

@@ -19,10 +19,10 @@ const AddressModal = (props: Props) => {
                 {
                     editingAddress
                     ?   <div className={classes.title}>
-                            Edit Address
+                            Փոփոխել հասցեն
                         </div>
                     :   <div className={classes.title}>
-                            Add New Address
+                            Ավելացնել նոր հասցե
                         </div>
                 }
                 <Address address={editingAddress} handleSubmit={handleSubmit}/>

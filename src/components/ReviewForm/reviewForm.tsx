@@ -18,7 +18,7 @@ const ReviewForm: React.FC<Props> = (props: Props) => {
 
     return (
         <div className={classes.root}>
-            <div className={classes.title}>Add Review</div>
+            <div className={classes.title}>Թողնել մեկնաբանություն</div>
             {message ? <div className={classes.message}>{message}</div> : null}
             <form onSubmit={formik.handleSubmit}>
                 <div className={classes.ratingField}>
@@ -45,7 +45,7 @@ const ReviewForm: React.FC<Props> = (props: Props) => {
                 </div>
                 <div className={classes.buttons}>
                     <Button
-                        label="submit"
+                        label="Հաստատել"
                         priority="normal"
                         onClick={formik.handleSubmit}
                     />

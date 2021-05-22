@@ -28,7 +28,7 @@ const Item:React.FC<Props> = ({item, rootClass}: Props) => {
                     <img onError={handleImageError} src={imageSrc} className={classes.itemImage}/>
                 </div>        
             </Link>
-            <div title={`${inWishList ? "Remove from Wishlist" : "Add to Wishlist"}`} className={`${classes.heart} ${inWishList ? classes.red : null}`} onClick={() =>  handleAddToWishlist(item._id || "")}>
+            <div title={`${inWishList ? "Ջնջել Նախընտրելիներից" : "Ավելացնել Նախընտրելիներում"}`} className={`${classes.heart} ${inWishList ? classes.red : null}`} onClick={() =>  handleAddToWishlist(item._id || "")}>
                 <i className="fas fa-heart"></i>
             </div>
             <div className={classes.actions}>

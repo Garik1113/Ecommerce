@@ -36,19 +36,21 @@ const Header:React.FC<Props> = (props: Props) => {
                 <div className={`${isMobile ? classes.searchMobile : classes.search}`}>
                     {isMobile ? <SearchTrigger onClick={() => setIsSearchOpen(!isSearchOpen)}/> : <SearchInput/>}
                 </div>
-                <div className={classes.signin}>
-                    <AuthActions isMobile={isMobile}/>
-                </div>
-                <div className={classes.wishlist}>
-                    <Link to="/wishlist">
-                        {isMobile 
-                            ?   <i className="fas fa-star"></i>
-                            :   <span>Նախընտրելիներ</span> 
-                            }
-                    </Link> 
-                </div>
-                <div className={classes.cart}>
-                    <CartTrigger totalQty={totalQty}/>
+                <div className={classes.topRight}>
+                    <div className={classes.signin}>
+                        <AuthActions isMobile={isMobile}/>
+                    </div>
+                    <div className={classes.wishlist}>
+                        <Link to="/wishlist">
+                            {isMobile 
+                                ?   <i className="fas fa-star"></i>
+                                :   <span>Նախընտրելիներ</span> 
+                                }
+                        </Link> 
+                    </div>
+                    <div className={classes.cart}>
+                        <CartTrigger totalQty={totalQty}/>
+                    </div>                    
                 </div>
             </div>
             <div className={classes.bottom}>

@@ -15,11 +15,14 @@
 }
 
 .list {
-    display: flex;
-    align-items: center;
+    display: block;
     margin-bottom: 15px;
 }
 
 .cash {
     margin-left: 15px;
+}
+
+.radio {
+    cursor: pointer;
 }

@@ -74,7 +74,7 @@ const Account:React.FC = () => {
                                     <input value={values.email} onChange={() => {}} type="text" autoComplete={"none"} name="email" className={classes.input}/>
                                     {values.email 
                                     ?   null
-                                    :   <label htmlFor="email" className={classes.label}>Email</label>
+                                    :   <label htmlFor="email" className={classes.label}>Էլ հասցե</label>
                                     }
                                     <ErrorMessage name="email" component="div" className={classes.error}/>
                                 </div>
@@ -82,7 +82,7 @@ const Account:React.FC = () => {
                                     <Field type="text" name="firstName" value={values.firstName} className={classes.input}/>
                                     {values.firstName 
                                     ?   null
-                                    :   <label htmlFor="firstName" className={classes.label}>First Name</label>
+                                    :   <label htmlFor="firstName" className={classes.label}>Անուն</label>
                                     }
                                     <ErrorMessage name="firstName" component="div" className={classes.error}/>
                                 </div>
@@ -90,7 +90,7 @@ const Account:React.FC = () => {
                                     <Field type="text" name="lastName" className={classes.input} validate={isRequired} />
                                     {values.lastName 
                                     ?   null
-                                    :   <label htmlFor="lastName" className={classes.label}>Last Name</label>
+                                    :   <label htmlFor="lastName" className={classes.label}>Ազգանուն</label>
                                     }
                                     <ErrorMessage name="lastName" component="div" className={classes.error}/>
                                 </div>
@@ -104,7 +104,7 @@ const Account:React.FC = () => {
                                                 <Field type="password" name="currentPassword" value={values.currentPassword} className={classes.input}/>
                                                 {values.currentPassword 
                                                 ?   null
-                                                :   <label htmlFor="currentPassword" className={classes.label}>Current Password</label>
+                                                :   <label htmlFor="currentPassword" className={classes.label}>Գախտնաբառը</label>
                                                 }
                                                 
                                                 <ErrorMessage name="currentPassword" component="div" className={classes.error}/>
@@ -113,7 +113,7 @@ const Account:React.FC = () => {
                                                 <Field type="password" name="newPassword" value={values.newPassword} className={classes.input}/>
                                                 {values.newPassword 
                                                 ?   null
-                                                :   <label htmlFor="newPassword" className={classes.label}>New Password</label>
+                                                :   <label htmlFor="newPassword" className={classes.label}>Նոր Գախտնաբառը</label>
                                                 }
                                                 <ErrorMessage name="newPassword" component="div" className={classes.error}/>
                                             </div>
@@ -121,7 +121,7 @@ const Account:React.FC = () => {
                                                 <Field type="password" name="confirmNewPassword" value={values.confirmNewPassword} className={classes.input}/>
                                                 {values.confirmNewPassword 
                                                 ?   null
-                                                :   <label htmlFor="confirmNewPassword" className={classes.label}>Confirm New Password</label>
+                                                :   <label htmlFor="confirmNewPassword" className={classes.label}>Հաստատել Նոր Գախտնաբառը</label>
                                                 }
                                                 <ErrorMessage name="confirmNewPassword" component="div" className={classes.error}/>
                                             </div>

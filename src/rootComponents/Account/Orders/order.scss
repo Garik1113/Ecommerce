@@ -94,3 +94,15 @@
         font-size: 14px !important;
     }
 }
+
+@media (max-width: 600px) {
+
+    .header {
+        font-size: 14px !important;
+        display: block;
+    }
+
+    .headerField {
+        margin-bottom: 15px;
+    }
+}

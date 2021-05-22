@@ -19,6 +19,7 @@ const Modal:React.FC<Props> = (props: Props) => {
             onClick={(e:any) => e.target.id == "overlay" ? onClose() : null }
         >
             <div className={classes.body}>
+                <div className={classes.close} onClick={() => onClose()}>X</div>
                 {children}
             </div>
         </div>

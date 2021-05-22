@@ -19,7 +19,7 @@ const MiniCart:React.FC = () => {
         <div className={`${classes.root} ${isActive ? classes.root_open : null}`}>
             <header className={classes.header}>
                 <div className={classes.cartName}>
-                    <h3>My Cart</h3>
+                    <h3>Իմ զամբյուղը</h3>
                 </div>
                 <div className={classes.close}>
                     <i className={`fas fa-window-close ${classes.closeIcon}`} onClick={handleClose}></i>
@@ -28,7 +28,7 @@ const MiniCart:React.FC = () => {
             {
                 !cartItems.length
                 ?   <div className={classes.emptyCart}>
-                        Your Cart is Empty
+                        Ձեր զամբյուղը դատարկ է
                     </div>
                 :   <section className={classes.body}>
                     {
@@ -48,14 +48,14 @@ const MiniCart:React.FC = () => {
                 cartItems.length
                 ?   <footer className={classes.footer}>
                         <div className={classes.subTotal}>
-                            <span>Cart Total:</span>
+                            <span>Ընդհանուր արժեք:</span>
                             <span className={classes.price}>{totalPrice} {currency.name}</span>
                         </div>
                         <div className={classes.cartLink}>
-                            <Link to="/cart" onClick={handleClose}>View and edit cart</Link>
+                            <Link to="/cart" onClick={handleClose}>Զամբյուղի Էջ</Link>
                         </div>
                         <div className={classes.checkoutLink}>
-                            <Link to="/checkout" onClick={handleClose}>Go to Checkout</Link>
+                            <Link to="/checkout" onClick={handleClose}>Պատվերի Էջ</Link>
                         </div>
                     </footer>
                 :   null

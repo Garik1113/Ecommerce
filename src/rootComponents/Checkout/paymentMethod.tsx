@@ -37,7 +37,7 @@ const PaymentMethod:React.FC<Props> = (props: Props) => {
                                                 checked={method?.methodCode == e.methodCode} 
                                                 onChange={() => setMethod(e)}
                                             />
-                                            <span>{e.methodName}</span> 
+                                            <span onClick={() => setMethod(e)}>{e.methodName}</span> 
                                         </div>
                                     :   null
                             ))
@@ -57,7 +57,7 @@ const PaymentMethod:React.FC<Props> = (props: Props) => {
             {method?.methodCode == "cart"
             ?   null
             : <div className={classes.buttons}>
-                <Button onClick={handleSubmit} label="Submit" priority="normal"></Button>
+                <Button onClick={handleSubmit} label="Հաստատել" priority="normal"></Button>
             </div>}
         </div>
     )

@@ -52,7 +52,7 @@ const Order:React.FC = () => {
             : null
             }
             <div className={classes.subTotal}>
-                <span>Ենթագումար</span>
+                <span>Ապրանքների գումար</span>
                 <span>{subTotal} {currency.name}</span>
             </div>
             <hr/>
@@ -66,7 +66,7 @@ const Order:React.FC = () => {
                 <span>{totalPrice} {currency.name}</span>
             </div>
             <div className={classes.button}>
-                <Button label="Place Order" priority="high" onClick={handleSubmit}/>
+                <Button label="Պատվիրել" priority="high" onClick={handleSubmit}/>
             </div>
         </div>
     )

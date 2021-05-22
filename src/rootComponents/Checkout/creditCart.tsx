@@ -29,7 +29,7 @@ const CreditCart:React.FC<Props> = (props: Props) => {
                 <div className={classes.buttons}>
                     <Button 
                         priority="normal"
-                        label="Submit"
+                        label="Հաստատել"
                         onClick={handleSubmit}>
                     </Button>
                 </div>

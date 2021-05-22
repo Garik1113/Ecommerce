@@ -48,13 +48,13 @@ const CartProduct:React.FC<Props> = (props: Props) => {
                     </div>
                     <div className={classes.price}>
                         <div className={classes.propertyName}>
-                            Price
+                            Գին
                         </div>
                         <span className={classes.itemPrice}>{discountedPrice || price} {currency.name}</span>
                     </div>
                     <div className={classes.quantity}>
                         <div className={classes.propertyName}>
-                            Qty
+                            Քանակ
                         </div>
                         <div className={classes.qtyNumber}>
                             {!inOrder ? <i className="fas fa-chevron-left" onClick={() => handleChangeQuantity(false)}></i> : null}
@@ -64,7 +64,7 @@ const CartProduct:React.FC<Props> = (props: Props) => {
                     </div>
                     <div className={classes.summaryPrice}>
                         <div className={classes.propertyName}>
-                            Summary
+                            Ընդհանուր գումար
                         </div>
                         <span className={classes.summary}>{(discountedPrice || price)  * quantity} {currency.name}</span>
                     </div>
