@@ -11,6 +11,7 @@ import WIshlist from '../../rootComponents/Wishlist';
 import Account from 'src/rootComponents/Account/account';
 import Orders from 'src/rootComponents/Account/Orders/orders';
 import Addresses from 'src/rootComponents/Account/Addresses';
+import Faq from 'src/rootComponents/Faq';
 
 
 const Routes:React.FC = () => {
@@ -48,6 +49,9 @@ const Routes:React.FC = () => {
             </Route>
             <Route path="/wishlist">
                 <WIshlist/>
+            </Route>
+            <Route path="/faqs">
+                <Faq/>
             </Route>
         </Switch>
     )

@@ -43,7 +43,7 @@ const Header:React.FC<Props> = (props: Props) => {
                     <Link to="/wishlist">
                         {isMobile 
                             ?   <i className="fas fa-star"></i>
-                            :   <span>Հավանած</span> 
+                            :   <span>Նախընտրելիներ</span> 
                             }
                     </Link> 
                 </div>

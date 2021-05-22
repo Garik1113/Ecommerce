@@ -17,7 +17,12 @@ const Footer:React.FC = () => {
                         ՏԵՂԵԿԱՏՎՈՒԹՅՈՒՆ
                     </div>
                     <div className={classes.fieldValue}>
-                        Հաճախ տրվող հարցեր
+                        <Link 
+                            className={classes.linkFieldValue}
+                            to="/faqs"
+                        >
+                            Հաճախ տրվող հարցեր
+                        </Link> 
                     </div>
                     <div className={classes.fieldValue}>
                         Առաքում

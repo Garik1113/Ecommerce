@@ -37,12 +37,24 @@
 }
 
 .newTitleField {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 2fr 1fr 2fr;
     text-align: center;
+}
+
+.line {
+    height: 1px;
+    background: #000;
+    width: 100%;
 }
 
 .newTitle {
     font-size: 32px;
     color: #18564d;
+    white-space: nowrap;
+    display: block;
+    margin: 0 15px;
 }
 
 @media screen and (max-width: 800px) {

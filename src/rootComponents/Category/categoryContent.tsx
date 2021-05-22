@@ -7,6 +7,7 @@ import Pagination from 'src/components/Pagination';
 import Banner from 'src/components/Banner';
 import { handleImageError } from 'src/util/handleImageError';
 import { BACKEND_URL } from 'src/config/defaults';
+import Title from 'src/components/Head/title';
 
 
 const CategoryContent:React.FC = () => {
@@ -27,9 +28,10 @@ const CategoryContent:React.FC = () => {
         category
     } = useCategoryContent({classes});
     const { sort, sort_dir } = pageControl;
-console.log(category)
+    
     return (
         <div className={classes.root}>
+            <Title title={category?.name}/>
             {
                 category && category.image 
                 ?   <div className={classes.categoryImageField}>

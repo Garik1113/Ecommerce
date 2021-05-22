@@ -4,12 +4,14 @@ import Banner from 'src/components/Banner';
 import classes from './home.scss';
 import { useHome } from 'src/talons/Home/useHome';
 import Gallery from 'src/components/Gallery';
+import Title from 'src/components/Head/title';
 
 const Home:React.FC = () => {
     const { products, discountedProducs } = useHome();
 
     return (
         <div className={classes.root}>
+            <Title title={"G-SHOP"}/>
             <Slider/>
             <div className={classes.body}>
                 <div className={classes.banners}>
@@ -18,9 +20,11 @@ const Home:React.FC = () => {
                 </div>
                 <div className={classes.newCollection}>
                     <div className={classes.newTitleField}>
+                        <div className={classes.line}></div>
                         <span className={classes.newTitle}>
                             Նոր Տեսականի
                         </span>
+                        <div className={classes.line}></div>
                     </div>
                     <div className={classes.newBody}>
                         <div className={classes.list}>
@@ -33,9 +37,11 @@ const Home:React.FC = () => {
                 </div>
                 <div className={classes.sales}>
                     <div className={classes.newTitleField}>
+                        <div className={classes.line}></div>
                         <span className={classes.newTitle}>
                             Զեղջված Ապրանքներ
                         </span>
+                        <div className={classes.line}></div>
                     </div>
                     <div className={classes.newBody}>
                         <div className={classes.list}>
