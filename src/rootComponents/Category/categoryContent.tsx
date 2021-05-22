@@ -128,7 +128,7 @@ console.log(category)
                             attributes={attributes}
                             queryParams={queryParams}
                         />
-                        <Banner bannerId="607fa92a68565d154970ade7"/>
+                        <Banner bannerId="60a13543d3628d1129b07ca4"/>
                     </div>
                     
                     {

@@ -17,18 +17,18 @@ const Summary:React.FC<Props> = (props: Props) => {
     return (
         <div className={classes.root}>
             <div className={classes.title}>
-                <h2>Summary</h2>
+                <h2>Ընդհանուր</h2>
             </div>
             <hr className={classes.line}/>
             <div className={classes.subTotal}>
-                <p>Subtotal</p>
+                <p>Գին</p>
                 <span>{subTotal} {currency.name}</span>
             </div>
             {
                 shippingMethod
                 ?   <div>
                         <div className={classes.subTotal}> 
-                            <p>Shipping: {shippingMethod.methodName}</p>
+                            <p>Առաքում: {shippingMethod.methodName}</p>
                             <span>{shippingMethod.price} {currency.name}</span>
                         </div>
                         <hr className={classes.line}/>
@@ -36,12 +36,12 @@ const Summary:React.FC<Props> = (props: Props) => {
                 :   null
             }
             <div className={classes.orderTotal}>
-                <h3>Order Total</h3>
+                <h3>Պատվերի արժեքը</h3>
                 <b>{totalPrice} {currency.name}</b>
             </div>
             <div className={classes.button}>
                 <Link to="/checkout">
-                    <Button label="Proceed to Checkout" priority="high"/>
+                    <Button label="Պատվիրել" priority="high"/>
                 </Link>
             </div>
         </div>

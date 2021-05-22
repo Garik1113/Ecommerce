@@ -19,7 +19,7 @@ const Orders:React.FC = () => {
                     ?   orders.map((e: IOrder) => (
                             <Order order={e} key={e._id} />
                             ))
-                    :   <div className={classes.empty}>Empty</div>
+                    :   <div className={classes.empty}>Դատարկ</div>
 
                 }         
             </div>            

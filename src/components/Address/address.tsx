@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import classes from './address.scss';
-import DropDown from 'src/components/Dropdown'
+import DropDown from 'components/DropDown'
 import * as yup from 'yup'
 import { IAddress } from 'src/interfaces/address';
 import { useAddress } from 'src/talons/Address/useAddress';

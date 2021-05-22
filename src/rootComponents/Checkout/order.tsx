@@ -26,9 +26,9 @@ const Order:React.FC = () => {
 
     return (
         <div className={classes.root}>
-            <CheckoutTitle title="review order" number={5}/>
+            <CheckoutTitle title="Պատվեր" number={5}/>
             <div className={classes.itemCount} onClick={handleClick}>
-                <span>{items.length} items in cart</span>
+                <span>Զամբյուղում {items.length} ապրանք</span>
                 {showItems 
                     ?   <i className="fas fa-chevron-up"></i>
                     :   <i className="fas fa-chevron-down"></i>
@@ -52,17 +52,17 @@ const Order:React.FC = () => {
             : null
             }
             <div className={classes.subTotal}>
-                <span>Sub Total</span>
+                <span>Ենթագումար</span>
                 <span>{subTotal} {currency.name}</span>
             </div>
             <hr/>
             <div className={classes.subTotal}>
-                <span>Shipping Total</span>
+                <span>Առաքման գումար</span>
                 <span>{shippingMethod?.price} {currency.name}</span>
             </div>
             <hr/>
             <div className={classes.total}>
-                <span>Grand Total</span>
+                <span>Ընդհանուր գումար</span>
                 <span>{totalPrice} {currency.name}</span>
             </div>
             <div className={classes.button}>

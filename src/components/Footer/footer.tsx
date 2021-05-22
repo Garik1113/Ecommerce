@@ -57,7 +57,7 @@ const Footer:React.FC = () => {
                         {
                             socialSites && socialSites.length 
                             ?     socialSites.map((e:any, i: number) => {
-                                    if (e.name.includes("Facebook")) {
+                                    if (e.name.includes("facebook")) {
                                         return (
                                             <a href={e.url} target="_blank" key={i}>
                                                 <img src="/fb.png" key={i} className={classes.image}/>

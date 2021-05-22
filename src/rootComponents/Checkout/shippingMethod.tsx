@@ -20,7 +20,7 @@ const ShippingMethod:React.FC<Props> = (props: Props) => {
 
     return (
         <div className={classes.root}>
-            <CheckoutTitle title="SHIPPING METHOD" number={3}/>
+            <CheckoutTitle title="Առաքման տեսակ" number={3}/>
             <div className={classes.body}>
                 {
                     shippingMethods && shippingMethods.length

@@ -63,7 +63,7 @@ const BillingAddress:React.FC<Props> = (props: Props) => {
 
     return (
         <div className={`${billingAndShippingAreTheSame ? classes.miniRoot : classes.root}`}>
-            <CheckoutTitle title="BILLING ADDRESS" number={2}/>
+            <CheckoutTitle title="Վճարման հասցե" number={2}/>
             <div className={classes.checkboxField}>
                 <input 
                     type="checkbox"

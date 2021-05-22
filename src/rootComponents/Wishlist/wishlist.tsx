@@ -9,7 +9,7 @@ const WIshlist:React.FC = () => {
     return (
         <div className={classes.root}>
             <div className={classes.title}>
-                <h1>Favorites</h1>
+                <h1>Հավանած</h1>
             </div>
             <div className={classes.list}>
                 {

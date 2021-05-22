@@ -15,7 +15,7 @@ const CartContent:React.FC<Props> = (props: Props) => {
     return (
         <div className={classes.root}>
             <div className={classes.title}>
-                <h1>Cart</h1>
+                <h1>Զամբյուղ</h1>
             </div>
             <div className={classes.body}>
                 <div className={classes.products}>

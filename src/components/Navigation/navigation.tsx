@@ -30,18 +30,18 @@ const Navigation:React.FC = () => {
                     isSignidIn
                     ?   <div className={classes.footerItem}>
                            <Link to="/account" onClick={() => handleCloseDrawer()}>
-                                My Account
+                                Հաշիվ
                             </Link>
                         </div>
                     :   <div>
                             <div className={classes.footerItem}>
                                 <Link to="/signin" onClick={() => handleCloseDrawer()}>
-                                    Sign In
+                                    Մուտք
                                 </Link>
                             </div>
                             <div className={classes.footerItem}>
                                 <Link to="/signup" onClick={() => handleCloseDrawer()}>
-                                    Sign up
+                                    Գրանցում
                                 </Link>
                             </div>
                         </div>

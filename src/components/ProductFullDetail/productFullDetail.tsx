@@ -64,7 +64,7 @@ const ProductFullDetail:React.FC<ProductProps> = ({ product }: ProductProps) => 
                                 ?   <Reviews 
                                         product={product}
                                     />
-                                :   <span>Only logged in customers can see reviews for this product</span>
+                                :   <span className={classes.guestReviewMsg}>Only logged in customers can see reviews for this product</span>
                         }
                     </div>
                 </section>
@@ -143,7 +143,7 @@ const ProductFullDetail:React.FC<ProductProps> = ({ product }: ProductProps) => 
                 </section>
             </div>
             <div className={classes.relatedProducts}>
-                <div className={classes.relatedTitle}>Related Products</div>
+                <div className={classes.relatedTitle}>Նմաատիպ ապրանքներ</div>
                 <ProductSlider categoryId={product.categories[0]}/>
             </div>
         </div>

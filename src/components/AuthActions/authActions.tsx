@@ -1,12 +1,11 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { State } from 'src/store';
 import classes from './authActions.scss';
 import { signOut } from 'src/store/actions/customer/asyncActions';
 import { useAxiosClient } from 'src/talons/Axios/useAxiosClient';
 import { DELETE_CART } from 'src/store/types/cart';
-import Button from '../Button';
 
 interface Props {
     isMobile: boolean
@@ -33,12 +32,12 @@ const AuthActions = (props: Props) => {
                         { 
                             isMobile 
                             ?  <div className={classes.icon}><i className="fas fa-user"></i></div> 
-                            :  <Link to="/account" className={classes.signinLinkAccount}>Account</Link> 
+                            :  <Link to="/account" className={classes.signinLinkAccount}>Հաշիվ</Link> 
                         }
                         { 
                             isMobile
                             ?   <div className={classes.icon}><i className="fas fa-sign-out-alt"></i></div>
-                            :   <span onClick={handleSignOut} className={classes.signinLink}>Sign out</span> 
+                            :   <span onClick={handleSignOut} className={classes.signinLink}>Ելք</span> 
                         }
                     </div> 
                 :   <div>
@@ -46,7 +45,7 @@ const AuthActions = (props: Props) => {
                             {   
                                 isMobile 
                                 ?   <i className="fas fa-user"></i> 
-                                :   <span>Sign In</span>
+                                :   <span>Մուտք</span>
                             }
                         </Link>
                     </div>

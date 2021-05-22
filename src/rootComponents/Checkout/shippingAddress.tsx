@@ -23,7 +23,7 @@ const ShippingAddress:React.FC<Props> = (props: Props) => {
 
     return (
         <div className={classes.root}>
-            <CheckoutTitle title="SHIPPING ADDRESS" number={1}/>
+            <CheckoutTitle title="Առաքման հասցե" number={1}/>
             {
                 isSignedIn && addresses.length
                 ?   

@@ -32,7 +32,7 @@ const Order:React.FC<Props> = (props: Props) => {
                 <div className={classes.header} onClick={() => setIsOpen(!isOpen)}>
                     <div className={classes.headerField}>
                         <div className={classes.headerTitle}>
-                            Date
+                            Տարեթիվ
                         </div>
                         <span>
                             {getDate(order.createdAt)}
@@ -40,7 +40,7 @@ const Order:React.FC<Props> = (props: Props) => {
                     </div>
                     <div className={classes.headerField}>
                         <div className={classes.headerTitle}>
-                            Grand total
+                            Ընդհանուր գին
                         </div>
                         <span>
                             {getTotalPrice(order.totalPrice)} {order.currency.name}
@@ -48,7 +48,7 @@ const Order:React.FC<Props> = (props: Props) => {
                     </div>
                     <div className={classes.headerField}>
                         <div className={classes.headerTitle}>
-                            Order number
+                            Պատվերի համար
                         </div>
                         <span>
                             {order._id}
@@ -71,20 +71,20 @@ const Order:React.FC<Props> = (props: Props) => {
                             <div className={classes.addressField}>
                                 <div className={classes.shipping}>
                                     <div className={classes.addressTitle}>
-                                        Shipping Address
+                                        Առաքման հասցե
                                     </div>
                                     <AddressCard address={order.shippingAddress}/>
                                 </div>
                                 <div className={classes.billing}>
                                     <div className={classes.addressTitle}>
-                                        Billing Address
+                                        Վճարման հասցե
                                     </div>
                                     <AddressCard address={order.billingAddress}/>
                                 </div>
                             </div>
                             <div className={classes.payment}>
                                 <div className={classes.paymentHeader}>
-                                    Payment Method
+                                    Վճարման եղանակ
                                 </div>
                                 <span className={classes.paymentValue}>
                                     {order.paymentMethod.methodName}
@@ -92,7 +92,7 @@ const Order:React.FC<Props> = (props: Props) => {
                             </div>
                             <div className={classes.payment}>
                                 <div className={classes.paymentHeader}>
-                                    Shipping Method
+                                    Առաքման տեսակ
                                 </div>
                                 <span className={classes.paymentValue}>
                                     {order.shippingMethod.price} {order.currency.name}
@@ -103,7 +103,7 @@ const Order:React.FC<Props> = (props: Props) => {
                             </div>
                             <div className={classes.payment}>
                                 <div className={classes.paymentHeader}>
-                                    Status
+                                    Կարգավիճակ
                                 </div>
                                 <span className={classes.status}>
                                     {order.status.name}

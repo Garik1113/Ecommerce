@@ -12,22 +12,22 @@ const Tabs:React.FC = () => {
         <div className={classes.root}>
                 <div className={`${classes.item} ${pathname == '/account' && classes.active}`}>
                     <Link to='/account' className={`${classes.link} ${pathname == '/account' && classes.activeLink}`}>
-                        Account
+                        Հաշիվ
                     </Link>
                 </div>
                 <div className={`${classes.item} ${pathname == '/account/orders' && classes.active}`}>
                     <Link to='/account/orders' className={`${classes.link} ${pathname == '/account/orders' && classes.activeLink}`}>
-                        Orders
+                        Պատվերներ
                     </Link>
                 </div>
                 <div className={`${classes.item} ${pathname == '/account/addresses' && classes.active}`}>
                     <Link to='/account/addresses' className={`${classes.link} ${pathname == '/account/addresses' && classes.activeLink}`}>
-                        Addresses
+                        Հասցեներ
                     </Link>
                 </div>
                 <div className={classes.item}>
                     <Link to='/' className={classes.link} onClick={handleSignOut}>
-                        Sign Out
+                        Ելք
                     </Link>
                 </div>
         </div>

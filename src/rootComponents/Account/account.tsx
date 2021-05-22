@@ -95,7 +95,7 @@ const Account:React.FC = () => {
                                     <ErrorMessage name="lastName" component="div" className={classes.error}/>
                                 </div>
                                 <div className={classes.field}>
-                                    <span className={classes.changePassword} onClick={() => setIsChangingPassword(!isChangingPassword)}>Change Passwor</span>
+                                    <span className={classes.changePassword} onClick={() => setIsChangingPassword(!isChangingPassword)}>Փոխել Գախտնաբառը</span>
                                 </div>
                                 {
                                     isChangingPassword
@@ -133,7 +133,7 @@ const Account:React.FC = () => {
                                     <Button 
                                         priority="normal" 
                                         onClick={handleSubmit}
-                                        label="Change"
+                                        label="Փոխել"
                                     >
                                     </Button>
                                 </div>
