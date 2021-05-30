@@ -27,8 +27,15 @@ const ColorSwatch: React.FC<Props> = (props: Props) => {
                                 return <div 
                                     key={i} 
                                     className={`${classes.circle} ${queryParams[String(attribute.code)] == e.id && classes.selected}`} 
-                                    onClick={
-                                        () => queryParams[String(attribute.code)] == e.id ? addQueryString(String(attribute.code), "") : addQueryString(String(attribute.code), e.id)}
+                                    onClick={(() => {
+                                            if (queryParams[String(attribute.code)] == e.id) {
+                                                addQueryString(String(attribute.code), "")
+                                            } else {
+                                                addQueryString("page", 0);
+                                                addQueryString(String(attribute.code), e.id);
+                                            }
+                                        })
+                                    }
                             >
                                    <div className={classes.swatch} style={{background: String(e.name)}}></div>
                                 </div>

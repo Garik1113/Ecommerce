@@ -21,3 +21,10 @@
     margin-right: 10px;
 }
 
+@media (max-width: 600px) {
+    .root h3 {
+        text-transform: uppercase;
+        margin: 0 !important;
+        font-size: 18px;
+    }
+}

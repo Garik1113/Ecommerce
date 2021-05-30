@@ -1,8 +1,6 @@
 .root {
     position: relative;
-    background: #ffffff;
     padding: 20px 20px;
-    max-height: 330px;
 } 
 
 @media (max-width: 800px) {
@@ -21,8 +19,12 @@
 
 .heart {
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 24px;
+    right: 24px;
+}
+
+.left {
+    left: 25px;
 }
 
 .heart i {
@@ -55,7 +57,7 @@
 }
 
 .red i {
-    color: #18564d;
+    color: #15f861;
 }
 
 .discountedPriceField {
@@ -84,7 +86,6 @@
 
 .flexTitle {
     margin-top: 0;
-    margin-left: 10px;
 }
 
 .flexFooter {
@@ -102,4 +103,16 @@
     margin-top: 15px;
     max-height: 180px;
     overflow-y: auto;
+}
+
+.rating {
+    margin-top: 15px;
+}
+
+.details {
+    margin-left: 15px;
+}
+
+.description p, .description span, .description strong, .description i {
+    background: none !important;
 }

@@ -8,22 +8,22 @@ import PricRange from './priceRange';
 import Select from './select';
 
 type Props = {
-    priceRange: Range,
-    setPriceRange: any,
+    minMaxPrice: Range,
     handleApplyPriceRange: any,
     addQueryString: any,
     attributes: IAttribute[],
-    queryParams: any
+    queryParams: any,
+    isFetchingProducts?:any
 }
 
 const Filters:React.FC<Props> = (props: Props) => {
     const { 
-        priceRange, 
-        setPriceRange,
+        minMaxPrice, 
         handleApplyPriceRange,
         attributes,
         addQueryString,
-        queryParams
+        queryParams,
+        isFetchingProducts
     } = props;
 
     return (
@@ -63,11 +63,9 @@ const Filters:React.FC<Props> = (props: Props) => {
                     :   null
                 }
                 <PricRange 
-                    min={0} 
-                    max={200000} 
-                    value={priceRange}
-                    setPriceRange={setPriceRange}
+                    minMaxPrice={minMaxPrice}
                     handleApplyPriceRange={handleApplyPriceRange}
+                    isFetchingProducts={isFetchingProducts}
                 />  
             </div>
             

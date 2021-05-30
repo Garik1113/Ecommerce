@@ -1,4 +1,5 @@
 import React from 'react';
+import CartProduct from 'src/components/CartContent/cartProduct';
 import { useCheckout } from 'src/talons/Checkout/useCheckout';
 import BillingAddress from './billingAddress';
 import classes from './checkout.scss';
@@ -20,13 +21,27 @@ const Checkout:React.FC = () => {
         shippingAddress, 
         billingAddress, 
         paymentMethod,
-        shippingMethod
+        shippingMethod,
+        currency
     } = useCheckout();
     
-
+    if (!items || !items.length) {
+        return null
+    }
     return (
         <div className={classes.root}>
             <div className={classes.body}>
+                {
+                    step.value !== 'order'
+                    ?   <div className={classes.products}>
+                            {
+                                items.map((e, i) => {
+                                    return <CartProduct cartItem={e} key={i} currency={currency}/> 
+                                })
+                            }
+                        </div>
+                    :   null
+                }
                 <div>
                     <CheckoutHeader 
                         setStep={setStep} 

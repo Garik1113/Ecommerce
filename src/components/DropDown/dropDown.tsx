@@ -10,21 +10,24 @@ type Props = {
 const DropDown:React.FC<Props> = (props: Props) => {
     const { options=[], activeValue, onChange } = props;
     const [isOpen, setIsOpen] = useState(false);
-    
+    console.log('options', options)
     return (
         <div className={classes.root} onClick={() => setIsOpen(!isOpen)}>
             <div className={classes.active} onClick={() => setIsOpen(true)}>{activeValue}</div>
             {
                 isOpen
-                ?   options.map((e:any, i) => 
-                        <div 
-                            key={i} 
-                            onClick={() => { onChange(e.text); setIsOpen(false) }}
-                            className={classes.item}
-                        >
-                            {e.text}
-                        </div>
-                    )
+                ?   <div className={classes.list}>
+                        {options.map((e:any, i) => 
+                            ( <div 
+                                key={i} 
+                                onClick={() => { onChange(e.text); setIsOpen(false) }}
+                                className={classes.item}
+                            >
+                                {e.text}
+                            </div>
+                            )
+                        )}
+                    </div>
                 :   null
             }
         </div>

@@ -31,8 +31,9 @@ export const useCategoryContent = (props: Props) => {
     const history = useHistory()
     const { id } = params;
     const { addQueryString, pageControl, queryParams } = usePageControl();
-    const [priceRange, setPriceRange] = useState<Range>({min: Number(pageControl.price_min) || 0, max: Number(pageControl.price_max) || 200000});
+    const [minMaxPriceState, setMinMaxPrice] = useState<Range>({min: 0, max: 0});
     const [products, setProducts] = useState<IProduct[]>([]);
+    const [isFetchingProducts, setIsFetchingproducts] = useState(false);
     const [attributes, setAttributes] = useState<IAttribute[]>([]);
     const [totalPages, setTotalPages] = useState(0);
     const [category, setCategory] = useState<ICategory>()
@@ -53,25 +54,30 @@ export const useCategoryContent = (props: Props) => {
     }, [view, setView]);
 
     const fetchProducts = useCallback(async() => {
-        // RIGHT WAY const response: AxiosResponse = await axiosClient("GET", `products/get_products/${id}?page=${pageControl.page}&sort=${pageControl.sort}&sort_dir=${pageControl.sort_dir}&price_min=${pageControl.price_min}&price_max=${pageControl.price_max}`);
+        setIsFetchingproducts(true);
         const response: AxiosResponse = await axiosClient("GET", `products/get_products/?category_id=${id}${getQueryString(queryParams)}`);
         const { data } = response;
         if (data && data.products) {
             setProducts(data.products);
-            if(data.attributes) {
+            if (data.attributes) {
                 setAttributes(data.attributes)
             }
-            const { totalProducts } = data;
+            const { totalProducts, pageSize = 1, minPrice, maxPrice } = data;
+            
+            if (minPrice && maxPrice) {
+                setMinMaxPrice({ min: minPrice, max: maxPrice })
+            }
             if(totalProducts) {
-                if(Number(totalProducts) < Number(perPage)) {
+                if(Number(totalProducts) <= Number(pageSize)) {
                     setTotalPages(0)
                 } else {
-                    const newTotalpages = getTotalPages(Number(totalProducts), Number(perPage));
-                    setTotalPages(newTotalpages); 
+                    setTotalPages(Math.ceil(Number(totalProducts)/ Number(pageSize))); 
                 }
             }
         }
-    }, [id, pageControl, addQueryString, totalPages, setTotalPages, perPage, queryParams]);
+        setIsFetchingproducts(false)
+    }, [id, pageControl, addQueryString, totalPages, setTotalPages, perPage, queryParams, setMinMaxPrice, setIsFetchingproducts]);
+
     const fetchCategory = useCallback(async() => {
         if (id) {
             const response: AxiosResponse = await axiosClient("GET", `categories/${id}`);
@@ -85,14 +91,11 @@ export const useCategoryContent = (props: Props) => {
     useEffect(() => {
         fetchProducts();
         fetchCategory()
-    }, [history.location.search, perPage])
+    }, [history.location.search])
 
-    const handleApplyFilters = useCallback(() => {
-        
-    }, [])
     const handleApplyPriceRange = useCallback((priceRange: Range) => {
-        addQueryString("price_min", String(priceRange.min))
-        addQueryString("price_max", String(priceRange.max))
+        addQueryString("price_min", String(priceRange.min));
+        addQueryString("price_max", String(priceRange.max));
     }, []);
     
     
@@ -102,15 +105,15 @@ export const useCategoryContent = (props: Props) => {
         setShowSortOptions,
         rootClass,
         setView,
-        handleApplyFilters,
         addQueryString, 
         pageControl,
         totalPages,
-        setPriceRange,
-        priceRange,
+        setMinMaxPrice,
+        minMaxPrice: minMaxPriceState,
         handleApplyPriceRange,
         attributes,
         queryParams,
-        category
+        category,
+        isFetchingProducts
     }
 }

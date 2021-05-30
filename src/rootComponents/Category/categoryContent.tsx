@@ -18,14 +18,14 @@ const CategoryContent:React.FC = () => {
         setView,
         rootClass,
         handleApplyPriceRange,
-        priceRange,
-        setPriceRange,
+        minMaxPrice,
         addQueryString,
         pageControl,
         totalPages,
         attributes,
         queryParams,
-        category
+        category,
+        isFetchingProducts
     } = useCategoryContent({classes});
     const { sort, sort_dir } = pageControl;
     
@@ -41,7 +41,7 @@ const CategoryContent:React.FC = () => {
                             className={classes.categoryImage}
                         />
                         <div className={classes.categoryTitle}>
-                            {category.name}
+                           <h3>{category.name}</h3> 
                         </div>
                     </div>
                 :   null
@@ -123,12 +123,12 @@ const CategoryContent:React.FC = () => {
                 <div className={classes.body}>
                     <div className={classes.filterAndBanner}>
                         <Filters 
-                            priceRange={priceRange} 
-                            setPriceRange={setPriceRange} 
+                            minMaxPrice={minMaxPrice} 
                             handleApplyPriceRange={handleApplyPriceRange}
                             addQueryString={addQueryString}
                             attributes={attributes}
                             queryParams={queryParams}
+                            isFetchingProducts={isFetchingProducts}
                         />
                         <Banner bannerId="60a13543d3628d1129b07ca4"/>
                     </div>

@@ -32,8 +32,8 @@
 }
 
 .circle {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -43,13 +43,13 @@
 
 
 .swatch {
-    width: 35px;
-    height: 35px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     background: #09d4db;
     text-align: center;
-    line-height: 37px;
-    font-size: 16px;
+    line-height: 30px;
+    font-size: 14px;
     cursor: pointer;
     color: #fff;
 }

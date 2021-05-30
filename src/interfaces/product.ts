@@ -42,11 +42,13 @@ export interface IProduct {
     pageTitle: string,
     description: string,
     metaDescription: string,
+    defaultPrice: string,
     quantity: number,
     price: number,
     discount: number,
     discountedPrice: number,
     averageRating: number,
     configurableAttributes: ConfigurableAttribute[],
-    images: IImage[]
+    images: IImage[],
+    currency: any
 }

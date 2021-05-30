@@ -1,4 +1,16 @@
 .root {
-    
+    padding: 15px;
 }
 
+.products {
+    max-width: 800px;
+    margin: 25px auto;
+}
+
+
+@media (max-width: 600px) {
+    .products {
+        max-width: 400px;
+        margin: 25px auto;
+    }
+}

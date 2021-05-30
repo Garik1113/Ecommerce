@@ -20,14 +20,17 @@
 
 .discounted {
     color: red;
+    white-space: nowrap;
 }
 
 .oldPrice {
     margin-left: 10px;
     text-decoration: line-through;
+    white-space: nowrap;
 }
 
 .price {
     font-size: 16px;
     color: #000;
+    white-space: nowrap;
 }

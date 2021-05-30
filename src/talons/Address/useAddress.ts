@@ -31,7 +31,7 @@ export const useAddress = () => {
             }
         }) : []
     }, [states]);
-
+console.log(states)
     const cityOptions = useMemo(() => {
         return cities ? cities.map(c => {
             return {

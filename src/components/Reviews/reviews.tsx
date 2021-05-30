@@ -43,7 +43,7 @@ const Reviews: React.FC<Props> = (props: Props) => {
                             </div>
                         )
                     })
-                :   <h3 className={classes.empty}>There are no reviews for this product</h3>
+                :   <h3 className={classes.empty}>Մեկնաբանություններ չկան</h3>
             }
         </div>
     )

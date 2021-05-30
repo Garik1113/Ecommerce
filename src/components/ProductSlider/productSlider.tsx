@@ -49,7 +49,7 @@ const ProductSlider:React.FC<Props> = (props: Props) => {
     
     return (
         <CarouselProvider
-            totalSlides={products.length}
+            totalSlides={products.filter(e => e._id !== excludedProductId).length}
             naturalSlideWidth={300}
             naturalSlideHeight={400}
             infinite={true}

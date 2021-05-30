@@ -1,6 +1,7 @@
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useSelector } from "react-redux"
 import { State } from "src/store"
+import { useConfig } from '../Config/useConfig';
 
 export type TStep = {
     value: String,
@@ -15,6 +16,11 @@ export const useCheckout = () => {
     const handleChange = useCallback((e, data) => {
         setBillingAndShippingAreTheSame(data.checked)
     }, []);
+    const { getConfigValue } = useConfig()
+    const currency = useMemo(
+        () => getConfigValue("baseCurrency"),
+        [getConfigValue]
+    )
 
     return {
         items: items || [],
@@ -26,6 +32,7 @@ export const useCheckout = () => {
         shippingAddress, 
         billingAddress, 
         paymentMethod,
-        shippingMethod
+        shippingMethod,
+        currency
     }
 }

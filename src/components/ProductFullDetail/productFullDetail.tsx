@@ -35,7 +35,7 @@ const ProductFullDetail:React.FC<ProductProps> = ({ product }: ProductProps) => 
         currency,
         productSubscriptions
     } = talonProps;
-
+    
     return (
         <div className={classes.root}>
             <div className={classes.body}>
@@ -44,15 +44,17 @@ const ProductFullDetail:React.FC<ProductProps> = ({ product }: ProductProps) => 
                     <div className={classes.actions}>
                         <div className={classes.actionHeader}>
                             <div 
-                                className={classes.discriptionTitle}
+                                className={`${classes.discriptionTitle}`}
                                 onClick={() => setActiveAction("description")}
                             >
-                                Նկարագրություն
+                               <span>Նկարագրություն</span>
+                              { activeAction == "description"  ? <div className={classes.activeLine}></div> : null }
                             </div>
                             <div
-                                className={classes.discriptionTitle}
+                                className={`${classes.discriptionTitle}`}
                                 onClick={() => setActiveAction("review")}>
-                                Մեկնաբանություններ
+                                <span>Մեկնաբանություններ</span>
+                                { activeAction == "review"  ? <div className={classes.activeLine}></div> : null }
                             </div>
                         </div>
                         {

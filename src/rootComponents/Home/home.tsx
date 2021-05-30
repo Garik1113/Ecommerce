@@ -15,8 +15,8 @@ const Home:React.FC = () => {
             <Slider/>
             <div className={classes.body}>
                 <div className={classes.banners}>
-                    <Banner bannerId="60a13543d3628d1129b07ca4"/>
-                    <Banner bannerId="60a1354cd3628d1129b07ca5"/>
+                    <Banner bannerId="60b383ea6929272368897544"/>
+                    <Banner bannerId="60b383f06929272368897545"/>
                 </div>
                 <div className={classes.newCollection}>
                     <div className={classes.newTitleField}>
@@ -31,7 +31,7 @@ const Home:React.FC = () => {
                             <Gallery products={products}/>
                         </div>
                         <div className={classes.banner}>
-                            <Banner bannerId="60a13557d3628d1129b07ca6"/>
+                            <Banner bannerId="60b383f66929272368897546"/>
                         </div>
                     </div>
                 </div>
@@ -39,7 +39,7 @@ const Home:React.FC = () => {
                     <div className={classes.newTitleField}>
                         <div className={classes.line}></div>
                         <span className={classes.newTitle}>
-                            Զեղջված Ապրանքներ
+                            Զեղչված Ապրանքներ
                         </span>
                         <div className={classes.line}></div>
                     </div>
@@ -48,7 +48,7 @@ const Home:React.FC = () => {
                             <Gallery products={discountedProducs}/>
                         </div>
                         <div className={classes.banner}>
-                            <Banner bannerId="60a13560d3628d1129b07ca7"/>
+                            <Banner bannerId="60b383f06929272368897545"/>
                         </div>
                     </div>
                 </div>
