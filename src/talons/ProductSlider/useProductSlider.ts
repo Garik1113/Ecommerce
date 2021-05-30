@@ -13,7 +13,7 @@ export const useProductSlider = (props:Props) => {
     const [products, setProducts] = useState<IProduct[]>([])
 
     const fetchProducts = useCallback(async() => {
-        const response: AxiosResponse = await axiosClient("GET", `products/get_products/${categoryId}`);
+        const response: AxiosResponse = await axiosClient("GET", `products/get_products/?category_id=${categoryId}`);
         const { data } = response;
         if (data && data.products) {
             setProducts(data.products);

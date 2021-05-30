@@ -1,7 +1,7 @@
 import React from 'react';
 import { IAttribute, IValue } from 'src/interfaces/product';
 import mergeClasses from 'src/util/classify';
-import defaultClasses from './swatch.scss';
+import defaultClasses from './select.scss';
 type Props = {
     attribute: IAttribute,
     addQueryString: any,
@@ -9,7 +9,7 @@ type Props = {
     classes?: any
 }
 
-const Swatch: React.FC<Props> = (props: Props) => {
+const Select: React.FC<Props> = (props: Props) => {
     const classes = mergeClasses(defaultClasses, props.classes);
     const { attribute, addQueryString, queryParams } = props;
 
@@ -26,10 +26,10 @@ const Swatch: React.FC<Props> = (props: Props) => {
                                 return (
                                     <div 
                                         key={i} 
-                                        className={`${classes.circle} ${queryParams[String(attribute.code)] == e.id && classes.selected}`} 
+                                        className={`${classes.item} ${queryParams[String(attribute.code)] == e.id && classes.selected}`} 
                                         onClick={() => queryParams[String(attribute.code)] == e.id ? addQueryString(attribute.code, "") : addQueryString(attribute.code, e.id)}
                                     >
-                                        <div className={classes.swatch}>{e.name}</div>
+                                        <span className={classes.itemName}>{e.name}</span>
                                     </div>
                                )
                             }) 
@@ -41,4 +41,4 @@ const Swatch: React.FC<Props> = (props: Props) => {
     )
 }
 
-export default Swatch;
+export default Select;

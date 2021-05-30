@@ -20,6 +20,7 @@ export const useCartItem = (props:Props) => {
         if (cartItem.quantity <= 1 && !increment) {
             return
         }
+        console.log("cartItem",cartItem)
         dispatch(changeItemQuantity(cartItem._id, increment ? 1 : -1));
     }, [cartItem, cartId]);
 

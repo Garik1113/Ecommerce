@@ -36,7 +36,7 @@ const Summary:React.FC<Props> = (props: Props) => {
                 :   null
             }
             <div className={classes.orderTotal}>
-                <h3>Պատվերի արժեքը</h3>
+                <h3>Արժեքը</h3>
                 <b>{totalPrice} {currency.name}</b>
             </div>
             <div className={classes.button}>

@@ -23,15 +23,16 @@ const ColorSwatch: React.FC<Props> = (props: Props) => {
                 attribute.values && attribute.values.length
                 ?   <div className={classes.list}>
                         {
-                           attribute.values.map((e:IValue,i:number) => (
-                               <div 
+                           attribute.values.map((e:IValue,i:number) => {
+                                return <div 
                                     key={i} 
-                                    className={`${classes.circle} ${queryParams[String(attribute.name)] == e._id && classes.selected}`} 
-                                    onClick={() => queryParams[String(attribute.name)] == e._id ? addQueryString(attribute.name, "") : addQueryString(attribute.name, e._id)}
+                                    className={`${classes.circle} ${queryParams[String(attribute.code)] == e.id && classes.selected}`} 
+                                    onClick={
+                                        () => queryParams[String(attribute.code)] == e.id ? addQueryString(String(attribute.code), "") : addQueryString(String(attribute.code), e.id)}
                             >
                                    <div className={classes.swatch} style={{background: String(e.name)}}></div>
-                               </div>
-                           )) 
+                                </div>
+                           })
                         }
                     </div>
                 :   null

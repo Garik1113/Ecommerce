@@ -5,6 +5,7 @@ import ColorSwatch from './colorSwatch';
 import Swatch from './swatch';
 import classes from './filters.scss';
 import PricRange from './priceRange';
+import Select from './select';
 
 type Props = {
     priceRange: Range,
@@ -48,6 +49,15 @@ const Filters:React.FC<Props> = (props: Props) => {
                                         queryParams={queryParams}
                                     />
                                 </div> 
+                            :   e.type == "select"
+                            ?   <div className={classes.filter}>
+                                    <Select 
+                                        attribute={e} 
+                                        key={i} 
+                                        addQueryString={addQueryString}
+                                        queryParams={queryParams}
+                                    />
+                                </div>
                             :   null
                         ))
                     :   null

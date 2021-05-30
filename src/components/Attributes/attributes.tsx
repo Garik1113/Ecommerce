@@ -27,7 +27,8 @@ const Attributes:React.FC<AttributeProps> = (props: AttributeProps) => {
                             name: attr.attribute.name,
                             _id: attr.attribute._id,
                             type: attr.attribute.type,
-                            values: [{...attr.selectedValue}]
+                            code: attr.attribute.code,
+                            values: [{...attr.value}]
                             }
                         return <Swatch  
                                     key={index} 
@@ -45,7 +46,8 @@ const Attributes:React.FC<AttributeProps> = (props: AttributeProps) => {
                             name: attr.attribute.name,
                             _id: attr.attribute._id,
                             type: attr.attribute.type,
-                            values: [{...attr.selectedValue}]
+                            code: attr.attribute.code,
+                            values: [{...attr.value}]
                             }
                         return <ColorSwatch 
                                     key={index} 
@@ -66,7 +68,7 @@ const Attributes:React.FC<AttributeProps> = (props: AttributeProps) => {
                                 </div>
                                 <div className={classes.attributeValueField}>
                                     <span className={classes.attributeValue}>
-                                        {attr.selectedValue.name}
+                                        {attr.value.name}
                                     </span>
                                 </div>
                             </div>

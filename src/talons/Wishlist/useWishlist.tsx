@@ -9,13 +9,13 @@ export const useWishlist = () => {
     const [items, setItems] = useState<IProduct[]>([]);
     const { axiosClient } = useAxiosClient();
     const fetchProducts = useCallback(async() => {
-        const {status, data}: AxiosResponse = await axiosClient("GET", `products/?ids=${wishlist}`);
+        const {status, data}: AxiosResponse = await axiosClient("GET", `products/get_products/?ids=${wishlist}`);
         if(status == 200 && data.products) {
             setItems(data.products)
         }
     }, [wishlist])
     useEffect(() => {
-        if(wishlist.length){
+        if(wishlist.length && !items.length){
             fetchProducts()
         }
     }, [wishlist]);

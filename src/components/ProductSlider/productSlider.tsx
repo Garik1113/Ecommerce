@@ -7,11 +7,12 @@ import Item from '../Gallery/item';
 import { useWindowSize } from 'src/util/useWindowSize';
 
 type Props = {
-    categoryId: string
+    categoryId: string,
+    excludedProductId?: string
 }
 
 const ProductSlider:React.FC<Props> = (props: Props) => {
-    const { categoryId } = props;
+    const { categoryId, excludedProductId = "" } = props;
     const { innerWidth } = useWindowSize();
     const [visibleItems, setVisibleItems] = useState(4);
     useEffect(() => {
@@ -38,7 +39,7 @@ const ProductSlider:React.FC<Props> = (props: Props) => {
         return (
             <div className={classes.list}>
                 {
-                    products.map((e: IProduct, i: number) => (
+                    products.filter(e => e._id !== excludedProductId).map((e: IProduct, i: number) => (
                         <Item item={e} key={i}/>
                     )) 
                 }
@@ -60,7 +61,7 @@ const ProductSlider:React.FC<Props> = (props: Props) => {
             </ButtonBack>
             <Slider>
                 {
-                    products.map((e: IProduct, i: number) => (
+                    products.filter(e => e._id !== excludedProductId).map((e: IProduct, i: number) => (
                         <Slide index={i} key={i}>
                             <Item item={e}/>
                         </Slide>

@@ -53,13 +53,14 @@ const CartItem:React.FC<Props> = (props: Props) => {
                     }
                     <div className={classes.quantity}>
                         <div className={classes.qty}>
-                            Քանակ: {cartItem.quantity}
+                            Քանակ: 
                         </div>
                         {dontShowActions 
-                        ?   null 
+                        ?   <span>{cartItem.quantity}</span>  
                         :   <div className={classes.qtyNumber}>
                                 <i className="fas fa-chevron-left" onClick={() => handleChangeQuantity(false)}></i>
-                                <input type="number" min={1} value={1} readOnly={true}/>
+                                {/* <input type="number" min={1} value={1} readOnly={true}/> */}
+                                <span>{cartItem.quantity}</span> 
                                 <i className="fas fa-chevron-right" onClick={() => handleChangeQuantity(true)}></i>
                             </div>
                         }

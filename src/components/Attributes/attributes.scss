@@ -32,22 +32,23 @@
 }
 
 .circle {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-left: 15px;
 }
 
 
 .swatch {
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     background: #09d4db;
     text-align: center;
-    line-height: 28px;
+    line-height: 37px;
     font-size: 16px;
     cursor: pointer;
     color: #fff;

@@ -34,9 +34,9 @@ export const getCartDetails = () => async (dispatch: Dispatch<CartActions>, getS
 
 export const addProductToCart = (productId: string, quantity: number,) => async (dispatch: Dispatch<CartActions>, getState: () => State) => {
     const token = getState().customer.token;
-    const {cartId } = getState().cart;
+    const { cartId } = getState().cart;
     const { axiosClient }  = getAxiosClient(token);
-    const response: AxiosResponse = await axiosClient("PUT", 'cart/add_item', { cartId, productId, quantity });
+    const response: AxiosResponse = await axiosClient("PUT", 'cart/add_item', { cartId: cartId || "", productId, quantity });
     const { data, status } = response;
     if (status == 200 && data.cart) {
         dispatch({

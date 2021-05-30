@@ -32,12 +32,18 @@
 }
 
 .qtyNumber {
-    display: flex;
+    justify-self: center;
     align-items: center;
+    display: flex;
 }
 
 .qtyNumber i {
     cursor: pointer;
+}
+
+.qtyNumber span {
+    display: block;
+    margin: 0 5px;
 }
 
 input::-webkit-outer-spin-button,

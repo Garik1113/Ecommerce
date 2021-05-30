@@ -21,7 +21,7 @@ const getQueryString = (queryParams: any={}) => {
             str += item;
         }
     }
-    return `?${str}`;
+    return `&${str}`;
 }
 
 export const useCategoryContent = (props: Props) => {
@@ -39,7 +39,7 @@ export const useCategoryContent = (props: Props) => {
     const [showSortOptions, setShowSortOptions] = useState(false);
     const [view, setView] = useState('grid');
     const [rootClass, setRootClass] = useState<string | undefined>(undefined);
-    const { getConfigValue } = useConfig()
+    const { getConfigValue } = useConfig();
     const perPage = useMemo(
         () => getConfigValue("productsPerPage")
     ,[getConfigValue])
@@ -54,7 +54,7 @@ export const useCategoryContent = (props: Props) => {
 
     const fetchProducts = useCallback(async() => {
         // RIGHT WAY const response: AxiosResponse = await axiosClient("GET", `products/get_products/${id}?page=${pageControl.page}&sort=${pageControl.sort}&sort_dir=${pageControl.sort_dir}&price_min=${pageControl.price_min}&price_max=${pageControl.price_max}`);
-        const response: AxiosResponse = await axiosClient("GET", `products/get_products/${id}${getQueryString(queryParams)}`);
+        const response: AxiosResponse = await axiosClient("GET", `products/get_products/?category_id=${id}${getQueryString(queryParams)}`);
         const { data } = response;
         if (data && data.products) {
             setProducts(data.products);

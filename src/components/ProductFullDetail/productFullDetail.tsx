@@ -112,7 +112,9 @@ const ProductFullDetail:React.FC<ProductProps> = ({ product }: ProductProps) => 
                                         disabled={false}
                                     />
                                 </div>
-                            :   <div className={classes.outOfStock}>առկա չէ</div>
+                            :   !isSignedIn &&  product.quantity < 1
+                            ?   <div className={classes.outOfStock}>առկա չէ</div>
+                            :   null
                     }
                     {
                         !isSignedIn && product.quantity > 1
@@ -144,7 +146,7 @@ const ProductFullDetail:React.FC<ProductProps> = ({ product }: ProductProps) => 
             </div>
             <div className={classes.relatedProducts}>
                 <div className={classes.relatedTitle}>Նմաատիպ ապրանքներ</div>
-                <ProductSlider categoryId={product.categories[0]}/>
+                <ProductSlider excludedProductId={product._id} categoryId={product.categories[0]}/>
             </div>
         </div>
     )

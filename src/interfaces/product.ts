@@ -18,18 +18,20 @@ export interface IImage {
 export interface IValue {
     _id: string,
     name: String
+    id: string
 }
 
 export interface IAttribute {
     _id: string,
     name: String,
+    code: string,
     type: string,
     values: IValue[]
 }
 
 export type ConfigurableAttribute = {
     attribute: IAttribute,
-    selectedValue: IValue
+    value: IValue
 }
 
 
