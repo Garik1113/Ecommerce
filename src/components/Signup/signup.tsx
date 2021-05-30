@@ -21,7 +21,7 @@ const Signup:React.FC = () => {
     
     return(
         <div className={classes.root}>
-            <h1 className={classes.title}>Sign Up</h1>
+            <h1 className={classes.title}>Գրանցվել</h1>
             {
                 message 
                 ?   <div className={classes.errorMessageField}>
@@ -63,27 +63,27 @@ const Signup:React.FC = () => {
                 <Form className={classes.form}>
                     <div className={classes.field}>
                         <Field type="text" name="firstName" className={classes.input} />
-                        <label htmlFor="firstName" className={classes.label}>First Name</label>
+                        <label htmlFor="firstName" className={classes.label}>Անուն</label>
                         <ErrorMessage name="firstName" component="div" className={classes.error}/> 
                     </div>
                     <div className={classes.field}>
                         <Field type="lastName" name="lastName" className={classes.input}/>
-                        <label htmlFor="lastName" className={classes.label}>Last Name</label>
+                        <label htmlFor="lastName" className={classes.label}>Ազգանուն</label>
                         <ErrorMessage name="lastName" component="div" className={classes.error}/>
                     </div>
                     <div className={classes.field}>
                         <Field type="email" name="email" className={classes.input}/>
-                        <label htmlFor="email" className={classes.label}>Email</label>
+                        <label htmlFor="email" className={classes.label}>Էլ հասցե</label>
                         <ErrorMessage name="email" component="div" className={classes.error}/> 
                     </div>
                     <div className={classes.field}>
                         <Field type="password" name="password" className={classes.input}/>
-                        <label htmlFor="password" className={classes.label}>Password</label>
+                        <label htmlFor="password" className={classes.label}>Գախտնաբառ</label>
                         <ErrorMessage name="password" component="div" className={classes.error}/>
                     </div>
                     <div className={classes.field}>
                         <Field type="password" name="confirmPassword" className={classes.input}/>
-                        <label htmlFor="confirmPassword" className={classes.label}>Confirm Password</label>
+                        <label htmlFor="confirmPassword" className={classes.label}>Հաստատել Նոր Գախտնաբառը</label>
                         <ErrorMessage name="confirmPassword" component="div" className={classes.error}/>
                     </div>
                     <div className={classes.checkboxField}>
@@ -95,16 +95,18 @@ const Signup:React.FC = () => {
                                 checked={values.productSubscriptions}
                                 name="productSubscriptions"
                             />
-                            <label htmlFor="productSubscriptions" className={classes.checkboxLabel}>Wanna see newslatters about products?</label>
+                            <label htmlFor="productSubscriptions" className={classes.checkboxLabel}>
+                                իմանալ ապրանքների հասանելիության մասին
+                            </label>
                         </div>
-                        <span>you must verify your email for this</span>
+                        <span>Պետք է հաստատել Էլ հասցեն</span>
                     </div>
                     <div className={classes.btnWrapper}>
-                        <Button label="Sign Up" priority="high" onClick={() =>{}} disabled={isSubmitting} className={classes.button}/> 
+                        <Button label="Գրանցվել" priority="high" onClick={() =>{}} disabled={isSubmitting} className={classes.button}/> 
                     </div>
                     <div className={classes.haveAccount}>
                         <span>Have an account ?</span>
-                        <Link to="/signin" className={classes.loginLink}>Sign in now</Link>
+                        <Link to="/signin" className={classes.loginLink}>Գրանցվել</Link>
                     </div>
                     
                 </Form>

@@ -17,7 +17,7 @@ const Signin:React.FC = () => {
 
     return (
         <div className={classes.root}>
-            <h1 className={classes.title}>Sign In</h1>
+            <h1 className={classes.title}>Մուտք</h1>
             {
                 message 
                 ?   <div className={classes.errorMessageField}>
@@ -50,20 +50,20 @@ const Signin:React.FC = () => {
                 <Form className={classes.form}>
                     <div className={classes.field}>
                         <Field type="email" name="email" className={classes.input}/>
-                        <label htmlFor="email" className={classes.label}>Email</label>
+                        <label htmlFor="email" className={classes.label}>Էլ հասցե</label>
                         <ErrorMessage name="email" component="div" className={classes.error}/>
                     </div>
                     <div className={classes.field}>
                         <Field type="password" name="password" className={classes.input}/>
-                        <label htmlFor="password" className={classes.label}>Password</label>
+                        <label htmlFor="password" className={classes.label}>Գախտնաբառ</label>
                         <ErrorMessage name="password" component="div" className={classes.error}/>
                     </div>
                     <div className={classes.btnWrapper}>
-                        <Button label="Sign In" priority="high" onClick={() =>{}} disabled={isSubmitting} className={classes.button}/> 
+                        <Button label="Մուտք" priority="high" onClick={() =>{}} disabled={isSubmitting} className={classes.button}/> 
                     </div>
                     <div className={classes.haveAccount}>
-                        <span>Don&lsquo;t have an account ?</span>
-                        <Link to="/signup" className={classes.loginLink}>Sign up now</Link>
+                        <span>Գրանցված չեք ?</span>
+                        <Link to="/signup" className={classes.loginLink}>Գրանցվել</Link>
                     </div>
                 </Form>
                 )}

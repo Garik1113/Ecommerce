@@ -72,21 +72,21 @@ const CategoryContent:React.FC = () => {
                                     <span className={classes.sortText}>Նոր Տեսականի</span>
                                 </div> 
                                 <div 
-                                    className={`${classes.sortItem} ${sort=="name" && sort_dir=="desc" && classes.active}`}
-                                    onClick={() => {
-                                        setShowSortOptions(false); 
-                                        addQueryString("sort", "name");
-                                        addQueryString("sort_dir", "desc");
-                                    }}
-                                >
-                                    <span className={classes.sortText}>Անուն Ա-Ֆ</span>
-                                </div> 
-                                <div 
                                     className={`${classes.sortItem} ${sort=="name" && sort_dir=="asc" && classes.active}`}
                                     onClick={() => {
                                         setShowSortOptions(false); 
                                         addQueryString("sort", "name");
                                         addQueryString("sort_dir", "asc");
+                                    }}
+                                >
+                                    <span className={classes.sortText}>Անուն Ա-Ֆ</span>
+                                </div> 
+                                <div 
+                                    className={`${classes.sortItem} ${sort=="name" && sort_dir=="desc" && classes.active}`}
+                                    onClick={() => {
+                                        setShowSortOptions(false); 
+                                        addQueryString("sort", "name");
+                                        addQueryString("sort_dir", "desc");
                                     }}
                                 >
                                     <span className={classes.sortText}>Անուն Ֆ-Ա</span>
